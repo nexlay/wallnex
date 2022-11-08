@@ -1,0 +1,3 @@
+class LocalExceptions implements Exception{
+
+}

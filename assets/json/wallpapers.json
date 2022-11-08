@@ -1,0 +1,104 @@
+{
+    "wallpapers": [
+        {
+            "path": "assets/images/0.jpg",
+            "id": "4g33qq",
+            "category": "Cars",
+            "name": "Black car",
+            "resolution": "7680x4320",
+            "downloads": "144",
+            "size": "1133 KB",
+            "colors":["#000000","#cccccc","#999999","#424153","#abbcda"]
+        },
+        {
+            "path": "assets/images/1.jpg",
+            "id": "5g43qq",
+            "category": "Nature",
+            "name": "Sunset",
+            "resolution": "3840x2160",
+            "downloads": "598",
+            "size": "1169 KB",
+            "colors":["#cc3333","#000000","#660000","#990000","#ff6600"]
+        },
+        {
+            "path": "assets/images/2.jpg",
+            "id": "4r67qq",
+            "category": "Cars",
+            "name": "Bugatti",
+            "resolution": "1920x1200",
+            "downloads": "375",
+            "size": "487 KB",
+            "colors":["#cccccc","#424153","#999999","#ffffff","#000000"]
+        },
+        {
+            "path": "assets/images/3.jpg",
+            "id": "78r3qq",
+            "category": "Countries",
+            "name": "Japan",
+            "resolution": "1920x1339",
+            "downloads": "897",
+            "size": "2795 KB",
+            "colors":["#424153","#000000","#abbcda","#999999","#333399"]
+        },
+        {
+            "path": "assets/images/4.jpg",
+            "id": "6d12qh",
+            "category": "Cars",
+            "name": "Ford",
+            "resolution": "3840x2160",
+            "downloads": "453",
+            "size": "1715 KB",
+            "colors":["#cccccc","#999999","#424153","#ffffff","#000000"]
+        },
+        {
+            "path": "assets/images/5.jpg",
+            "id": "0d43qh",
+            "category": "Cityscapes",
+            "name": "Light in dark",
+            "resolution": "2000x1334",
+            "downloads": "768",
+            "size": "528 KB",
+            "colors":["#000000","#424153","#999999","#abbcda","#cccccc"]
+        },
+        {
+            "path": "assets/images/6.jpg",
+            "id": "9d72qh",
+            "category": "Nature",
+            "name": "Landscape",
+            "resolution": "5576x3087",
+            "downloads": "321",
+            "size": "10027 KB",
+            "colors":["#424153","#999999","#e7d8b1","#cccccc","#cccc33"]
+        },
+        {
+            "path": "assets/images/7.jpg",
+            "id": "90d45qh",
+            "category": "Nature",
+            "name": "Watter",
+            "resolution": "3840x2560",
+            "downloads": "125",
+            "size": "5278 KB",
+            "colors":["#336600","#666600","#669900","#77cc33","#996633"]
+        },
+        {
+            "path": "assets/images/8.jpg",
+            "id": "8d45qh",
+            "category": "Instruments",
+            "name": "Piano",
+            "resolution": "3840x2160",
+            "downloads": "981",
+            "size": "7097 KB",
+            "colors":["#424153","#000000","#66cccc","#333399","#999999"]
+        },
+        {
+            "path": "assets/images/9.jpg",
+            "id": "32y2qh",
+            "category": "Abstract",
+            "name": "Space",
+            "resolution": "2048x1152",
+            "downloads": "521",
+            "size": "3731 KB",
+            "colors":["#424153","#000000","#cc6633","#999999","#996633"]
+        }
+    ]
+}
