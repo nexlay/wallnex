@@ -1,16 +1,72 @@
-# wallnex
+# Wallnex
+![](https://github.com/nexlay/g_logo_animation/blob/master/assets/git/gif.gif)
+# Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Rive animation](#rive-animation)
+* [Setup](#setup)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+<!-- * [License](#license) -->
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## General Information
+- Wallnex - simple wallpaper app. It was created with Flutter. All animations created by myself in Rive. All animations transition logic is provided with Rive's state machine.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+## Technologies Used
+- [Flutter](https://flutter.dev/?gclid=Cj0KCQjw1vSZBhDuARIsAKZlijRtxpWm4-4uONVZWImtjAFWLuNh3qXvWyRedL89vchIklx13I7zROwaAjR1EALw_wcB&gclsrc=aw.ds).
+- [Clean architecture for Flutter](https://github.com/ResoCoder/flutter-tdd-clean-architecture-course).
+- [Dart](https://dart.dev/).
+- [Rive](https://rive.app/) for animation.
+- [Provider](https://pub.dev/packages/provider) for state management.
+- [SQLite](https://pub.dev/packages/sqflite/example) temporary solution for storing the data.
+
+
+
+## Features
+- First screen show all available images and intoroducing it in grid.
+- User can add or delete favorites images.
+- Suggested images based on image which is on screen.
+- Dark/light theme.
+
+
+## Screenshots
+<img src="assets/git/g.png" width="320" height="620"/> <img src="assets/git/o.png" width="320" height="620"/>
+<img src="assets/git/l.png" width="320" height="620"/> <img src="assets/git/e.png" width="320" height="620"/>
+
+
+
+## Rive animation
+Check my animation on [rive.app](https://rive.app/community/3382-7108-google-logo/).
+
+
+## Setup
+- Click on the green-colored Code button then copy the hyperlink. You may copy the link manually or by just click on the Copy icon.
+- Open your Android Studio then go to the File > New > Project from Version Control.
+- In the Version control choose Git from the drop-down menu.
+- Then at last paste the link in the URL and choose your Directory. Click on the Clone button and you are done.
+
+
+
+## Acknowledgements
+- Thanks to [Reso coder](https://github.com/ResoCoder).
+- This project was based on [this tutorial](https://help.rive.app/).
+
+
+## Contact
+Created by [@Nexlay](https://twitter.com/Nexlay/) - feel free to contact me!
+
+
+
+
+
+
+
+
