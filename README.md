@@ -1,5 +1,5 @@
 # Wallnex
-![](https://github.com/nexlay/g_logo_animation/blob/master/assets/git/gif.gif)
+![](https://github.com/nexlay/g_logo_animation/blob/master/assets/git/wallnex.gif)
 # Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
@@ -38,8 +38,8 @@
 
 
 ## Screenshots
-<img src="assets/git/g.png" width="320" height="620"/> <img src="assets/git/o.png" width="320" height="620"/>
-<img src="assets/git/l.png" width="320" height="620"/> <img src="assets/git/e.png" width="320" height="620"/>
+<img src="assets/git/1.png" width="320" height="620"/> <img src="assets/git/2.png" width="320" height="620"/>
+<img src="assets/git/3.png" width="320" height="620"/> <img src="assets/git/4.png" width="320" height="620"/>
 
 
 
