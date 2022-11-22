@@ -1,15 +1,15 @@
+import 'package:wallnex/presentation/common/navigation_bar/custom_nav_bar.dart';
 import 'package:wallnex/presentation/common/theme/dark_theme.dart';
-import 'package:wallnex/presentation/provider/get_wallpapers_notifier.dart';
-import 'package:wallnex/presentation/provider/set_wallpaper_notifier.dart';
+import 'package:wallnex/presentation/provider/get_app_info_notifier.dart';
+import 'package:wallnex/presentation/provider/get_favorites_wallpapers_notifier.dart';
+import 'package:wallnex/presentation/provider/get_wallpapers_from_api_notifier.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/presentation/common/navigationbar/custom_nav_bar.dart';
 import 'package:wallnex/presentation/common/theme/light_theme.dart';
-import 'package:wallnex/presentation/provider/home_page_pref_notifier.dart';
+import 'package:wallnex/presentation/provider/get_home_page_notifier.dart';
 
 void main() async {
-
   await di.init();
   runApp(const MyApp());
 }
@@ -27,8 +27,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<GetWallpapersNotifier>(
           create: (_) => di.sl<GetWallpapersNotifier>(),
         ),
-        ChangeNotifierProvider<SetWallpaperNotifier>(
-          create: (_) => di.sl<SetWallpaperNotifier>(),
+        ChangeNotifierProvider<GetAppInfoNotifier>(
+          create: (_) => di.sl<GetAppInfoNotifier>(),
+        ),
+        ChangeNotifierProvider<GetFavoritesNotifier>(
+          create: (_) => di.sl<GetFavoritesNotifier>(),
         ),
       ],
       child: MaterialApp(

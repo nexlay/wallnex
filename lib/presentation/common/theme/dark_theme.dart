@@ -5,21 +5,16 @@ import '../../../const.dart';
 class AppDarkTheme {
   static ThemeData get darkTheme {
     return ThemeData(
-      primaryColor: mainColor,
       colorScheme: ColorScheme.fromSwatch(
         brightness: Brightness.dark,
       ),
-      //useMaterial3: true,
+      useMaterial3: true,
       cardTheme: const CardTheme(color: Colors.black, elevation: 0.0),
-      iconTheme: const IconThemeData(
-        color: mainColor,
-      ),
-      buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceAround),
+      buttonBarTheme:
+          const ButtonBarThemeData(alignment: MainAxisAlignment.spaceAround),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
         backgroundColor: Colors.black,
-        titleTextStyle: TextStyle(color: mainColor),
-        iconTheme: IconThemeData(color: mainColor),
       ),
 
       /* floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -31,76 +26,73 @@ class AppDarkTheme {
         elevation: 0.0,
       ),*/
       scaffoldBackgroundColor: Colors.black,
-      /* bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: Colors.black,
-        elevation: 0.0,
-        selectedItemColor: Colors.blue.shade100,
-      ),*/
       primaryTextTheme: TextTheme(
-        headline6: GoogleFonts.robotoFlex(
-          color: mainColor,
-        ),
+        headline6: GoogleFonts.robotoFlex(),
       ),
       textTheme: TextTheme(
         headline1: GoogleFonts.robotoFlex(
-            fontSize: 97,
-            fontWeight: FontWeight.w300,
-            letterSpacing: -1.5,
-            color: mainColor),
+          fontSize: 97,
+          fontWeight: FontWeight.w300,
+          letterSpacing: -1.5,
+        ),
         headline2: GoogleFonts.robotoFlex(
-            fontSize: 61,
-            fontWeight: FontWeight.w300,
-            letterSpacing: -0.5,
-            color: mainColor),
+          fontSize: 61,
+          fontWeight: FontWeight.w300,
+          letterSpacing: -0.5,
+        ),
         headline3: GoogleFonts.robotoFlex(
-            fontSize: 48, fontWeight: FontWeight.w300, color: mainColor),
+          fontSize: 48,
+          fontWeight: FontWeight.w300,
+        ),
         headline4: GoogleFonts.robotoFlex(
-            fontSize: 34,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.25,
-            color: mainColor),
+          fontSize: 34,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.25,
+        ),
         headline5: GoogleFonts.robotoFlex(
-            fontSize: 24, fontWeight: FontWeight.w300, color: mainColor),
+          fontSize: 24,
+          fontWeight: FontWeight.w300,
+        ),
         headline6: GoogleFonts.robotoFlex(
-            fontSize: 20,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.15,
-            color: mainColor),
+          fontSize: 20,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.15,
+        ),
         subtitle1: GoogleFonts.robotoFlex(
-            fontSize: 16,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.15,
-            color: mainColor),
+          fontSize: 16,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.15,
+        ),
         subtitle2: GoogleFonts.robotoFlex(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.1,
-            color: mainColor),
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.1,
+        ),
         bodyText1: GoogleFonts.robotoFlex(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.5,
-            color: mainColor),
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.5,
+        ),
         bodyText2: GoogleFonts.robotoFlex(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.25,
-            color: mainColor),
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.25,
+        ),
         button: GoogleFonts.robotoFlex(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 1.25,
-            color: mainColor),
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 1.25,
+        ),
         caption: GoogleFonts.robotoFlex(
-            fontSize: 12,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 0.4,
-            color: mainColor),
+          fontSize: 12,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.4,
+        ),
         overline: GoogleFonts.robotoFlex(
-            fontSize: 10,
-            fontWeight: FontWeight.w300,
-            letterSpacing: 1.5,
-            color: mainColor),
+          fontSize: 10,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 1.5,
+        ),
       ),
       /*inputDecorationTheme: InputDecorationTheme(
         iconColor: Colors.blue.shade200,
@@ -124,10 +116,15 @@ class AppDarkTheme {
         selectedColor: Colors.blue.shade100,
       ),
      */
-      textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: mainColor),),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: mainDarkThemeColor,
+        ),
+      ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: rippleColor, side: const BorderSide(color: Colors.transparent),
+          foregroundColor: rippleColor,
+          side: const BorderSide(color: Colors.transparent),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(38.0),

@@ -24,6 +24,12 @@ dependencies:
   dartz: ^0.10.1
   # This is a simple Service Locator for Dart and Flutter
   get_it: ^7.2.0
+  # Provides an API for querying information about an application package.
+  package_info_plus: ^3.0.1
+  # This package automatically generates iOS, Android, and Web-native code for customizing this native splash screen background color and splash image.
+  flutter_native_splash: ^2.2.14
+  # SQLite plugin for Flutter. Supports iOS, Android and MacOS.
+  sqflite: ^2.2.0+3
 
 
 
@@ -35,6 +41,22 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
+  # Customize the parameters below, and run the following command in the terminal:
+  # flutter pub run flutter_native_splash:create
+  # To restore Flutter's default white splash screen, run the following command in the terminal:
+  # flutter pub run flutter_native_splash:remove
+flutter_native_splash:
+  color: '#935E5E'
+  color_dark: '#935E5E'
+  image: assets/core/launch_image.png
+  image_dark: assets/core/launch_image.png
+
+  android_12:
+    image: assets/core/launch_image.png
+    icon_background_color: '#935E5E'
+    image_dark: assets/core/launch_image.png
+    icon_background_color_dark: '#935E5E'
 
 flutter:
 

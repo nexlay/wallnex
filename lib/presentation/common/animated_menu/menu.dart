@@ -36,7 +36,7 @@ class _AnimatedMenuState extends State<AnimatedMenu>
     try {
       await _animationController.forward().orCancel;
     } on TickerCanceled {
-      // the animation got canceled, probably because it was disposed of
+     _animationController.dispose();
     }
   }
 

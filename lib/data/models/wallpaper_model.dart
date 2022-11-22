@@ -9,7 +9,8 @@ class WallpaperModel extends Wallpaper {
       required super.size,
       required super.downloads,
       required super.resolution,
-      required super.colors});
+      required super.colors,
+      });
 
   factory WallpaperModel.fromJson(Map<String, dynamic> fromJson) {
     return WallpaperModel(

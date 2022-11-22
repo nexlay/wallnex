@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ImageSingleSpec extends StatelessWidget {
-  const ImageSingleSpec({Key? key, required this.text, required this.fontSize, required this.iconSize, required this.icon}) : super(key: key);
+  const ImageSingleSpec(
+      {Key? key,
+      required this.text,
+      required this.fontSize,
+      required this.iconSize,
+      required this.icon})
+      : super(key: key);
   final String text;
   final double fontSize;
   final double iconSize;
@@ -15,10 +21,14 @@ class ImageSingleSpec extends StatelessWidget {
           icon,
           size: iconSize,
         ),
-        const SizedBox(width: 5.0,),
+        const SizedBox(
+          width: 5.0,
+        ),
         Text(
           text,
-          style: TextStyle(fontSize: fontSize),
+          style: TextStyle(
+            fontSize: fontSize,
+          ),
         ),
       ],
     );

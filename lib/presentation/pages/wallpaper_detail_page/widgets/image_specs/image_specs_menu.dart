@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallnex/presentation/pages/wallpaper_detail_page/widgets/image_colors.dart';
+import 'package:wallnex/presentation/pages/wallpaper_detail_page/widgets/image_specs/image_colors.dart';
 import 'image_specs_bar.dart';
 
 class ChildWidget1 extends StatelessWidget {

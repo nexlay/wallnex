@@ -10,7 +10,9 @@ class Wallpaper extends Equatable {
   final String resolution;
   final List<dynamic> colors;
 
-  const Wallpaper(
+
+
+   const Wallpaper(
       {required this.path,
       required this.id,
       required this.category,
@@ -18,9 +20,24 @@ class Wallpaper extends Equatable {
       required this.size,
       required this.downloads,
       required this.resolution,
-      required this.colors});
+      required this.colors,
+     });
 
   @override
   List<Object?> get props =>
-      [path, id, category, name, size, downloads, resolution, colors];
+      [path, id, category, name, size, downloads, resolution, colors,];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'path': path,
+      'imageId': id,
+      'category': category,
+      'name': name,
+      'size': size,
+      'downloads': downloads,
+      'resolution': resolution,
+      'colors': colors.toString().replaceAll(' ', '').replaceAll('[', '').replaceAll(']', ''),
+
+    };
+  }
 }

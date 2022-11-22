@@ -1,12 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:wallnex/data/models/wallpaper_model.dart';
-import 'package:wallnex/domain/entities/wallpaper.dart';
 import '../../core/errors/failure.dart';
 import '../../core/exceptions/exceptions.dart';
 import '../../domain/repository/wallpaper_repo.dart';
 import '../datasource/local_data_source.dart';
 
-class WallpaperRepoImpl extends WallpaperRepo {
+class WallpaperRepoImpl implements WallpaperRepo {
   final LocalDataSource localDataSource;
   WallpaperRepoImpl({required this.localDataSource});
 
@@ -19,6 +18,8 @@ class WallpaperRepoImpl extends WallpaperRepo {
       return Left(LocalFailure());
     }
   }
+
+
 
   @override
   Future<Either<Failure, void>> setImageAsWallpaper(String path) async{

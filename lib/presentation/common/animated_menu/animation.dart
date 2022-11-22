@@ -131,45 +131,43 @@ class StaggerAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: controller,
-        builder: (BuildContext context, Widget? child) {
-          return Wrap(
-            alignment: WrapAlignment.start,
-            children: [
-              Container(
-                padding: padding1.value,
-                child: Opacity(
-                  opacity: opacity1.value,
-                  child:
-                      childWidget1,
-                ),
+      animation: controller,
+      builder: (BuildContext context, Widget? child) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: padding1.value,
+              child: Opacity(
+                opacity: opacity1.value,
+                child: childWidget1,
               ),
-              Container(
-                padding: padding2.value,
-                child: Opacity(
-                  opacity: opacity2.value,
-                  child:
-                      childWidget2,
-                ),
+            ),
+            Container(
+              padding: padding2.value,
+              child: Opacity(
+                opacity: opacity2.value,
+                child: childWidget2,
               ),
-              Container(
-                padding: padding3.value,
-                child: Opacity(
-                  opacity: opacity3.value,
-                  child:
-                      childWidget3,
-                ),
+            ),
+            Container(
+              padding: padding3.value,
+              child: Opacity(
+                opacity: opacity3.value,
+                child: childWidget3,
               ),
-              Container(
-                padding: padding4.value,
-                child: Opacity(
-                  opacity: opacity4.value,
-                  child:
-                      childWidget4,
-                ),
+            ),
+            Container(
+              padding: padding4.value,
+              child: Opacity(
+                opacity: opacity4.value,
+                child: childWidget4,
               ),
-            ],
-          );
-        });
+            ),
+          ],
+        );
+      },
+    );
   }
 }
