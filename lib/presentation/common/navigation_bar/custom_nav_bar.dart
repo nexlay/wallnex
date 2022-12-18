@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../../../const.dart';
-import '../../provider/get_home_page_notifier.dart';
+import '../../provider/get_navBar_page_notifier.dart';
 import '../slivers/custom_scroll_view.dart';
 import 'custom_nav_bar_item.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +11,9 @@ class CustomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final page = context.select((Pages p) => p.getPage(),);
-    final label = context.select((Pages l) => l.getLabel());
+    final page = context.select((GetPages p) => p.getPage(),);
+    final label = context.select((GetPages l) => l.getLabel());
+
     return Scaffold(
       bottomNavigationBar: SizedBox(
         height: 96,
@@ -28,7 +29,7 @@ class CustomNavBar extends StatelessWidget {
           ).toList(),
         ),
       ),
-      body: BodyScrollView(title: label, childWidget: page,),
+      body: BodyScrollView(title: label, childWidget1: const SizedBox(), childWidget2: page,),
     );
   }
 }

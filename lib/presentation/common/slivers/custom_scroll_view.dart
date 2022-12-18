@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BodyScrollView extends StatelessWidget {
-  const BodyScrollView({Key? key, required this.title, required this.childWidget})
+  const BodyScrollView({Key? key, required this.title, required this.childWidget1, required this.childWidget2})
       : super(key: key);
   final String title;
-  final Widget childWidget;
+  final Widget childWidget1;
+  final Widget childWidget2;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class BodyScrollView extends StatelessWidget {
             expandedTitleScale: 1.5,
           ),
         ),
-        childWidget,
+        childWidget1,
+        const SliverPadding(padding: EdgeInsets.only(bottom: 15.0),),
+        childWidget2,
       ],
     );
   }

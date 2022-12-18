@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wallnex/presentation/pages/account_page/appearance/appearance.dart';
 import 'package:wallnex/presentation/pages/account_page/widgets/item.dart';
+
+import 'about/about.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -10,8 +13,14 @@ class AccountPage extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           const AccountPageItem(
+            title: 'Appearance',
+            subtitle: 'Dark theme',
+            widget: Appearance(),
+          ),
+          const AccountPageItem(
             title: 'App info',
             subtitle: 'Version',
+            widget: WelcomeWallnexPage(),
           ),
         ],
       ),

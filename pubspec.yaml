@@ -28,8 +28,22 @@ dependencies:
   package_info_plus: ^3.0.1
   # This package automatically generates iOS, Android, and Web-native code for customizing this native splash screen background color and splash image.
   flutter_native_splash: ^2.2.14
-  # SQLite plugin for Flutter. Supports iOS, Android and MacOS.
-  sqflite: ^2.2.0+3
+  # Hive is a lightweight and blazing fast key-value database written in pure Dart.
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  # A Flutter plugin for finding commonly used locations on the filesystem
+  path_provider: ^2.0.11
+  # A composable, Future-based library for making HTTP requests.
+  http: ^0.13.5
+  # A flutter library to show images from the internet and keep them in the cache directory.
+  cached_network_image: ^3.2.3
+  # A CacheManager to download and cache files in the cache directory of the app. Various settings on how long to keep a file can be changed.
+  flutter_cache_manager: ^3.3.0
+  # A Flutter plugin for launching a URL.
+  url_launcher: ^6.1.7
+  # A flutter plugin to set wallpaper on your android device. It support Home Screen, Lock Screen and Both Screen mode
+  flutter_wallpaper_manager: ^0.0.3
+  # A Flutter package to create Material color schemes based on a platform's implementation of dynamic color.
 
 
 
@@ -37,6 +51,9 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  # Used for creating custom TypeAdapters
+  hive_generator: ^2.0.0
+  build_runner:
   flutter_test:
     sdk: flutter
 
@@ -53,6 +70,8 @@ flutter_native_splash:
   image_dark: assets/core/launch_image.png
 
   android_12:
+    color: '#935E5E'
+    color_dark: '#935E5E'
     image: assets/core/launch_image.png
     icon_background_color: '#935E5E'
     image_dark: assets/core/launch_image.png
@@ -64,6 +83,7 @@ flutter:
   uses-material-design: true
     # To add assets to your application, add an assets section, like this:
   assets:
+  - assets/images/categories/
   - assets/rive/
-  - assets/images/
   - assets/json/
+  - assets/core/

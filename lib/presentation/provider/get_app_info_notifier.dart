@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
 
-import 'package:wallnex/domain/usecases/get_app_info_usecase.dart';
+import '../../features/app_info/domain/usecases/get_app_info_usecase.dart';
 
 class GetAppInfoNotifier extends ChangeNotifier {
   final GetAppInfoUseCase getAppInfoUseCase;
@@ -15,7 +15,7 @@ class GetAppInfoNotifier extends ChangeNotifier {
   Future<void> loadAppInfo() async {
     final result = await getAppInfoUseCase.call(NoParams());
 
-    result.map((r){
+    result.map((r) {
       appName = r.appName;
       appBuild = r.appBuild;
       version = r.appVersion;

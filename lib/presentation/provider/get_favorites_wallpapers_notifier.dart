@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
-import 'package:wallnex/domain/entities/favorite_wallpaper.dart';
-import 'package:wallnex/domain/entities/wallpaper.dart';
-import 'package:wallnex/domain/usecases/get_favorite_wallpapers_use_case.dart';
+import '../../features/images/domain/entities/wallpaper.dart';
+import '../../features/images/domain/usecases/get_favorite_wallpapers_use_case.dart';
 
 class GetFavoritesNotifier extends ChangeNotifier {
-  final GetFavoriteWallpapers getFavoriteWallpapers;
+  final GetFavoriteWallpapersUseCase getFavoriteWallpapers;
 
   GetFavoritesNotifier({required this.getFavoriteWallpapers});
 
   bool isLoading = false;
-  bool isOpened = false;
+
   bool isFavorite = false;
-  List<FavoriteWallpaper> favorites = [];
+  List<Wallpaper> favorites = [];
   String error = '';
 
   Future<void> loadFavoritesWallpapers() async {
@@ -31,18 +30,12 @@ class GetFavoritesNotifier extends ChangeNotifier {
       },
       (list) {
         favorites = list;
+
         isLoading = false;
       },
     );
     // notify UI
     notifyListeners();
-  }
-
-  Future<void> openDatabase() async {
-    await getFavoriteWallpapers.openDatabase(NoParams()).whenComplete(() {
-      isOpened = true;
-      notifyListeners();
-    });
   }
 
   Future<void> insertIntoFavorites(Wallpaper wallpaper) async {
@@ -51,9 +44,10 @@ class GetFavoritesNotifier extends ChangeNotifier {
     notifyListeners();
     await getFavoriteWallpapers
         .addFavoriteWallpaper(
-      Params(wallpaper),
+      Params(wallpaper: wallpaper),
     )
         .whenComplete(() {
+      isFavorite = true;
       isLoading = false;
       notifyListeners();
     });
@@ -63,9 +57,10 @@ class GetFavoritesNotifier extends ChangeNotifier {
   Future<void> deleteFromFavorites(Wallpaper wallpaper) async {
     await getFavoriteWallpapers
         .deleteFromFavorite(
-      Params(wallpaper),
+      Params(wallpaper: wallpaper),
     )
         .whenComplete(() {
+      isFavorite = false;
       isLoading = false;
       notifyListeners();
     });
@@ -73,8 +68,10 @@ class GetFavoritesNotifier extends ChangeNotifier {
   }
 
   Future<void> checkFavorites(Wallpaper wallpaper) async {
+    isFavorite = false;
+    notifyListeners();
     final result =
-        await getFavoriteWallpapers.checkFavorites(Params(wallpaper));
+        await getFavoriteWallpapers.checkFavorites(Params(wallpaper: wallpaper));
     result.fold((l) {
       error = "fail";
       isLoading = false;
@@ -84,6 +81,6 @@ class GetFavoritesNotifier extends ChangeNotifier {
       notifyListeners();
       isLoading = false;
     });
-
   }
+
 }

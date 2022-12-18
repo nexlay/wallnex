@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:provider/provider.dart';
 import '../../../const.dart';
-import '../../provider/get_home_page_notifier.dart';
+import '../../provider/get_navBar_page_notifier.dart';
 
 class CustomNavBarItem extends StatefulWidget {
   const CustomNavBarItem(
@@ -35,12 +35,13 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    final page = Provider.of<Pages>(context);
+    final page = Provider.of<GetPages>(context);
     _active?.value = widget.tabIndex == page.getIndex;
     _selected = widget.tabIndex == page.getIndex;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+
         Stack(
           alignment: Alignment.topCenter,
           children: [
@@ -49,7 +50,7 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
                 borderRadius: const BorderRadius.all(
                   Radius.circular(18.0),
                 ),
-                color: _selected ? rippleColor : Colors.transparent,
+              /*  color: _selected ? rippleColor : Colors.transparent,*/
               ),
               height: _selected ? 35 : 0,
               width: _selected ? 65 : 0,
@@ -81,7 +82,7 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
           widget.label,
           style: TextStyle(
               fontSize: _selected ? 12.0 : 11.0,
-              color: _selected ? selectedItemColor : mainLightThemeColor,
+             /* color: _selected ? selectedItemColor : mainLightThemeColor,*/
               fontWeight: _selected ? FontWeight.bold : FontWeight.normal),
         ),
       ],
