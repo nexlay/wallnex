@@ -1,5 +1,5 @@
 # Wallnex
-![](https://github.com/nexlay/g_logo_animation/blob/master/assets/git/wallnex.gif)
+![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex.gif)
 # Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
