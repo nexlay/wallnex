@@ -26,7 +26,8 @@
 - [Dart](https://dart.dev/).
 - [Rive](https://rive.app/) for animation.
 - [Provider](https://pub.dev/packages/provider) for state management.
-- [SQLite](https://pub.dev/packages/sqflite/example) temporary solution for storing the data.
+- [Get It](https://pub.dev/packages/get_it) simple Service Locator for Dart and Flutter projects.
+- [Hive database](https://pub.dev/packages/hive) temporary solution for storing the data.
 
 
 
