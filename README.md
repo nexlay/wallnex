@@ -16,7 +16,7 @@
 
 
 ## General Information
-- Wallnex - simple wallpaper app. It was created with Flutter. All animations created by myself in Rive. All animations transition logic is provided with Rive's state machine.
+- Wallnex - simple wallpaper app. It was created with Flutter. Animations created by myself in Rive. All animations transition logic is provided with Rive's state machine.
 
 
 
