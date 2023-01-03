@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:wallnex/const.dart';
@@ -133,28 +133,15 @@ class ApiDataSourceImpl extends ApiDataSource {
 
   @override
   Future<bool> setImageAsWallpaper(String path, int screen) async {
-    int location = screen;
     // WallpaperManager.HOME_SCREEN = 1;
     // WallpaperManager.LOCK_SCREEN = 2;
     // WallpaperManager.BOTH_SCREEN = 3;
 
-    int height = await WallpaperManager.getDesiredMinimumHeight();
-    int width = await WallpaperManager.getDesiredMinimumWidth();
-
-    var file = await DefaultCacheManager().getFileFromCache(path);
-
-    /*  final image =
-      await img.decodeImage(await File(args.sourcePath).readAsBytes());
-
-      if (image == null) throw Exception('Unable to decode image from file');
-
-      final croppedResized = cropAndResize(image, args.aspectRatio, args.width);
-      // Encoding image to jpeg to compress the image.
-      final jpegBytes = img.encodeJpg(croppedResized, quality: args.quality);
-
-      final croppedImageFile = await File(args.destPath).writeAsBytes(jpegBytes);*/
-
-    return await WallpaperManager.setWallpaperFromFile(
-        file!.file.path, location);
+    try {
+      return await WallpaperManager.setWallpaperFromFile(path, screen);
+    } on PlatformException {
+      'Failed to set Wallpaper.';
+      return false;
+    }
   }
 }

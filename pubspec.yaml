@@ -18,6 +18,8 @@ dependencies:
   google_fonts: ^3.0.1
   # Provider for state management
   provider: ^6.0.3
+  # A library providing a tuple data structure.
+  tuple: ^2.0.1
   # Being able to compare objects
   equatable: ^2.0.5
   # Functional programming in Dart
@@ -43,7 +45,9 @@ dependencies:
   url_launcher: ^6.1.7
   # A flutter plugin to set wallpaper on your android device. It support Home Screen, Lock Screen and Both Screen mode
   flutter_wallpaper_manager: ^0.0.3
-  # A Flutter package to create Material color schemes based on a platform's implementation of dynamic color.
+  # A Dart library providing the ability to load, save and manipulate images in a variety of different file formats.
+  image: ^3.2.2
+
 
 
 

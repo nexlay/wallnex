@@ -8,20 +8,24 @@ import 'package:wallnex/features/images/domain/usecases/get_favorite_wallpapers_
 import 'package:wallnex/features/images/domain/usecases/get_suggestions_usecase.dart';
 import 'package:wallnex/features/images/domain/usecases/get_tags_uploader_use_case.dart';
 import 'package:wallnex/features/images/domain/usecases/set_image_as_wallpaper_use_case.dart';
-import 'package:wallnex/features/theme/data/database/theme_pref_database.dart';
-import 'package:wallnex/features/theme/data/theme_repo_impl/theme_repo_impl.dart';
-import 'package:wallnex/features/theme/domain/repo/theme_repo.dart';
-import 'package:wallnex/features/theme/domain/usecase/get_theme_usecase.dart';
+
 import 'package:wallnex/presentation/provider/get_app_info_notifier.dart';
-import 'package:wallnex/presentation/provider/get_favorites_wallpapers_notifier.dart';
+import 'package:wallnex/presentation/provider/get_cropped_image_notifier.dart';
+import 'package:wallnex/presentation/provider/get_customizartion_notifier.dart';
+import 'package:wallnex/presentation/provider/get_favorites_images_notifier.dart';
 import 'package:wallnex/presentation/provider/get_suggestions_notifier.dart';
 import 'package:wallnex/presentation/provider/get_theme_notifier.dart';
-import 'package:wallnex/presentation/provider/get_wallpapers_from_api_notifier.dart';
-import 'package:wallnex/presentation/provider/get_navBar_page_notifier.dart';
+import 'package:wallnex/presentation/provider/get_images_notifier.dart';
+import 'package:wallnex/presentation/provider/get_default_home_page_notifier.dart';
 import 'package:wallnex/presentation/provider/set_image_as_wallpaper_notifier.dart';
 import 'features/app_info/data/repositories/repositories_app_info_impl.dart';
 import 'features/app_info/domain/repository/appInfo_repo.dart';
 import 'features/app_info/domain/usecases/get_app_info_usecase.dart';
+import 'features/customization/data/database/customization_pref_database.dart';
+import 'features/customization/data/theme_repo_impl/customization_repo_impl.dart';
+import 'features/customization/domain/repo/customization_repo.dart';
+import 'features/customization/domain/usecase/get_nav_bar_usecase.dart';
+import 'features/customization/domain/usecase/get_theme_usecase.dart';
 import 'features/images/data/datasource/api_service.dart';
 import 'features/images/data/repositories/repositories_impl.dart';
 import 'features/images/domain/repository/wallpaper_repo.dart';
@@ -37,11 +41,15 @@ Future<void> init() async {
   //Init hive NoSQL database
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
-  await Hive.openBox('theme');
+  await Hive.openBox('customization');
   await Hive.openBox<Wallpaper>('favorites');
 
   sl.registerFactory(
-    () => GetWallpapersNotifier(
+    () => GetCroppedImageNotifier(),
+  );
+
+  sl.registerFactory(
+    () => GetImagesNotifier(
       getWallpaperUseCase: sl(),
       getSingleWallpaperUseCase: sl(),
     ),
@@ -67,8 +75,15 @@ Future<void> init() async {
       getThemeUseCase: sl(),
     ),
   );
+  sl.registerFactory(
+    () => GetCustomization(
+      getNavBarUseCase: sl(),
+    ),
+  );
 
-  sl.registerFactory(() => GetPages());
+  sl.registerFactory(
+    () => GetPages(),
+  );
 
   sl.registerFactory(
     () => SetImageASWallpaperNotifier(
@@ -109,6 +124,10 @@ Future<void> init() async {
   );
 
   sl.registerFactory(
+    () => GetNavBarUseCase(customizationRepo: sl()),
+  );
+
+  sl.registerFactory(
     () => SetImageAsWallpaperUseCase(
       wallpaperRepo: sl(),
     ),
@@ -127,8 +146,8 @@ Future<void> init() async {
     ),
   );
 
-  sl.registerLazySingleton<ThemeRepo>(
-    () => ThemeRepoImpl(hiveDatabase: sl()),
+  sl.registerLazySingleton<CustomizationRepo>(
+    () => CustomizationRepoImpl(hiveDatabase: sl()),
   );
 
   sl.registerFactory<ApiDataSource>(
@@ -141,7 +160,7 @@ Future<void> init() async {
   );
 
   //Hive database
-  sl.registerFactory<ThemePrefDatabase>(
-    () => ThemePrefDatabaseImpl(),
+  sl.registerFactory<CustomizationPrefDatabase>(
+    () => CustomizationPrefDatabaseImpl(),
   );
 }

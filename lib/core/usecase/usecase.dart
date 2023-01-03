@@ -8,8 +8,6 @@ abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);
 }
 
-
-
 class NoParams extends Equatable {
   @override
   List<Object?> get props => [];
@@ -39,4 +37,11 @@ class ParamsThree extends Equatable {
   List<Object?> get props => [params];
 }
 
-
+class ParamsFour extends Equatable {
+  final bool params;
+  const ParamsFour({
+    required this.params,
+  });
+  @override
+  List<Object?> get props => [params];
+}

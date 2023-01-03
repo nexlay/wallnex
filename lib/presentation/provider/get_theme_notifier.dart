@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wallnex/features/theme/domain/usecase/get_theme_usecase.dart';
 
-class GetThemeNotifier extends ChangeNotifier {
+import '../../features/customization/domain/usecase/get_theme_usecase.dart';
+
+
+var brightness = WidgetsBinding.instance.window.platformBrightness;
+
+class GetThemeNotifier extends ValueNotifier<int> {
   final GetThemeUseCase getThemeUseCase;
 
-  GetThemeNotifier({required this.getThemeUseCase});
+  GetThemeNotifier({required this.getThemeUseCase}) : super(2);
 
-  int value = 2;
   String error = '';
-  late bool themeModeDark;
+  bool themeModeDark = true;
 
   Future<void> getThemeValue() async {
     final themeValue = await getThemeUseCase.getTheme();
@@ -21,7 +24,6 @@ class GetThemeNotifier extends ChangeNotifier {
         notifyListeners();
       },
     );
-    notifyListeners();
   }
 
   Future<void> setThemeValue(int themeValue) async {
@@ -33,6 +35,8 @@ class GetThemeNotifier extends ChangeNotifier {
       },
     );
   }
+
+
 
   void checkThemeMode() {
     var brightness = WidgetsBinding.instance.window.platformBrightness;
