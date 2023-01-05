@@ -38,7 +38,10 @@
 - First screen show all available images and intoroducing it in grid.
 - User can add or delete favorites images.
 - Suggested images based on image which is on screen.
-- Dark/light theme.
+- Simple searching.
+- Customization (change the bottom navigation bar).
+- Setting image as wallpaper (Home screen, Lock screen, Both).
+- Dark/light/auto theme.
 
 
 ## Screenshots
