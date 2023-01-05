@@ -5,6 +5,7 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
+* [Gif Preview](#gif-preview)
 * [Rive animation](#rive-animation)
 * [Setup](#setup)
 * [Acknowledgements](#acknowledgements)
@@ -40,6 +41,7 @@
 
 ## Screenshots
 <img src="assets/git/1.png" width="320" height="620"/> <img src="assets/git/2.png" width="320" height="620"/>
+## Gif Preview
 ![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex_1.gif) ![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex_2.gif)
 ![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex_3.gif)
 
