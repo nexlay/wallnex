@@ -1,7 +1,7 @@
+import 'package:wallnex/presentation/pages/profile/about/about.dart';
+import 'package:wallnex/presentation/pages/profile/appearance/appearance.dart';
 import 'package:wallnex/presentation/provider/get_cropped_image_notifier.dart';
 import 'package:wallnex/wrapper.dart';
-import 'package:wallnex/presentation/pages/account/about/about.dart';
-import 'package:wallnex/presentation/pages/account/appearance/appearance.dart';
 import 'package:wallnex/presentation/pages/favorites/favorites.dart';
 import 'package:wallnex/presentation/pages/suggestions/suggestions.dart';
 import 'package:wallnex/presentation/provider/get_app_info_notifier.dart';

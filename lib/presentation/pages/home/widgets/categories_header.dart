@@ -45,11 +45,13 @@ class CategoriesHeader extends StatelessWidget {
                             sigmaY: 1,
                           ),
                           child: Center(
-                            child: Text(
-                              categoriesList[index],
-                              style: const TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Text(
+                                categoriesList[index],
+                                style:const TextStyle(
+                                  color: Colors.white
+                                ),
                               ),
                             ),
                           ),

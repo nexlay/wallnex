@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import 'package:wallnex/presentation/pages/preview/widgets/preview_buttons_bar.dart';
-import 'package:wallnex/presentation/pages/preview/widgets/set_wallpaper_buttons_bar.dart';
+import 'package:wallnex/presentation/pages/preview/ui_buttons.dart';
 import 'package:wallnex/presentation/pages/preview/widgets/viewer.dart';
 import '../../../const.dart';
 
@@ -51,18 +50,9 @@ class PreviewPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              width: MediaQuery.of(context).size.width,
               bottom: 10.0,
-              child: Card(
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 14.0),
-                      child: SetWallpaperButtonsBar(),
-                    ),
-                    PreviewBar(wallpaper: wallpaper),
-                  ],
-                ),
+              child: BottomUiElements(
+                wallpaper: wallpaper,
               ),
             ),
           ],

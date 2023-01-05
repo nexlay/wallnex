@@ -26,10 +26,6 @@ const categoriesList = [
   'Architecture',
   'Photography',
   'Animals',
-  'History',
-  'Military',
-  'Ships',
-  'Music',
 ];
 const categoriesUrl = 'https://wallhaven.cc/api/v1/search?q=';
 const categoriesPage = '=&page=';
@@ -55,7 +51,7 @@ const navBarAssetList = [home, favorite, account];
 const themeLabel = 'Theme';
 const previewLabel = 'Preview';
 //Add main page labels into the list
-const labelList = ['Home', 'Favorites', 'Account'];
+const labelList = ['Home', 'Favorites', 'Profile'];
 
 ///Theme page
 const themePageText =

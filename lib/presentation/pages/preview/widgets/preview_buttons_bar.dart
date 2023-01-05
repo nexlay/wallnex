@@ -13,6 +13,9 @@ class PreviewBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonBar(
       children: [
+        FavoriteButton(
+          wallpaper: wallpaper,
+        ),
         IconButton(
           onPressed: () {
             context
@@ -27,9 +30,15 @@ class PreviewBar extends StatelessWidget {
             Icons.info_outline,
           ),
         ),
-        FavoriteButton(
-          wallpaper: wallpaper,
+        IconButton(
+          onPressed: () {
+
+          },
+          icon: const Icon(
+            Icons.arrow_circle_down,
+          ),
         ),
+
       ],
     );
   }

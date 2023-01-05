@@ -9,9 +9,9 @@ class AppDarkTheme {
       useMaterial3: true,
       cardTheme: CardTheme(
         color: Colors.black.withOpacity(0.7),
-        elevation: 2.0,
+        elevation: 0.0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(22.0),
         ),
       ),
       buttonBarTheme: const ButtonBarThemeData(

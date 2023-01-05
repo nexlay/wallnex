@@ -45,13 +45,12 @@ class GetCroppedImageNotifier extends ChangeNotifier {
     int x = 0;
     int y = 0;
     int deviceWidth = window.physicalSize.width.toInt();
-    int deviceHeight = window.physicalSize.height.toInt();
     int imageWidth = image.width;
 
     double c = (imageWidth - _dxOffset) / deviceWidth;
 
     x = (_dxOffset * c).toInt();
 
-    return img.copyCrop(image, x, y, image.height, deviceHeight);
+    return img.copyCrop(image, x, y, image.height, image.height);
   }
 }

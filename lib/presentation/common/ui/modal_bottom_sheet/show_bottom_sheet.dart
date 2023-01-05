@@ -16,14 +16,10 @@ void showBottomMenu(BuildContext context, Widget childWidget) {
             const SizedBox(
               height: 20.0,
             ),
-            Center(
-              child: Container(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.brown,
-                ),
-                height: 10,
-                width: 10,
+            const Center(
+              child: Icon(
+                Icons.circle,
+                size: 12.0,
               ),
             ),
             const SizedBox(

@@ -10,7 +10,7 @@ class AppTheme {
       buttonBarTheme:
           const ButtonBarThemeData(alignment: MainAxisAlignment.spaceAround),
       cardTheme: CardTheme(
-        elevation: 2.0,
+        elevation: 0.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
         ),

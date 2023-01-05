@@ -11,15 +11,19 @@ class Search extends StatelessWidget {
       pinned: true,
       delegate: CustomHeader(
           childWidget: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 60.0),
             child: SizedBox(
               height: 60,
               child: Card(
                 child: TextButton.icon(
                   onPressed: () {
-                    showSearch(context: context, delegate: ImageSearch());
+                    showSearch(
+                      context: context,
+                      delegate: ImageSearch(),
+                    );
                   },
-                  label: const Text('Search images'), icon: const Icon(Icons.search),
+                  label: const Text('Search images'),
+                  icon: const Icon(Icons.search),
                 ),
               ),
             ),

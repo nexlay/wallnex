@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import '../../const.dart';
-import '../pages/account/account_page.dart';
 import '../pages/favorites/favorites.dart';
 import '../pages/home/home.dart';
+import '../pages/profile/account_page.dart';
 
 class GetPages with ChangeNotifier {
   static final List _pagesList = [

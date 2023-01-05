@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void showSnackBar(BuildContext context, String text) {
   final snackBar = SnackBar(
-    margin: const EdgeInsets.symmetric(horizontal: 120),
+    margin: const EdgeInsets.symmetric(horizontal: 100),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(
         Radius.circular(24.0),

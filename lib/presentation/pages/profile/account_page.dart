@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wallnex/presentation/pages/account/widgets/on_page_item.dart';
+import 'package:wallnex/presentation/pages/profile/widgets/on_page_item.dart';
+
 
 
 import 'about/about.dart';
