@@ -5,6 +5,7 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
+* [Gif Preview](#gif-preview)
 * [Rive animation](#rive-animation)
 * [Setup](#setup)
 * [Acknowledgements](#acknowledgements)
@@ -28,6 +29,8 @@
 - [Provider](https://pub.dev/packages/provider) for state management.
 - [Get It](https://pub.dev/packages/get_it) simple Service Locator for Dart and Flutter projects.
 - [Hive database](https://pub.dev/packages/hive) temporary solution for storing the data.
+- [Image](https://pub.dev/packages/image) the Dart Image Library provides the ability to crop image.
+- [Flutter cache manager](https://pub.dev/packages/flutter_cache_manager) to get cahed image to manipulate with.
 
 
 
@@ -35,11 +38,15 @@
 - First screen show all available images and intoroducing it in grid.
 - User can add or delete favorites images.
 - Suggested images based on image which is on screen.
-- Dark/light theme.
+- Simple searching.
+- Customization (change the bottom navigation bar).
+- Setting image as wallpaper (Home screen, Lock screen, Both).
+- Dark/light/auto theme.
 
 
 ## Screenshots
 <img src="assets/git/1.png" width="320" height="620"/> <img src="assets/git/2.png" width="320" height="620"/>
+## Gif Preview
 ![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex_1.gif) ![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex_2.gif)
 ![](https://github.com/nexlay/wallnaex/blob/master/assets/git/wallnex_3.gif)
 
