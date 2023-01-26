@@ -6,12 +6,15 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.18.6 <3.0.0"
 
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
   # For implementing Rive animations
   rive: ^0.9.1
   # A Flutter package to use fonts from https://fonts.google.com.
@@ -47,6 +50,13 @@ dependencies:
   flutter_wallpaper_manager: ^0.0.3
   # A Dart library providing the ability to load, save and manipulate images in a variety of different file formats.
   image: ^3.2.2
+  # This plugin provides a cross-platform (iOS, Android) API to request permissions and check their status.
+  permission_handler: ^10.2.0
+  # A plugin for creating and managing download tasks. Supports iOS and Android.
+  flutter_downloader: ^1.10.1
+  # Badges for Flutter
+  badges: ^2.0.3
+
 
 
 
@@ -55,9 +65,9 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
-  # Used for creating custom TypeAdapters
+  # Used for creating custom TypeAdapters in Hive
   hive_generator: ^2.0.0
-  build_runner:
+  build_runner: ^2.3.3
   flutter_test:
     sdk: flutter
 
@@ -81,7 +91,9 @@ flutter_native_splash:
     image_dark: assets/core/launch_image.png
     icon_background_color_dark: '#935E5E'
 
+
 flutter:
+  generate: true #This is for app localization
 
 
   uses-material-design: true

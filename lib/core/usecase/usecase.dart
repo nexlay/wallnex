@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-
 import '../../features/images/domain/entities/wallpaper.dart';
 import '../errors/failure.dart';
 
@@ -13,35 +12,50 @@ class NoParams extends Equatable {
   List<Object?> get props => [];
 }
 
-class Params extends Equatable {
+class ParamsImage extends Equatable {
   final Wallpaper wallpaper;
-  const Params({required this.wallpaper});
+  const ParamsImage({required this.wallpaper});
   @override
   List<Object?> get props => [wallpaper, wallpaper.id];
 }
 
-class ParamsTwo extends Equatable {
-  final String params;
-  final int param;
-  const ParamsTwo({required this.param, required this.params});
+class ParamsIntAndString extends Equatable {
+  final String st;
+  final int number;
+  const ParamsIntAndString({required this.number, required this.st});
   @override
-  List<Object?> get props => [params, param];
+  List<Object?> get props => [st, number];
 }
 
-class ParamsThree extends Equatable {
-  final String params;
-  const ParamsThree({
-    required this.params,
+class ParamsString extends Equatable {
+  final String st;
+  const ParamsString({
+    required this.st,
   });
   @override
-  List<Object?> get props => [params];
+  List<Object?> get props => [st];
 }
 
-class ParamsFour extends Equatable {
-  final bool params;
-  const ParamsFour({
-    required this.params,
+class ParamsBool extends Equatable {
+  final bool bl;
+
+  const ParamsBool({
+    required this.bl,
+  });
+
+  @override
+  List<Object?> get props => [bl];
+}
+
+  class ParamsDoubleAndString extends Equatable {
+  final double db;
+  final String st;
+  const ParamsDoubleAndString({
+  required this.db,
+    required this.st,
   });
   @override
-  List<Object?> get props => [params];
+  List<Object?> get props => [db, st];
+
+
 }

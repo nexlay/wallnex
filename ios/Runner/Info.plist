@@ -46,6 +46,9 @@
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true/>
 		<key>UIStatusBarHidden</key>
+		<key>NSPhotoLibraryUsageDescription</key>
+        <string>We need to request your permission to read your photos to load them into the app.
+        </string>
 		<false/>
 	</dict>
 </plist>

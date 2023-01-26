@@ -1,0 +1,57 @@
+{
+  "home": "Start",
+  "favorites":"Ulubione",
+  "profile": "Konto",
+
+
+  "preview": "Podgląd",
+
+  "customization": "Dostosowywanie",
+  "customizationDesc": "Zmień wygląd aplikacji",
+
+  "navigation":"Nawigacja",
+  "navigationDesc": "Niestandardowy pasek nawigacyjny z animacją",
+
+  "appearance": "Ciemny motyw",
+  "darkTheme": "Będzie włączać się autamytycznie w trybie auto",
+  "theme": "Motyw",
+  "themeDesc": "Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.",
+
+  "appInfo": "Informacje o aplikacji",
+  "version": "Wersja",
+
+  "discoverMore": "Odkryj więcej",
+  "exit": "Powrót",
+
+  "noSuggestions": "Brak sugestii!",
+  "noSuggestionsDesc": "Nie ma podobnych obrazów.",
+        "suggestions": "Propozycje",
+        "suggestionsDesc": "na podstawie wybranego obrazu",
+
+  "imagesNotFound": "Ups... Nie znaleziono obrazów!",
+  "tryToReload": "Spróbuj ponownie.",
+
+  "noFavorites": "Brak ulubionych!",
+  "noFavoritesDesc": "Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.",
+
+  "searchImages": "Szukaj",
+
+      "landscapes": "Pejzaże",
+      "cityscapes": "Miejskie",
+      "abstract": "Abstrakcji",
+      "space": "Kosmos",
+      "cars": "Auta",
+
+    "noSearchHistory": "Brak historii wyszukiwania",
+
+        "category": "kategoria: ",
+        "uploader": "przesyłający: ",
+
+    "homeScreen": "Ekran główny",
+    "lockScreen": "Ekran blokady",
+    "both": "Obaj",
+
+    "storagePermission": "Zezwolenie na przechowywanie",
+    "storagePermDesc": "Możesz nadać to uprawnienie w ustawieniach systemu",
+    "settings": "Ustawienia"
+}

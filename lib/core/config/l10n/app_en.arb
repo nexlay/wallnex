@@ -1,0 +1,55 @@
+{
+  "home": "Home",
+  "favorites":"Favorites",
+  "@favorites": {
+    "description": "favorites screen"
+  },
+  "profile": "Profile",
+  "theme": "Theme",
+  "preview": "Preview",
+  "customization": "Customization",
+  "navigation":"Navigation",
+  "themeDesc": "Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.",
+  "navigationDesc": "Get custom navigation bar with animated icon",
+
+    "appearance": "Appearance",
+    "darkTheme": "Dark theme",
+    "appInfo": "App info",
+    "version": "Version",
+    "customizationDesc": "Change application look",
+
+    "discoverMore": "Discover more",
+    "exit": "Exit",
+
+    "noSuggestions": "No suggestions yet!",
+    "noSuggestionsDesc": "Try to reload.",
+        "suggestions": "Suggestions",
+        "suggestionsDesc": "based on chosen image",
+
+    "imagesNotFound": "Oops... Images not found!",
+    "tryToReload": "There is no similar images.",
+
+    "noFavorites": "No favorites yet!",
+    "noFavoritesDesc": "Once you favorite an image, you'll see it here.",
+
+    "searchImages": "Search",
+
+    "landscapes": "Landscapes",
+    "cityscapes": "Cityscapes",
+    "abstract": "Abstract",
+    "space": "Space",
+    "cars": "Cars",
+
+    "noSearchHistory": "Nothing to show",
+
+        "category": "category: ",
+        "uploader": "uploader: ",
+
+    "homeScreen": "Home screen",
+    "lockScreen": "Lock screen",
+    "both": "Both",
+
+    "storagePermission": "Storage permission",
+    "storagePermDesc": "You need to give this permission from the system settings",
+    "settings": "Settings"
+}

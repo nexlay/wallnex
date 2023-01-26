@@ -17,8 +17,8 @@ class WallpaperModel extends Wallpaper {
   });
 
   factory WallpaperModel.fromJson(
-    Map<String, dynamic> map,
-  ) {
+      Map<String, dynamic> map,
+      ) {
     return WallpaperModel(
       path: map['path'] ?? '',
       id: map['id'] ?? '',

@@ -100,6 +100,10 @@ class AppDarkTheme {
           letterSpacing: 1.5,
         ),
       ),
+      listTileTheme: ListTileThemeData(
+        shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0)),
+      ),
     );
   }
 }
