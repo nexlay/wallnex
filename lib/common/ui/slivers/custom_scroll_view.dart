@@ -9,10 +9,12 @@ class BodyScrollView extends StatelessWidget {
     Key? key,
     required this.title,
     required this.childWidget,
+    required this.actionWidget,
   }) : super(key: key);
   final String title;
 
   final Widget childWidget;
+  final Widget? actionWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,9 @@ class BodyScrollView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
+             actions: [
+              actionWidget == null ? const SizedBox() : actionWidget!,
+            ],
             elevation: 0.0,
             expandedHeight: MediaQuery.of(context).size.height / 7,
             pinned: true,

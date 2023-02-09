@@ -1,6 +1,14 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../features/images/presentation/page/details/widgets/image_specs/image_colors.dart';
+import '../../../features/images/presentation/page/details/widgets/image_specs/image_specs_bar.dart';
+import '../../../features/images/presentation/provider/get_images_notifier.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../animations/loading.dart';
 
-void showBottomMenu(BuildContext context, Widget childWidget) {
+void showBottomMenu(BuildContext context) {
   showModalBottomSheet<void>(
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -9,25 +17,83 @@ void showBottomMenu(BuildContext context, Widget childWidget) {
     ),
     context: context,
     builder: (context) {
+      final wallpaper = context.select((GetImagesNotifier w) => w.wallpaper);
+      final loading = context.select((GetImagesNotifier l) => l.isLoading);
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20.0,
-            ),
-            const Center(
-              child: Icon(
-                Icons.circle,
-                size: 12.0,
+        child: loading
+            ? BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                child: const Loader(),
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Center(
+                    child: Icon(
+                      Icons.circle,
+                      size: 10.0,
+                    ),
+                  ),
+                  Text(
+                    wallpaper.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        'id: ',
+                      ),
+                      Text(
+                        wallpaper.id,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.category,
+                      ),
+                      Text(
+                        wallpaper.category,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.uploader,
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          if (!await launchUrl(Uri.parse(wallpaper.shortUrl))) {
+                            throw 'Could not launch ${wallpaper.shortUrl}';
+                          }
+                        },
+                        child: Text(
+                          wallpaper.uploaderName,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  ImageSpecsBar(
+                    size: wallpaper.size,
+                    views: wallpaper.views,
+                    resolution: wallpaper.resolution,
+                    fontSize: 14.0,
+                    iconSize: 16.0,
+                  ),
+                  ImageColors(
+                    list: wallpaper.colors,
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(
-              height: 50.0,
-            ),
-            childWidget
-          ],
-        ),
       );
     },
   );

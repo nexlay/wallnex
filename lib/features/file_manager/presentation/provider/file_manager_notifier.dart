@@ -4,9 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'dart:io' as io;
 import 'package:image/image.dart' as img;
+import 'package:image_picker/image_picker.dart';
 import 'package:tuple/tuple.dart';
 
-
+//Function for computing in the isolate
 Future<String> _cropImage(Tuple3<io.File, double, int> data) async {
   img.Image? image =
       img.decodeImage(io.File(data.item1.path).readAsBytesSync());
@@ -18,7 +19,9 @@ Future<String> _cropImage(Tuple3<io.File, double, int> data) async {
   return resultFile.path;
 }
 
-Future<img.Image> _calculateCrop(img.Image image, double dxOffset, int deviceWidth) async {
+//Function for computing in the isolate
+Future<img.Image> _calculateCrop(
+    img.Image image, double dxOffset, int deviceWidth) async {
   int x = 0;
   int y = 0;
   double c = (image.width - dxOffset) / deviceWidth;
@@ -47,11 +50,23 @@ class FileManagerNotifier extends ChangeNotifier {
 
   //Compute method for heavy calculation in the isolate thread
   Future<dynamic> cropInBackground() async {
+    final file = await DefaultCacheManager().getSingleFile(filePath);
     return compute(_cropImage, Tuple3(file, _dxOffset, deviceWidth));
   }
 
-  
-  Future<io.File> getFileFromCache() async {
-    return file = await DefaultCacheManager().getSingleFile(filePath);
+
+
+  Future<XFile?> getFileFromGallery() async {
+    final ImagePicker picker = ImagePicker();
+    final result = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 312,
+      maxHeight: 512,
+    );
+    if (result != null) {
+      return result;
+    } else {
+      return null;
+    }
   }
 }

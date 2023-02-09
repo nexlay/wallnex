@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "904643843856",
+    "project_id": "wallnex-4f4b9",
+    "storage_bucket": "wallnex-4f4b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904643843856:android:ef593f0f3dfd18b6c1b795",
+        "android_client_info": {
+          "package_name": "com.pryhodskyimykola.wallnex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904643843856-g6asnmv5pfpgtnm0v47p0bmvl6mgp0h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDibEK_5nNEuEpEM0Sg-SG_A-XCY7BHAW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904643843856-g6asnmv5pfpgtnm0v47p0bmvl6mgp0h4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "904643843856-oi53cbj4hh8g413ehnalvfh0sl5srsgr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pryhodskyimykola.wallnex"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/const/const.dart';
 import '../../../../features/images/domain/entities/wallpaper.dart';
 import '../../../../features/images/presentation/page/details/image_details_page.dart';
-import '../../../features/favorites/presentation/provider/get_favorites_images_notifier.dart';
+import '../../../features/favorites/presentation/provider/favorites_images_notifier.dart';
 import '../../../features/suggestions/presentation/provider/get_suggestions_notifier.dart';
 import 'network_image_viewer.dart';
 
@@ -21,11 +23,7 @@ class ImageCard extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ImageDetails(wallpaper: wallpaper),
-            ),
-          );
+           context.push(details, extra: wallpaper);
           context.read<GetFavoritesNotifier>().checkFavorites(wallpaper);
           context
               .read<GetSuggestionsNotifier>()

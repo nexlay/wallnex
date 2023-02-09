@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/common/ui/animations/empty_screen.dart';
 import 'package:wallnex/features/suggestions/presentation/page/suggestions_page.dart';
 import '../../../../../common/ui/animations/loading.dart';
-import '../../../../../common/ui/animations/no_suggestions.dart';
+import '../../../../const/const_rive.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 import '../provider/get_suggestions_notifier.dart';
-
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Suggestions extends StatelessWidget {
   const Suggestions({
@@ -30,7 +30,14 @@ class Suggestions extends StatelessWidget {
     if (isLoading) {
       return const Center(child: Loader());
     } else if (!isLoading && suggestions.isEmpty) {
-      return const Center(child: EmptySuggestions());
+      return Center(
+        child: EmptyScreen(
+          animations: const ['lens', 'animate'],
+          assetPath: emptySuggestions,
+          title: AppLocalizations.of(context)!.noSuggestions,
+          subtitle: AppLocalizations.of(context)!.noSuggestionsDesc,
+        ),
+      );
     } else if (!isLoading && suggestions.isNotEmpty) {
       return const SuggestionsPage();
     } else {

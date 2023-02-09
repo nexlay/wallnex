@@ -21,7 +21,7 @@ class CustomNavBar extends StatelessWidget {
           navBarAssetList.length,
           (index) => CustomNavBarItem(
             path: navBarAssetList.elementAt(index),
-            label: titles[index],
+            label: titles.elementAt(index),
             tabIndex: index,
           ),
         ).toList(),

@@ -1,11 +1,11 @@
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wallnex/const/const.dart';
+import 'package:wallnex/features/profile/account_and_login/domain/entities/user.dart';
 import 'package:wallnex/features/profile/widgets/account_item.dart';
 import 'package:wallnex/features/profile/widgets/on_page_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'account/presentation/account.dart';
-import 'app_info/presentation/page/about/about.dart';
-import 'customization/presentation/page/appearance/appearance.dart';
-import 'customization/presentation/page/customization/customization.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -15,26 +15,44 @@ class Profile extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate(
         [
-          const AccountItem(
-              title: 'Mykola Pryhodskyi',
-              subtitle: 'pryhodskyimykola@gmail.com',
-              widget: Account(),
-            trailing: Icon(Icons.account_circle),
+          Consumer<LocalUser>(
+            builder: (_, localUser, __) => AccountItem(
+              title: localUser.name.isEmpty
+                  ? AppLocalizations.of(context)!.welcome
+                  : localUser.name,
+              subtitle: localUser.email.isEmpty
+                  ? AppLocalizations.of(context)!.creatingAccount
+                  : localUser.email,
+              path: localUser.isAnonymous ? login : account,
+              trailing: localUser.isAnonymous
+                  ? null
+                  : const UserAvatar(
+                      size: 50.0,
+                      placeholderColor: Colors.transparent,
+                    ),
+              leadingIcon: null,
+            ),
+          ),
+          const SizedBox(
+            height: 40.0,
           ),
           ProfilePageItem(
             title: AppLocalizations.of(context)!.appearance,
             subtitle: AppLocalizations.of(context)!.darkTheme,
-            widget: const Appearance(),
-          ),
-          ProfilePageItem(
-            title: AppLocalizations.of(context)!.appInfo,
-            subtitle: AppLocalizations.of(context)!.version,
-            widget: const AppInformation(),
+            path: appearance,
+            leadingIcon: const Icon(Icons.dark_mode_outlined),
           ),
           ProfilePageItem(
             title: AppLocalizations.of(context)!.customization,
             subtitle: AppLocalizations.of(context)!.customizationDesc,
-            widget: const Customization(),
+            path: customization,
+            leadingIcon: const Icon(Icons.dashboard_customize_outlined),
+          ),
+          ProfilePageItem(
+            title: AppLocalizations.of(context)!.appInfo,
+            subtitle: AppLocalizations.of(context)!.version,
+            path: appInformation,
+            leadingIcon: const Icon(Icons.info_outline),
           ),
         ],
       ),

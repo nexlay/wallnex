@@ -22,8 +22,9 @@ class AppTheme {
         backgroundColor: Colors.white,
       ),
       navigationBarTheme: NavigationBarThemeData(
-
-        labelTextStyle: MaterialStateProperty.resolveWith((states) => const TextStyle(fontSize: 14),),
+        labelTextStyle: MaterialStateProperty.resolveWith(
+          (states) => const TextStyle(fontSize: 14),
+        ),
         height: 80,
         indicatorShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
@@ -36,77 +37,91 @@ class AppTheme {
         elevation: 0.0,
       ),
       primaryTextTheme: TextTheme(
-        headline6: GoogleFonts.robotoFlex(
+        titleLarge: GoogleFonts.robotoFlex(
             color: Colors.black, fontWeight: FontWeight.w300),
       ),
       textTheme: TextTheme(
-        headline1: GoogleFonts.robotoFlex(
+        displayLarge: GoogleFonts.robotoFlex(
           fontSize: 97,
           fontWeight: FontWeight.w300,
           letterSpacing: -1.5,
         ),
-        headline2: GoogleFonts.robotoFlex(
+        displayMedium: GoogleFonts.robotoFlex(
           fontSize: 61,
           fontWeight: FontWeight.w300,
           letterSpacing: -0.5,
         ),
-        headline3: GoogleFonts.robotoFlex(
+        displaySmall: GoogleFonts.robotoFlex(
           fontSize: 48,
           fontWeight: FontWeight.w300,
         ),
-        headline4: GoogleFonts.robotoFlex(
+        headlineMedium: GoogleFonts.robotoFlex(
           fontSize: 34,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.25, /*color: mainLightThemeColor*/
         ),
-        headline5: GoogleFonts.robotoFlex(
+        headlineSmall: GoogleFonts.robotoFlex(
           fontSize: 24,
           fontWeight: FontWeight.w300,
         ),
-        headline6: GoogleFonts.robotoFlex(
+        titleLarge: GoogleFonts.robotoFlex(
           fontSize: 20,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.15,
         ),
-        subtitle1: GoogleFonts.robotoFlex(
+        titleMedium: GoogleFonts.robotoFlex(
           fontSize: 16,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.15, /* color: mainLightThemeColor*/
         ),
-        subtitle2: GoogleFonts.robotoFlex(
+        titleSmall: GoogleFonts.robotoFlex(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.1,
         ),
-        bodyText1: GoogleFonts.robotoFlex(
+        bodyLarge: GoogleFonts.robotoFlex(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.5,
         ),
-        bodyText2: GoogleFonts.robotoFlex(
+        bodyMedium: GoogleFonts.robotoFlex(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.25,
         ),
-        button: GoogleFonts.robotoFlex(
+        labelLarge: GoogleFonts.robotoFlex(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           letterSpacing: 1.25,
         ),
-        caption: GoogleFonts.robotoFlex(
+        bodySmall: GoogleFonts.robotoFlex(
           fontSize: 12,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.4,
         ),
-        overline: GoogleFonts.robotoFlex(
+        labelSmall: GoogleFonts.robotoFlex(
           fontSize: 10,
           fontWeight: FontWeight.w300,
           letterSpacing: 1.5,
         ),
       ),
       listTileTheme: ListTileThemeData(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.transparent),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.transparent),
+          borderRadius: BorderRadius.circular(32.0),
+        ),
+        filled: true,
       ),
     );
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../../common/ui/image/image_card.dart';
-import '../provider/get_favorites_images_notifier.dart';
-
+import '../provider/favorites_images_notifier.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({

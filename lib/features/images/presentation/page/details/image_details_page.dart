@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/presentation/page/details/widgets/buttons_bar/buttons_bar.dart';
 import 'package:wallnex/features/images/presentation/page/details/widgets/image_specs/image_specs_bar.dart';
-import 'package:wallnex/features/images/presentation/page/details/widgets/image_specs/image_specs_menu.dart';
 import '../../../../../common/ui/image/network_image_viewer.dart';
 import '../../../../../common/ui/modal_bottom_sheet/show_bottom_sheet.dart';
 import '../../../../suggestions/presentation/page/suggestions.dart';
@@ -31,7 +30,6 @@ class ImageDetails extends StatelessWidget {
               context.read<GetImagesNotifier>().getImageById(wallpaper.id);
               showBottomMenu(
                 context,
-                const ImageSpecsDialog(),
               );
             },
             icon: const Icon(Icons.more_horiz_outlined),

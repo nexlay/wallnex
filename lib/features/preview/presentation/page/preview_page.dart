@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:wallnex/features/preview/presentation/page/widgets/viewer.dart';
+import 'package:wallnex/features/preview/presentation/page/widgets/previewer.dart';
 import 'package:wallnex/features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
 import '../../../file_manager/presentation/provider/download_provider.dart';
-import 'buttons_container.dart';
+import 'widgets/buttons_container.dart';
 
 class PreviewPage extends StatelessWidget {
   const PreviewPage({Key? key, required this.wallpaper}) : super(key: key);
@@ -28,8 +28,8 @@ class PreviewPage extends StatelessWidget {
             color: mainColor > 0.2 ? Colors.black : Colors.white,
           ),
           onPressed: () {
-            context.read<DownloadProvider>().reset();
-            context.read<SetImageASWallpaperNotifier>().resetScreenIndex();
+            context.read<DownloadProvider>().resetDownloadStatus();
+            context.read<SetImageASWallpaperNotifier>().value = 0;
             Navigator.pop(context);
           },
         ),

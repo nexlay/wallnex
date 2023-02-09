@@ -2,14 +2,23 @@ import 'dart:isolate';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:wallnex/core/errors/failure.dart';
+import 'package:wallnex/core/exceptions/exceptions.dart';
 
-class DownloadProvider with ChangeNotifier {
-  int downloadProgress = 0;
-  ReceivePort receivePort = ReceivePort();
+class DownloadProvider extends ValueNotifier<int> {
+  DownloadProvider() : super(0);
+
+  final _receivePort = ReceivePort();
+  bool _isolateRegistered = false;
+
+  @pragma('vm:entry-point')
+  static void callback(String id, DownloadTaskStatus status, int progress) {
+    final SendPort sPort = IsolateNameServer.lookupPortByName('downloader')!;
+    sPort.send([progress]);
+  }
 
   Future<void> createEnqueue(String url) async {
-    FlutterDownloader.registerCallback(callback);
-
+    await FlutterDownloader.registerCallback(callback);
     await FlutterDownloader.enqueue(
       url: url,
       savedDir: '/storage/emulated/0/Download',
@@ -21,64 +30,34 @@ class DownloadProvider with ChangeNotifier {
     );
   }
 
-  @pragma('vm:entry-point')
-  static void callback(String id, DownloadTaskStatus status, int progress) {
-    final SendPort? sPort =
-        IsolateNameServer.lookupPortByName('downloader_send_port');
-    sPort?.send([id, status, progress]);
-  }
-
   Future<void> registerIsolate() async {
-    IsolateNameServer.registerPortWithName(
-        receivePort.sendPort, 'downloader_send_port');
-
-    receivePort.listen((dynamic data) {
-      downloadProgress = _getProgress(data[1], data[2]);
-    });
+    _isolateRegistered = IsolateNameServer.registerPortWithName(
+        _receivePort.sendPort, 'downloader');
   }
 
-  int _getProgress(DownloadTaskStatus status, int progress) {
-    switch (status.value) {
-      case 0:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      case 1:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      case 2:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      case 3:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      case 4:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      case 5:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      case 6:
-        downloadProgress = progress;
-        notifyListeners();
-        break;
-      default:
-        downloadProgress;
+  Future<void> listenPort() async {
+    if (_isolateRegistered) {
+      try {
+        _receivePort.asBroadcastStream().listen((message) {}).onData((data) {
+          int progress = data[0];
+          _getProgress(progress);
+          notifyListeners();
+        });
+      } on LocalExceptions {
+        LocalFailure().toString();
+      }
+    } else {
+      registerIsolate();
     }
-    return downloadProgress;
   }
 
-  void _dispose() {
-    IsolateNameServer.removePortNameMapping('downloader_send_port');
+  void _getProgress(int progress) {
+    value = progress;
+    notifyListeners();
   }
 
-  void reset() {
-    downloadProgress = 0;
+  void resetDownloadStatus() {
+    value = 0;
     notifyListeners();
   }
 }

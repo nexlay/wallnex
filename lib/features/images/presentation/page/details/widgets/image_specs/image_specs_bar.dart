@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'image_single_spec.dart';
 
 class ImageSpecsBar extends StatelessWidget {

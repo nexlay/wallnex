@@ -2,36 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
 import '../../domain/usecase/set_image_as_wallpaper_use_case.dart';
 
-class SetImageASWallpaperNotifier extends ChangeNotifier {
-  SetImageAsWallpaperUseCase setImageAsWallpaperUseCase;
+class SetImageASWallpaperNotifier extends ValueNotifier<int> {
+  final SetImageAsWallpaperUseCase _setImageAsWallpaperUseCase;
 
-  SetImageASWallpaperNotifier({required this.setImageAsWallpaperUseCase});
+  SetImageASWallpaperNotifier(this._setImageAsWallpaperUseCase) : super(0);
 
   bool loading = false;
   String error = '';
-  int setScreen = 0;
 
-  Future<void> setImageAsWallpaper(
-      String filePath, int screen) async {
+  Future<void> setImageAsWallpaper(String filePath, int screen) async {
     loading = true;
+    value = screen;
     notifyListeners();
 
-    final result = await setImageAsWallpaperUseCase
-        .call(ParamsIntAndString(st: filePath, number: screen));
+    final result = await _setImageAsWallpaperUseCase
+        .call(UrlAndPage(url: filePath, page: screen));
 
     result.fold((fail) {
       error = fail.toString();
     }, (result) {
       if (result) {
         loading = result;
-        setScreen = screen;
       }
     });
-    notifyListeners();
-  }
-
-  void resetScreenIndex() {
-    setScreen = 0;
     notifyListeners();
   }
 }

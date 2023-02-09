@@ -12,6 +12,7 @@ class Customization extends StatelessWidget {
     return Scaffold(
       body: BodyScrollView(
         title: AppLocalizations.of(context)!.customization,
+        actionWidget: null,
         childWidget: SliverToBoxAdapter(
           child: Column(
             children: [

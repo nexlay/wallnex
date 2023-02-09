@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/entities/wallpaper.dart';
 
 class WallpaperModel extends Wallpaper {
@@ -17,8 +19,8 @@ class WallpaperModel extends Wallpaper {
   });
 
   factory WallpaperModel.fromJson(
-      Map<String, dynamic> map,
-      ) {
+    Map<String, dynamic> map,
+  ) {
     return WallpaperModel(
       path: map['path'] ?? '',
       id: map['id'] ?? '',
@@ -49,6 +51,60 @@ class WallpaperModel extends Wallpaper {
       name: wallpaper.name,
       uploaderName: wallpaper.uploaderName,
       thumbsLarge: wallpaper.thumbsLarge,
+    );
+  }
+
+  factory WallpaperModel.fromFireStore(
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions options) {
+    final data = snapshot.data();
+    return WallpaperModel(
+      path: data?['path'],
+      id: data?['id'],
+      category: data?['category'],
+      size: data?['size'],
+      views: data?['views'],
+      resolution: data?['resolution'],
+      colors: data?['colors'],
+      shortUrl: data?['shortUrl'],
+      fileType: data?['fileType'],
+      name: data?['name'],
+      uploaderName: data?['uploaderName'],
+      thumbsLarge: data?['thumbsLarge'],
+    );
+  }
+
+  Map<String, dynamic> toFireStore() {
+    return {
+      'path': path,
+      'id': id,
+      'category': category,
+      'size': size,
+      'views': views,
+      'resolution': resolution,
+      'colors': colors,
+      'shortUrl': shortUrl,
+      'fileType': fileType,
+      'name': name,
+      'uploaderName': uploaderName,
+      'thumbsLarge': thumbsLarge,
+    };
+  }
+
+  factory WallpaperModel.fromQuerySnapshot(QueryDocumentSnapshot snapshot) {
+    return WallpaperModel(
+      path: snapshot.get('path'),
+      id: snapshot.get('id'),
+      category: snapshot.get('category'),
+      size: snapshot.get('size'),
+      views: snapshot.get('views'),
+      resolution: snapshot.get('resolution'),
+      colors: snapshot.get('colors'),
+      shortUrl: snapshot.get('shortUrl'),
+      fileType: snapshot.get('fileType'),
+      name: snapshot.get('name'),
+      uploaderName: snapshot.get('uploaderName'),
+      thumbsLarge: snapshot.get('thumbsLarge'),
     );
   }
 }

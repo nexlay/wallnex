@@ -1,11 +1,15 @@
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:wallnex/features/favorites/domain/usecase/get_favorite_wallpapers_use_case.dart';
+import 'package:wallnex/features/favorites/data/data/remote_database.dart';
+import 'package:wallnex/features/favorites/data/data/sync.dart';
+import 'package:wallnex/features/favorites/domain/usecase/delete_from_firestore.dart';
 import 'package:wallnex/features/file_manager/presentation/provider/download_provider.dart';
+import 'package:wallnex/features/profile/account_and_login/data/database/firebase_db.dart';
+import 'package:wallnex/features/profile/account_and_login/data/repo/repository_impl.dart';
+import 'package:wallnex/features/profile/account_and_login/domain/repo/repository.dart';
+import 'package:wallnex/features/profile/account_and_login/domain/usecase/get_profile_photo_url_use_case.dart';
+import 'package:wallnex/features/profile/account_and_login/domain/usecase/get_user_use_case.dart';
 import 'package:wallnex/features/suggestions/data/repository/suggestion_repo_impl.dart';
 import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_usecase.dart';
 import 'package:wallnex/features/images/domain/usecases/get_tags_uploader_use_case.dart';
@@ -14,30 +18,33 @@ import 'package:wallnex/features/search/data/repository/repository_impl.dart';
 import 'package:wallnex/features/search/domain/repository/repository.dart';
 import 'package:wallnex/features/search/domain/usecases/get_search_history.dart';
 import 'package:wallnex/features/search/domain/usecases/push_search_history_into_db.dart';
-import 'package:wallnex/features/favorites/presentation/provider/get_favorites_images_notifier.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
 import 'common/provider/get_default_home_page_notifier.dart';
-import 'core/permissions/data/datasource/datasource.dart';
-import 'core/permissions/data/repository/permission_repo_impl.dart';
-import 'core/permissions/domain/repo/permission_repo.dart';
-import 'core/permissions/domain/usecase/get_permission_status_use_case.dart';
-import 'core/permissions/presentation/provider/get_permission_status_notifier.dart';
-import 'features/favorites/data/data/favorites_database.dart';
+import 'features/favorites/data/data/local_database.dart';
 import 'features/favorites/data/repository/favorites_repo_impl.dart';
 import 'features/favorites/domain/repository/favorites_repo.dart';
+import 'features/favorites/domain/usecase/add_to_firestore.dart';
+import 'features/favorites/domain/usecase/add_update_delete_localDb_use_case.dart';
+import 'features/favorites/domain/usecase/get_favorites_use_case.dart';
+import 'features/favorites/presentation/provider/favorites_images_notifier.dart';
 import 'features/images/data/datasource/database.dart';
 import 'features/images/data/repositories/repositories_impl.dart';
 import 'features/images/domain/entities/wallpaper.dart';
 import 'features/images/domain/repository/image_repo.dart';
 import 'features/images/domain/usecases/get_image_use_case.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 import 'features/file_manager/presentation/provider/file_manager_notifier.dart';
+import 'features/permissions/data/datasource/datasource.dart';
+import 'features/permissions/data/repository/permission_repo_impl.dart';
+import 'features/permissions/domain/repo/permission_repo.dart';
+import 'features/permissions/domain/usecase/get_permission_status_use_case.dart';
+import 'features/permissions/presentation/provider/get_permission_status_notifier.dart';
 import 'features/preview/data/data/data.dart';
-import 'features/preview/data/wallpaper_repo_impl/wallpaper_repo_impl.dart';
+import 'features/preview/data/repo_impl/wallpaper_repo_impl.dart';
 import 'features/preview/domain/repository/wallpaper_repo.dart';
 import 'features/preview/domain/usecase/set_image_as_wallpaper_use_case.dart';
 import 'features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
+import 'features/profile/account_and_login/presentation/provider/user_auth_change_notifier.dart';
 import 'features/profile/app_info/data/datasource/package_info.dart';
 import 'features/profile/app_info/data/repositories/repositories_app_info_impl.dart';
 import 'features/profile/app_info/domain/repository/appInfo_repo.dart';
@@ -54,232 +61,280 @@ import 'features/suggestions/data/data/suggestions_data.dart';
 import 'features/suggestions/domain/repository/suggestions_repo.dart';
 import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart';
 
-final sl = GetIt.instance;
+final getIt = GetIt.instance;
 
 Future<void> init() async {
-
-
   Hive.registerAdapter(
     WallpaperAdapter(),
   );
-  //Init hive Hive database
-  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
-
-  // Plugin must be initialized before using
-  await FlutterDownloader.initialize(
-      debug:
-          true, // optional: set to false to disable printing logs to console (default: true)
-      ignoreSsl:
-          true // option: set to false to disable working with http links (default: false)
-      );
 
 //Notifiers
-  sl.registerFactory(
+
+  getIt.registerFactory(
+    () => UserAuthChangeNotifier(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
     () => GetPermissionNotifier(
-      getPermissionUseCase: sl(),
+      getPermissionUseCase: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerFactory(
     () => GetSearchHistoryNotifier(
-      pushSearchHistoryIntoDb: sl(),
-      getSearchHistoryUseCase: sl(),
+      pushSearchHistoryIntoDb: getIt(),
+      getSearchHistoryUseCase: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerFactory(
     () => FileManagerNotifier(),
   );
-  sl.registerFactory(
+  getIt.registerFactory(
     () => DownloadProvider(),
   );
 
-  sl.registerFactory(
+  getIt.registerFactory(
     () => GetImagesNotifier(
-      getWallpaperUseCase: sl(),
-      getSingleWallpaperUseCase: sl(),
+      getWallpaperUseCase: getIt(),
+      getSingleWallpaperUseCase: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetAppInfoNotifier(
-      getAppInfoUseCase: sl(),
+      getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerFactory(
     () => GetFavoritesNotifier(
-      getFavoriteWallpapers: sl(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerFactory(
     () => GetSuggestionsNotifier(
-      getSuggestionsUseCase: sl(),
+      getSuggestionsUseCase: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerFactory(
     () => GetThemeNotifier(
-      getThemeUseCase: sl(),
+      getThemeUseCase: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetCustomization(
-      getNavBarUseCase: sl(),
+      getNavBarUseCase: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerFactory(
     () => GetPages(),
   );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => SetImageASWallpaperNotifier(
-      setImageAsWallpaperUseCase: sl(),
+      getIt(),
     ),
   );
 
   //Domain layer
+  getIt.registerLazySingleton(
+    () => GetUserUseCase(
+      firebaseRepo: getIt(),
+    ),
+  );
+  getIt.registerLazySingleton(
+    () => UpdateProfilePhotoUrlUseCase(
+      firebaseRepo: getIt(),
+    ),
+  );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetPermissionUseCase(
-      permissionRepo: sl(),
+      permissionRepo: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => PushSearchHistoryIntoDb(
-      searchRepo: sl(),
+      searchRepo: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetSearchHistoryUseCase(
-      searchRepo: sl(),
+      searchRepo: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetImageUseCase(
-      imageRepo: sl(),
+      imageRepo: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetTagsAndUploaderUseCase(
-      imageRepo: sl(),
+      imageRepo: getIt(),
     ),
   );
 
-  sl.registerFactory(
-    () => GetFavoriteWallpapersUseCase(
-      favoriteWallpaperRepo: sl(),
+  getIt.registerLazySingleton(
+    () => AddDeleteUpdateUseCase(
+      favoriteWallpaperRepo: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerLazySingleton(
+    () => AddToFireStoreUseCase(
+      favoritesRepo: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => DeleteFromFireStoreUseCase(
+      favoritesRepo: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => GetFavoritesUseCase(
+      favoritesRepo: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
     () => GetSuggestionsUseCase(
-      suggestionsRepo: sl(),
+      suggestionsRepo: getIt(),
     ),
   );
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetAppInfoUseCase(
-      appInfoRepo: sl(),
+      appInfoRepo: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetThemeUseCase(
-      themeRepo: sl(),
+      themeRepo: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => GetNavBarUseCase(
-      customizationRepo: sl(),
+      customizationRepo: getIt(),
     ),
   );
 
-  sl.registerFactory(
+  getIt.registerLazySingleton(
     () => SetImageAsWallpaperUseCase(
-      wallpaperRepo: sl(),
+      wallpaperRepo: getIt(),
     ),
   );
 
   //Repo
+  getIt.registerLazySingleton<FirebaseRepo>(
+    () => FirebaseRepoImpl(
+      firebaseDb: getIt(),
+    ),
+  );
 
-  sl.registerLazySingleton<PermissionRepo>(
+  getIt.registerLazySingleton<PermissionRepo>(
     () => PermissionRepoImpl(
-      permissionData: sl(),
+      permissionData: getIt(),
     ),
   );
 
-  sl.registerLazySingleton<SearchRepo>(
+  getIt.registerLazySingleton<SearchRepo>(
     () => SearchRepoImpl(
-      searchDatabase: sl(),
+      searchDatabase: getIt(),
     ),
   );
 
-  sl.registerLazySingleton<ImageRepo>(
+  getIt.registerLazySingleton<ImageRepo>(
     () => ImageRepoImpl(
-      imageDatabase: sl(),
+      imageDatabase: getIt(),
     ),
   );
 
-  sl.registerLazySingleton<AppInfoRepo>(
+  getIt.registerLazySingleton<AppInfoRepo>(
     () => AppInfoRepositoriesImpl(
-      packageInfoPlus: sl(),
+      packageInfoPlus: getIt(),
     ),
   );
 
-  sl.registerLazySingleton<CustomizationRepo>(
+  getIt.registerLazySingleton<CustomizationRepo>(
     () => CustomizationRepoImpl(
-      hiveDatabase: sl(),
+      hiveDatabase: getIt(),
     ),
   );
 
-  sl.registerLazySingleton<SuggestionsRepo>(
+  getIt.registerLazySingleton<SuggestionsRepo>(
     () => SuggestionsRepoImpl(
-      suggestionsData: sl(),
+      suggestionsData: getIt(),
     ),
   );
-  sl.registerLazySingleton<WallpaperRepo>(
+  getIt.registerLazySingleton<WallpaperRepo>(
     () => WallpaperRepoImpl(
-      wallpaperDatabase: sl(),
+      wallpaperDatabase: getIt(),
     ),
   );
-  sl.registerLazySingleton<FavoritesRepo>(
+  getIt.registerLazySingleton<FavoritesRepo>(
     () => FavoritesRepoImpl(
-      favoritesDatabase: sl(),
+      localDb: getIt(),
+      remoteDb: getIt(),
+      syncDatabases: getIt(),
     ),
   );
 
   //Data
+  getIt.registerFactory<SyncDatabases>(
+    () => SyncDatabaseImpl(
+      getIt(),
+      getIt(),
+    ),
+  );
 
-  sl.registerFactory<SuggestionsData>(
+  getIt.registerFactory<FirebaseAuthDb>(
+    () => FirebaseAuthDbImpl(),
+  );
+
+  getIt.registerFactory<SuggestionsData>(
     () => SuggestionsDataImpl(),
   );
-  sl.registerFactory<SetImageAsWallpaper>(
+  getIt.registerFactory<SetImageAsWallpaper>(
     () => SetImageAsWallpaperImpl(),
   );
-  sl.registerFactory<FavoritesDatabase>(
+  getIt.registerFactory<LocalDb>(
     () => FavoritesDatabaseImpl(),
   );
-  sl.registerFactory<PermissionData>(
+
+  getIt.registerFactory<RemoteDb>(
+    () => FavoritesFirebaseDbImpl(),
+  );
+
+  getIt.registerFactory<PermissionData>(
     () => PermissionDataImpl(),
   );
 
-  sl.registerFactory<SearchDatabase>(
+  getIt.registerFactory<SearchDatabase>(
     () => SearchDatabaseImpl(),
   );
 
-  sl.registerFactory<ImageDatabase>(
+  getIt.registerFactory<ImageDatabase>(
     () => ImageDatabaseImpl(),
   );
 
   //App info package source
-  sl.registerFactory<PackageInfoPlus>(
+  getIt.registerFactory<PackageInfoPlus>(
     () => PackageInfoPlusImpl(),
   );
 
   //Hive database
-  sl.registerFactory<CustomizationPrefDatabase>(
+  getIt.registerFactory<CustomizationPrefDatabase>(
     () => CustomizationPrefDatabaseImpl(),
   );
 }

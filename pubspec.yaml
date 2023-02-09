@@ -55,7 +55,36 @@ dependencies:
   # A plugin for creating and managing download tasks. Supports iOS and Android.
   flutter_downloader: ^1.10.1
   # Badges for Flutter
-  badges: ^2.0.3
+  # A Flutter plugin to use the Firebase Authentication API.
+  firebase_auth: ^4.2.5
+  # A Flutter plugin to use the Firebase Core API, which enables connecting to multiple Firebase apps.
+  firebase_core: ^2.4.1
+  # Firebase UI Auth is a set of Flutter widgets and utilities designed to help you build and integrate your user interface with Firebase Authentication.
+  firebase_ui_auth: ^1.1.9
+  # Google
+  firebase_ui_oauth_google: ^1.0.16
+  # Twitter
+  firebase_ui_oauth_twitter: ^1.0.16
+  # Firebase localization
+  firebase_ui_localizations: ^1.0.0
+  # A cleaner way to handle your environment variables in Dart/Flutter.
+  envied: ^0.3.0
+  # A package that allows you to use the native file explorer to pick single or multiple files, with extensions filtering support.
+  file_picker: ^5.2.5
+  # A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.
+  image_picker: ^0.8.6+1
+  # A Flutter plugin to use the Firebase Cloud Storage API.
+  firebase_storage: ^11.0.10
+  # Firebase Cloud Firestore
+  cloud_firestore: ^4.3.1
+  # A library for Dart that generates fake data. Using for [FakeWallpaper]
+  faker: ^2.1.0
+  # A declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens.
+  go_router: ^6.0.4
+
+
+
+
 
 
 
@@ -65,8 +94,11 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  # 
+  mockito: ^5.3.2
   # Used for creating custom TypeAdapters in Hive
   hive_generator: ^2.0.0
+  envied_generator: ^0.3.0
   build_runner: ^2.3.3
   flutter_test:
     sdk: flutter
@@ -103,3 +135,11 @@ flutter:
   - assets/rive/
   - assets/json/
   - assets/core/
+
+  fonts:
+  - family: SocialIcons
+    fonts:
+      - asset: packages/firebase_ui_auth/fonts/SocialIcons.ttf
+  - family: CustomSocial
+    fonts:
+      - asset: assets/fonts/CustomSocial.ttf

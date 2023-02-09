@@ -70,7 +70,7 @@ class GetImagesNotifier extends ChangeNotifier {
     notifyListeners();
     // Fetch the list
     final result = await getWallpaperUseCase(
-      ParamsIntAndString(st: _url, number: _page),
+      UrlAndPage(url: _url, page: _page),
     );
     // Handle success or error
     result.fold(

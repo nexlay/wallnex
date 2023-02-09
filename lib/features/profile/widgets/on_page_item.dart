@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 class ProfilePageItem extends StatelessWidget {
@@ -6,26 +7,23 @@ class ProfilePageItem extends StatelessWidget {
     Key? key,
     required this.title,
     required this.subtitle,
-    required this.widget,
-
+    required this.path,
+    required this.leadingIcon,
   }) : super(key: key);
   final String title;
   final String subtitle;
-  final Widget widget;
+  final String path ;
+  final Icon? leadingIcon;
 
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: leadingIcon,
       title: Text(title),
       subtitle: Text(subtitle),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => widget,
-          ),
-        );
+       context.push(path);
       },
     );
   }

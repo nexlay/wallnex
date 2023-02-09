@@ -1,55 +1,60 @@
 {
-  "home": "Home",
-  "favorites":"Favorites",
-  "@favorites": {
-    "description": "favorites screen"
-  },
-  "profile": "Profile",
-  "theme": "Theme",
-  "preview": "Preview",
-  "customization": "Customization",
-  "navigation":"Navigation",
-  "themeDesc": "Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.",
-  "navigationDesc": "Get custom navigation bar with animated icon",
+"home": "Home",
+"favorites":"Favorites",
 
-    "appearance": "Appearance",
-    "darkTheme": "Dark theme",
-    "appInfo": "App info",
-    "version": "Version",
-    "customizationDesc": "Change application look",
+"profile": "Profile",
+"theme": "Theme",
+"preview": "Preview",
+"customization": "Customization",
+"navigation":"Navigation",
+"themeDesc": "Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.",
+"navigationDesc": "Get custom navigation bar with animated icon",
 
-    "discoverMore": "Discover more",
-    "exit": "Exit",
+"appearance": "Appearance",
+"darkTheme": "Dark theme",
+"appInfo": "App info",
+"version": "Version",
+"customizationDesc": "Change application look",
 
-    "noSuggestions": "No suggestions yet!",
-    "noSuggestionsDesc": "Try to reload.",
-        "suggestions": "Suggestions",
-        "suggestionsDesc": "based on chosen image",
+"discoverMore": "Discover more",
+"exit": "Exit",
 
-    "imagesNotFound": "Oops... Images not found!",
-    "tryToReload": "There is no similar images.",
+"noSuggestions": "No suggestions yet!",
+"noSuggestionsDesc": "Try to reload.",
+"suggestions": "Suggestions",
+"suggestionsDesc": "based on chosen image",
 
-    "noFavorites": "No favorites yet!",
-    "noFavoritesDesc": "Once you favorite an image, you'll see it here.",
+"imagesNotFound": "Oops... Images not found!",
+"tryToReload": "There is no similar images.",
 
-    "searchImages": "Search",
+"noFavorites": "No favorites yet!",
+"noFavoritesDesc": "Once you favorite an image, you'll see it here.",
 
-    "landscapes": "Landscapes",
-    "cityscapes": "Cityscapes",
-    "abstract": "Abstract",
-    "space": "Space",
-    "cars": "Cars",
+"searchImages": "Search",
 
-    "noSearchHistory": "Nothing to show",
+"landscapes": "Landscapes",
+"cityscapes": "Cityscapes",
+"abstract": "Abstract",
+"space": "Space",
+"cars": "Cars",
 
-        "category": "category: ",
-        "uploader": "uploader: ",
+"noSearchHistory": "Nothing to show",
 
-    "homeScreen": "Home screen",
-    "lockScreen": "Lock screen",
-    "both": "Both",
+"category": "category: ",
+"uploader": "uploader: ",
 
-    "storagePermission": "Storage permission",
-    "storagePermDesc": "You need to give this permission from the system settings",
-    "settings": "Settings"
+"homeScreen": "Home screen",
+"lockScreen": "Lock screen",
+"both": "Both",
+
+"storagePermission": "Storage permission",
+"storagePermDesc": "You need to give this permission from the system settings",
+"settings": "Settings",
+
+"welcome": "Welcome!",
+"creatingAccount": "Let's start creating your account",
+"yourInfo": "Your info",
+"madeBy": "Made by Mykola Pryhodskyi (Nexlay)"
+
+
 }

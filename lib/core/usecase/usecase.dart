@@ -19,12 +19,12 @@ class ParamsImage extends Equatable {
   List<Object?> get props => [wallpaper, wallpaper.id];
 }
 
-class ParamsIntAndString extends Equatable {
-  final String st;
-  final int number;
-  const ParamsIntAndString({required this.number, required this.st});
+class UrlAndPage extends Equatable {
+  final String url;
+  final int page;
+  const UrlAndPage({ required this.url , required this.page});
   @override
-  List<Object?> get props => [st, number];
+  List<Object?> get props => [url, page];
 }
 
 class ParamsString extends Equatable {

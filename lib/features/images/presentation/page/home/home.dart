@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
-import '../../../../../common/ui/animations/empty_home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../common/ui/animations/empty_screen.dart';
 import '../../../../../common/ui/animations/loading.dart';
+import '../../../../../const/const_rive.dart';
 import 'home_page.dart';
 
 class Home extends StatelessWidget {
@@ -37,8 +39,13 @@ class Home extends StatelessWidget {
       return SliverPadding(
         padding: EdgeInsets.symmetric(
             vertical: MediaQuery.of(context).size.height / 6),
-        sliver: const SliverToBoxAdapter(
-          child: EmptyHomeScreen(),
+        sliver: SliverToBoxAdapter(
+          child: EmptyScreen(
+            animations: const ['lens', 'animate'],
+            assetPath: emptySuggestions,
+            title: AppLocalizations.of(context)!.imagesNotFound,
+            subtitle: AppLocalizations.of(context)!.tryToReload,
+          ),
         ),
       );
     }

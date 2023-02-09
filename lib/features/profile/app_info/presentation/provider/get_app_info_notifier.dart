@@ -3,16 +3,16 @@ import 'package:wallnex/core/usecase/usecase.dart';
 import '../../domain/usecases/get_app_info_usecase.dart';
 
 class GetAppInfoNotifier extends ChangeNotifier {
-  final GetAppInfoUseCase getAppInfoUseCase;
+  final GetAppInfoUseCase _getAppInfoUseCase;
 
-  GetAppInfoNotifier({required this.getAppInfoUseCase});
+  GetAppInfoNotifier(this._getAppInfoUseCase);
 
   String appName = '';
   String appBuild = '';
   String version = '';
 
   Future<void> loadAppInfo() async {
-    final result = await getAppInfoUseCase.call(NoParams());
+    final result = await _getAppInfoUseCase.call(NoParams());
 
     result.map((r) {
       appName = r.appName;
@@ -22,6 +22,4 @@ class GetAppInfoNotifier extends ChangeNotifier {
     });
   }
 
-  @override
-  notifyListeners();
 }

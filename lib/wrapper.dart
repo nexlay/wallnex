@@ -7,8 +7,8 @@ import 'const/const.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'features/profile/customization/presentation/provider/get_customization_notifier.dart';
 
-class Warapper extends StatelessWidget {
-  const Warapper({Key? key}) : super(key: key);
+class Wrapper extends StatelessWidget {
+  const Wrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +49,9 @@ class Warapper extends StatelessWidget {
               selectedIndex: pageIndex,
             ),
       body: BodyScrollView(
-        title: titles[pageIndex],
-        childWidget: pagesList[pageIndex],
+        title: titles.elementAt(pageIndex),
+        childWidget: pagesList.elementAt(pageIndex),
+        actionWidget: null,
       ),
     );
   }

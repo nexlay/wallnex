@@ -37,8 +37,9 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
   @override
   Widget build(BuildContext context) {
     final page = context.select((GetPages p) => p.value);
-    _active?.value = widget.tabIndex == page;
     _selected = widget.tabIndex == page;
+    _active?.value = _selected;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -64,7 +65,7 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
                 });
               },
               child: SizedBox(
-                width: 55,
+                width: 60,
                 height: _selected ? 32 : 30,
                 child: RiveAnimation.asset(
                   widget.path,

@@ -4,13 +4,13 @@ import 'package:wallnex/core/usecase/usecase.dart';
 import '../repository/wallpaper_repo.dart';
 
 
-class SetImageAsWallpaperUseCase extends UseCase<void, ParamsIntAndString> {
+class SetImageAsWallpaperUseCase extends UseCase<void, UrlAndPage> {
   final WallpaperRepo wallpaperRepo;
 
   SetImageAsWallpaperUseCase({required this.wallpaperRepo});
   @override
-  Future<Either<Failure, bool>> call(ParamsIntAndString params) async {
-    return await wallpaperRepo.setImageAsWallpaper(params.st, params.number);
+  Future<Either<Failure, bool>> call(UrlAndPage params) async {
+    return await wallpaperRepo.setImageAsWallpaper(params.url, params.page);
   }
 
 }

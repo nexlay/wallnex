@@ -56,6 +56,7 @@ class Appearance extends StatelessWidget {
       ),
       body: BodyScrollView(
         title: AppLocalizations.of(context)!.theme,
+        actionWidget: null,
         childWidget: SliverToBoxAdapter(
           child: Column(
             children: [
