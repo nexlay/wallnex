@@ -28,9 +28,12 @@
 - [Rive](https://rive.app/) for animation.
 - [Provider](https://pub.dev/packages/provider) for state management.
 - [Get It](https://pub.dev/packages/get_it) simple Service Locator for Dart and Flutter projects.
-- [Hive database](https://pub.dev/packages/hive) temporary solution for storing the data.
+- [Hive database](https://pub.dev/packages/hive) solution for storing the data if the user is don't sign in or no internet connection.
+- [Firebase database](https://firebase.google.com/docs/flutter/setup?platform=android) solution for storing the data if the user is sign in.
 - [Image](https://pub.dev/packages/image) the Dart Image Library provides the ability to crop image.
 - [Flutter cache manager](https://pub.dev/packages/flutter_cache_manager) to get cahced images to manipulate with.
+- [Go router](https://pub.dev/packages/go_router) a declarative routing package for Flutter that uses the Router API.
+- [Intl](https://pub.dev/packages/intl) provides internationalization and localization facilities.
 
 
 
