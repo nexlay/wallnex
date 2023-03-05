@@ -30,7 +30,7 @@
 - [Get It](https://pub.dev/packages/get_it) simple Service Locator for Dart and Flutter projects.
 - [Hive database](https://pub.dev/packages/hive) temporary solution for storing the data.
 - [Image](https://pub.dev/packages/image) the Dart Image Library provides the ability to crop image.
-- [Flutter cache manager](https://pub.dev/packages/flutter_cache_manager) to get cahed image to manipulate with.
+- [Flutter cache manager](https://pub.dev/packages/flutter_cache_manager) to get cahced images to manipulate with.
 
 
 
