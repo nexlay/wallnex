@@ -16,15 +16,18 @@ class SetImageASWallpaperNotifier extends ValueNotifier<int> {
     notifyListeners();
 
     final result = await _setImageAsWallpaperUseCase
-        .call(UrlAndPage(url: filePath, page: screen));
+        .call(UrlAndPage(params1: filePath, params2: screen));
 
-    result.fold((fail) {
-      error = fail.toString();
-    }, (result) {
-      if (result) {
-        loading = result;
-      }
-    });
-    notifyListeners();
+    result.fold(
+      (fail) => error = fail.toString(),
+      (result) {
+        if (result) {
+          loading = false;
+          notifyListeners();
+        } else {
+          error;
+        }
+      },
+    );
   }
 }

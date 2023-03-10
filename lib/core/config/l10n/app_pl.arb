@@ -23,13 +23,15 @@
 "discoverMore": "Odkryj więcej",
 "exit": "Powrót",
 
-"noSuggestions": "Brak sugestii!",
-"noSuggestionsDesc": "Nie ma podobnych obrazów.",
+"suggestionsNotFound": "Nie znaleziono podobnych obrazów!",
+"tryToReloadSuggestions": "Spróbuj wyszukać czegoś innego.",
 "suggestions": "Propozycje",
 "suggestionsDesc": "na podstawie wybranego obrazu",
 
-"imagesNotFound": "Ups... Nie znaleziono obrazów!",
+"imagesNotFound": "Ups...Coś poszło nie tak!",
 "tryToReload": "Spróbuj ponownie.",
+
+
 
 "noFavorites": "Brak ulubionych!",
 "noFavoritesDesc": "Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.",
@@ -50,12 +52,23 @@
 "homeScreen": "Ekran główny",
 "lockScreen": "Ekran blokady",
 "both": "Obaj",
+"set_wallpaper_on": "Ustaw tapetę",
 
 "storagePermission": "Zezwolenie na przechowywanie",
-"storagePermDesc": "Możesz nadać to uprawnienie w ustawieniach systemu",
+"notificationPermission": "Zezwolenie na powiadomienia",
+"permissionDesc": "Możesz nadać uprawnienia w ustawieniach systemu",
 "settings": "Ustawienia",
 "welcome": "Witamy!",
 "creatingAccount": "Zacznijmy od założenia konta",
 "yourInfo": "Twoje informacje",
-"madeBy": "Twórca Mykola Pryhodskyi (Nexlay)"
+"madeBy": "Mykola Pryhodskyi",
+"developer_email": "pryhodskyimykola@gmail.com",
+
+"contact": "Kontakt",
+"location": "Lokalizacja",
+"location_description": "Polska",
+"languages_and_tools": "Języki i narzędzia",
+"tool_description": "Flutter, Dart, Firebase, Git, Rive",
+"fun_fact": "Śmieszny fakt",
+"fun_fact_description": "Mogę obniżyć cenę nawet o 100%. Wtedy nic nie płacisz, a ja nic nie robię :)"
 }

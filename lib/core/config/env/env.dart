@@ -11,4 +11,6 @@ abstract class Env {
   static final gitUrl = _Env.gitUrl;
   @EnviedField(varName: 'LINKED_IN_URL', obfuscate: true)
   static final linkedUrl = _Env.linkedUrl;
+  @EnviedField(varName: 'ANDROID_BANNER_AD_ID', obfuscate: true)
+  static final bannerId = _Env.bannerId;
 }

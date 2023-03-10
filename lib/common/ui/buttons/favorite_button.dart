@@ -36,29 +36,28 @@ class _FavoriteButtonState extends State<FavoriteButton>
 
   @override
   Widget build(BuildContext context) {
-    bool isFavorite = context.select((GetFavoritesNotifier f) => f.isFavorite);
     return IconButton(
       onPressed: () {
-        if (isFavorite) {
+        if (widget.wallpaper.isFavorite) {
           context
-              .read<GetFavoritesNotifier>()
+              .read<FavoritesNotifier>()
               .deleteFromFavorites(widget.wallpaper);
-          context
-              .read<GetFavoritesNotifier>().deleteFromFireStore(widget.wallpaper.id);
         } else {
           context
-              .read<GetFavoritesNotifier>()
+              .read<FavoritesNotifier>()
               .insertIntoFavorites(widget.wallpaper);
-          context
-              .read<GetFavoritesNotifier>().addIntoFireStore(widget.wallpaper);
         }
         _controller.forward().then((value) => _controller.reverse());
       },
       icon: ScaleTransition(
         scale: _controller,
-        child: Icon(
-          isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: isFavorite ? Colors.redAccent : null,
+        child: Consumer<FavoritesNotifier>(
+          builder: (_, __, ___) => Icon(
+            widget.wallpaper.isFavorite
+                ? Icons.favorite
+                : Icons.favorite_border,
+            color: widget.wallpaper.isFavorite ? Colors.redAccent : null,
+          ),
         ),
       ),
     );

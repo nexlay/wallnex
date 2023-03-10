@@ -17,6 +17,7 @@ class DiscoverMore extends StatelessWidget {
         applicationIcon: const AnimationWithRive(path: logo,),
         applicationName: value.value1,
         applicationVersion: '${value.value3}.${value.value2}',
+        applicationLegalese: 'Best regards to Wallhaven team for high-quality APIs',
       ),
     );
   }

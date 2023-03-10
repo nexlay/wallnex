@@ -19,13 +19,15 @@
 "discoverMore": "Discover more",
 "exit": "Exit",
 
-"noSuggestions": "No suggestions yet!",
-"noSuggestionsDesc": "Try to reload.",
+"suggestionsNotFound": "Similar images not found!",
+"tryToReloadSuggestions": "Try to search something else.",
 "suggestions": "Suggestions",
 "suggestionsDesc": "based on chosen image",
 
-"imagesNotFound": "Oops... Images not found!",
-"tryToReload": "There is no similar images.",
+"imagesNotFound": "Oops...Something went wrong!",
+"tryToReload": "Try to reload.",
+
+
 
 "noFavorites": "No favorites yet!",
 "noFavoritesDesc": "Once you favorite an image, you'll see it here.",
@@ -46,15 +48,28 @@
 "homeScreen": "Home screen",
 "lockScreen": "Lock screen",
 "both": "Both",
+"set_wallpaper_on": "Set wallpaper on",
 
 "storagePermission": "Storage permission",
-"storagePermDesc": "You need to give this permission from the system settings",
+"notificationPermission": "Notifications permission",
+"permissionDesc": "You need to give this permissions from the system settings",
 "settings": "Settings",
+
 
 "welcome": "Welcome!",
 "creatingAccount": "Let's start creating your account",
 "yourInfo": "Your info",
-"madeBy": "Made by Mykola Pryhodskyi (Nexlay)"
+"madeBy": "Mykola Pryhodskyi",
+"developer_email": "pryhodskyimykola@gmail.com",
+
+"contact": "Contact",
+"location": "Location",
+"location_description": "Poland",
+"languages_and_tools": "Languages and Tools",
+"tool_description": "Flutter, Dart, Firebase, Git, Rive",
+"fun_fact": "Fun fact",
+"fun_fact_description": "I can lower the price by up to 100%. Then you pay nothing and I do nothing :)"
+
 
 
 }

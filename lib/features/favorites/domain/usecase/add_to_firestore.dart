@@ -10,6 +10,6 @@ class AddToFireStoreUseCase extends UseCase<void, ParamsImage> {
 
   @override
   Future<Either<Failure, void>> call(ParamsImage params) async {
-    return await favoritesRepo.addToFireStore(params.wallpaper);
+    return await favoritesRepo.addToFireStore(params.params);
   }
 }

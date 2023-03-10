@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import '../../presentation/provider/get_theme_notifier.dart';
+import '../../presentation/provider/theme_provider.dart';
 
 abstract class CustomizationPrefDatabase {
   Future<void> setTheme(int themeValue);

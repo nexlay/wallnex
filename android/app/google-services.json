@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "904643843856-osksh6slfcuhbr0cal0aemjl4oduasnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pryhodskyimykola.wallnex",
+            "certificate_hash": "ec11bbd8ff460e27f4fd5d34c75ba03a7dc86964"
+          }
+        },
+        {
           "client_id": "904643843856-g6asnmv5pfpgtnm0v47p0bmvl6mgp0h4.apps.googleusercontent.com",
           "client_type": 3
         }

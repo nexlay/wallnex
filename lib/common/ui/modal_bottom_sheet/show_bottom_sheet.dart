@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,10 +21,7 @@ void showBottomMenu(BuildContext context) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: loading
-            ? BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: const Loader(),
-              )
+            ? const Loader()
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,

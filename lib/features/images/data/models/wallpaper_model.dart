@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/wallpaper.dart';
 
 class WallpaperModel extends Wallpaper {
-  const WallpaperModel({
+   WallpaperModel({
     required super.path,
     required super.id,
     required super.category,
@@ -16,6 +16,7 @@ class WallpaperModel extends Wallpaper {
     required super.name,
     required super.uploaderName,
     required super.thumbsLarge,
+    required super.isFavorite,
   });
 
   factory WallpaperModel.fromJson(
@@ -34,6 +35,7 @@ class WallpaperModel extends Wallpaper {
       name: map['tags']?[0]?['name'] ?? '',
       uploaderName: map['uploader']?['username'] ?? '',
       thumbsLarge: map['thumbs']['large'] ?? '',
+      isFavorite: false,
     );
   }
 
@@ -51,6 +53,7 @@ class WallpaperModel extends Wallpaper {
       name: wallpaper.name,
       uploaderName: wallpaper.uploaderName,
       thumbsLarge: wallpaper.thumbsLarge,
+      isFavorite: wallpaper.isFavorite,
     );
   }
 
@@ -71,6 +74,7 @@ class WallpaperModel extends Wallpaper {
       name: data?['name'],
       uploaderName: data?['uploaderName'],
       thumbsLarge: data?['thumbsLarge'],
+      isFavorite: data?['isFavorite'],
     );
   }
 
@@ -88,10 +92,12 @@ class WallpaperModel extends Wallpaper {
       'name': name,
       'uploaderName': uploaderName,
       'thumbsLarge': thumbsLarge,
+      'isFavorite': isFavorite,
     };
   }
 
-  factory WallpaperModel.fromQuerySnapshot(QueryDocumentSnapshot snapshot) {
+  factory WallpaperModel.fromQueryDocumentSnapshot(
+      QueryDocumentSnapshot snapshot) {
     return WallpaperModel(
       path: snapshot.get('path'),
       id: snapshot.get('id'),
@@ -105,6 +111,29 @@ class WallpaperModel extends Wallpaper {
       name: snapshot.get('name'),
       uploaderName: snapshot.get('uploaderName'),
       thumbsLarge: snapshot.get('thumbsLarge'),
+      isFavorite: snapshot.data().toString().contains('isFavorite') ? snapshot.get('isFavorite') : true,
     );
+  }
+
+  List<WallpaperModel> fromQuerySnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs
+        .map(
+          (e) => WallpaperModel(
+            path: e.get('path'),
+            id: e.get('path'),
+            category: e.get('path'),
+            size: e.get('path'),
+            views: e.get('path'),
+            resolution: e.get('path'),
+            colors: e.get('path'),
+            shortUrl: e.get('path'),
+            fileType: e.get('path'),
+            name: e.get('path'),
+            uploaderName: e.get('path'),
+            thumbsLarge: e.get('path'),
+            isFavorite: e.get('isFavorite'),
+          ),
+        )
+        .toList();
   }
 }

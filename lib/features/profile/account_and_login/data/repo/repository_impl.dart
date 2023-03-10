@@ -1,12 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:wallnex/core/errors/failure.dart';
 import 'package:wallnex/core/exceptions/exceptions.dart';
 import 'package:wallnex/features/profile/account_and_login/data/database/firebase_db.dart';
 import 'package:wallnex/features/profile/account_and_login/data/model/user_model.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/repo/repository.dart';
 
-class FirebaseRepoImpl implements FirebaseRepo {
+class FirebaseRepoImpl implements UserRepo {
   final FirebaseAuthDb firebaseDb;
 
   FirebaseRepoImpl({required this.firebaseDb});
@@ -17,13 +16,24 @@ class FirebaseRepoImpl implements FirebaseRepo {
   }
 
   @override
-  Future<Either<LocalFailure, void>> getUrl(
-      XFile file) async {
+  Future<Either<LocalFailure, void>> updateUserPhoto(
+      ) async {
     try {
-      final url = await firebaseDb.updatePhotoUrl(file);
+      final url = await firebaseDb.updatePhotoUrl();
       return Right(url);
     } on LocalExceptions {
       return Left(LocalFailure());
     }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteAllDataFromFirebaseStorage() async {
+
+      try {
+        final delete = await firebaseDb.deleteAllUserData();
+        return Right(delete);
+      } on LocalExceptions {
+        return Left(LocalFailure());
+      }
   }
 }

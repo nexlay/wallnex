@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 
@@ -6,9 +7,12 @@ class Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Center(
-      child: CircularProgressIndicator(
-        strokeWidth: 1.0,
+    return  Center(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+        child: const CircularProgressIndicator(
+          strokeWidth: 1.0,
+        ),
       ),
     );
   }

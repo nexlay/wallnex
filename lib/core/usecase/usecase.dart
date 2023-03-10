@@ -7,55 +7,68 @@ abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);
 }
 
+abstract class StreamUseCase<Type, Params> {
+  Stream<Either<Failure, Type>> get(Params params);
+}
+
 class NoParams extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
 class ParamsImage extends Equatable {
-  final Wallpaper wallpaper;
-  const ParamsImage({required this.wallpaper});
+  final Wallpaper params;
+  const ParamsImage({required this.params});
   @override
-  List<Object?> get props => [wallpaper, wallpaper.id];
+  List<Object?> get props => [params, params.id];
 }
 
 class UrlAndPage extends Equatable {
-  final String url;
-  final int page;
-  const UrlAndPage({ required this.url , required this.page});
+  final String params1;
+  final int params2;
+  const UrlAndPage({ required this.params1 , required this.params2});
   @override
-  List<Object?> get props => [url, page];
+  List<Object?> get props => [params1, params2];
 }
 
 class ParamsString extends Equatable {
-  final String st;
+  final String params;
   const ParamsString({
-    required this.st,
+    required this.params,
   });
   @override
-  List<Object?> get props => [st];
+  List<Object?> get props => [params];
 }
 
 class ParamsBool extends Equatable {
-  final bool bl;
+  final bool params;
 
   const ParamsBool({
-    required this.bl,
+    required this.params,
   });
 
   @override
-  List<Object?> get props => [bl];
+  List<Object?> get props => [params];
 }
 
   class ParamsDoubleAndString extends Equatable {
-  final double db;
-  final String st;
+  final double params1;
+  final String params2;
   const ParamsDoubleAndString({
-  required this.db,
-    required this.st,
+  required this.params1,
+    required this.params2,
   });
   @override
-  List<Object?> get props => [db, st];
+  List<Object?> get props => [params1, params2];
 
+}
+
+class ParamsWithInt extends Equatable {
+  final int params;
+  const ParamsWithInt({
+    required this.params,
+  });
+  @override
+  List<Object?> get props => [params];
 
 }

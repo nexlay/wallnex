@@ -11,7 +11,7 @@ class GetSuggestionsUseCase implements UseCase<Iterable<Wallpaper>, ParamsString
 
   @override
   Future<Either<Failure, Iterable<Wallpaper>>> call(ParamsString params) async {
-   return await suggestionsRepo.getSuggestions(params.st);
+   return await suggestionsRepo.getSuggestions(params.params);
   }
 
 }

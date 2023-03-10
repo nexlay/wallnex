@@ -28,36 +28,54 @@ class Wallpaper extends Equatable {
   final String uploaderName;
   @HiveField(11)
   final String thumbsLarge;
+  @HiveField(12)
+  bool isFavorite = false;
 
+  Wallpaper({
+    required this.path,
+    required this.id,
+    required this.category,
+    required this.size,
+    required this.views,
+    required this.resolution,
+    required this.colors,
+    required this.shortUrl,
+    required this.fileType,
+    required this.name,
+    required this.uploaderName,
+    required this.thumbsLarge,
+    required this.isFavorite,
+  });
 
-  const Wallpaper(
-      {required this.path,
-        required this.id,
-        required this.category,
-        required this.size,
-        required this.views,
-        required this.resolution,
-        required this.colors,
-        required this.shortUrl,
-        required this.fileType,
-        required this.name,
-        required this.uploaderName,
-        required this.thumbsLarge,
-      });
+  factory Wallpaper.initialValue() => Wallpaper(
+      path: '',
+      id: '',
+      category: '',
+      size: 0,
+      views: 0,
+      resolution: '',
+      colors: const [],
+      shortUrl: '',
+      fileType: '',
+      name: '',
+      uploaderName: '',
+      thumbsLarge: '',
+      isFavorite: false);
 
   @override
   List<Object?> get props => [
-    path,
-    id,
-    category,
-    size,
-    views,
-    resolution,
-    colors,
-    shortUrl,
-    fileType,
-    name,
-    uploaderName,
-    thumbsLarge,
-  ];
+        path,
+        id,
+        category,
+        size,
+        views,
+        resolution,
+        colors,
+        shortUrl,
+        fileType,
+        name,
+        uploaderName,
+        thumbsLarge,
+        isFavorite,
+      ];
 }

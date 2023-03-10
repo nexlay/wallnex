@@ -9,7 +9,7 @@ class AccountItem extends ProfilePageItem {
     required super.subtitle,
     required super.path,
     required this.trailing,
-    required super.leadingIcon,
+    required super.leading,
   });
 
   final Widget? trailing;
@@ -17,9 +17,10 @@ class AccountItem extends ProfilePageItem {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: leading,
       trailing: trailing,
-      title: Text(title),
-      subtitle: Text(subtitle),
+      title: title,
+      subtitle: subtitle,
       onTap: () {
         context.push(path);
       },

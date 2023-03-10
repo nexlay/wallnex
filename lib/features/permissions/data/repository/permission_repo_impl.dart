@@ -9,7 +9,7 @@ class PermissionRepoImpl implements PermissionRepo {
   final PermissionData permissionData;
   PermissionRepoImpl({required this.permissionData});
   @override
-  Future<Either<Failure,AppPermissionsStatus>> permissionStatus() async {
+  Future<Either<Failure,Tuple2<AppPermissions, AppPermissionsStatus>>> permissionStatus() async {
     try {
       final status = await permissionData.storagePermissionStatus();
       return Right(status);

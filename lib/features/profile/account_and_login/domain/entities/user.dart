@@ -4,12 +4,14 @@ class LocalUser extends Equatable {
   final String uId;
   final String email;
   final String name;
+  final String photoUrl;
   final bool isAnonymous;
 
   const LocalUser({
     required this.uId,
     required this.email,
     required this.name,
+    required this.photoUrl,
     required this.isAnonymous,
   });
 
@@ -17,6 +19,7 @@ class LocalUser extends Equatable {
         uId: '',
         email: '',
         name: '',
+        photoUrl: '',
         isAnonymous: true,
       );
 

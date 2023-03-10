@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:wallnex/features/favorites/data/data/local_database.dart';
 import '../../../images/data/models/wallpaper_model.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 
@@ -11,11 +12,19 @@ abstract class RemoteDb {
 }
 
 class FavoritesFirebaseDbImpl implements RemoteDb {
+  final LocalDb _localDb;
+  FavoritesFirebaseDbImpl(this._localDb);
+
+  final _firebaseAuth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
+
   @override
   Future<void> addToFireStore(Wallpaper wallpaper) async {
     //An instance of FirebaseAuth
-    final user = FirebaseAuth.instance.currentUser;
-    final db = FirebaseFirestore.instance;
+
+    //An instance of FirebaseAuth
+    final user = _firebaseAuth.currentUser;
+
     if (user != null) {
       final docRef = db
           .collection(user.uid)
@@ -31,8 +40,8 @@ class FavoritesFirebaseDbImpl implements RemoteDb {
   @override
   Future<void> deleteFromFireStore(String imageId) async {
     //An instance of FirebaseAuth
-    final user = FirebaseAuth.instance.currentUser;
-    final db = FirebaseFirestore.instance;
+    final user = _firebaseAuth.currentUser;
+
     if (user != null) {
       await db.collection(user.uid).doc(imageId).delete();
     }
@@ -41,16 +50,15 @@ class FavoritesFirebaseDbImpl implements RemoteDb {
   @override
   Future<List<WallpaperModel>> getFavoritesFromFireStore() async {
     //An instance of FirebaseAuth
-    final user = FirebaseAuth.instance.currentUser;
-    final db = FirebaseFirestore.instance;
+    final user = _firebaseAuth.currentUser;
+
     if (user != null) {
       final snapshot = await db.collection(user.uid).get();
-
       return Future.value(snapshot.docs
-          .map((e) => WallpaperModel.fromQuerySnapshot(e))
+          .map((e) => WallpaperModel.fromQueryDocumentSnapshot(e))
           .toList());
     } else {
-      return [];
+      return await _localDb.getFavorites();
     }
   }
 }

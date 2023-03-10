@@ -44,7 +44,7 @@ class Login extends StatelessWidget {
                   if (!state.credential.user!.emailVerified) {
                     context.pushReplacement(emailVerification);
                   } else {
-                    context.pushReplacement(accounts);
+                    context.pushReplacement(account);
                   }
                 },
               ),

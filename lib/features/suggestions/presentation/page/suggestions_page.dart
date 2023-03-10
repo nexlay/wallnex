@@ -39,6 +39,8 @@ class SuggestionsPage extends StatelessWidget {
                     child: ImageCard(
                       wallpaper: suggestions[index],
                       url: suggestions[index].thumbsLarge,
+                      widget: null,
+                      imageSpecs: null,
                     ),
                   ),
                 );

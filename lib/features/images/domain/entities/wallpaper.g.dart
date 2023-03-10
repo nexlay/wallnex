@@ -29,13 +29,14 @@ class WallpaperAdapter extends TypeAdapter<Wallpaper> {
       name: fields[9] as String,
       uploaderName: fields[10] as String,
       thumbsLarge: fields[11] as String,
+      isFavorite: fields[12] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, Wallpaper obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.path)
       ..writeByte(1)
@@ -59,7 +60,9 @@ class WallpaperAdapter extends TypeAdapter<Wallpaper> {
       ..writeByte(10)
       ..write(obj.uploaderName)
       ..writeByte(11)
-      ..write(obj.thumbsLarge);
+      ..write(obj.thumbsLarge)
+      ..writeByte(12)
+      ..write(obj.isFavorite);
   }
 
   @override

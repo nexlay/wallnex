@@ -15,6 +15,7 @@ class FakeWallpaper {
     String? name,
     String? uploaderName,
     String? thumbsLarge,
+    bool? isFavorite,
   }) {
     return Wallpaper(
       path: path ?? faker.internet.httpsUrl(),
@@ -29,6 +30,7 @@ class FakeWallpaper {
       uploaderName: uploaderName ?? faker.person.name(),
       thumbsLarge: thumbsLarge ?? faker.randomGenerator.string(100),
       fileType: fileType ?? faker.randomGenerator.string(100),
+      isFavorite: isFavorite ?? false,
     );
   }
 

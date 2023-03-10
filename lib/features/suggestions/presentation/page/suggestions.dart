@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/animations/empty_screen.dart';
@@ -16,26 +15,30 @@ class Suggestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<GetSuggestionsNotifier,
-        Tuple3<List<Wallpaper>, bool, String>>(
-      selector: (_, provider) =>
-          Tuple3(provider.suggestions, provider.isLoading, provider.error),
-      builder: (_, value, __) =>
-          _showBody(context, value.value1, value.value2, value.value3),
+    final suggestions = context
+        .select((GetSuggestionsNotifier provider) => provider.suggestions);
+    final isLoading =
+        context.select((GetSuggestionsNotifier provider) => provider.isLoading);
+    return _showBody(
+      context,
+      suggestions,
+      isLoading,
     );
   }
 
-  Widget _showBody(BuildContext context, List<Wallpaper> suggestions,
-      bool isLoading, String error) {
+  Widget _showBody(
+    BuildContext context,
+    List<Wallpaper> suggestions,
+    bool isLoading,
+  ) {
     if (isLoading) {
       return const Center(child: Loader());
     } else if (!isLoading && suggestions.isEmpty) {
       return Center(
         child: EmptyScreen(
-          animations: const ['lens', 'animate'],
           assetPath: emptySuggestions,
-          title: AppLocalizations.of(context)!.noSuggestions,
-          subtitle: AppLocalizations.of(context)!.noSuggestionsDesc,
+          title: AppLocalizations.of(context)!.suggestionsNotFound,
+          subtitle: AppLocalizations.of(context)!.tryToReloadSuggestions,
         ),
       );
     } else if (!isLoading && suggestions.isNotEmpty) {

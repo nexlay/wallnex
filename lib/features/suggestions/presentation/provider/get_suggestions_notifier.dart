@@ -17,7 +17,7 @@ class GetSuggestionsNotifier extends ChangeNotifier {
   Future<void> getSuggestions(
       String id) async {
     final result = await getSuggestionsUseCase.call(
-      ParamsString(st: id),
+      ParamsString(params: id),
     );
 
     result.fold((l) {

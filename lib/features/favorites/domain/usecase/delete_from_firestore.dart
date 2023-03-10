@@ -12,7 +12,7 @@ class DeleteFromFireStoreUseCase extends UseCase<void, ParamsString>{
 
   @override
   Future<Either<Failure, void>> call(ParamsString params) async {
-   return await favoritesRepo.deleteFromFireStore(params.st);
+   return await favoritesRepo.deleteFromFireStore(params.params);
   }
 
 }

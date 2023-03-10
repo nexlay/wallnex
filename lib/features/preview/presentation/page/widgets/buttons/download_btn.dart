@@ -41,49 +41,47 @@ class _DownloadCompleteBtnState extends State<DownloadBtn>
 
   @override
   Widget build(BuildContext context) {
+    final permissions = context.watch<GetPermissionNotifier>();
+    final download = context.watch<DownloadProvider>();
     return ScaleTransition(
       scale: _controller,
-      child: Consumer<DownloadProvider>(
-        builder: (_, provider, __) =>
-            Selector<GetPermissionNotifier, AppPermissionsStatus>(
-          selector: (_, provider) => provider.value,
-          builder: (_, value, __) => IconButton(
-            onPressed: () {
-              switch (value) {
-                case AppPermissionsStatus.granted:
-                  context
-                      .read<DownloadProvider>()
-                      .createEnqueue(widget.wallpaper.path);
-                  _animate();
-                  break;
-                case AppPermissionsStatus.denied:
-                  context.read<GetPermissionNotifier>().getPermissionStatus();
-                  break;
-                case AppPermissionsStatus.permanentlyDenied:
-                  showMyDialog(
-                    context,
-                    AppLocalizations.of(context)!.storagePermission,
-                    AppLocalizations.of(context)!.storagePermDesc,
-                    AppLocalizations.of(context)!.settings,
-                    AppLocalizations.of(context)!.exit,
-                  );
-                  break;
-                case AppPermissionsStatus.restricted:
-                  //TODO: Restricted permission action
-                  break;
-                case AppPermissionsStatus.limited:
-                  //TODO: Limited permission action
-                  break;
-                case AppPermissionsStatus.unknown:
-                  context.read<GetPermissionNotifier>().getPermissionStatus();
-                  break;
-              }
-            },
-            icon: provider.value == 100
-                ? const Icon(Icons.check_circle, color: Colors.green,)
-                : const Icon(Icons.arrow_circle_down),
-          ),
-        ),
+      child: IconButton(
+        onPressed: () {
+          switch (permissions.value.value2) {
+            case AppPermissionsStatus.granted:
+              download
+                ..createEnqueue(widget.wallpaper.path)
+                ..resetDownloadStatus();
+              _animate();
+              break;
+            case AppPermissionsStatus.denied:
+              permissions.getPermissionStatus();
+              break;
+            case AppPermissionsStatus.permanentlyDenied:
+              showMyDialog(
+                context,
+                permissions.value.value1 == AppPermissions.notifications
+                    ? AppLocalizations.of(context)!.notificationPermission
+                    : AppLocalizations.of(context)!.storagePermission,
+                AppLocalizations.of(context)!.permissionDesc,
+                AppLocalizations.of(context)!.settings,
+                AppLocalizations.of(context)!.exit,
+              );
+              break;
+            case AppPermissionsStatus.restricted:
+              //TODO: Restricted permission action
+              break;
+            case AppPermissionsStatus.limited:
+              //TODO: Limited permission action
+              break;
+          }
+        },
+        icon: download.value == 100
+            ? const Icon(
+                Icons.check_circle,
+                color: Colors.green,
+              )
+            : const Icon(Icons.arrow_circle_down),
       ),
     );
   }

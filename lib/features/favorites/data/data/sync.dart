@@ -1,24 +1,37 @@
 import 'package:wallnex/features/favorites/data/data/remote_database.dart';
+import 'package:wallnex/features/images/data/models/wallpaper_model.dart';
 import 'local_database.dart';
 
 abstract class SyncDatabases {
-  Future<void> sync();
+  Future<List<WallpaperModel>> sync();
 }
 
 class SyncDatabaseImpl implements SyncDatabases {
-  final RemoteDb favoritesFirebaseDb;
-  final LocalDb favoritesDatabase;
+  final RemoteDb remote;
+  final LocalDb local;
 
-  SyncDatabaseImpl(this.favoritesFirebaseDb, this.favoritesDatabase);
+  SyncDatabaseImpl({required this.remote, required this.local});
 
   @override
-  Future<void> sync() async {
-    final remote = await favoritesFirebaseDb.getFavoritesFromFireStore();
-    final local = await favoritesDatabase.getFavorites();
-    for (var element in local) {
-      if (!remote.contains(element)) {
-        await favoritesFirebaseDb.addToFireStore(element);
+  Future<List<WallpaperModel>> sync() async {
+    final remoteFavorites = await remote.getFavoritesFromFireStore();
+    final localFavorites = await local.getFavorites();
+
+    if (localFavorites.length > remoteFavorites.length) {
+      for (var element in localFavorites) {
+        if (!remoteFavorites.contains(element)) {
+          await remote.addToFireStore(element);
+        }
       }
+      return localFavorites;
+    } else if (remoteFavorites.length > localFavorites.length) {
+      for (var element in remoteFavorites) {
+        if (!localFavorites.contains(element)) {
+          await local.addToFavorite(element);
+        }
+      }
+      return localFavorites;
     }
+    return localFavorites;
   }
 }

@@ -28,7 +28,7 @@ void main() {
     () async {
       when(mockImageRepo.getWallpapers(url, page))
           .thenAnswer((_) async => Right(list));
-      final result = await getImageUseCase(UrlAndPage(url: url, page: page));
+      final result = await getImageUseCase(UrlAndPage(params1: url, params2: page));
 
       expect(result, list);
       verify(mockImageRepo.getWallpapers(url, page));

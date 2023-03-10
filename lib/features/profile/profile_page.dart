@@ -17,42 +17,42 @@ class Profile extends StatelessWidget {
         [
           Consumer<LocalUser>(
             builder: (_, localUser, __) => AccountItem(
-              title: localUser.name.isEmpty
+              title: Text(localUser.name.isEmpty
                   ? AppLocalizations.of(context)!.welcome
-                  : localUser.name,
-              subtitle: localUser.email.isEmpty
+                  : localUser.name),
+              subtitle: Text(localUser.email.isEmpty
                   ? AppLocalizations.of(context)!.creatingAccount
-                  : localUser.email,
+                  : localUser.email),
               path: localUser.isAnonymous ? login : account,
-              trailing: localUser.isAnonymous
+              trailing: localUser.isAnonymous && localUser.photoUrl.isNotEmpty
                   ? null
                   : const UserAvatar(
                       size: 50.0,
                       placeholderColor: Colors.transparent,
                     ),
-              leadingIcon: null,
+              leading: null,
             ),
           ),
           const SizedBox(
             height: 40.0,
           ),
           ProfilePageItem(
-            title: AppLocalizations.of(context)!.appearance,
-            subtitle: AppLocalizations.of(context)!.darkTheme,
+            title: Text(AppLocalizations.of(context)!.appearance),
+            subtitle: Text(AppLocalizations.of(context)!.darkTheme),
             path: appearance,
-            leadingIcon: const Icon(Icons.dark_mode_outlined),
+            leading: const Icon(Icons.dark_mode_outlined),
           ),
           ProfilePageItem(
-            title: AppLocalizations.of(context)!.customization,
-            subtitle: AppLocalizations.of(context)!.customizationDesc,
+            title: Text(AppLocalizations.of(context)!.customization),
+            subtitle: Text(AppLocalizations.of(context)!.customizationDesc),
             path: customization,
-            leadingIcon: const Icon(Icons.dashboard_customize_outlined),
+            leading: const Icon(Icons.dashboard_customize_outlined),
           ),
           ProfilePageItem(
-            title: AppLocalizations.of(context)!.appInfo,
-            subtitle: AppLocalizations.of(context)!.version,
+            title: Text(AppLocalizations.of(context)!.appInfo),
+            subtitle: Text(AppLocalizations.of(context)!.version),
             path: appInformation,
-            leadingIcon: const Icon(Icons.info_outline),
+            leading: const Icon(Icons.info_outline),
           ),
         ],
       ),

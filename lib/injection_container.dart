@@ -1,15 +1,25 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:wallnex/features/ads/data/datasource/datasource.dart';
+import 'package:wallnex/features/ads/data/repository/repo_impl.dart';
+import 'package:wallnex/features/ads/domain/repo/repository.dart';
+import 'package:wallnex/features/ads/domain/usecase/create_banner_ad_use_case.dart';
+import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
 import 'package:wallnex/features/favorites/data/data/remote_database.dart';
 import 'package:wallnex/features/favorites/data/data/sync.dart';
 import 'package:wallnex/features/favorites/domain/usecase/delete_from_firestore.dart';
+import 'package:wallnex/features/favorites/domain/usecase/delete_from_local_db.dart';
+import 'package:wallnex/features/favorites/domain/usecase/get_favorites.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:wallnex/features/file_manager/presentation/provider/download_provider.dart';
 import 'package:wallnex/features/profile/account_and_login/data/database/firebase_db.dart';
 import 'package:wallnex/features/profile/account_and_login/data/repo/repository_impl.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/repo/repository.dart';
-import 'package:wallnex/features/profile/account_and_login/domain/usecase/get_profile_photo_url_use_case.dart';
-import 'package:wallnex/features/profile/account_and_login/domain/usecase/get_user_use_case.dart';
+import 'package:wallnex/features/profile/customization/domain/usecase/set_custom_nav_bar_use_case.dart';
+import 'package:wallnex/features/profile/customization/domain/usecase/set_theme_usecase.dart';
 import 'package:wallnex/features/suggestions/data/repository/suggestion_repo_impl.dart';
 import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_usecase.dart';
 import 'package:wallnex/features/images/domain/usecases/get_tags_uploader_use_case.dart';
@@ -25,8 +35,7 @@ import 'features/favorites/data/data/local_database.dart';
 import 'features/favorites/data/repository/favorites_repo_impl.dart';
 import 'features/favorites/domain/repository/favorites_repo.dart';
 import 'features/favorites/domain/usecase/add_to_firestore.dart';
-import 'features/favorites/domain/usecase/add_update_delete_localDb_use_case.dart';
-import 'features/favorites/domain/usecase/get_favorites_use_case.dart';
+import 'features/favorites/domain/usecase/add_to_local_db_use_case.dart';
 import 'features/favorites/presentation/provider/favorites_images_notifier.dart';
 import 'features/images/data/datasource/database.dart';
 import 'features/images/data/repositories/repositories_impl.dart';
@@ -44,7 +53,10 @@ import 'features/preview/data/repo_impl/wallpaper_repo_impl.dart';
 import 'features/preview/domain/repository/wallpaper_repo.dart';
 import 'features/preview/domain/usecase/set_image_as_wallpaper_use_case.dart';
 import 'features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
-import 'features/profile/account_and_login/presentation/provider/user_auth_change_notifier.dart';
+import 'features/profile/account_and_login/domain/usecase/delete_all_user_data.dart';
+import 'features/profile/account_and_login/domain/usecase/get_local_user.dart';
+import 'features/profile/account_and_login/domain/usecase/update_profile_photo_url.dart';
+import 'features/profile/account_and_login/presentation/provider/local_user_provider.dart';
 import 'features/profile/app_info/data/datasource/package_info.dart';
 import 'features/profile/app_info/data/repositories/repositories_app_info_impl.dart';
 import 'features/profile/app_info/domain/repository/appInfo_repo.dart';
@@ -55,139 +67,190 @@ import 'features/profile/customization/data/database/database.dart';
 import 'features/profile/customization/domain/repo/customization_repo.dart';
 import 'features/profile/customization/domain/usecase/get_nav_bar_usecase.dart';
 import 'features/profile/customization/domain/usecase/get_theme_usecase.dart';
-import 'features/profile/customization/presentation/provider/get_customization_notifier.dart';
-import 'features/profile/customization/presentation/provider/get_theme_notifier.dart';
+import 'features/profile/customization/presentation/provider/customization_provider.dart';
+import 'features/profile/customization/presentation/provider/theme_provider.dart';
 import 'features/suggestions/data/data/suggestions_data.dart';
 import 'features/suggestions/domain/repository/suggestions_repo.dart';
 import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+
+import 'firebase_options.dart';
+
+Future<void> initFirebase() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
+}
+
+Future<void> initHive() async {
+  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDir.path);
+  Hive.registerAdapter(
+    WallpaperAdapter(),
+  );
+}
+
+Future<void> initFlutterDownloader() async {
+  // Plugin must be initialized before using
+  await FlutterDownloader.initialize(
+      debug:
+          true, // optional: set to false to disable printing logs to console (default: true)
+      ignoreSsl:
+          true // option: set to false to disable working with http links (default: false)
+      );
+}
+
+void initAds() {
+  MobileAds.instance.initialize();
+}
 
 final getIt = GetIt.instance;
 
 Future<void> init() async {
-  Hive.registerAdapter(
-    WallpaperAdapter(),
-  );
-
-//Notifiers
-
+//-----------------------------
+//Providers (ChangeNotifiers)
+//-----------------------------
   getIt.registerFactory(
-    () => UserAuthChangeNotifier(
+    () => AdProvider(
+      getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerFactory(
+    () => LocalUserProvider(
+      getIt(),
       getIt(),
       getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerFactory(
     () => GetPermissionNotifier(
       getPermissionUseCase: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerFactory(
     () => GetSearchHistoryNotifier(
       pushSearchHistoryIntoDb: getIt(),
       getSearchHistoryUseCase: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerFactory(
     () => FileManagerNotifier(),
   );
+//-----------------------------
   getIt.registerFactory(
     () => DownloadProvider(),
   );
-
+//-----------------------------
   getIt.registerFactory(
     () => GetImagesNotifier(
       getWallpaperUseCase: getIt(),
       getSingleWallpaperUseCase: getIt(),
     ),
   );
-  getIt.registerLazySingleton(
+//-----------------------------
+  getIt.registerFactory(
     () => GetAppInfoNotifier(
       getIt(),
     ),
   );
+//-----------------------------
   getIt.registerFactory(
-    () => GetFavoritesNotifier(
+    () => FavoritesNotifier(
+      getIt(),
       getIt(),
       getIt(),
       getIt(),
       getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerFactory(
     () => GetSuggestionsNotifier(
       getSuggestionsUseCase: getIt(),
     ),
   );
+//-----------------------------
   getIt.registerFactory(
-    () => GetThemeNotifier(
-      getThemeUseCase: getIt(),
+    () => ThemeProvider(
+      getIt(),
+      getIt(),
     ),
   );
-  getIt.registerLazySingleton(
-    () => GetCustomization(
-      getNavBarUseCase: getIt(),
+//-----------------------------
+  getIt.registerFactory(
+    () => CustomizationProvider(
+      getIt(),
+      getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerFactory(
     () => GetPages(),
   );
-
-  getIt.registerLazySingleton(
+//-----------------------------
+  getIt.registerFactory(
     () => SetImageASWallpaperNotifier(
       getIt(),
     ),
   );
-
+//-----------------------------
   //Domain layer
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => CreateBannerAdUseCase(
+      adRepo: getIt(),
+    ),
+  );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetUserUseCase(
-      firebaseRepo: getIt(),
+      userRepo: getIt(),
     ),
   );
   getIt.registerLazySingleton(
     () => UpdateProfilePhotoUrlUseCase(
-      firebaseRepo: getIt(),
+      userRepo: getIt(),
     ),
   );
-
+  getIt.registerLazySingleton(
+    () => DeleteAllUserDataUseCase(
+      userRepo: getIt(),
+    ),
+  );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetPermissionUseCase(
       permissionRepo: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton(
     () => PushSearchHistoryIntoDb(
       searchRepo: getIt(),
     ),
   );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetSearchHistoryUseCase(
       searchRepo: getIt(),
     ),
   );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetImageUseCase(
       imageRepo: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetTagsAndUploaderUseCase(
       imageRepo: getIt(),
     ),
   );
 
-  getIt.registerLazySingleton(
-    () => AddDeleteUpdateUseCase(
-      favoriteWallpaperRepo: getIt(),
-    ),
-  );
+//-----------------------------
   getIt.registerLazySingleton(
     () => AddToFireStoreUseCase(
       favoritesRepo: getIt(),
@@ -199,30 +262,47 @@ Future<void> init() async {
       favoritesRepo: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton(
-    () => GetFavoritesUseCase(
+    () => GetFavorites(
       favoritesRepo: getIt(),
     ),
   );
-
+  getIt.registerLazySingleton(
+    () => AddToLocalDbUseCase(
+      favoritesRepo: getIt(),
+    ),
+  );
+  getIt.registerLazySingleton(
+    () => DeleteFromLocalDbUseCase(
+      favoritesRepo: getIt(),
+    ),
+  );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetSuggestionsUseCase(
       suggestionsRepo: getIt(),
     ),
   );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetAppInfoUseCase(
       appInfoRepo: getIt(),
     ),
   );
-
+//-----------------------------
+  //Theme
   getIt.registerLazySingleton(
     () => GetThemeUseCase(
       themeRepo: getIt(),
     ),
   );
-
+  getIt.registerLazySingleton(
+    () => SetThemeUseCase(
+      themeRepo: getIt(),
+    ),
+  );
+//-----------------------------
   getIt.registerLazySingleton(
     () => GetNavBarUseCase(
       customizationRepo: getIt(),
@@ -230,58 +310,74 @@ Future<void> init() async {
   );
 
   getIt.registerLazySingleton(
+    () => SetNavBarUseCase(
+      customizationRepo: getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerLazySingleton(
     () => SetImageAsWallpaperUseCase(
       wallpaperRepo: getIt(),
     ),
   );
+//-----------------------------
+  //Repository
+//-----------------------------
 
-  //Repo
-  getIt.registerLazySingleton<FirebaseRepo>(
+  getIt.registerLazySingleton<AdRepo>(
+    () => AdRepoImpl(
+      bannerAdDatasource: getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerLazySingleton<UserRepo>(
     () => FirebaseRepoImpl(
       firebaseDb: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton<PermissionRepo>(
     () => PermissionRepoImpl(
       permissionData: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton<SearchRepo>(
     () => SearchRepoImpl(
       searchDatabase: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton<ImageRepo>(
     () => ImageRepoImpl(
       imageDatabase: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton<AppInfoRepo>(
     () => AppInfoRepositoriesImpl(
       packageInfoPlus: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton<CustomizationRepo>(
     () => CustomizationRepoImpl(
       hiveDatabase: getIt(),
     ),
   );
-
+//-----------------------------
   getIt.registerLazySingleton<SuggestionsRepo>(
     () => SuggestionsRepoImpl(
       suggestionsData: getIt(),
     ),
   );
+//-----------------------------
   getIt.registerLazySingleton<WallpaperRepo>(
     () => WallpaperRepoImpl(
       wallpaperDatabase: getIt(),
     ),
   );
+//-----------------------------
   getIt.registerLazySingleton<FavoritesRepo>(
     () => FavoritesRepoImpl(
       localDb: getIt(),
@@ -289,52 +385,57 @@ Future<void> init() async {
       syncDatabases: getIt(),
     ),
   );
-
+//-----------------------------
   //Data
-  getIt.registerFactory<SyncDatabases>(
+//-----------------------------
+  getIt.registerLazySingleton<BannerAdDatasource>(
+    () => BannerAdDataSourceImpl(),
+  );
+//-----------------------------
+  getIt.registerLazySingleton<SyncDatabases>(
     () => SyncDatabaseImpl(
-      getIt(),
-      getIt(),
+      local: getIt(),
+      remote: getIt(),
     ),
   );
-
-  getIt.registerFactory<FirebaseAuthDb>(
+//-----------------------------
+  getIt.registerLazySingleton<FirebaseAuthDb>(
     () => FirebaseAuthDbImpl(),
   );
-
-  getIt.registerFactory<SuggestionsData>(
+//-----------------------------
+  getIt.registerLazySingleton<SuggestionsData>(
     () => SuggestionsDataImpl(),
   );
-  getIt.registerFactory<SetImageAsWallpaper>(
+//-----------------------------
+  getIt.registerLazySingleton<SetImageAsWallpaper>(
     () => SetImageAsWallpaperImpl(),
   );
-  getIt.registerFactory<LocalDb>(
+//-----------------------------
+  getIt.registerLazySingleton<LocalDb>(
     () => FavoritesDatabaseImpl(),
   );
-
-  getIt.registerFactory<RemoteDb>(
-    () => FavoritesFirebaseDbImpl(),
+//-----------------------------
+  getIt.registerLazySingleton<RemoteDb>(
+    () => FavoritesFirebaseDbImpl(getIt()),
   );
-
-  getIt.registerFactory<PermissionData>(
+//-----------------------------
+  getIt.registerLazySingleton<PermissionData>(
     () => PermissionDataImpl(),
   );
-
-  getIt.registerFactory<SearchDatabase>(
+//-----------------------------
+  getIt.registerLazySingleton<SearchDatabase>(
     () => SearchDatabaseImpl(),
   );
-
-  getIt.registerFactory<ImageDatabase>(
+//-----------------------------
+  getIt.registerLazySingleton<ImageDatabase>(
     () => ImageDatabaseImpl(),
   );
-
-  //App info package source
-  getIt.registerFactory<PackageInfoPlus>(
+//-----------------------------
+  getIt.registerLazySingleton<PackageInfoPlus>(
     () => PackageInfoPlusImpl(),
   );
-
-  //Hive database
-  getIt.registerFactory<CustomizationPrefDatabase>(
+//-----------------------------
+  getIt.registerLazySingleton<CustomizationPrefDatabase>(
     () => CustomizationPrefDatabaseImpl(),
   );
 }

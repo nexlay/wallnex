@@ -1,40 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
+import 'package:wallnex/features/favorites/domain/usecase/delete_from_local_db.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 import '../../domain/usecase/add_to_firestore.dart';
-import '../../domain/usecase/add_update_delete_localDb_use_case.dart';
+import '../../domain/usecase/add_to_local_db_use_case.dart';
 import '../../domain/usecase/delete_from_firestore.dart';
-import '../../domain/usecase/get_favorites_use_case.dart';
+import '../../domain/usecase/get_favorites.dart';
 
-class GetFavoritesNotifier extends ChangeNotifier {
-  final AddDeleteUpdateUseCase _addDeleteUpdateUseCase;
-  final AddToFireStoreUseCase _addToFareStoreUseCase;
+class FavoritesNotifier extends ChangeNotifier {
+
+  final AddToLocalDbUseCase _addToLocalUseCase;
+  final DeleteFromLocalDbUseCase _deleteFromLocalDbUseCase;
+  final AddToFireStoreUseCase _addToFireStoreUseCase;
   final DeleteFromFireStoreUseCase _deleteFromFireStoreUseCase;
-  final GetFavoritesUseCase _getFavoritesUseCase;
+  final GetFavorites _getFavorites;
 
-  GetFavoritesNotifier(
-      this._addDeleteUpdateUseCase,
-      this._addToFareStoreUseCase,
-      this._deleteFromFireStoreUseCase,
-      this._getFavoritesUseCase);
+  FavoritesNotifier(
+
+    this._addToLocalUseCase,
+    this._addToFireStoreUseCase,
+    this._deleteFromFireStoreUseCase,
+    this._deleteFromLocalDbUseCase,
+    this._getFavorites,
+  );
 
   bool isLoading = false;
-
-  bool isFavorite = false;
   List<Wallpaper> favorites = [];
   String error = '';
 
-  Future<void> loadFavoritesWallpapers() async {
+
+  Future<void> getFavorites() async {
     // show loading
     isLoading = true;
     notifyListeners();
     // Fetch the list
-    final result = await _getFavoritesUseCase.call(NoParams());
+    final result = await _getFavorites.call(NoParams());
     // Handle success or error
     result.fold(
       (e) => error = e.toString(),
-      (iterable) {
-        favorites = iterable.toList();
+      (r) {
+        favorites = r;
         isLoading = false;
       },
     );
@@ -44,69 +49,31 @@ class GetFavoritesNotifier extends ChangeNotifier {
 
   Future<void> insertIntoFavorites(Wallpaper wallpaper) async {
     // show loading
-    isLoading = true;
+
+    wallpaper.isFavorite = true;
     notifyListeners();
-    await _addDeleteUpdateUseCase
-        .addFavoriteWallpaper(
-      ParamsImage(wallpaper: wallpaper),
-    )
+
+    await _addToLocalUseCase.call(ParamsImage(params: wallpaper));
+
+    await _addToFireStoreUseCase
+        .call(ParamsImage(params: wallpaper))
         .whenComplete(() {
-      isFavorite = true;
-      loadFavoritesWallpapers();
-      isLoading = false;
+      favorites.add(wallpaper);
       notifyListeners();
     });
   }
 
   Future<void> deleteFromFavorites(Wallpaper wallpaper) async {
-    await _addDeleteUpdateUseCase
-        .deleteFromFavorite(
-      ParamsImage(wallpaper: wallpaper),
-    )
-        .whenComplete(() {
-      loadFavoritesWallpapers();
-      isFavorite = false;
-      isLoading = false;
-      notifyListeners();
-    });
-  }
-
-  Future<void> checkFavorites(Wallpaper wallpaper) async {
-    isFavorite = false;
+    wallpaper.isFavorite = false;
     notifyListeners();
-    final result = await _addDeleteUpdateUseCase
-        .checkFavorites(ParamsImage(wallpaper: wallpaper));
-    result.fold((l) {
-      error = "fail";
-      isLoading = false;
-      isFavorite = false;
-    }, (r) {
-      isFavorite = r;
-      isLoading = false;
-      notifyListeners();
-    });
-  }
 
-  Future<void> addIntoFireStore(Wallpaper wallpaper) async {
-    isLoading = true;
-    notifyListeners();
-    await _addToFareStoreUseCase
-        .call(ParamsImage(wallpaper: wallpaper))
-        .whenComplete(() {
-      isFavorite = true;
-      loadFavoritesWallpapers();
-      isLoading = false;
-      notifyListeners();
-    });
-  }
-
-  Future<void> deleteFromFireStore(String imageId) async {
+    await _deleteFromLocalDbUseCase.call(
+      ParamsImage(params: wallpaper),
+    );
     await _deleteFromFireStoreUseCase
-        .call(ParamsString(st: imageId))
+        .call(ParamsString(params: wallpaper.id))
         .whenComplete(() {
-      isFavorite = false;
-      loadFavoritesWallpapers();
-      isLoading = false;
+      favorites.remove(wallpaper);
       notifyListeners();
     });
   }

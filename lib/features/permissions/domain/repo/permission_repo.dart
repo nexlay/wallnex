@@ -4,5 +4,5 @@ import '../../presentation/provider/get_permission_status_notifier.dart';
 
 
 abstract class PermissionRepo {
-  Future<Either<Failure, AppPermissionsStatus>> permissionStatus ();
+  Future<Either<Failure, Tuple2<AppPermissions,AppPermissionsStatus>>> permissionStatus ();
 }

@@ -23,10 +23,11 @@ class ImageSpecsBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
       children: [
         ImageSingleSpec(
-            text: '${double.parse((size / 1000000).toStringAsFixed(1))} MB',
+            text: '${double.parse((size / 1000000).toStringAsFixed(1))}MB',
             fontSize: fontSize,
             iconSize: iconSize,
             icon: Icons.sd_storage_outlined,

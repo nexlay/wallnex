@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
@@ -14,21 +13,28 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<GetImagesNotifier,
-        Tuple3<List<Wallpaper>, bool, String>>(
-      selector: (_, provider) =>
-          Tuple3(provider.imageList, provider.isLoading, provider.error),
-      builder: (_, value, __) =>
-          _showBody(context, value.value1, value.value2, value.value3),
+    final images =
+        context.select((GetImagesNotifier provider) => provider.imageList);
+    final isLoading =
+        context.select((GetImagesNotifier provider) => provider.isLoading);
+    return _showBody(
+      context,
+      images,
+      isLoading,
     );
   }
 
-  Widget _showBody(BuildContext context, List<Wallpaper> list, bool isLoading,
-      String error) {
+  Widget _showBody(
+    BuildContext context,
+    List<Wallpaper> list,
+    bool isLoading,
+  ) {
+    final locale = AppLocalizations.of(context)!;
+    final size = MediaQuery.of(context).size.height / 6;
+
     if (isLoading) {
       return SliverPadding(
-        padding: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height / 6),
+        padding: EdgeInsets.symmetric(vertical: size),
         sliver: const SliverToBoxAdapter(
           child: Loader(),
         ),
@@ -37,14 +43,12 @@ class Home extends StatelessWidget {
       return const HomePage();
     } else {
       return SliverPadding(
-        padding: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height / 6),
+        padding: EdgeInsets.symmetric(vertical: size),
         sliver: SliverToBoxAdapter(
           child: EmptyScreen(
-            animations: const ['lens', 'animate'],
             assetPath: emptySuggestions,
-            title: AppLocalizations.of(context)!.imagesNotFound,
-            subtitle: AppLocalizations.of(context)!.tryToReload,
+            title: locale.imagesNotFound,
+            subtitle: locale.tryToReload,
           ),
         ),
       );

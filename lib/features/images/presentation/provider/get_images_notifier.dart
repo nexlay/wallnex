@@ -16,19 +16,7 @@ class GetImagesNotifier extends ChangeNotifier {
 
   bool isLoading = false;
   List<Wallpaper> imageList = [];
-  Wallpaper wallpaper = const Wallpaper(
-      path: '',
-      id: '',
-      category: '',
-      size: 0,
-      views: 0,
-      resolution: '',
-      colors: [],
-      shortUrl: '',
-      fileType: '',
-      name: '',
-      uploaderName: '',
-      thumbsLarge: '');
+  Wallpaper wallpaper = Wallpaper.initialValue();
 
   String error = '';
   int _page = 1;
@@ -70,7 +58,7 @@ class GetImagesNotifier extends ChangeNotifier {
     notifyListeners();
     // Fetch the list
     final result = await getWallpaperUseCase(
-      UrlAndPage(url: _url, page: _page),
+      UrlAndPage(params1: _url, params2: _page),
     );
     // Handle success or error
     result.fold(
@@ -93,7 +81,7 @@ class GetImagesNotifier extends ChangeNotifier {
     notifyListeners();
     // Fetch the image
     final result = await getSingleWallpaperUseCase(
-      ParamsString(st: id),
+      ParamsString(params: id),
     );
     // Handle success or error
     result.fold(

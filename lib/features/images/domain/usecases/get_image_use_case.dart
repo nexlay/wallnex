@@ -11,6 +11,6 @@ class GetImageUseCase implements UseCase<Iterable<Wallpaper>, UrlAndPage> {
 
   @override
   Future<Either<Failure, Iterable<Wallpaper>>> call(UrlAndPage params) async {
-    return await imageRepo.getWallpapers(params.url, params.page);
+    return await imageRepo.getWallpapers(params.params1, params.params2);
   }
 }

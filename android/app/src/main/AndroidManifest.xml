@@ -1,11 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pryhodskyimykola.wallnex">
-    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    package="com.pryhodskyimykola.wallnex"
+    android:versionCode="1"
+    android:versionName="1">
     <!-- Required to fetch data from the internet. -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
@@ -15,6 +16,7 @@
     </queries>
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:label="Wallnex"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -57,7 +59,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
-
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3899210934856600~3844752337"/>
     </application>
-
 </manifest>

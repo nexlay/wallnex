@@ -1,8 +1,9 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/common/ui/animations/loading.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import '../../../../../../common/ui/image/network_image_viewer.dart';
 import '../../../../file_manager/presentation/provider/file_manager_notifier.dart';
 
 class PreviewViewer extends StatefulWidget {
@@ -14,20 +15,22 @@ class PreviewViewer extends StatefulWidget {
 }
 
 class _PreviewViewerState extends State<PreviewViewer> {
-  late ScrollController _controller;
+  late PhotoViewController _controller;
+  late String _path;
   double _dx = 0.0;
 
   @override
   void initState() {
-    _controller = ScrollController()
-      ..addListener(() {
-        _dx = _controller.offset;
-      });
-
+    _controller = PhotoViewController()..outputStateStream.listen(listener);
+    _path = widget.wallpaper.path;
     super.initState();
   }
 
-
+  void listener(PhotoViewControllerValue value) {
+    setState(() {
+      _dx = value.position.dx;
+    });
+  }
 
   @override
   void dispose() {
@@ -38,20 +41,21 @@ class _PreviewViewerState extends State<PreviewViewer> {
   @override
   Widget build(BuildContext context) {
     return Consumer<FileManagerNotifier>(
-      builder: (_, provider, __) => NotificationListener<ScrollNotification>(
-        onNotification: (scrollNotification) {
-          provider.path = widget.wallpaper.path;
+      builder: (_, provider, __) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          provider.path = _path;
           provider.dxOffset = _dx;
-          return true;
-        },
-        child: SingleChildScrollView(
+        });
+        return PhotoView(
           controller: _controller,
-          scrollDirection: Axis.horizontal,
-          child: NetworkImageViewer(
-            url: widget.wallpaper.path,
-          ),
-        ),
-      ),
+          basePosition: Alignment.centerLeft,
+          initialScale: PhotoViewComputedScale.covered,
+          minScale: PhotoViewComputedScale.covered,
+          maxScale: PhotoViewComputedScale.covered,
+          loadingBuilder: (_, __) => const Loader(),
+          imageProvider: CachedNetworkImageProvider(_path),
+        );
+      }
     );
   }
 }

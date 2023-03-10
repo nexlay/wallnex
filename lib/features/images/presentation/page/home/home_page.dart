@@ -18,6 +18,8 @@ class HomePage extends StatelessWidget {
             return ImageCard(
               wallpaper: list[index],
               url: list[index].thumbsLarge,
+              widget: null,
+              imageSpecs: null,
             );
           },
         ),

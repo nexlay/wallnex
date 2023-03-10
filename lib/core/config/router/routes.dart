@@ -14,6 +14,7 @@ import '../../../features/profile/account_and_login/presentation/email_verificat
 import '../../../features/profile/account_and_login/presentation/login.dart';
 import '../../../features/profile/app_info/presentation/page/about.dart';
 import '../../../features/profile/app_info/presentation/page/discover_more.dart';
+import '../../../features/profile/app_info/presentation/page/widgets/developer_info.dart';
 import '../../../features/profile/profile_page.dart';
 
 class AppRouter {
@@ -34,6 +35,7 @@ class AppRouter {
   static Widget _customizationRouteBuilder(_, state) => const Customization();
   static Widget _appInformationRouteBuilder(_, state) => const AppInformation();
   static Widget _discoverMoreRouteBuilder(_, state) => const DiscoverMore();
+  static Widget _devInfoRouteBuilder(_, state) => const DeveloperInfo();
 
   ///[MaterialApp.router]
   static final _router = GoRouter(
@@ -41,9 +43,9 @@ class AppRouter {
     routes: [
       GoRoute(path: root, builder: _homeRouteBuilder),
       GoRoute(path: favorites, builder: _favoritesRouteBuilder),
-      GoRoute(path: profile, builder: _profileRouteBuilder),
       GoRoute(path: details, builder: _detailsRouteBuilder),
       GoRoute(path: preview, builder: _previewRouteBuilder),
+      GoRoute(path: profile, builder: _profileRouteBuilder),
       GoRoute(path: account, builder: _accountRouteBuilder),
       GoRoute(path: login, builder: _loginRouteBuilder),
       GoRoute(path: emailVerification, builder: _emailVerificationRouteBuilder),
@@ -52,6 +54,7 @@ class AppRouter {
       GoRoute(path: customization, builder: _customizationRouteBuilder),
       GoRoute(path: appInformation, builder: _appInformationRouteBuilder),
       GoRoute(path: discoverMore, builder: _discoverMoreRouteBuilder),
+      GoRoute(path: devInfo, builder: _devInfoRouteBuilder),
     ],
   );
 

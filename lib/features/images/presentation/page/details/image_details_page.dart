@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/images/presentation/page/details/widgets/buttons_bar/buttons_bar.dart';
 import 'package:wallnex/features/images/presentation/page/details/widgets/image_specs/image_specs_bar.dart';
 import '../../../../../common/ui/image/network_image_viewer.dart';
@@ -16,6 +18,10 @@ class ImageDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => context.go(root),
+          icon: const Icon(Icons.arrow_back),
+        ),
         centerTitle: true,
         title: ImageSpecsBar(
           size: wallpaper.size,

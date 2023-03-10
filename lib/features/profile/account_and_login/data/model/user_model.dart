@@ -6,10 +6,9 @@ class UserModel extends LocalUser {
     required super.uId,
     required super.email,
     required super.name,
+    required super.photoUrl,
     required super.isAnonymous,
   });
-
-  bool get a => isAnonymous;
 
   factory UserModel.fromAuthUser(User? user) {
     if (user != null) {
@@ -17,6 +16,7 @@ class UserModel extends LocalUser {
         uId: user.uid,
         email: user.email ?? '',
         name: user.displayName ?? '',
+        photoUrl: user.photoURL ?? '',
         isAnonymous: user.isAnonymous,
       );
     } else {
@@ -24,6 +24,7 @@ class UserModel extends LocalUser {
         uId: '',
         email: '',
         name: '',
+        photoUrl: '',
         isAnonymous: true,
       );
     }

@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.0+7
 
 environment:
   sdk: ">=2.18.6 <3.0.0"
@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  # Provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
   intl: ^0.17.0
   # For implementing Rive animations
   rive: ^0.9.1
@@ -81,11 +82,12 @@ dependencies:
   faker: ^2.1.0
   # A declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens.
   go_router: ^6.0.4
-
-
-
-
-
+  # Get current device information from within the Flutter application.
+  device_info_plus: ^8.1.0
+  # This repository contains the source code for the Google Mobile Ads Flutter plugin, which enables publishers to monetize Flutter apps using the Google Mobile Ads SDK.
+  google_mobile_ads: ^2.3.0
+  # A simple zoomable image/content widget for Flutter.
+  photo_view: ^0.14.0
 
 
 
@@ -131,10 +133,11 @@ flutter:
   uses-material-design: true
     # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/images/categories/
-  - assets/rive/
-  - assets/json/
-  - assets/core/
+    - assets/image/categories/
+    - assets/image/dev/
+    - assets/rive/
+    - assets/json/
+    - assets/core/
 
   fonts:
   - family: SocialIcons

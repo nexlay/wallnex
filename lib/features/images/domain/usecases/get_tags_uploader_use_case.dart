@@ -11,6 +11,6 @@ class GetTagsAndUploaderUseCase implements UseCase<Wallpaper, ParamsString> {
 
   @override
   Future<Either<Failure, Wallpaper>> call(ParamsString params) async {
-    return await imageRepo.getTagsAndUploader(params.st);
+    return await imageRepo.getTagsAndUploader(params.params);
   }
 }

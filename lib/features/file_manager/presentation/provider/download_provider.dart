@@ -2,14 +2,11 @@ import 'dart:isolate';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:wallnex/core/errors/failure.dart';
-import 'package:wallnex/core/exceptions/exceptions.dart';
 
 class DownloadProvider extends ValueNotifier<int> {
   DownloadProvider() : super(0);
 
   final _receivePort = ReceivePort();
-  bool _isolateRegistered = false;
 
   @pragma('vm:entry-point')
   static void callback(String id, DownloadTaskStatus status, int progress) {
@@ -17,8 +14,11 @@ class DownloadProvider extends ValueNotifier<int> {
     sPort.send([progress]);
   }
 
+  static void registerFlutterDownloader() {
+    FlutterDownloader.registerCallback(callback);
+  }
+
   Future<void> createEnqueue(String url) async {
-    await FlutterDownloader.registerCallback(callback);
     await FlutterDownloader.enqueue(
       url: url,
       savedDir: '/storage/emulated/0/Download',
@@ -30,25 +30,15 @@ class DownloadProvider extends ValueNotifier<int> {
     );
   }
 
-  Future<void> registerIsolate() async {
-    _isolateRegistered = IsolateNameServer.registerPortWithName(
-        _receivePort.sendPort, 'downloader');
-  }
+  void listenPort() {
+    IsolateNameServer.registerPortWithName(_receivePort.sendPort, 'downloader');
+    _receivePort.asBroadcastStream().listen((message) {}).onData((data) {
+      int progress = data[0];
+      _getProgress(progress);
+      notifyListeners();
+    });
 
-  Future<void> listenPort() async {
-    if (_isolateRegistered) {
-      try {
-        _receivePort.asBroadcastStream().listen((message) {}).onData((data) {
-          int progress = data[0];
-          _getProgress(progress);
-          notifyListeners();
-        });
-      } on LocalExceptions {
-        LocalFailure().toString();
-      }
-    } else {
-      registerIsolate();
-    }
+    registerFlutterDownloader();
   }
 
   void _getProgress(int progress) {
@@ -57,7 +47,12 @@ class DownloadProvider extends ValueNotifier<int> {
   }
 
   void resetDownloadStatus() {
-    value = 0;
-    notifyListeners();
+    Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        value = 0;
+        notifyListeners();
+      },
+    );
   }
 }

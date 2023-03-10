@@ -43,7 +43,7 @@ class CategoriesHeader extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
                         child: Image.asset(
-                          'assets/images/categories/${categoriesListAsset[index]}.jpg',
+                          'assets/image/categories/${categoriesListAsset[index]}.jpg',
                           fit: BoxFit.cover,
                         ),
                       ),

@@ -10,7 +10,7 @@ class SetImageAsWallpaperUseCase extends UseCase<void, UrlAndPage> {
   SetImageAsWallpaperUseCase({required this.wallpaperRepo});
   @override
   Future<Either<Failure, bool>> call(UrlAndPage params) async {
-    return await wallpaperRepo.setImageAsWallpaper(params.url, params.page);
+    return await wallpaperRepo.setImageAsWallpaper(params.params1, params.params2);
   }
 
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../common/ui/slivers/custom_scroll_view.dart';
-import '../../provider/get_theme_notifier.dart';
+import '../../provider/theme_provider.dart';
 import 'dark_light_animation.dart';
 
 const List themeNavBar = [
@@ -35,7 +35,7 @@ class Appearance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeValue themeValue = context.select((GetThemeNotifier t) => t.value);
+    ThemeValue themeValue = context.select((ThemeProvider t) => t.value);
 
     return Scaffold(
       bottomNavigationBar: Padding(
@@ -45,7 +45,7 @@ class Appearance extends StatelessWidget {
           child: NavigationBar(
             selectedIndex: themeValue.value,
             onDestinationSelected: (index) {
-              context.read<GetThemeNotifier>().setThemeValue(index);
+              context.read<ThemeProvider>().setThemeValue(index);
             },
             destinations: List.generate(
               themeNavBar.length,

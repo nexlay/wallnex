@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
+import 'package:wallnex/features/profile/customization/presentation/provider/theme_provider.dart';
 import '../../../../../../const/const_rive.dart';
-import '../../provider/get_theme_notifier.dart';
 
 class DarkLightAnimation extends StatefulWidget {
   const DarkLightAnimation({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _DarkLightAnimationState extends State<DarkLightAnimation>
   @override
   Widget build(BuildContext context) {
     themeAnimationActive =
-        context.select((GetThemeNotifier b) => b.themeModeDark);
+        context.select((ThemeProvider b) => b.themeModeDark);
     active?.value = themeAnimationActive;
     return AspectRatio(
       aspectRatio: 8 / 4,

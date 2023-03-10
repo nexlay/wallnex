@@ -8,20 +8,20 @@ class ProfilePageItem extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.path,
-    required this.leadingIcon,
+    required this.leading,
   }) : super(key: key);
-  final String title;
-  final String subtitle;
+  final Widget title;
+  final Widget subtitle;
   final String path ;
-  final Icon? leadingIcon;
+  final Widget? leading;
 
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: leadingIcon,
-      title: Text(title),
-      subtitle: Text(subtitle),
+      leading: leading,
+      title: title,
+      subtitle: subtitle,
       onTap: () {
        context.push(path);
       },
