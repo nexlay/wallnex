@@ -5,49 +5,47 @@ import '../../domain/entities/wallpaper.dart';
 import '../../domain/usecases/get_image_use_case.dart';
 import '../../domain/usecases/get_tags_uploader_use_case.dart';
 
-class GetImagesNotifier extends ChangeNotifier {
+class GetImagesNotifier extends ValueNotifier<int> {
   final GetImageUseCase getWallpaperUseCase;
   final GetTagsAndUploaderUseCase getSingleWallpaperUseCase;
 
   GetImagesNotifier({
     required this.getWallpaperUseCase,
     required this.getSingleWallpaperUseCase,
-  });
+  }) : super(1);
 
   bool isLoading = false;
+  bool isSelectedPage = false;
   List<Wallpaper> imageList = [];
   Wallpaper wallpaper = Wallpaper.initialValue();
 
   String error = '';
-  int _page = 1;
+
   String _url = url + page;
 
-  int get getApiPage => _page;
-
   apiPagePlus() {
-    _page++;
-    loadImages();
+    value++;
+    isSelectedPage = true;
     notifyListeners();
+    loadImages();
   }
 
   apiPageMinus() {
-    if (_page > 1) {
-      _page--;
-      loadImages();
-      notifyListeners();
-    }
+    value--;
+    notifyListeners();
+    loadImages();
   }
 
   searchByCategories(String category) {
     _url = url + category + page;
-    _page = 1;
+    value = 1;
     notifyListeners();
     loadImages();
   }
 
   searchByQuery(String query) {
     _url = url + query + page;
-    _page = 1;
+    value = 1;
     notifyListeners();
     loadImages();
   }
@@ -58,7 +56,7 @@ class GetImagesNotifier extends ChangeNotifier {
     notifyListeners();
     // Fetch the list
     final result = await getWallpaperUseCase(
-      UrlAndPage(params1: _url, params2: _page),
+      UrlAndPage(params1: _url, params2: value),
     );
     // Handle success or error
     result.fold(
@@ -66,8 +64,8 @@ class GetImagesNotifier extends ChangeNotifier {
         error = "fail";
         isLoading = false;
       },
-      (iterable) {
-        imageList = iterable.toList();
+      (r) {
+        imageList = r.toList();
         isLoading = false;
       },
     );

@@ -21,7 +21,7 @@ class PreviewBar extends StatelessWidget {
         IconButton(
           onPressed: () {
             context.read<GetImagesNotifier>().getImageById(wallpaper.id);
-            showBottomMenu(
+            showImageInformation(
               context,
             );
           },

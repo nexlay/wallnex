@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/common/ui/spacer.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
 import 'package:wallnex/features/profile/widgets/account_item.dart';
 import '../../../../../common/ui/animations/animation_with_rive.dart';
@@ -25,22 +24,21 @@ class AppInformation extends StatelessWidget {
           onPressed: () => context.push(discoverMore),
           icon: const Icon(Icons.more_horiz_outlined),
         ),
-        childWidget: SliverToBoxAdapter(
+        childWidget: SliverFillRemaining(
+          hasScrollBody: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              showSpacer(height: MediaQuery.of(context).size.height / 12),
               Selector<GetAppInfoNotifier, Tuple3<String, String, String>>(
-                selector: (_, provider) =>
-                    Tuple3(provider.appName, provider.version, provider.appBuild),
+                selector: (_, provider) => Tuple3(
+                    provider.appName, provider.version, provider.appBuild),
                 builder: (_, value, __) {
                   return Column(
                     children: [
                       const AnimationWithRive(
                         path: logo,
                       ),
-                      showSpacer(height: 15.0),
                       Text(
                         value.value1,
                         style: const TextStyle(
@@ -50,10 +48,10 @@ class AppInformation extends StatelessWidget {
                       ),
                       Text(
                         ' ${locale.version}: ${value.value2}.${value.value3}-alpha',
-                        style:
-                            const TextStyle(color: Colors.grey,),
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
                       ),
-                      showSpacer(height: MediaQuery.of(context).size.height / 4),
                     ],
                   );
                 },
@@ -69,8 +67,9 @@ class AppInformation extends StatelessWidget {
                     subtitle: Center(
                       child: Text(
                         locale.developer_email,
-                        style:
-                            const TextStyle(color: Colors.grey,),
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                     path: devInfo,

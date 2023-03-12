@@ -44,7 +44,7 @@ class Wrapper extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: pageIndex == 0 ? const FloatingButtonsBar() : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
       bottomNavigationBar: customNavBar
           ? const CustomNavBar()
           : NavigationBar(

@@ -1,7 +1,7 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import '../../../../common/ui/animations/animation_with_rive.dart';
-import '../../../../const/const_rive.dart';
+import '../../../../../common/ui/animations/animation_with_rive.dart';
+import '../../../../../const/const_rive.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({Key? key, required this.email}) : super(key: key);

@@ -14,8 +14,9 @@ class SyncDatabaseImpl implements SyncDatabases {
 
   @override
   Future<List<WallpaperModel>> sync() async {
-    final remoteFavorites = await remote.getFavoritesFromFireStore();
-    final localFavorites = await local.getFavorites();
+    List<WallpaperModel> remoteFavorites =
+        await remote.getFavoritesFromFireStore();
+    List<WallpaperModel> localFavorites = await local.getFavorites();
 
     if (localFavorites.length > remoteFavorites.length) {
       for (var element in localFavorites) {
@@ -30,6 +31,15 @@ class SyncDatabaseImpl implements SyncDatabases {
           await local.addToFavorite(element);
         }
       }
+      localFavorites = await local.getFavorites();
+      return localFavorites;
+    } else if (localFavorites.length < remoteFavorites.length) {
+      for (var element in remoteFavorites) {
+        if (!localFavorites.contains(element)) {
+          await local.addToFavorite(element);
+        }
+      }
+      localFavorites = await local.getFavorites();
       return localFavorites;
     }
     return localFavorites;

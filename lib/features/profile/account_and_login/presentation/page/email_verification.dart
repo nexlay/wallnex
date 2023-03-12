@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wallnex/common/ui/animations/animation_with_rive.dart';
 import 'package:wallnex/const/const.dart';
-import '../../../../const/const_rive.dart';
+import '../../../../../const/const_rive.dart';
 
 
 class EmailVerification extends StatelessWidget {

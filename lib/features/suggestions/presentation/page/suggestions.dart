@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/common/ui/animations/empty_screen.dart';
 import 'package:wallnex/features/suggestions/presentation/page/suggestions_page.dart';
-import '../../../../../common/ui/animations/loading.dart';
+import '../../../../common/ui/animations/empty_sliver_screen.dart';
 import '../../../../const/const_rive.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 import '../provider/get_suggestions_notifier.dart';
@@ -31,20 +30,20 @@ class Suggestions extends StatelessWidget {
     List<Wallpaper> suggestions,
     bool isLoading,
   ) {
-    if (isLoading) {
-      return const Center(child: Loader());
-    } else if (!isLoading && suggestions.isEmpty) {
-      return Center(
-        child: EmptyScreen(
-          assetPath: emptySuggestions,
-          title: AppLocalizations.of(context)!.suggestionsNotFound,
-          subtitle: AppLocalizations.of(context)!.tryToReloadSuggestions,
-        ),
-      );
-    } else if (!isLoading && suggestions.isNotEmpty) {
-      return const SuggestionsPage();
-    } else {
-      return const Loader();
-    }
+
+    final locale = AppLocalizations.of(context)!;
+    final emptyScreen = EmptyScreen(
+      assetPath: emptySuggestions,
+      title: locale.suggestionsNotFound,
+      subtitle: locale.tryToReloadSuggestions,
+    );
+
+    return isLoading
+        ? emptyScreen
+        : !isLoading && suggestions.isEmpty
+            ? emptyScreen
+            : !isLoading && suggestions.isNotEmpty
+                ? const SuggestionsPage()
+                : emptyScreen;
   }
 }

@@ -5,6 +5,10 @@ import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
 
 import '../../../../const/const.dart';
 
+//const for this class
+const defaultValue = 0.0;
+const padding = 20.0;
+
 class BannerAdWidget extends StatefulWidget {
   const BannerAdWidget({Key? key}) : super(key: key);
 
@@ -43,13 +47,13 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     return _bannerAd != null
         ? SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.symmetric(horizontal: padding, vertical: defaultValue),
               child: SizedBox(
                 width: provider.bannerAD.size!.width.toDouble(),
                 height: provider.bannerAD.size!.height.toDouble(),
                 child: Card(
                   color: Theme.of(context).colorScheme.background,
-                  elevation: 0.0,
+                  elevation: defaultValue,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: AdWidget(
                     ad: _bannerAd!,

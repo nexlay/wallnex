@@ -10,12 +10,11 @@ class ImageCard extends StatelessWidget {
   const ImageCard({
     Key? key,
     required this.wallpaper,
-    required this.url,
     required this.widget,
     required this.imageSpecs,
   }) : super(key: key);
   final Wallpaper wallpaper;
-  final String url;
+
   final Widget? widget;
   final Widget? imageSpecs;
 
@@ -34,12 +33,12 @@ class ImageCard extends StatelessWidget {
                     .getSuggestions(wallpaper.id);
               },
               child: NetworkImageViewer(
-                url: url,
+                url: wallpaper.thumbsLarge,
               ),
             ),
           ),
-          widget != null ? widget! : const SizedBox(),
-          imageSpecs != null ? imageSpecs! : const SizedBox(),
+          widget ?? const SizedBox(),
+          imageSpecs ?? const SizedBox(),
         ],
       ),
     );

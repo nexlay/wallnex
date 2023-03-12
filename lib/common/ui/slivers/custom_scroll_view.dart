@@ -28,7 +28,7 @@ class BodyScrollView extends StatelessWidget {
       slivers: [
         SliverAppBar(
           actions: [
-            actionWidget == null ? const SizedBox() : actionWidget!,
+            actionWidget ?? const SizedBox(),
           ],
           elevation: appBarElevation,
           expandedHeight: MediaQuery.of(context).size.height / 7,

@@ -7,7 +7,7 @@ import '../../../features/images/presentation/provider/get_images_notifier.dart'
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../animations/loading.dart';
 
-void showBottomMenu(BuildContext context) {
+void showImageInformation(BuildContext context) {
   showModalBottomSheet<void>(
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -19,7 +19,7 @@ void showBottomMenu(BuildContext context) {
       final wallpaper = context.select((GetImagesNotifier w) => w.wallpaper);
       final loading = context.select((GetImagesNotifier l) => l.isLoading);
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 32.0),
         child: loading
             ? const Loader()
             : Column(

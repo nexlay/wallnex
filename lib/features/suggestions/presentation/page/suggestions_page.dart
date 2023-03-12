@@ -5,40 +5,43 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../common/ui/image/image_card.dart';
 import '../provider/get_suggestions_notifier.dart';
 
-
 class SuggestionsPage extends StatelessWidget {
   const SuggestionsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 30.0,
+    final locale = AppLocalizations.of(context)!;
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-       ListTile(
+        ListTile(
           title: Text(
-            AppLocalizations.of(context)!.suggestions,
+            locale.suggestions,
             style: const TextStyle(fontSize: 22.0),
           ),
           subtitle: Text(
-            AppLocalizations.of(context)!.suggestionsDesc,
+            locale.suggestionsDesc,
           ),
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 3,
-          child: Selector<GetSuggestionsNotifier, List<Wallpaper>>(
-            selector: (_, value) => value.suggestions,
-            builder: (_, suggestions, __) => ListView.builder(
+        Selector<GetSuggestionsNotifier, List<Wallpaper>>(
+          selector: (_, value) => value.suggestions,
+          builder: (_, suggestions, __) => Expanded(
+            child: ListView.separated(
+              separatorBuilder: (BuildContext context, int index) =>
+                  const SizedBox(
+                width: 1.0,
+              ),
               physics: const BouncingScrollPhysics(),
               itemCount: suggestions.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 5.0),
+                  padding: const EdgeInsets.only(bottom: 10.0),
                   child: AspectRatio(
-                    aspectRatio: 2 / 4,
+                    aspectRatio: 1 / 2,
                     child: ImageCard(
                       wallpaper: suggestions[index],
-                      url: suggestions[index].thumbsLarge,
                       widget: null,
                       imageSpecs: null,
                     ),

@@ -2,32 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../features/images/presentation/provider/get_images_notifier.dart';
 
+const firstPage = 1;
+const btnHeight = 65.0;
+const opacity = 0.4;
+
 class FloatingButtonsBar extends StatelessWidget {
   const FloatingButtonsBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    int page = context.select((GetImagesNotifier p) => p.getApiPage);
+    final page = context.select((GetImagesNotifier p) => p.value);
+    final selected = context.select((GetImagesNotifier p) => p.isSelectedPage);
     return SizedBox(
-      height: 65,
+      height: btnHeight,
       child: Card(
         child: ButtonBar(
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              onPressed: () {
-                context.read<GetImagesNotifier>().apiPageMinus();
-              },
-              icon: Icon(
+              isSelected: selected,
+              disabledColor: page > firstPage ? Colors.grey.withOpacity(opacity) : null,
+              onPressed: page == firstPage
+                  ? null
+                  : () => context.read<GetImagesNotifier>().apiPageMinus(),
+              icon: const Icon(
                 Icons.arrow_back_ios,
-                color:
-                    page > 1 ? null : Colors.grey.withOpacity(0.4),
               ),
             ),
             IconButton(
-              onPressed: () {
-                context.read<GetImagesNotifier>().apiPagePlus();
-              },
+              isSelected: selected,
+              onPressed: () => context.read<GetImagesNotifier>().apiPagePlus(),
               icon: const Icon(
                 Icons.arrow_forward_ios,
               ),

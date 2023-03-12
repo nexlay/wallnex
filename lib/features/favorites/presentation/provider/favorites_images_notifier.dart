@@ -8,7 +8,6 @@ import '../../domain/usecase/delete_from_firestore.dart';
 import '../../domain/usecase/get_favorites.dart';
 
 class FavoritesNotifier extends ChangeNotifier {
-
   final AddToLocalDbUseCase _addToLocalUseCase;
   final DeleteFromLocalDbUseCase _deleteFromLocalDbUseCase;
   final AddToFireStoreUseCase _addToFireStoreUseCase;
@@ -16,7 +15,6 @@ class FavoritesNotifier extends ChangeNotifier {
   final GetFavorites _getFavorites;
 
   FavoritesNotifier(
-
     this._addToLocalUseCase,
     this._addToFireStoreUseCase,
     this._deleteFromFireStoreUseCase,
@@ -27,7 +25,6 @@ class FavoritesNotifier extends ChangeNotifier {
   bool isLoading = false;
   List<Wallpaper> favorites = [];
   String error = '';
-
 
   Future<void> getFavorites() async {
     // show loading
@@ -41,10 +38,10 @@ class FavoritesNotifier extends ChangeNotifier {
       (r) {
         favorites = r;
         isLoading = false;
+        // notify UI
+        notifyListeners();
       },
     );
-    // notify UI
-    notifyListeners();
   }
 
   Future<void> insertIntoFavorites(Wallpaper wallpaper) async {

@@ -15,24 +15,23 @@ class Account extends ProfileScreen {
   const Account({Key? key}) : super(key: key);
   @override
   Widget buildPage(BuildContext context) {
-    return BodyScrollView(
-      actionWidget: IconButton(
-        onPressed: () {
-          getIt.get<LocalUserProvider>().updateUserPhotoUrl();
-        },
-        icon: const Icon(Icons.add_a_photo_outlined),
-      ),
-      title: AppLocalizations.of(context)!.yourInfo,
-      childWidget: SliverToBoxAdapter(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+    return Scaffold(
+      body: BodyScrollView(
+        actionWidget: IconButton(
+          onPressed: () {
+            getIt.get<LocalUserProvider>().updateUserPhotoUrl();
+          },
+          icon: const Icon(Icons.add_a_photo_outlined),
+        ),
+        title: AppLocalizations.of(context)!.yourInfo,
+        childWidget: SliverFillRemaining(
+            hasScrollBody: false,
           child: Consumer<LocalUser>(
             builder: (_, user, __) => ProfileScreen(
               avatarSize: avatarSize,
               actions: [
                 SignedOutAction(
-                      (context) {
+                  (context) {
                     context.pushReplacement(login);
                   },
                 ),
@@ -42,13 +41,6 @@ class Account extends ProfileScreen {
                   children: [
                     Text(user.email),
                   ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery
-                          .of(context)
-                          .size
-                          .height / 7),
                 ),
               ],
             ),

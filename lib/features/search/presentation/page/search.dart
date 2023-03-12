@@ -5,6 +5,8 @@ import '../../../../common/ui/slivers/custom_header_delegate.dart';
 import '../../../../core/delegates/image_search.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+const defaultValue = 60.0;
+
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
 
@@ -14,9 +16,9 @@ class Search extends StatelessWidget {
       pinned: true,
       delegate: CustomHeader(
           childWidget: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60.0),
+            padding: const EdgeInsets.symmetric(horizontal: defaultValue),
             child: SizedBox(
-              height: 60,
+              height: defaultValue,
               child: Card(
                 child: TextButton.icon(
                   onPressed: () {
@@ -32,8 +34,8 @@ class Search extends StatelessWidget {
               ),
             ),
           ),
-          maxExtend: 60,
-          minExtend: 60),
+          maxExtend: defaultValue,
+          minExtend: defaultValue),
     );
   }
 }

@@ -34,7 +34,7 @@ class ImageDetails extends StatelessWidget {
           IconButton(
             onPressed: () {
               context.read<GetImagesNotifier>().getImageById(wallpaper.id);
-              showBottomMenu(
+              showImageInformation(
                 context,
               );
             },
@@ -42,29 +42,30 @@ class ImageDetails extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Wrap(
-          runSpacing: 20.0,
-          children: [
-            Hero(
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Hero(
               tag: wallpaper.id,
-              child: AspectRatio(
-                aspectRatio: 3 / 2,
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: NetworkImageViewer(
-                    url: wallpaper.path,
-                  ),
+              child: Card(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: NetworkImageViewer(
+                  url: wallpaper.path,
                 ),
               ),
             ),
-            ButtonsBar(
-              wallpaper: wallpaper,
+          ),
+          ButtonsBar(
+            wallpaper: wallpaper,
+          ),
+          const Expanded(
+            child: Center(
+              child: Suggestions(),
             ),
-            const Suggestions(),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
