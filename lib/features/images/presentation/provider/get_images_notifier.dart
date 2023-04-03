@@ -21,7 +21,7 @@ class GetImagesNotifier extends ValueNotifier<int> {
 
   String error = '';
 
-  String _url = url + page;
+  String _url = kUrl + kPage;
 
   apiPagePlus() {
     value++;
@@ -37,14 +37,14 @@ class GetImagesNotifier extends ValueNotifier<int> {
   }
 
   searchByCategories(String category) {
-    _url = url + category + page;
+    _url = kUrl + category + kPage;
     value = 1;
     notifyListeners();
     loadImages();
   }
 
   searchByQuery(String query) {
-    _url = url + query + page;
+    _url = kUrl + query + kPage;
     value = 1;
     notifyListeners();
     loadImages();

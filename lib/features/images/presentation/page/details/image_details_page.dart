@@ -19,7 +19,7 @@ class ImageDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => context.go(root),
+          onPressed: () => context.go(krRoot),
           icon: const Icon(Icons.arrow_back),
         ),
         centerTitle: true,

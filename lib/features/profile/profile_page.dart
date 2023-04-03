@@ -5,25 +5,26 @@ import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/entities/user.dart';
 import 'package:wallnex/features/profile/widgets/account_item.dart';
 import 'package:wallnex/features/profile/widgets/on_page_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../core/config/l10n/generated/app_localizations.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final locale = L.of(context);
     return SliverList(
       delegate: SliverChildListDelegate(
         [
           Consumer<LocalUser>(
             builder: (_, localUser, __) => AccountItem(
               title: Text(localUser.name.isEmpty
-                  ? AppLocalizations.of(context)!.welcome
+                  ? locale.welcome
                   : localUser.name),
               subtitle: Text(localUser.email.isEmpty
-                  ? AppLocalizations.of(context)!.creatingAccount
+                  ? locale.creatingAccount
                   : localUser.email),
-              path: localUser.isAnonymous ? login : account,
+              path: localUser.isAnonymous ? krLogin : krAccount,
               trailing: localUser.isAnonymous && localUser.photoUrl.isNotEmpty
                   ? null
                   : const UserAvatar(
@@ -37,21 +38,21 @@ class Profile extends StatelessWidget {
             height: 40.0,
           ),
           ProfilePageItem(
-            title: Text(AppLocalizations.of(context)!.appearance),
-            subtitle: Text(AppLocalizations.of(context)!.darkTheme),
-            path: appearance,
+            title: Text(locale.appearance),
+            subtitle: Text(locale.darkTheme),
+            path: krAppearance,
             leading: const Icon(Icons.dark_mode_outlined),
           ),
           ProfilePageItem(
-            title: Text(AppLocalizations.of(context)!.customization),
-            subtitle: Text(AppLocalizations.of(context)!.customizationDesc),
-            path: customization,
+            title: Text(locale.customization),
+            subtitle: Text(locale.customizationDesc),
+            path: krCustomization,
             leading: const Icon(Icons.dashboard_customize_outlined),
           ),
           ProfilePageItem(
-            title: Text(AppLocalizations.of(context)!.appInfo),
-            subtitle: Text(AppLocalizations.of(context)!.version),
-            path: appInformation,
+            title: Text(locale.appInfo),
+            subtitle: Text(locale.version),
+            path: krAppInformation,
             leading: const Icon(Icons.info_outline),
           ),
         ],

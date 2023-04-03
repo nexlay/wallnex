@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
+import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../widgets/account_item.dart';
 
 const itemTextStyle = TextStyle(
@@ -15,7 +15,7 @@ class DeveloperInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
     return Scaffold(
       body: BodyScrollView(
         title: locale.contact,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../const/const_rive.dart';
+import '../../../core/config/l10n/generated/app_localizations.dart';
 import 'custom_nav_bar_item.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -9,18 +9,18 @@ class CustomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titles = [
-      AppLocalizations.of(context)!.home,
-      AppLocalizations.of(context)!.favorites,
-      AppLocalizations.of(context)!.profile,
+      L.of(context).home,
+      L.of(context).favorites,
+      L.of(context).profile,
     ];
     return SizedBox(
       height: 80,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List<Widget>.generate(
-          navBarAssetList.length,
+          kNavBarAssetList.length,
           (index) => CustomNavBarItem(
-            path: navBarAssetList.elementAt(index),
+            path: kNavBarAssetList.elementAt(index),
             label: titles.elementAt(index),
             tabIndex: index,
           ),

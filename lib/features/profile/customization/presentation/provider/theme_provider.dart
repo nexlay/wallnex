@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:rive/rive.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
+import '../../../../../const/const_rive.dart';
 import '../../domain/usecase/get_theme_usecase.dart';
 import '../../domain/usecase/set_theme_usecase.dart';
 
@@ -16,11 +18,13 @@ enum ThemeValue {
 class ThemeProvider extends ValueNotifier<ThemeValue> {
   final GetThemeUseCase _getThemeUseCase;
   final SetThemeUseCase _setThemeUseCase;
+
   ThemeProvider(this._getThemeUseCase, this._setThemeUseCase)
+      //Default app theme
       : super(ThemeValue.dark);
 
   String error = '';
-  bool themeModeDark = true;
+  SMIBool? activateRiveAnimation;
   var brightness = WidgetsBinding.instance.window.platformBrightness;
 
   Future<void> getThemeValue() async {
@@ -30,7 +34,7 @@ class ThemeProvider extends ValueNotifier<ThemeValue> {
         error = 'Fail';
       },
       (r) {
-        checkThemeMode(r);
+        _checkThemeMode(r);
       },
     );
   }
@@ -38,27 +42,35 @@ class ThemeProvider extends ValueNotifier<ThemeValue> {
   Future<void> setThemeValue(int index) async {
     await _setThemeUseCase.call(ParamsWithInt(params: index)).whenComplete(
       () {
-        checkThemeMode(index);
+        _checkThemeMode(index);
       },
     );
   }
 
-  void checkThemeMode(int index) {
-    bool isDarkMode = brightness == Brightness.dark;
+  void _checkThemeMode(int index) {
     switch (index) {
       case 0:
         value = ThemeValue.auto;
-        themeModeDark = isDarkMode;
+        activateRiveAnimation?.value = brightness == Brightness.dark;
         break;
       case 1:
         value = ThemeValue.light;
-        themeModeDark = false;
+        activateRiveAnimation?.value = false;
         break;
       case 2:
         value = ThemeValue.dark;
-        themeModeDark = true;
+        activateRiveAnimation?.value = true;
         break;
     }
     notifyListeners();
+  }
+
+  void onRiveInit(Artboard artboard) async {
+    final controller = StateMachineController.fromArtboard(
+      artboard,
+      kStateMachine,
+    );
+    artboard.addController(controller!);
+    activateRiveAnimation = controller.findInput<bool>(kRiveSwitch) as SMIBool;
   }
 }

@@ -4,6 +4,9 @@
 
 "profile": "Profile",
 "theme": "Theme",
+"dark": "Dark",
+"light": "Light",
+"auto": "Auto",
 "preview": "Preview",
 "customization": "Customization",
 "navigation":"Navigation",

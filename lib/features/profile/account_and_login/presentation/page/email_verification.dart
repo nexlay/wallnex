@@ -13,14 +13,14 @@ class EmailVerification extends StatelessWidget {
   Widget build(BuildContext context) {
     return EmailVerificationScreen(
       headerBuilder: (_, constraints, shrink) =>
-          const AnimationWithRive(path: done),
+          const AnimationWithRive(path: kDone, onRiveInit: null,),
       actions: [
         EmailVerifiedAction(() {
-          context.pushReplacement(account);
+          context.pushReplacement(krAccount);
         }),
         AuthCancelledAction((context) {
           FirebaseUIAuth.signOut(context: context);
-        context.pushNamed(login);
+        context.pushNamed(krLogin);
         }),
       ],
     );

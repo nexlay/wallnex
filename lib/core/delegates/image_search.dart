@@ -3,15 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../config/l10n/generated/app_localizations.dart';
+
 
 
 class ImageSearch extends SearchDelegate<List<Wallpaper>> {
   set searchFieldLabel(String? field) => super.searchFieldLabel;
 
+
   @override
   List<Widget>? buildActions(BuildContext context) {
-    searchFieldLabel = AppLocalizations.of(context)!.searchImages;
+    searchFieldLabel = L.of(context).searchImages;
     return [
       IconButton(
         onPressed: () {
@@ -54,7 +56,7 @@ class ImageSearch extends SearchDelegate<List<Wallpaper>> {
         horizontal: 15.0,
       ),
       child: Center(
-        child: searchHistory.isEmpty ? Text(AppLocalizations.of(context)!.noSearchHistory) : Card(
+        child: searchHistory.isEmpty ? Text(L.of(context).noSearchHistory) : Card(
           color: Colors.transparent,
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: ListView.separated(

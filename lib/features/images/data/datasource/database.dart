@@ -25,7 +25,7 @@ class ImageDatabaseImpl extends ImageDatabase {
 
   @override
   Future<WallpaperModel> getTagsAndUploader(String id) async {
-    final response = await http.get(Uri.parse(imageUrl + id));
+    final response = await http.get(Uri.parse(kImageUrl + id));
     if (response.statusCode == 200) {
       final data = await json.decode(response.body);
       return WallpaperModel.fromJson(data['data']);

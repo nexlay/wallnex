@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../../common/ui/buttons/favorite_button.dart';
+import '../../../../../../../core/config/l10n/generated/app_localizations.dart';
 
 class ButtonsBar extends StatelessWidget {
   const ButtonsBar({
@@ -18,9 +18,9 @@ class ButtonsBar extends StatelessWidget {
       children: [
         OutlinedButton(
           onPressed: () {
-            context.push(preview, extra: wallpaper);
+            context.push(krPreview, extra: wallpaper);
           },
-          child: Text(AppLocalizations.of(context)!.preview),
+          child: Text(L.of(context).preview),
         ),
         FavoriteButton(wallpaper: wallpaper),
       ],

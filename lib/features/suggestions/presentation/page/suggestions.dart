@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:wallnex/features/suggestions/presentation/page/suggestions_page.dart';
 import '../../../../common/ui/animations/empty_sliver_screen.dart';
 import '../../../../const/const_rive.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 import '../provider/get_suggestions_notifier.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Suggestions extends StatelessWidget {
   const Suggestions({
@@ -31,9 +32,9 @@ class Suggestions extends StatelessWidget {
     bool isLoading,
   ) {
 
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
     final emptyScreen = EmptyScreen(
-      assetPath: emptySuggestions,
+      assetPath: kEmptySuggestions,
       title: locale.suggestionsNotFound,
       subtitle: locale.tryToReloadSuggestions,
     );

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/ads/presentation/page/banner_ad_widget.dart';
 import '../../../../features/images/presentation/page/home/widgets/categories_header.dart';
 import '../../../../features/search/presentation/page/search.dart';
-
-const appBarElevation = 0.0;
-const titleScale = 1.5;
+import '../../../core/config/l10n/generated/app_localizations.dart';
 
 class BodyScrollView extends StatelessWidget {
   const BodyScrollView({
@@ -22,7 +19,7 @@ class BodyScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final home = AppLocalizations.of(context)!.home;
+    final home = L.of(context).home;
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
@@ -38,10 +35,10 @@ class BodyScrollView extends StatelessWidget {
             expandedTitleScale: titleScale,
           ),
         ),
-        title == home ? const CategoriesHeader() : empty,
-        title == home ? const Search() : empty,
+        title == home ? const CategoriesHeader() : kEmpty,
+        title == home ? const Search() : kEmpty,
         childWidget,
-        title == home ? const BannerAdWidget() : empty,
+        title == home ? const BannerAdWidget() : kEmpty,
       ],
     );
   }

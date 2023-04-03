@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
 import '../../../../common/ui/slivers/custom_header_delegate.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../core/delegates/image_search.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const defaultValue = 60.0;
 
@@ -28,7 +28,7 @@ class Search extends StatelessWidget {
                     );
                     context.read<GetSearchHistoryNotifier>().getSearchHistory();
                   },
-                  label: Text(AppLocalizations.of(context)!.searchImages),
+                  label: Text(L.of(context).searchImages),
                   icon: const Icon(Icons.search),
                 ),
               ),

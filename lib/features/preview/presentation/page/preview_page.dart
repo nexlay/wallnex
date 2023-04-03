@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/btn_container.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/previewer.dart';
 import 'package:wallnex/features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
 import '../../../../common/ui/animations/loading.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
 
 class PreviewPage extends StatelessWidget {
   const PreviewPage({Key? key, required this.wallpaper}) : super(key: key);
@@ -34,7 +34,7 @@ class PreviewPage extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         title: Text(
-          AppLocalizations.of(context)!.preview,
+          L.of(context).preview,
           style: TextStyle(
             color: mainColor > 0.2 ? Colors.black : Colors.white,
           ),

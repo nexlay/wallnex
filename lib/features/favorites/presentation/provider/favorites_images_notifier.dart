@@ -37,6 +37,7 @@ class FavoritesNotifier extends ChangeNotifier {
       (e) => error = e.toString(),
       (r) {
         favorites = r;
+        favorites.reversed.toList();
         isLoading = false;
         // notify UI
         notifyListeners();
@@ -55,7 +56,7 @@ class FavoritesNotifier extends ChangeNotifier {
     await _addToFireStoreUseCase
         .call(ParamsImage(params: wallpaper))
         .whenComplete(() {
-      favorites.add(wallpaper);
+      favorites.insert(0, wallpaper);
       notifyListeners();
     });
   }

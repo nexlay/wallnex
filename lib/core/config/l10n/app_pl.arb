@@ -1,5 +1,5 @@
 {
-"home": "Start",
+"home": "Główna",
 "favorites":"Ulubione",
 "profile": "Konto",
 
@@ -15,6 +15,9 @@
 "appearance": "Ciemny motyw",
 "darkTheme": "Będzie włączać się autamytycznie w trybie auto",
 "theme": "Motyw",
+"dark": "Ciemny",
+"light": "Jasny",
+"auto": "Auto",
 "themeDesc": "Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.",
 
 "appInfo": "Informacje o aplikacji",
@@ -24,11 +27,11 @@
 "exit": "Powrót",
 
 "suggestionsNotFound": "Nie znaleziono podobnych obrazów!",
-"tryToReloadSuggestions": "Spróbuj wyszukać czegoś innego.",
+"tryToReloadSuggestions": "Spróbuj wybrać inny obraz na głównej.",
 "suggestions": "Propozycje",
 "suggestionsDesc": "na podstawie wybranego obrazu",
 
-"imagesNotFound": "Ups...Coś poszło nie tak!",
+"imagesNotFound": "Coś poszło nie tak!",
 "tryToReload": "Spróbuj ponownie.",
 
 

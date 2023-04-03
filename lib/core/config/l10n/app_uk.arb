@@ -1,0 +1,75 @@
+{
+"home": "Головна",
+"favorites":"Обрані",
+
+"profile": "Профіль",
+"theme": "Тема",
+"preview": "Перегляд",
+"customization": "Кастомізація",
+"navigation":"Панель навігації",
+"themeDesc": "Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.",
+"navigationDesc": "Спеціальна панель навігації",
+
+"appearance": "Зовнішній вигляд",
+"darkTheme": "Hічний режим",
+"dark": "Темний",
+"light": "Світлий",
+"auto": "Автоматичний",
+"appInfo": "Інформація",
+"version": "Версія",
+"customizationDesc": "Змінити вигляд програми",
+
+"discoverMore": "Дізнайтеся більше",
+"exit": "Вихід",
+
+"suggestionsNotFound": "Схожих зображень не знайдено!",
+"tryToReloadSuggestions": "Спробуйте вибрати щось інше.",
+"suggestions": "Пропозиції",
+"suggestionsDesc": "на основі обраного зображення",
+
+"imagesNotFound": "Щось пішло не так!",
+"tryToReload": "Спробуйте перезавантажити.",
+
+
+
+"noFavorites": "Обраних ще немає!",
+"noFavoritesDesc": "Додайте зображення до обраних і побачите його тут.",
+
+"searchImages": "Пошук",
+
+"landscapes": "Пейзаж",
+"cityscapes": "Місто",
+"abstract": "Абстрактція",
+"space": "Космос",
+"cars": "Авто",
+
+"noSearchHistory": "Історія пошуку відсутня",
+
+"category": "категорія: ",
+"uploader": "завантажив: ",
+
+"homeScreen": "Домашній екран",
+"lockScreen": "Екран блокування",
+"both": "Обидва",
+"set_wallpaper_on": "Встановити на",
+
+"storagePermission": "Дозвіл на зберігання",
+"notificationPermission": "Дозвіл на сповіщення",
+"permissionDesc": "Вам потрібно надати ці дозволи в налаштуваннях системи",
+"settings": "Налаштування",
+
+
+"welcome": "Ласкаво просимо!",
+"creatingAccount": "Створіть новий обліковий запис",
+"yourInfo": "Ваша інформація",
+"madeBy": "Mykola Pryhodskyi",
+"developer_email": "pryhodskyimykola@gmail.com",
+
+"contact": "Контакт",
+"location": "Місцезнаходження",
+"location_description": "Польща",
+"languages_and_tools": "Мови та інструменти",
+"tool_description": "Flutter, Dart, Firebase, Git, Rive",
+"fun_fact": "Кумедний факт",
+"fun_fact_description": "Можу знизити ціну до 100%. Тоді ви нічого не платите, а я нічого не роблю :)"
+}

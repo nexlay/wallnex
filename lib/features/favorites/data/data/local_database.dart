@@ -28,6 +28,7 @@ class FavoritesDatabaseImpl implements LocalDb {
   Future<List<WallpaperModel>> getFavorites() async {
     final favoriteBox = await Hive.openBox<Wallpaper>('favorites');
     return Future.value(
-        favoriteBox.values.map((e) => WallpaperModel.fromIterable(e)).toList());
+      favoriteBox.values.map((e) => WallpaperModel.fromIterable(e)).toList(),
+    );
   }
 }

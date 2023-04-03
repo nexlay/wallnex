@@ -28,10 +28,10 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
   void _onRiveInit(Artboard artboard) async {
     final controller = StateMachineController.fromArtboard(
       artboard,
-      stateMachine,
+      kStateMachine,
     );
     artboard.addController(controller!);
-    _active = controller.findInput<bool>(riveSwitch) as SMIBool;
+    _active = controller.findInput<bool>(kRiveSwitch) as SMIBool;
   }
 
   @override

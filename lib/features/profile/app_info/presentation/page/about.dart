@@ -8,7 +8,7 @@ import '../../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../../common/ui/slivers/custom_scroll_view.dart';
 import '../../../../../const/const.dart';
 import '../../../../../const/const_rive.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/get_app_info_notifier.dart';
 
 class AppInformation extends StatelessWidget {
@@ -16,12 +16,12 @@ class AppInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
     return Scaffold(
       body: BodyScrollView(
         title: locale.appInfo,
         actionWidget: IconButton(
-          onPressed: () => context.push(discoverMore),
+          onPressed: () => context.push(krDiscoverMore),
           icon: const Icon(Icons.more_horiz_outlined),
         ),
         childWidget: SliverFillRemaining(
@@ -37,7 +37,7 @@ class AppInformation extends StatelessWidget {
                   return Column(
                     children: [
                       const AnimationWithRive(
-                        path: logo,
+                        path: kLogo, onRiveInit: null,
                       ),
                       Text(
                         value.value1,
@@ -72,7 +72,7 @@ class AppInformation extends StatelessWidget {
                         ),
                       ),
                     ),
-                    path: devInfo,
+                    path: krDevInfo,
                     trailing: null,
                     leading: null,
                   ),

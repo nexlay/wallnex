@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../common/ui/image/image_card.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/get_suggestions_notifier.dart';
 
 class SuggestionsPage extends StatelessWidget {
@@ -10,7 +10,7 @@ class SuggestionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,

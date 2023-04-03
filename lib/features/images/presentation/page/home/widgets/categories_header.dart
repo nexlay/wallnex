@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/const/const_api_url.dart';
 import '../../../../../../common/ui/slivers/custom_header_delegate.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../provider/get_images_notifier.dart';
 
 class CategoriesHeader extends StatelessWidget {
@@ -13,12 +13,14 @@ class CategoriesHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = L.of(context);
+
     final list = [
-      AppLocalizations.of(context)!.landscapes,
-      AppLocalizations.of(context)!.cityscapes,
-      AppLocalizations.of(context)!.abstract,
-      AppLocalizations.of(context)!.space,
-      AppLocalizations.of(context)!.cars,
+      locale.landscapes,
+      locale.cityscapes,
+      locale.abstract,
+      locale.space,
+      locale.cars,
     ];
 
     return SliverPersistentHeader(
@@ -35,7 +37,7 @@ class CategoriesHeader extends StatelessWidget {
                   onTap: () {
                     context
                         .read<GetImagesNotifier>()
-                        .searchByCategories(categoriesListAsset[index]);
+                        .searchByCategories(kCategoriesListAsset[index]);
                   },
                   child: Stack(
                     alignment: Alignment.center,
@@ -43,7 +45,7 @@ class CategoriesHeader extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
                         child: Image.asset(
-                          'assets/image/categories/${categoriesListAsset[index]}.jpg',
+                          'assets/image/categories/${kCategoriesListAsset[index]}.jpg',
                           fit: BoxFit.cover,
                         ),
                       ),

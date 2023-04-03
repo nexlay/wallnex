@@ -27,7 +27,7 @@ class ImageCard extends StatelessWidget {
           Positioned.fill(
             child: GestureDetector(
               onTap: () {
-                context.push(details, extra: wallpaper);
+                context.push(krDetails, extra: wallpaper);
                 context
                     .read<GetSuggestionsNotifier>()
                     .getSuggestions(wallpaper.id);

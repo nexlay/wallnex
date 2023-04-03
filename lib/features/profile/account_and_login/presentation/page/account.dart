@@ -6,8 +6,9 @@ import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/entities/user.dart';
 import 'package:wallnex/features/profile/account_and_login/presentation/provider/local_user_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wallnex/injection_container.dart';
+
+import '../../../../../core/config/l10n/generated/app_localizations.dart';
 
 const avatarSize = 100.00;
 
@@ -23,7 +24,7 @@ class Account extends ProfileScreen {
           },
           icon: const Icon(Icons.add_a_photo_outlined),
         ),
-        title: AppLocalizations.of(context)!.yourInfo,
+        title: L.of(context).yourInfo,
         childWidget: SliverFillRemaining(
             hasScrollBody: false,
           child: Consumer<LocalUser>(
@@ -32,7 +33,7 @@ class Account extends ProfileScreen {
               actions: [
                 SignedOutAction(
                   (context) {
-                    context.pushReplacement(login);
+                    context.pushReplacement(krLogin);
                   },
                 ),
               ],

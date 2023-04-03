@@ -6,14 +6,15 @@ import 'common/ui/buttons/floating_buttons_bar.dart';
 import 'common/ui/navigation_bar/custom_nav_bar.dart';
 import 'common/ui/slivers/custom_scroll_view.dart';
 import 'const/const.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'core/config/l10n/generated/app_localizations.dart';
+
 
 class Wrapper extends StatelessWidget {
   const Wrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
 
     final List<NavigationDestination> navDestinations = [
       NavigationDestination(
@@ -56,7 +57,7 @@ class Wrapper extends StatelessWidget {
             ),
       body: BodyScrollView(
         title: titles.elementAt(pageIndex),
-        childWidget: pagesList.elementAt(pageIndex),
+        childWidget: kPagesList.elementAt(pageIndex),
         actionWidget: null,
       ),
     );

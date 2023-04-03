@@ -8,7 +8,7 @@ import 'package:wallnex/const/const.dart';
 import '../../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../../const/const_rive.dart';
 import '../../../../../core/config/env/env.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../favorites/presentation/provider/favorites_images_notifier.dart';
 
 class Login extends StatelessWidget {
@@ -18,7 +18,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyScrollView(
-        title: AppLocalizations.of(context)!.welcome,
+        title: L.of(context).welcome,
         actionWidget: null,
         childWidget: SliverFillRemaining(
           hasScrollBody: false,
@@ -28,19 +28,19 @@ class Login extends StatelessWidget {
             actions: [
               ForgotPasswordAction(
                 (context, email) {
-                  context.push(forgotPassword, extra: email);
+                  context.push(krForgotPassword, extra: email);
                 },
               ),
               AuthStateChangeAction<SignedIn>(
                 (context, state) {
                   if (!state.user!.emailVerified) {
-                    context.pushReplacement(emailVerification);
+                    context.pushReplacement(krEmailVerification);
                   } else {
                     context
                         .read<FavoritesNotifier>()
                         .getFavorites()
                         .whenComplete(
-                          () => context.pushReplacement(account),
+                          () => context.pushReplacement(krAccount),
                         );
                   }
                 },
@@ -48,15 +48,15 @@ class Login extends StatelessWidget {
               AuthStateChangeAction<UserCreated>(
                 (context, state) {
                   if (!state.credential.user!.emailVerified) {
-                    context.pushReplacement(emailVerification);
+                    context.pushReplacement(krEmailVerification);
                   } else {
-                    context.pushReplacement(account);
+                    context.pushReplacement(krAccount);
                   }
                 },
               ),
             ],
             headerBuilder: (_, action, shrink) => const AnimationWithRive(
-              path: logo,
+              path: kLogo, onRiveInit: null,
             ),
             oauthButtonVariant: OAuthButtonVariant.icon_and_text,
             providers: [

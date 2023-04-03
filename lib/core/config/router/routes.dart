@@ -39,22 +39,22 @@ class AppRouter {
 
   ///[MaterialApp.router]
   static final _router = GoRouter(
-    initialLocation: root,
+    initialLocation: krRoot,
     routes: [
-      GoRoute(path: root, builder: _homeRouteBuilder),
-      GoRoute(path: favorites, builder: _favoritesRouteBuilder),
-      GoRoute(path: details, builder: _detailsRouteBuilder),
-      GoRoute(path: preview, builder: _previewRouteBuilder),
-      GoRoute(path: profile, builder: _profileRouteBuilder),
-      GoRoute(path: account, builder: _accountRouteBuilder),
-      GoRoute(path: login, builder: _loginRouteBuilder),
-      GoRoute(path: emailVerification, builder: _emailVerificationRouteBuilder),
-      GoRoute(path: forgotPassword, builder: _forgotPasswordRouteBuilder),
-      GoRoute(path: appearance, builder: _appearanceRouteBuilder),
-      GoRoute(path: customization, builder: _customizationRouteBuilder),
-      GoRoute(path: appInformation, builder: _appInformationRouteBuilder),
-      GoRoute(path: discoverMore, builder: _discoverMoreRouteBuilder),
-      GoRoute(path: devInfo, builder: _devInfoRouteBuilder),
+      GoRoute(path: krRoot, builder: _homeRouteBuilder),
+      GoRoute(path: krFavorites, builder: _favoritesRouteBuilder),
+      GoRoute(path: krDetails, builder: _detailsRouteBuilder),
+      GoRoute(path: krPreview, builder: _previewRouteBuilder),
+      GoRoute(path: krProfile, builder: _profileRouteBuilder),
+      GoRoute(path: krAccount, builder: _accountRouteBuilder),
+      GoRoute(path: krLogin, builder: _loginRouteBuilder),
+      GoRoute(path: krEmailVerification, builder: _emailVerificationRouteBuilder),
+      GoRoute(path: krForgotPassword, builder: _forgotPasswordRouteBuilder),
+      GoRoute(path: krAppearance, builder: _appearanceRouteBuilder),
+      GoRoute(path: krCustomization, builder: _customizationRouteBuilder),
+      GoRoute(path: krAppInformation, builder: _appInformationRouteBuilder),
+      GoRoute(path: krDiscoverMore, builder: _discoverMoreRouteBuilder),
+      GoRoute(path: krDevInfo, builder: _devInfoRouteBuilder),
     ],
   );
 

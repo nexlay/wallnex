@@ -1,0 +1,174 @@
+import 'app_localizations.dart';
+
+/// The translations for Ukrainian (`uk`).
+class LUk extends L {
+  LUk([String locale = 'uk']) : super(locale);
+
+  @override
+  String get home => 'Головна';
+
+  @override
+  String get favorites => 'Обрані';
+
+  @override
+  String get profile => 'Профіль';
+
+  @override
+  String get theme => 'Тема';
+
+  @override
+  String get dark => 'Темний';
+
+  @override
+  String get light => 'Світлий';
+
+  @override
+  String get auto => 'Автоматичний';
+
+  @override
+  String get preview => 'Перегляд';
+
+  @override
+  String get customization => 'Кастомізація';
+
+  @override
+  String get navigation => 'Панель навігації';
+
+  @override
+  String get themeDesc => 'Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.';
+
+  @override
+  String get navigationDesc => 'Спеціальна панель навігації';
+
+  @override
+  String get appearance => 'Зовнішній вигляд';
+
+  @override
+  String get darkTheme => 'Hічний режим';
+
+  @override
+  String get appInfo => 'Інформація';
+
+  @override
+  String get version => 'Версія';
+
+  @override
+  String get customizationDesc => 'Змінити вигляд програми';
+
+  @override
+  String get discoverMore => 'Дізнайтеся більше';
+
+  @override
+  String get exit => 'Вихід';
+
+  @override
+  String get suggestionsNotFound => 'Схожих зображень не знайдено!';
+
+  @override
+  String get tryToReloadSuggestions => 'Спробуйте вибрати щось інше.';
+
+  @override
+  String get suggestions => 'Пропозиції';
+
+  @override
+  String get suggestionsDesc => 'на основі обраного зображення';
+
+  @override
+  String get imagesNotFound => 'Щось пішло не так!';
+
+  @override
+  String get tryToReload => 'Спробуйте перезавантажити.';
+
+  @override
+  String get noFavorites => 'Обраних ще немає!';
+
+  @override
+  String get noFavoritesDesc => 'Додайте зображення до обраних і побачите його тут.';
+
+  @override
+  String get searchImages => 'Пошук';
+
+  @override
+  String get landscapes => 'Пейзаж';
+
+  @override
+  String get cityscapes => 'Місто';
+
+  @override
+  String get abstract => 'Абстрактція';
+
+  @override
+  String get space => 'Космос';
+
+  @override
+  String get cars => 'Авто';
+
+  @override
+  String get noSearchHistory => 'Історія пошуку відсутня';
+
+  @override
+  String get category => 'категорія: ';
+
+  @override
+  String get uploader => 'завантажив: ';
+
+  @override
+  String get homeScreen => 'Домашній екран';
+
+  @override
+  String get lockScreen => 'Екран блокування';
+
+  @override
+  String get both => 'Обидва';
+
+  @override
+  String get set_wallpaper_on => 'Встановити на';
+
+  @override
+  String get storagePermission => 'Дозвіл на зберігання';
+
+  @override
+  String get notificationPermission => 'Дозвіл на сповіщення';
+
+  @override
+  String get permissionDesc => 'Вам потрібно надати ці дозволи в налаштуваннях системи';
+
+  @override
+  String get settings => 'Налаштування';
+
+  @override
+  String get welcome => 'Ласкаво просимо!';
+
+  @override
+  String get creatingAccount => 'Створіть новий обліковий запис';
+
+  @override
+  String get yourInfo => 'Ваша інформація';
+
+  @override
+  String get madeBy => 'Mykola Pryhodskyi';
+
+  @override
+  String get developer_email => 'pryhodskyimykola@gmail.com';
+
+  @override
+  String get contact => 'Контакт';
+
+  @override
+  String get location => 'Місцезнаходження';
+
+  @override
+  String get location_description => 'Польща';
+
+  @override
+  String get languages_and_tools => 'Мови та інструменти';
+
+  @override
+  String get tool_description => 'Flutter, Dart, Firebase, Git, Rive';
+
+  @override
+  String get fun_fact => 'Кумедний факт';
+
+  @override
+  String get fun_fact_description => 'Можу знизити ціну до 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
+}

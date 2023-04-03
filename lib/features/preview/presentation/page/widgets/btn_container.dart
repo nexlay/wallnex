@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/preview_buttons_bar.dart';
+import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../images/domain/entities/wallpaper.dart';
 import 'buttons/set_wallpaper_btn.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum Screen {
   home(screen: 1),
@@ -20,7 +20,7 @@ class BtnContainer extends StatelessWidget {
   final Wallpaper wallpaper;
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
 
     return Card(
       child: PopupMenuButton<Widget?>(

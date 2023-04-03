@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 import '../../../../../common/ui/animations/loading.dart';
 import '../../../../common/ui/animations/empty_sliver_screen.dart';
 import '../../../../const/const_rive.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/favorites_images_notifier.dart';
 import 'favorites_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Favorites extends StatelessWidget {
   const Favorites({Key? key}) : super(key: key);
@@ -21,9 +22,9 @@ class Favorites extends StatelessWidget {
   }
 
   Widget _showBody(BuildContext context, FavoritesNotifier provider) {
-    final locale = AppLocalizations.of(context)!;
+    final locale = L.of(context);
     final emptyScreen = EmptySliverScreen(
-      assetPath: emptyFavorites,
+      assetPath: kEmptyFavorites,
       title: locale.noFavorites,
       subtitle: locale.noFavoritesDesc,
     );

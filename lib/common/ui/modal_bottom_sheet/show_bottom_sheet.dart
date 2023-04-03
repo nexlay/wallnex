@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../features/images/presentation/page/details/widgets/image_specs/image_colors.dart';
 import '../../../features/images/presentation/page/details/widgets/image_specs/image_specs_bar.dart';
 import '../../../features/images/presentation/provider/get_images_notifier.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../animations/loading.dart';
 
 void showImageInformation(BuildContext context) {
@@ -51,7 +51,7 @@ void showImageInformation(BuildContext context) {
                   Row(
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.category,
+                        L.of(context).category,
                       ),
                       Text(
                         wallpaper.category,
@@ -61,7 +61,7 @@ void showImageInformation(BuildContext context) {
                   Row(
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.uploader,
+                        L.of(context).uploader,
                       ),
                       TextButton(
                         onPressed: () async {

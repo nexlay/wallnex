@@ -44,7 +44,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<AdProvider>();
-    return _bannerAd != null
+    return provider.bannerAD.adStatus != false
         ? SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: padding, vertical: defaultValue),
@@ -62,6 +62,6 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
               ),
             ),
           )
-        : empty;
+        : kEmpty;
   }
 }

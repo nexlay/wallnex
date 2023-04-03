@@ -8,6 +8,7 @@ import 'package:wallnex/features/search/presentation/provider/get_search_history
 import 'package:wallnex/wrapper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
 import 'common/provider/get_default_home_page_notifier.dart';
+import 'core/config/l10n/generated/app_localizations.dart';
 import 'core/config/router/routes.dart';
 import 'core/config/theme/dark_theme.dart';
 import 'core/config/theme/light_theme.dart';
@@ -27,7 +28,6 @@ import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart
 import 'injection_container.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -117,13 +117,13 @@ class Wallnex extends StatelessWidget {
       routeInformationParser: AppRouter().router.routeInformationParser,
       routerDelegate: AppRouter().router.routerDelegate,
       localizationsDelegates: [
-        AppLocalizations.delegate,
+        L.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         FirebaseUILocalizations.delegate,
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: L.supportedLocales,
       theme: AppTheme.lightTheme,
       darkTheme: AppDarkTheme.darkTheme,
       themeMode: value == ThemeValue.light
