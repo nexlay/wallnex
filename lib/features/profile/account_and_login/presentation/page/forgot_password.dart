@@ -15,7 +15,7 @@ class ForgotPassword extends StatelessWidget {
       headerMaxExtent: 200,
       headerBuilder: (_, constraints, shrinkOffset) => const Center(
         child: AnimationWithRive(
-          path: kLock, onRiveInit: null,
+          path: kLock,
         ),
       ),
     );

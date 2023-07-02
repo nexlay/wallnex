@@ -56,6 +56,15 @@ class LPl extends L {
   String get customizationDesc => 'Zmień wygląd aplikacji';
 
   @override
+  String get premium => 'Zwiększ komfort korzystania z aplikacji';
+
+  @override
+  String get premiumDesc => 'Kup funkcje premium';
+
+  @override
+  String get yourPremium => 'Twój Premium';
+
+  @override
   String get discoverMore => 'Odkryj więcej';
 
   @override
@@ -107,10 +116,16 @@ class LPl extends L {
   String get noSearchHistory => 'Brak historii wyszukiwania';
 
   @override
-  String get category => 'kategoria: ';
+  String get category => 'kategoria';
 
   @override
-  String get uploader => 'przesyłający: ';
+  String get uploader => 'przesyłający';
+
+  @override
+  String get imageName => 'nazwa';
+
+  @override
+  String get fileType => 'typ pliku';
 
   @override
   String get homeScreen => 'Ekran główny';

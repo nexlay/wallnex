@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../../../common/ui/image/image_card.dart';
-import '../../../../core/config/l10n/generated/app_localizations.dart';
+
+import '../../../../const/route_paths.dart';
+import '../../../images/presentation/provider/get_images_notifier.dart';
 import '../provider/get_suggestions_notifier.dart';
 
 class SuggestionsPage extends StatelessWidget {
@@ -10,48 +13,40 @@ class SuggestionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = L.of(context);
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ListTile(
-          title: Text(
-            locale.suggestions,
-            style: const TextStyle(fontSize: 22.0),
+    return Selector<GetSuggestionsNotifier, List<Wallpaper>>(
+      selector: (_, value) => value.suggestions,
+      builder: (_, suggestions, __) => Expanded(
+        child: ListView.separated(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          separatorBuilder: (BuildContext context, int index) =>
+              const SizedBox(
+            width: 1.0,
           ),
-          subtitle: Text(
-            locale.suggestionsDesc,
-          ),
-        ),
-        Selector<GetSuggestionsNotifier, List<Wallpaper>>(
-          selector: (_, value) => value.suggestions,
-          builder: (_, suggestions, __) => Expanded(
-            child: ListView.separated(
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(
-                width: 1.0,
+          physics: const BouncingScrollPhysics(),
+          itemCount: suggestions.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (_, index) {
+            return AspectRatio(
+              aspectRatio: 2 / 3,
+              child: ImageCard(
+                goTo: () {
+                  context
+                      .read<GetSuggestionsNotifier>()
+                      .getSuggestions(suggestions[index].id);
+                  context
+                      .read<GetImagesNotifier>()
+                      .getImageById(suggestions[index].id);
+                  context.push(krDetails, extra: suggestions[index]);
+                },
+                path: suggestions[index].thumbsLarge,
+                wallpaper: suggestions[index],
+                favorite: null,
+                imageSpecs: null,
               ),
-              physics: const BouncingScrollPhysics(),
-              itemCount: suggestions.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (_, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: AspectRatio(
-                    aspectRatio: 1 / 2,
-                    child: ImageCard(
-                      wallpaper: suggestions[index],
-                      widget: null,
-                      imageSpecs: null,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
+            );
+          },
         ),
-      ],
+      ),
     );
   }
 }

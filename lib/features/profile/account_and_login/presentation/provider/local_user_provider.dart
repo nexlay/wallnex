@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecase/delete_all_user_data.dart';
@@ -19,9 +18,6 @@ class LocalUserProvider{
   Stream<LocalUser> get user {
     return _getUserUseCase.user;
   }
-
-  //Reload favorites list when user sign in/out
-
 
   Future<void> updateUserPhotoUrl() async {
     await _updateProfilePhotoUseCase.call(NoParams());

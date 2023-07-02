@@ -18,6 +18,9 @@
 "appInfo": "App info",
 "version": "Version",
 "customizationDesc": "Change application look",
+"premium": "Enhance your user experience",
+"premiumDesc": "Buy premium features",
+"yourPremium": "Your Premium",
 
 "discoverMore": "Discover more",
 "exit": "Exit",
@@ -29,8 +32,6 @@
 
 "imagesNotFound": "Oops...Something went wrong!",
 "tryToReload": "Try to reload.",
-
-
 
 "noFavorites": "No favorites yet!",
 "noFavoritesDesc": "Once you favorite an image, you'll see it here.",
@@ -45,8 +46,10 @@
 
 "noSearchHistory": "Nothing to show",
 
-"category": "category: ",
-"uploader": "uploader: ",
+"category": "category",
+"uploader": "uploader",
+"imageName": "image name",
+"fileType": "file type",
 
 "homeScreen": "Home screen",
 "lockScreen": "Lock screen",

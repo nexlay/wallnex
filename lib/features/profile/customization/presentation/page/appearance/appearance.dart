@@ -1,78 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../common/ui/animations/animation_with_rive.dart';
+import 'package:rive/rive.dart';
 import '../../../../../../common/ui/slivers/custom_scroll_view.dart';
 import '../../../../../../const/const_rive.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../provider/theme_provider.dart';
 
-class Appearance extends StatelessWidget {
+class Appearance extends StatefulWidget {
   const Appearance({Key? key}) : super(key: key);
+
+  @override
+  State<Appearance> createState() => _AppearanceState();
+}
+
+class _AppearanceState extends State<Appearance> {
+  //Trigger for activating rive animation
+  SMIBool? _activateRiveAnimation;
+  ThemeValue themeValue = ThemeValue.auto;
+  var brightness = WidgetsBinding.instance.window.platformBrightness;
+
+  void onRiveInit(Artboard artboard) async {
+    final controller = StateMachineController.fromArtboard(
+      artboard,
+      kStateMachine,
+    );
+    artboard.addController(controller!);
+    _activateRiveAnimation = controller.findInput<bool>(kRiveSwitch) as SMIBool;
+    //Check on animation init
+    activateAnimation();
+  }
+
+  void activateAnimation() {
+    _activateRiveAnimation?.value = themeValue.value == 0
+        ? brightness == Brightness.dark
+        : themeValue.value == 1
+            ? false
+            : themeValue.value == 2
+                ? true
+                : false;
+  }
 
   @override
   Widget build(BuildContext context) {
     final locale = L.of(context);
     final themeNavBar = [
       NavigationDestination(
-        icon: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.auto_awesome_outlined),
-        ),
+        icon: const Icon(Icons.auto_awesome_outlined),
         selectedIcon: const Icon(Icons.auto_awesome),
         label: locale.auto,
       ),
       NavigationDestination(
-          icon: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.light_mode_outlined),
-          ),
+          icon: const Icon(Icons.light_mode_outlined),
           selectedIcon: const Icon(Icons.light_mode),
           label: locale.light),
       NavigationDestination(
-          icon: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.dark_mode_outlined),
-          ),
+          icon: const Icon(Icons.dark_mode_outlined),
           selectedIcon: const Icon(Icons.dark_mode),
           label: locale.dark),
     ];
 
-    ThemeValue themeValue = context.select((ThemeProvider t) => t.value);
-
     return Scaffold(
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 50.0, right: 16.0, left: 16.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: NavigationBar(
-            selectedIndex: themeValue.value,
-            onDestinationSelected: (index) =>
-                context.read<ThemeProvider>().setThemeValue(index),
-            destinations: themeNavBar,
-          ),
-        ),
-      ),
+      bottomNavigationBar:
+          Consumer<ThemeProvider>(builder: (_, themeProvider, __) {
+        themeValue = themeProvider.value;
+        //Check on theme changed
+        activateAnimation();
+        return NavigationBar(
+          selectedIndex: themeProvider.value.value,
+          onDestinationSelected: (index) =>
+              context.read<ThemeProvider>().setThemeValue(index),
+          destinations: themeNavBar,
+        );
+      }),
       body: BodyScrollView(
-        title: L.of(context).theme,
-        actionWidget: null,
+        title: locale.theme,
         childWidget: SliverFillRemaining(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Stack(
-              children: [
-                Text(
-                  L.of(context).themeDesc,
-                  textAlign: TextAlign.justify,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: AnimationWithRive(
-                    path: kLamp,
-                    onRiveInit: context.read<ThemeProvider>().onRiveInit,
+          child: Stack(
+            children: [
+              Text(
+                locale.themeDesc,
+                textAlign: TextAlign.justify,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width,
+                  child: RiveAnimation.asset(
+                    kLamp,
+                    onInit: onRiveInit,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

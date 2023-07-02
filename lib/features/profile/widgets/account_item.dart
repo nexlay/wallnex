@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wallnex/features/profile/widgets/on_page_item.dart';
+import 'package:wallnex/common/ui/on_page_item.dart';
 
-class AccountItem extends ProfilePageItem {
+class AccountItem extends OnListItem {
   const AccountItem({
     super.key,
     required super.title,

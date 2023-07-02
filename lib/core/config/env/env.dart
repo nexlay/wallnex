@@ -13,4 +13,8 @@ abstract class Env {
   static final linkedUrl = _Env.linkedUrl;
   @EnviedField(varName: 'ANDROID_BANNER_AD_ID', obfuscate: true)
   static final bannerId = _Env.bannerId;
+  @EnviedField(varName: 'ENTITLEMENTS_ID', obfuscate: true)
+  static final entitlementsId = _Env.entitlementsId;
+  @EnviedField(varName: 'GOOGLE_API_PURCHASE_KEY', obfuscate: true)
+  static final googleApiPurchaseKey = _Env.googleApiPurchaseKey;
 }

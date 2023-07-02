@@ -18,6 +18,9 @@
 "appInfo": "Інформація",
 "version": "Версія",
 "customizationDesc": "Змінити вигляд програми",
+"premium": "Підвищуйте комфорт користування додатком",
+"premiumDesc": "Придбайте преміум",
+"yourPremium": "Ваш Premium",
 
 "discoverMore": "Дізнайтеся більше",
 "exit": "Вихід",
@@ -45,8 +48,10 @@
 
 "noSearchHistory": "Історія пошуку відсутня",
 
-"category": "категорія: ",
-"uploader": "завантажив: ",
+"category": "категорія",
+"uploader": "завантажив",
+"imageName": "назва",
+"fileType": "тип файлу",
 
 "homeScreen": "Домашній екран",
 "lockScreen": "Екран блокування",

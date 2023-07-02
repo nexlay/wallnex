@@ -32,7 +32,7 @@ class FirebaseAuthDbImpl implements FirebaseAuthDb {
 
     final xFile = await picker.pickImage(
       source: ImageSource.gallery,
-      maxWidth: 312,
+      maxWidth: 512,
       maxHeight: 512,
     );
     final file = File(xFile!.path);

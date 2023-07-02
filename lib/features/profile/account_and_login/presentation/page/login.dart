@@ -4,9 +4,9 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
-import 'package:wallnex/const/const.dart';
 import '../../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../../const/const_rive.dart';
+import '../../../../../const/route_paths.dart';
 import '../../../../../core/config/env/env.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../favorites/presentation/provider/favorites_images_notifier.dart';
@@ -18,8 +18,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyScrollView(
-        title: L.of(context).welcome,
-        actionWidget: null,
+        title:L.of(context).welcome,
         childWidget: SliverFillRemaining(
           hasScrollBody: false,
           child: SignInScreen(
@@ -56,7 +55,7 @@ class Login extends StatelessWidget {
               ),
             ],
             headerBuilder: (_, action, shrink) => const AnimationWithRive(
-              path: kLogo, onRiveInit: null,
+              path: kLogo,
             ),
             oauthButtonVariant: OAuthButtonVariant.icon_and_text,
             providers: [

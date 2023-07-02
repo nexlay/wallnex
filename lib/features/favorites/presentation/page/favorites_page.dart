@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import '../../../../../common/ui/image/image_card.dart';
 import '../../../../common/ui/buttons/favorite_button.dart';
+import '../../../../const/route_paths.dart';
 import '../../../images/domain/entities/wallpaper.dart';
-import '../../../images/presentation/page/details/widgets/image_specs/image_specs_bar.dart';
+import '../../../images/presentation/provider/get_images_notifier.dart';
+import '../../../suggestions/presentation/provider/get_suggestions_notifier.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({Key? key, required this.favorites}) : super(key: key);
@@ -11,51 +15,40 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
+    return SliverGrid(
       delegate: SliverChildBuilderDelegate(
         childCount: favorites.length,
         (context, index) {
           return AspectRatio(
             aspectRatio: 2 / 1,
             child: ImageCard(
+              goTo: () {
+                context
+                    .read<GetImagesNotifier>()
+                    .getImageById(favorites[index].id);
+                context
+                    .read<GetSuggestionsNotifier>()
+                    .getSuggestions(favorites[index].id);
+                context.push(krDetails, extra: favorites[index]);
+              },
+              path: favorites[index].thumbsLarge,
               wallpaper: favorites[index],
-              imageSpecs: Positioned(
-                left: 5.0,
-                top: 5.0,
-                child: Card(
-                  child: PopupMenuButton<Widget?>(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    constraints: const BoxConstraints.tightFor(),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                    ),
-                    icon: const Icon(Icons.more_horiz),
-                    itemBuilder: (BuildContext context) => [
-                      PopupMenuItem<Widget?>(
-                        child: ImageSpecsBar(
-                          size: favorites[index].size,
-                          views: favorites[index].views,
-                          resolution: favorites[index].resolution,
-                          fontSize: 14.0,
-                          iconSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              widget: Positioned(
-                right: 5.0,
+              imageSpecs: null,
+              favorite: Positioned(
                 bottom: 5.0,
-                child: Card(
-                  child: FavoriteButton(
-                    wallpaper: favorites[index],
-                  ),
+                right: 5.0,
+                child: FavoriteButton(
+                  wallpaper: favorites[index],
                 ),
               ),
             ),
           );
         },
+      ),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 1,
+        crossAxisSpacing: 1,
       ),
     );
   }

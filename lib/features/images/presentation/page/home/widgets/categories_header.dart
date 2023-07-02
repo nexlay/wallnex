@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/const/const_api_url.dart';
 import '../../../../../../common/ui/slivers/custom_header_delegate.dart';
+import '../../../../../../const/const.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../provider/get_images_notifier.dart';
 
@@ -44,8 +44,8 @@ class CategoriesHeader extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
-                        child: Image.asset(
-                          'assets/image/categories/${kCategoriesListAsset[index]}.jpg',
+                        child: Image(
+                          image: AssetImage('assets/image/categories/${kCategoriesListAsset[index]}.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),

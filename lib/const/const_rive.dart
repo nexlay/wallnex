@@ -14,5 +14,6 @@ const kLamp = 'assets/rive/lamp.riv';
 const kLogo = 'assets/rive/wallnex_logo.riv';
 const kLock = 'assets/rive/lock.riv';
 const kDone = 'assets/rive/done.riv';
+const kPremiumSuccess = 'assets/rive/premium_success.riv';
 //Add assets into list
 const kNavBarAssetList = [kHome, kFavorite, kProfileRive];

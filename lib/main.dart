@@ -7,7 +7,7 @@ import 'package:wallnex/features/profile/customization/presentation/provider/the
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
 import 'package:wallnex/wrapper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
-import 'common/provider/get_default_home_page_notifier.dart';
+import 'common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
 import 'core/config/l10n/generated/app_localizations.dart';
 import 'core/config/router/routes.dart';
 import 'core/config/theme/dark_theme.dart';
@@ -23,6 +23,8 @@ import 'features/profile/app_info/presentation/page/about.dart';
 import 'features/profile/app_info/presentation/provider/get_app_info_notifier.dart';
 import 'features/profile/customization/presentation/page/appearance/appearance.dart';
 import 'features/profile/customization/presentation/page/customization/customization.dart';
+import 'features/subscription/presentation/page/purchases.dart';
+import 'features/subscription/presentation/provider/purchase_provider.dart';
 import 'features/suggestions/presentation/page/suggestions.dart';
 import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart';
 import 'injection_container.dart' as di;
@@ -35,6 +37,7 @@ void main() async {
   di.initFirebase();
   di.initFlutterDownloader();
   di.initAds();
+  di.initPlatformPurchasesState();
   di.init();
   runApp(
     const MyApp(),
@@ -48,6 +51,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<PurchaseProvider>(
+          create: (_) =>
+          di.getIt<PurchaseProvider>()..checkSubscriptionStatus(),
+          child: const PurchasesAndSubscriptions(),
+        ),
         ChangeNotifierProvider<GetPermissionNotifier>(
           create: (_) =>
               di.getIt<GetPermissionNotifier>()..getPermissionStatus(),

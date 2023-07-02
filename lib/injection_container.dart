@@ -3,6 +3,8 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:wallnex/core/config/env/env.dart';
 import 'package:wallnex/features/ads/data/datasource/datasource.dart';
 import 'package:wallnex/features/ads/data/repository/repo_impl.dart';
 import 'package:wallnex/features/ads/domain/repo/repository.dart';
@@ -30,7 +32,7 @@ import 'package:wallnex/features/search/domain/usecases/get_search_history.dart'
 import 'package:wallnex/features/search/domain/usecases/push_search_history_into_db.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
-import 'common/provider/get_default_home_page_notifier.dart';
+import 'common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
 import 'features/favorites/data/data/local_database.dart';
 import 'features/favorites/data/repository/favorites_repo_impl.dart';
 import 'features/favorites/domain/repository/favorites_repo.dart';
@@ -69,11 +71,17 @@ import 'features/profile/customization/domain/usecase/get_nav_bar_usecase.dart';
 import 'features/profile/customization/domain/usecase/get_theme_usecase.dart';
 import 'features/profile/customization/presentation/provider/customization_provider.dart';
 import 'features/profile/customization/presentation/provider/theme_provider.dart';
+import 'features/subscription/data/datasource/purchase_datasource.dart';
+import 'features/subscription/data/repo/purchase_repo_impl.dart';
+import 'features/subscription/domain/repo/purchase_repo.dart';
+import 'features/subscription/domain/usecase/check_subscription_status.dart';
+import 'features/subscription/domain/usecase/fetch_products_use_case.dart';
+import 'features/subscription/domain/usecase/purchase_product_use_case.dart';
+import 'features/subscription/presentation/provider/purchase_provider.dart';
 import 'features/suggestions/data/data/suggestions_data.dart';
 import 'features/suggestions/domain/repository/suggestions_repo.dart';
 import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-
 import 'firebase_options.dart';
 
 Future<void> initFirebase() async {
@@ -102,11 +110,28 @@ void initAds() {
   MobileAds.instance.initialize();
 }
 
+Future<void> initPlatformPurchasesState() async {
+  //Purchases.setLogLevel(LogLevel.debug);
+
+  final PurchasesConfiguration configuration =
+      PurchasesConfiguration(Env.googleApiPurchaseKey);
+
+  await Purchases.configure(configuration);
+}
+
 final getIt = GetIt.instance;
 
 Future<void> init() async {
 //-----------------------------
 //Providers (ChangeNotifiers)
+//-----------------------------
+  getIt.registerFactory(
+    () => PurchaseProvider(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
 //-----------------------------
   getIt.registerFactory(
     () => AdProvider(
@@ -197,6 +222,24 @@ Future<void> init() async {
   );
 //-----------------------------
   //Domain layer
+  // -----------------------------
+  getIt.registerLazySingleton(
+        () => CheckSubscriptionStatus(
+      repository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => PurchaseProduct(
+      repository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => FetchProducts(
+      repository: getIt(),
+    ),
+  );
   // -----------------------------
   getIt.registerLazySingleton(
     () => CreateBannerAdUseCase(
@@ -323,7 +366,12 @@ Future<void> init() async {
 //-----------------------------
   //Repository
 //-----------------------------
-
+  getIt.registerLazySingleton<PurchaseRepository>(
+    () => PurchaseRepositoryImpl(
+      purchaseDataSource: getIt(),
+    ),
+  );
+//-----------------------------
   getIt.registerLazySingleton<AdRepo>(
     () => AdRepoImpl(
       bannerAdDatasource: getIt(),
@@ -387,6 +435,10 @@ Future<void> init() async {
   );
 //-----------------------------
   //Data
+//-----------------------------
+  getIt.registerLazySingleton<PurchaseDataSource>(
+    () => PurchaseDataSourceImpl(),
+  );
 //-----------------------------
   getIt.registerLazySingleton<BannerAdDatasource>(
     () => BannerAdDataSourceImpl(),

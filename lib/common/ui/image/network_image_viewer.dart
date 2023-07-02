@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import '../loading_status/loader.dart';
 
 class NetworkImageViewer extends StatelessWidget {
   const NetworkImageViewer({Key? key, required this.url})
@@ -14,12 +15,7 @@ class NetworkImageViewer extends StatelessWidget {
         Icons.broken_image,
         size: 50.0,
       ),
-      progressIndicatorBuilder: (_, url, progress) => Center(
-        child: CircularProgressIndicator(
-          strokeWidth: 1,
-          value: progress.progress,
-        ),
-      ),
+      progressIndicatorBuilder: (_, url, progress) => const Loader(),
       imageUrl: url,
       fit: BoxFit.cover,
     );

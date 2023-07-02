@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/features/profile/app_info/presentation/page/widgets/about_sliver_scroll_view.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
 import 'package:wallnex/features/profile/widgets/account_item.dart';
 import '../../../../../common/ui/animations/animation_with_rive.dart';
-import '../../../../../common/ui/slivers/custom_scroll_view.dart';
-import '../../../../../const/const.dart';
 import '../../../../../const/const_rive.dart';
+import '../../../../../const/route_paths.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/get_app_info_notifier.dart';
 
@@ -18,12 +17,8 @@ class AppInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = L.of(context);
     return Scaffold(
-      body: BodyScrollView(
+      body: AboutSliverScrollView(
         title: locale.appInfo,
-        actionWidget: IconButton(
-          onPressed: () => context.push(krDiscoverMore),
-          icon: const Icon(Icons.more_horiz_outlined),
-        ),
         childWidget: SliverFillRemaining(
           hasScrollBody: false,
           child: Column(
@@ -37,7 +32,7 @@ class AppInformation extends StatelessWidget {
                   return Column(
                     children: [
                       const AnimationWithRive(
-                        path: kLogo, onRiveInit: null,
+                        path: kLogo,
                       ),
                       Text(
                         value.value1,

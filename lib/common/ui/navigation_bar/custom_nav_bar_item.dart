@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
 import '../../../const/const_rive.dart';
-import '../../provider/get_default_home_page_notifier.dart';
-
+import '../spacer.dart';
 
 class CustomNavBarItem extends StatefulWidget {
   const CustomNavBarItem(
@@ -60,9 +60,11 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
             GestureDetector(
               onTap: () {
                 context.read<GetPages>().value = widget.tabIndex;
-                setState(() {
-                  _selected = !_selected;
-                });
+                setState(
+                  () {
+                    _selected = !_selected;
+                  },
+                );
               },
               child: SizedBox(
                 width: 60,
@@ -75,9 +77,7 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
             ),
           ],
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        showSpacer(height: 10.0, width: 0.0),
         Text(
           widget.label,
           style: TextStyle(

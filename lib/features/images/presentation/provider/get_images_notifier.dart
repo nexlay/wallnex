@@ -23,14 +23,14 @@ class GetImagesNotifier extends ValueNotifier<int> {
 
   String _url = kUrl + kPage;
 
-  apiPagePlus() {
+  pagePlus() {
     value++;
     isSelectedPage = true;
     notifyListeners();
     loadImages();
   }
 
-  apiPageMinus() {
+  pageMinus() {
     value--;
     notifyListeners();
     loadImages();
@@ -87,8 +87,8 @@ class GetImagesNotifier extends ValueNotifier<int> {
         error = "fail";
         isLoading = false;
       },
-      (singleWallpaper) {
-        wallpaper = singleWallpaper;
+      (imageById) {
+        wallpaper = imageById;
         isLoading = false;
       },
     );

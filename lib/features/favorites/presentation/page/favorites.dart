@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../common/ui/animations/loading.dart';
-import '../../../../common/ui/animations/empty_sliver_screen.dart';
+import 'package:wallnex/common/ui/loading_status/progess_indicator.dart';
+import '../../../../common/ui/epty_screen/empty_sliver_screen.dart';
 import '../../../../const/const_rive.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/favorites_images_notifier.dart';
@@ -31,7 +31,7 @@ class Favorites extends StatelessWidget {
 
     return provider.isLoading
         ? const SliverFillRemaining(
-            child: Loader(),
+            child: ProgressLoader(),
           )
         : !provider.isLoading && provider.favorites.isEmpty
             ? emptyScreen

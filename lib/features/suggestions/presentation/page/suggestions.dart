@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/suggestions/presentation/page/suggestions_page.dart';
-import '../../../../common/ui/animations/empty_sliver_screen.dart';
+import '../../../../common/ui/epty_screen/empty_screen.dart';
+import '../../../../common/ui/loading_status/progess_indicator.dart';
 import '../../../../const/const_rive.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 import '../provider/get_suggestions_notifier.dart';
-
 
 class Suggestions extends StatelessWidget {
   const Suggestions({
@@ -31,7 +31,6 @@ class Suggestions extends StatelessWidget {
     List<Wallpaper> suggestions,
     bool isLoading,
   ) {
-
     final locale = L.of(context);
     final emptyScreen = EmptyScreen(
       assetPath: kEmptySuggestions,
@@ -40,7 +39,7 @@ class Suggestions extends StatelessWidget {
     );
 
     return isLoading
-        ? emptyScreen
+        ? const ProgressLoader()
         : !isLoading && suggestions.isEmpty
             ? emptyScreen
             : !isLoading && suggestions.isNotEmpty

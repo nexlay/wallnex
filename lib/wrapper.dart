@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/customization_provider.dart';
-import 'common/provider/get_default_home_page_notifier.dart';
 import 'common/ui/buttons/floating_buttons_bar.dart';
 import 'common/ui/navigation_bar/custom_nav_bar.dart';
+import 'common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
 import 'common/ui/slivers/custom_scroll_view.dart';
 import 'const/const.dart';
 import 'core/config/l10n/generated/app_localizations.dart';
-
 
 class Wrapper extends StatelessWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -45,11 +44,12 @@ class Wrapper extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: pageIndex == 0 ? const FloatingButtonsBar() : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
       bottomNavigationBar: customNavBar
           ? const CustomNavBar()
           : NavigationBar(
-              animationDuration: const Duration(seconds: 1),
+              animationDuration: const Duration(milliseconds: 100),
               destinations: navDestinations,
               onDestinationSelected: (index) =>
                   context.read<GetPages>().value = index,
@@ -58,7 +58,6 @@ class Wrapper extends StatelessWidget {
       body: BodyScrollView(
         title: titles.elementAt(pageIndex),
         childWidget: kPagesList.elementAt(pageIndex),
-        actionWidget: null,
       ),
     );
   }

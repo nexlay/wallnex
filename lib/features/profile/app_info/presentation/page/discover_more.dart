@@ -14,7 +14,7 @@ class DiscoverMore extends StatelessWidget {
       selector: (_, provider) =>
           Tuple3(provider.appName, provider.appBuild, provider.version),
       builder: (_, value, __) => LicensePage(
-        applicationIcon: const AnimationWithRive(path: kLogo, onRiveInit: null,),
+        applicationIcon: const AnimationWithRive(path: kLogo,),
         applicationName: value.value1,
         applicationVersion: '${value.value3}.${value.value2}',
         applicationLegalese: 'Best regards to Wallhaven team for high-quality APIs',

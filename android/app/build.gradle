@@ -82,5 +82,5 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.multidex:multidex:2.0.1"
-    implementation "androidx.activity:activity:1.7.0-alpha04"
+    implementation "androidx.activity:activity:1.7.0-alpha03"
 }

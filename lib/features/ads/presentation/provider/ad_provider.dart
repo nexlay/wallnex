@@ -8,7 +8,6 @@ class AdProvider extends ChangeNotifier {
 
   BannerAD bannerAD = BannerAD.initialState();
 
-
   static String error = '';
 
   AdProvider(this._createBannerAdUseCase);

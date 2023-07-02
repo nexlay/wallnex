@@ -1,11 +1,13 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/const/const.dart';
+import 'package:wallnex/common/ui/spacer.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/entities/user.dart';
 import 'package:wallnex/features/profile/widgets/account_item.dart';
-import 'package:wallnex/features/profile/widgets/on_page_item.dart';
+import 'package:wallnex/common/ui/on_page_item.dart';
+import '../../const/route_paths.dart';
 import '../../core/config/l10n/generated/app_localizations.dart';
+
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -13,9 +15,9 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = L.of(context);
-    return SliverList(
-      delegate: SliverChildListDelegate(
-        [
+    return SliverToBoxAdapter(
+      child: Column(
+        children: [
           Consumer<LocalUser>(
             builder: (_, localUser, __) => AccountItem(
               title: Text(localUser.name.isEmpty
@@ -34,22 +36,26 @@ class Profile extends StatelessWidget {
               leading: null,
             ),
           ),
-          const SizedBox(
-            height: 40.0,
+          showSpacer(height: 20.0, width: 0.0),
+          OnListItem(
+            title: Text(locale.premium),
+            subtitle: Text(locale.premiumDesc,),
+            path: krPurchases,
+            leading: const Icon(Icons.workspace_premium),
           ),
-          ProfilePageItem(
+          OnListItem(
             title: Text(locale.appearance),
             subtitle: Text(locale.darkTheme),
             path: krAppearance,
             leading: const Icon(Icons.dark_mode_outlined),
           ),
-          ProfilePageItem(
+          OnListItem(
             title: Text(locale.customization),
             subtitle: Text(locale.customizationDesc),
             path: krCustomization,
             leading: const Icon(Icons.dashboard_customize_outlined),
           ),
-          ProfilePageItem(
+          OnListItem(
             title: Text(locale.appInfo),
             subtitle: Text(locale.version),
             path: krAppInformation,

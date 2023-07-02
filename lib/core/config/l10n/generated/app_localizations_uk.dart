@@ -56,6 +56,15 @@ class LUk extends L {
   String get customizationDesc => 'Змінити вигляд програми';
 
   @override
+  String get premium => 'Підвищуйте комфорт користування додатком';
+
+  @override
+  String get premiumDesc => 'Придбайте преміум';
+
+  @override
+  String get yourPremium => 'Ваш Premium';
+
+  @override
   String get discoverMore => 'Дізнайтеся більше';
 
   @override
@@ -107,10 +116,16 @@ class LUk extends L {
   String get noSearchHistory => 'Історія пошуку відсутня';
 
   @override
-  String get category => 'категорія: ';
+  String get category => 'категорія';
 
   @override
-  String get uploader => 'завантажив: ';
+  String get uploader => 'завантажив';
+
+  @override
+  String get imageName => 'назва';
+
+  @override
+  String get fileType => 'тип файлу';
 
   @override
   String get homeScreen => 'Домашній екран';

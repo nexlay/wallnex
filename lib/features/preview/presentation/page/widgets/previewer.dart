@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/common/ui/animations/loading.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
+import '../../../../../common/ui/loading_status/loader.dart';
 import '../../../../file_manager/presentation/provider/file_manager_notifier.dart';
 
 class PreviewViewer extends StatefulWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import 'package:wallnex/features/preview/presentation/page/widgets/btn_container.dart';
+import 'package:wallnex/features/preview/presentation/page/widgets/buttons/btn_container.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/previewer.dart';
 import 'package:wallnex/features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
-import '../../../../common/ui/animations/loading.dart';
+import '../../../../common/ui/loading_status/preview_set_up_wallpaper_loader.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 
 class PreviewPage extends StatelessWidget {
@@ -63,7 +63,7 @@ class PreviewPage extends StatelessWidget {
                   wallpaper: wallpaper,
                 ),
               ),
-              loader ? const Loader() : const SizedBox(),
+              loader ? const LoadingWhenWallpaperSetUp() : const SizedBox(),
             ],
           ),
         ),

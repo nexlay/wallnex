@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wallnex/features/preview/presentation/page/widgets/preview_buttons_bar.dart';
-import '../../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../../../images/domain/entities/wallpaper.dart';
-import 'buttons/set_wallpaper_btn.dart';
+import 'package:wallnex/features/preview/presentation/page/widgets/buttons/preview_buttons_bar.dart';
+import '../../../../../../core/config/l10n/generated/app_localizations.dart';
+import '../../../../../images/domain/entities/wallpaper.dart';
+import 'set_wallpaper_btn.dart';
 
 enum Screen {
   home(screen: 1),

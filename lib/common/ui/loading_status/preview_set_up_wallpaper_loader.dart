@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 
-class Loader extends StatelessWidget {
-  const Loader({Key? key}) : super(key: key);
+class LoadingWhenWallpaperSetUp extends StatelessWidget {
+  const LoadingWhenWallpaperSetUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

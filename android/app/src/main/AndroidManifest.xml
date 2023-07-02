@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="com.android.vending.BILLING" />
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
@@ -61,6 +62,6 @@
         </provider>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3899210934856600~3844752337"/>
+            android:value="ca-app-pub-1579985453596190~3772794637"/>
     </application>
 </manifest>

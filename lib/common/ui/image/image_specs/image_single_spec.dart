@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../../common/ui/spacer.dart';
+
 class ImageSingleSpec extends StatelessWidget {
   const ImageSingleSpec({
     Key? key,
@@ -21,9 +23,7 @@ class ImageSingleSpec extends StatelessWidget {
           icon,
           size: iconSize,
         ),
-        const SizedBox(
-          width: 5.0,
-        ),
+        showSpacer(height: 0.0, width: 3.0),
         Text(
           text,
           style: TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
-import '../../../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../../../widgets/account_item.dart';
+import '../../../../../core/config/l10n/generated/app_localizations.dart';
+import '../../../widgets/account_item.dart';
 
 const itemTextStyle = TextStyle(
   color: Colors.grey,
@@ -19,7 +19,6 @@ class DeveloperInfo extends StatelessWidget {
     return Scaffold(
       body: BodyScrollView(
         title: locale.contact,
-        actionWidget: null,
         childWidget: SliverFillRemaining(
           hasScrollBody: false,
           child: Column(

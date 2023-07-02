@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../../../const/const.dart';
 import '../../../../../../const/custom_social_icons.dart';
 import '../../../../../../core/config/env/env.dart';
 
@@ -17,7 +18,7 @@ class SocialButtonsBar extends StatelessWidget {
           },
           icon: const Icon(
             CustomSocial.twitter_circled,
-            size: 30.0,
+            size: kSocialIconSize,
           ),
         ),
         IconButton(
@@ -26,7 +27,7 @@ class SocialButtonsBar extends StatelessWidget {
           },
           icon: const Icon(
             CustomSocial.github_circled,
-            size: 30.0,
+            size: kSocialIconSize,
           ),
         ),
         IconButton(
@@ -35,7 +36,7 @@ class SocialButtonsBar extends StatelessWidget {
           },
           icon: const Icon(
             CustomSocial.linkedin_circled,
-            size: 30.0,
+            size: kSocialIconSize,
           ),
         ),
       ],

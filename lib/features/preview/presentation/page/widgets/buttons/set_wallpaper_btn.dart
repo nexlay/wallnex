@@ -14,7 +14,10 @@ setWallpaperBtn(
           );
     },
     child: Center(
-      child: Text(title, style: const TextStyle(fontSize: 16.0),),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 16.0),
+      ),
     ),
   );
 }

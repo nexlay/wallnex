@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:rive/rive.dart';
 import 'package:wallnex/core/usecase/usecase.dart';
-import '../../../../../const/const_rive.dart';
 import '../../domain/usecase/get_theme_usecase.dart';
 import '../../domain/usecase/set_theme_usecase.dart';
 
@@ -24,8 +22,7 @@ class ThemeProvider extends ValueNotifier<ThemeValue> {
       : super(ThemeValue.dark);
 
   String error = '';
-  SMIBool? activateRiveAnimation;
-  var brightness = WidgetsBinding.instance.window.platformBrightness;
+
 
   Future<void> getThemeValue() async {
     final themeValue = await _getThemeUseCase.call(NoParams());
@@ -51,26 +48,16 @@ class ThemeProvider extends ValueNotifier<ThemeValue> {
     switch (index) {
       case 0:
         value = ThemeValue.auto;
-        activateRiveAnimation?.value = brightness == Brightness.dark;
         break;
       case 1:
         value = ThemeValue.light;
-        activateRiveAnimation?.value = false;
         break;
       case 2:
         value = ThemeValue.dark;
-        activateRiveAnimation?.value = true;
         break;
     }
     notifyListeners();
   }
 
-  void onRiveInit(Artboard artboard) async {
-    final controller = StateMachineController.fromArtboard(
-      artboard,
-      kStateMachine,
-    );
-    artboard.addController(controller!);
-    activateRiveAnimation = controller.findInput<bool>(kRiveSwitch) as SMIBool;
-  }
+
 }

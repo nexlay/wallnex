@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import 'package:wallnex/const/const.dart';
-import 'package:wallnex/features/images/presentation/page/details/widgets/buttons_bar/buttons_bar.dart';
-import 'package:wallnex/features/images/presentation/page/details/widgets/image_specs/image_specs_bar.dart';
-import '../../../../../common/ui/image/network_image_viewer.dart';
-import '../../../../../common/ui/modal_bottom_sheet/show_bottom_sheet.dart';
+import 'package:wallnex/common/ui/image/image_card.dart';
+import 'package:wallnex/features/images/presentation/page/details/widgets/deatails_scroll_view.dart';
+import '../../../../../common/ui/buttons/favorite_button.dart';
+import '../../../../../common/ui/buttons/pop_up_specs_menu.dart';
+import '../../../../../const/route_paths.dart';
+import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../suggestions/presentation/page/suggestions.dart';
 import '../../../domain/entities/wallpaper.dart';
-import '../../provider/get_images_notifier.dart';
 
 class ImageDetails extends StatelessWidget {
   const ImageDetails({Key? key, required this.wallpaper}) : super(key: key);
@@ -16,56 +15,51 @@ class ImageDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = L.of(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.go(krRoot),
-          icon: const Icon(Icons.arrow_back),
-        ),
-        centerTitle: true,
-        title: ImageSpecsBar(
-          size: wallpaper.size,
-          views: wallpaper.views,
-          resolution: wallpaper.resolution,
-          fontSize: 14.0,
-          iconSize: 16.0,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.read<GetImagesNotifier>().getImageById(wallpaper.id);
-              showImageInformation(
-                context,
-              );
-            },
-            icon: const Icon(Icons.more_horiz_outlined),
-          ),
-        ],
-      ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Hero(
-              tag: wallpaper.id,
-              child: Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: NetworkImageViewer(
-                  url: wallpaper.path,
+      body: DetailScrollView(
+        title: wallpaper.category,
+        childWidget: SliverFillRemaining(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: ImageCard(
+                  goTo: () {
+                    context.push(krPreview, extra: wallpaper);
+                  },
+                  path: wallpaper.path,
+                  wallpaper: wallpaper,
+                  imageSpecs:  Positioned(
+                      top: 5.0,
+                      left: 5.0,
+                      child: showPopUpMenu(
+                        context: context,
+                        id: wallpaper.id,
+                      ),),
+                  favorite:
+                      Positioned(
+                        bottom: 5.0,
+                          right: 5.0,
+                          child: FavoriteButton(wallpaper: wallpaper)),
                 ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: ListTile(
+                  title: Text(
+                    locale.suggestions,
+                    style: const TextStyle(fontSize: 20.0),
+                  ),
+                  subtitle: Text(
+                    locale.suggestionsDesc,
+                  ),
+                ),
+              ),
+              const Suggestions(),
+            ],
           ),
-          ButtonsBar(
-            wallpaper: wallpaper,
-          ),
-          const Expanded(
-            child: Center(
-              child: Suggestions(),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

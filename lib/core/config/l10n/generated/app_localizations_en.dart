@@ -56,6 +56,15 @@ class LEn extends L {
   String get customizationDesc => 'Change application look';
 
   @override
+  String get premium => 'Enhance your user experience';
+
+  @override
+  String get premiumDesc => 'Buy premium features';
+
+  @override
+  String get yourPremium => 'Your Premium';
+
+  @override
   String get discoverMore => 'Discover more';
 
   @override
@@ -107,10 +116,16 @@ class LEn extends L {
   String get noSearchHistory => 'Nothing to show';
 
   @override
-  String get category => 'category: ';
+  String get category => 'category';
 
   @override
-  String get uploader => 'uploader: ';
+  String get uploader => 'uploader';
+
+  @override
+  String get imageName => 'image name';
+
+  @override
+  String get fileType => 'file type';
 
   @override
   String get homeScreen => 'Home screen';

@@ -8,7 +8,7 @@ abstract class BannerAdDatasource {
 }
 
 class BannerAdDataSourceImpl implements BannerAdDatasource {
-  static bool _adStatus = false;
+
 
   @override
   Future<BannerAdModel> getBannerAd() async {
@@ -18,7 +18,7 @@ class BannerAdDataSourceImpl implements BannerAdDatasource {
         adUnitId: _bannerUid,
         size: _size,
         request: _adRequest,
-        adStatus: _adStatus,
+        adStatus: _adStatus(),
       ),
     );
   }
@@ -31,18 +31,18 @@ class BannerAdDataSourceImpl implements BannerAdDatasource {
 
   AdRequest get _adRequest => const AdRequest();
 
-  final AdManagerBannerAdListener _adListener = AdManagerBannerAdListener(
+  bool _adStatus() => true;
+
+ final AdManagerBannerAdListener _adListener = AdManagerBannerAdListener(
     // Called when an ad is successfully received.
     onAdLoaded: (Ad ad) {
       debugPrint('Ad loaded.');
-      _adStatus = true;
     },
     // Called when an ad request failed.
     onAdFailedToLoad: (Ad ad, LoadAdError error) {
       // Dispose the ad here to free resources.
       ad.dispose();
       debugPrint('Ad failed to load: $error');
-      _adStatus = false;
     },
     // Called when an ad opens an overlay that covers the screen.
     onAdOpened: (Ad ad) => debugPrint('Ad opened.'),

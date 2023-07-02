@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-class ProfilePageItem extends StatelessWidget {
-  const ProfilePageItem({
+class OnListItem extends StatelessWidget {
+  const OnListItem({
     Key? key,
     required this.title,
     required this.subtitle,

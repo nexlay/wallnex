@@ -197,6 +197,24 @@ abstract class L {
   /// **'Change application look'**
   String get customizationDesc;
 
+  /// No description provided for @premium.
+  ///
+  /// In en, this message translates to:
+  /// **'Enhance your user experience'**
+  String get premium;
+
+  /// No description provided for @premiumDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy premium features'**
+  String get premiumDesc;
+
+  /// No description provided for @yourPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Premium'**
+  String get yourPremium;
+
   /// No description provided for @discoverMore.
   ///
   /// In en, this message translates to:
@@ -302,14 +320,26 @@ abstract class L {
   /// No description provided for @category.
   ///
   /// In en, this message translates to:
-  /// **'category: '**
+  /// **'category'**
   String get category;
 
   /// No description provided for @uploader.
   ///
   /// In en, this message translates to:
-  /// **'uploader: '**
+  /// **'uploader'**
   String get uploader;
+
+  /// No description provided for @imageName.
+  ///
+  /// In en, this message translates to:
+  /// **'image name'**
+  String get imageName;
+
+  /// No description provided for @fileType.
+  ///
+  /// In en, this message translates to:
+  /// **'file type'**
+  String get fileType;
 
   /// No description provided for @homeScreen.
   ///

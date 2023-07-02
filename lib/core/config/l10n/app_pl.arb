@@ -9,6 +9,10 @@
 "customization": "Dostosowywanie",
 "customizationDesc": "Zmień wygląd aplikacji",
 
+"premium": "Zwiększ komfort korzystania z aplikacji",
+"premiumDesc": "Kup funkcje premium",
+"yourPremium": "Twój Premium",
+
 "navigation":"Nawigacja",
 "navigationDesc": "Niestandardowy pasek nawigacyjny z animacją",
 
@@ -34,8 +38,6 @@
 "imagesNotFound": "Coś poszło nie tak!",
 "tryToReload": "Spróbuj ponownie.",
 
-
-
 "noFavorites": "Brak ulubionych!",
 "noFavoritesDesc": "Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.",
 
@@ -49,8 +51,10 @@
 
 "noSearchHistory": "Brak historii wyszukiwania",
 
-"category": "kategoria: ",
-"uploader": "przesyłający: ",
+"category": "kategoria",
+"uploader": "przesyłający",
+"imageName": "nazwa",
+"fileType": "typ pliku",
 
 "homeScreen": "Ekran główny",
 "lockScreen": "Ekran blokady",

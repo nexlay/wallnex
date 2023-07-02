@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/common/ui/loading_status/progess_indicator.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
-
-import '../../../../../common/ui/animations/empty_sliver_screen.dart';
-import '../../../../../common/ui/animations/loading.dart';
+import '../../../../../common/ui/epty_screen/empty_sliver_screen.dart';
 import '../../../../../const/const_rive.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import 'home_page.dart';
@@ -39,7 +38,7 @@ class Home extends StatelessWidget {
 
     return isLoading
         ? const SliverFillRemaining(
-            child: Loader(),
+            child: ProgressLoader(),
           )
         : !isLoading && list.isEmpty
             ? emptyScreen
