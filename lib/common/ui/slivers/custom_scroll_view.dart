@@ -3,6 +3,7 @@ import 'package:wallnex/const/const.dart';
 import '../../../../features/images/presentation/page/home/widgets/categories_header.dart';
 import '../../../../features/search/presentation/page/search.dart';
 import '../../../core/config/l10n/generated/app_localizations.dart';
+import '../../../features/ads/presentation/page/banner_ad_widget.dart';
 
 class BodyScrollView extends StatelessWidget {
   const BodyScrollView({
@@ -37,6 +38,7 @@ class BodyScrollView extends StatelessWidget {
           padding: kAppPadding,
           sliver: childWidget,
         ),
+        show ? const BannerAdWidget() : kEmpty,
       ],
     );
   }
