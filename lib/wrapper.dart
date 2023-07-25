@@ -40,7 +40,7 @@ class Wrapper extends StatelessWidget {
     ];
 
     final pageIndex = context.select((GetPages i) => i.value);
-    final customNavBar = context.select((CustomizationProvider c) => c.value);
+    final customNavBar = context.select((CustomizationProvider c) => c.customNavBar);
 
     return Scaffold(
       floatingActionButton: pageIndex == 0 ? const FloatingButtonsBar() : null,

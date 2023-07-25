@@ -167,6 +167,18 @@ abstract class L {
   /// **'Get custom navigation bar with animated icon'**
   String get navigationDesc;
 
+  /// No description provided for @gridCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Column width'**
+  String get gridCount;
+
+  /// No description provided for @gridCountDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Allows you to change the number columns and change the size of preview'**
+  String get gridCountDesc;
+
   /// No description provided for @appearance.
   ///
   /// In en, this message translates to:
@@ -203,6 +215,30 @@ abstract class L {
   /// **'Enhance your user experience'**
   String get premium;
 
+  /// No description provided for @prem.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get prem;
+
+  /// No description provided for @free.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get free;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'month'**
+  String get month;
+
+  /// No description provided for @features.
+  ///
+  /// In en, this message translates to:
+  /// **'Features'**
+  String get features;
+
   /// No description provided for @premiumDesc.
   ///
   /// In en, this message translates to:
@@ -214,6 +250,42 @@ abstract class L {
   /// In en, this message translates to:
   /// **'Your Premium'**
   String get yourPremium;
+
+  /// No description provided for @premiumBenefit_1.
+  ///
+  /// In en, this message translates to:
+  /// **'An ad-free experience'**
+  String get premiumBenefit_1;
+
+  /// No description provided for @premiumBenefit_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority customer support'**
+  String get premiumBenefit_2;
+
+  /// No description provided for @premiumBenefit_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced customization features'**
+  String get premiumBenefit_3;
+
+  /// No description provided for @thanksForPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks for being a Premium member'**
+  String get thanksForPremium;
+
+  /// No description provided for @expirationDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiration date: '**
+  String get expirationDate;
+
+  /// No description provided for @menageSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Menage your subscription'**
+  String get menageSubscription;
 
   /// No description provided for @discoverMore.
   ///

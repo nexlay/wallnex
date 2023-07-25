@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../const/const.dart';
+
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
@@ -106,8 +108,9 @@ class AppTheme {
         ),
       ),
       listTileTheme: ListTileThemeData(
+        titleTextStyle: const TextStyle(fontSize: kFontSize, color: Colors.black),
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0),),
       ),
       inputDecorationTheme: InputDecorationTheme(
         errorBorder: OutlineInputBorder(
@@ -123,6 +126,7 @@ class AppTheme {
         ),
         filled: true,
       ),
+
     );
   }
 }

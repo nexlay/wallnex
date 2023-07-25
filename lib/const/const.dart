@@ -26,11 +26,13 @@ final kSubscriptionBenefits = [
 
 const kEmpty = SliverToBoxAdapter();
 
-const kAppBarElevation = 0.0;
+const kDefaultValue = 0.0;
 const kTitleScale = 1.5;
 const kAppPadding = EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0);
 const kSocialIconSize = 35.0;
-const kFontSize = 20.0;
+const kFontSize = 18.0;
+const kOpacity = 0.1;
+const kRadius = 8.0;
 
 
 

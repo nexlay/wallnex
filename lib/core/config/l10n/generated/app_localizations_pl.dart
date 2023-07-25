@@ -41,6 +41,12 @@ class LPl extends L {
   String get navigationDesc => 'Niestandardowy pasek nawigacyjny z animacją';
 
   @override
+  String get gridCount => 'Szerokość kolumny na głównym ekranie';
+
+  @override
+  String get gridCountDesc => 'Umożliwia zmianę liczby kolumn oraz zmianę rozmiaru podglądu obrazków';
+
+  @override
   String get appearance => 'Ciemny motyw';
 
   @override
@@ -59,10 +65,40 @@ class LPl extends L {
   String get premium => 'Zwiększ komfort korzystania z aplikacji';
 
   @override
+  String get prem => 'Premium';
+
+  @override
+  String get free => 'Darmowy';
+
+  @override
+  String get month => 'miesiąc';
+
+  @override
+  String get features => 'Cechy';
+
+  @override
   String get premiumDesc => 'Kup funkcje premium';
 
   @override
   String get yourPremium => 'Twój Premium';
+
+  @override
+  String get premiumBenefit_1 => 'Korzystaj bez reklam';
+
+  @override
+  String get premiumBenefit_2 => 'Priorytetowa obsługa klienta';
+
+  @override
+  String get premiumBenefit_3 => 'Zaawansowane funkcje dostosowywania';
+
+  @override
+  String get thanksForPremium => 'Dziękujemy za bycie członkiem Premium';
+
+  @override
+  String get expirationDate => 'Data zakonczenia subskrypcji';
+
+  @override
+  String get menageSubscription => 'Zarządzaj swoją subskrypcją';
 
   @override
   String get discoverMore => 'Odkryj więcej';

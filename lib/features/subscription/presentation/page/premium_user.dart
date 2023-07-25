@@ -2,8 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/const/const_rive.dart';
 import '../../../../common/ui/animations/animation_with_rive.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/purchase_provider.dart';
 
 class PremiumUserStatus extends StatefulWidget {
@@ -31,12 +33,16 @@ class _PremiumUserStatusState extends State<PremiumUserStatus> {
   Widget build(BuildContext context) {
     final products =
         context.select((PurchaseProvider provider) => provider.products);
+    final l = L.of(context);
     return SliverFillRemaining(
       child: ListView.builder(
         itemCount: products.length,
         itemBuilder: (context, index) => Column(
           children: [
-            const Text('Thanks for being a Premium member'),
+            Text(
+              l.thanksForPremium,
+              style: const TextStyle(fontSize: kFontSize),
+            ),
             AnimatedScale(
               curve: Curves.easeIn,
               duration: const Duration(seconds: 1),
@@ -46,7 +52,7 @@ class _PremiumUserStatusState extends State<PremiumUserStatus> {
               ),
             ),
             Text(
-              'Expiration date: ${products[index].expirationDate.substring(0, 10)}',
+              '${l.expirationDate}${products[index].expirationDate.substring(0, 10)}',
             ),
             OutlinedButton(
               onPressed: () async {
@@ -56,7 +62,7 @@ class _PremiumUserStatusState extends State<PremiumUserStatus> {
                   throw 'Could not launch ${products[index].shopUrl}';
                 }
               },
-              child: const Text('Menage your subscription'),
+              child: Text(l.menageSubscription),
             ),
           ],
         ),

@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
-
 import '../../../../const/const.dart';
-
-//const for this class
-const defaultValue = 0.0;
-const padding = 20.0;
+import '../../../subscription/presentation/provider/purchase_provider.dart';
 
 class BannerAdWidget extends StatefulWidget {
   const BannerAdWidget({Key? key}) : super(key: key);
@@ -24,7 +20,6 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     final provider = context.watch<AdProvider>();
 
     if (provider.bannerAD.adUnitId != null) {
-      print(_bannerAd?.adUnitId);
       setState(() {
         _bannerAd = BannerAd(
             size: provider.bannerAD.size!,
@@ -46,21 +41,19 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<AdProvider>();
-    return _bannerAd != null
+    final purchaseResult =
+        context.select((PurchaseProvider provider) => provider.purchaseResult);
+    return purchaseResult == false && _bannerAd != null
         ? SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: padding, vertical: defaultValue),
-              child: SizedBox(
-                width: provider.bannerAD.size!.width.toDouble(),
-                height: provider.bannerAD.size!.height.toDouble(),
-                child: Card(
-                  color: Theme.of(context).colorScheme.background,
-                  elevation: defaultValue,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: AdWidget(
-                    ad: _bannerAd!,
-                  ),
+            child: SizedBox(
+              width: provider.bannerAD.size!.width.toDouble(),
+              height: provider.bannerAD.size!.height.toDouble(),
+              child: Card(
+                color: Theme.of(context).colorScheme.background,
+                elevation: kDefaultValue,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: AdWidget(
+                  ad: _bannerAd!,
                 ),
               ),
             ),

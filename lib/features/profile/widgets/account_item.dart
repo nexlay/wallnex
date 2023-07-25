@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wallnex/common/ui/on_page_item.dart';
 
-class AccountItem extends OnListItem {
+class AccountItem extends OnPageItem {
   const AccountItem({
     super.key,
     required super.title,
@@ -17,6 +17,7 @@ class AccountItem extends OnListItem {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+
       leading: leading,
       trailing: trailing,
       title: title,

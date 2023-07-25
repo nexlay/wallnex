@@ -1,4 +1,4 @@
-import 'package:wallnex/features/images/presentation/page/home/widgets/categories_header.dart';
+
 
 ///API URL
 const kImageUrl = 'https://wallhaven.cc/api/v1/w/';

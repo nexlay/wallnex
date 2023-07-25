@@ -41,6 +41,12 @@ class LUk extends L {
   String get navigationDesc => 'Спеціальна панель навігації';
 
   @override
+  String get gridCount => 'Ширина стовпця на головному екрані';
+
+  @override
+  String get gridCountDesc => 'Дозволяє змінювати кількість стовпців і розмір попереднього перегляду';
+
+  @override
   String get appearance => 'Зовнішній вигляд';
 
   @override
@@ -59,10 +65,40 @@ class LUk extends L {
   String get premium => 'Підвищуйте комфорт користування додатком';
 
   @override
+  String get prem => 'Преміум';
+
+  @override
+  String get free => 'Безкоштовно';
+
+  @override
+  String get month => 'місяць';
+
+  @override
+  String get features => 'Oсобливості';
+
+  @override
   String get premiumDesc => 'Придбайте преміум';
 
   @override
   String get yourPremium => 'Ваш Premium';
+
+  @override
+  String get premiumBenefit_1 => 'Насолоджуйтесь додатком без реклами';
+
+  @override
+  String get premiumBenefit_2 => 'Пріоритетна підтримка клієнтів';
+
+  @override
+  String get premiumBenefit_3 => 'Розширені функції налаштування';
+
+  @override
+  String get thanksForPremium => 'Дякуємо за участь в Premium';
+
+  @override
+  String get expirationDate => 'Дата закінчення підписки';
+
+  @override
+  String get menageSubscription => 'Управління підпискою';
 
   @override
   String get discoverMore => 'Дізнайтеся більше';

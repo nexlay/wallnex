@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/common/ui/on_page_item.dart';
 
-class OnPopUpSpecsMenuItem extends OnListItem {
+class OnPopUpSpecsMenuItem extends OnPageItem {
   const OnPopUpSpecsMenuItem({
     super.key,
     required super.title,

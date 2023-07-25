@@ -17,7 +17,7 @@ class DetailScrollView extends BodyScrollView {
       physics: const BouncingScrollPhysics(),
       slivers: [
         SliverAppBar(
-          elevation: kAppBarElevation,
+          elevation: kDefaultValue,
           expandedHeight: MediaQuery.of(context).size.height / 7,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(

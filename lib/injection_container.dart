@@ -20,6 +20,8 @@ import 'package:wallnex/features/file_manager/presentation/provider/download_pro
 import 'package:wallnex/features/profile/account_and_login/data/database/firebase_db.dart';
 import 'package:wallnex/features/profile/account_and_login/data/repo/repository_impl.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/repo/repository.dart';
+import 'package:wallnex/features/profile/customization/domain/usecase/get_crossAxisCount_usecase.dart';
+import 'package:wallnex/features/profile/customization/domain/usecase/set_crossAxisCount_usecase.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_custom_nav_bar_use_case.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_theme_usecase.dart';
 import 'package:wallnex/features/suggestions/data/repository/suggestion_repo_impl.dart';
@@ -108,6 +110,11 @@ Future<void> initFlutterDownloader() async {
 
 void initAds() {
   MobileAds.instance.initialize();
+
+  //TODO: Delete this on release app
+  RequestConfiguration configuration =
+  RequestConfiguration(testDeviceIds: ["F9CFA22F63CC3F90AF1B70CC45E7AFFA"]);
+  MobileAds.instance.updateRequestConfiguration(configuration);
 }
 
 Future<void> initPlatformPurchasesState() async {
@@ -206,6 +213,8 @@ Future<void> init() async {
 //-----------------------------
   getIt.registerFactory(
     () => CustomizationProvider(
+      getIt(),
+      getIt(),
       getIt(),
       getIt(),
     ),
@@ -354,6 +363,18 @@ Future<void> init() async {
 
   getIt.registerLazySingleton(
     () => SetNavBarUseCase(
+      customizationRepo: getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerLazySingleton(
+        () => GetCrossAxisCount(
+      customizationRepo: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+        () => SetCrossAxisCount(
       customizationRepo: getIt(),
     ),
   );

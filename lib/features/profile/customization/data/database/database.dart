@@ -8,6 +8,9 @@ abstract class CustomizationPrefDatabase {
 
   Future<void> setNavBarStyle(bool switcher);
   Future<bool> getNavBarStyle();
+
+  Future<void> setCrossAxisCount(bool switcher);
+  Future<bool> getCrossAxisCount();
 }
 
 class CustomizationPrefDatabaseImpl implements CustomizationPrefDatabase {
@@ -41,5 +44,21 @@ class CustomizationPrefDatabaseImpl implements CustomizationPrefDatabase {
   Future<void> setNavBarStyle(bool switcher) async {
     final customization = Hive.box('customization');
     return await customization.put('nav bar style', switcher);
+  }
+
+  @override
+  Future<bool> getCrossAxisCount() async {
+    final customization = await Hive.openBox('customization');
+    if (!customization.containsKey('cross axis count')) {
+      return false;
+    } else {
+      return await customization.get('cross axis count');
+    }
+  }
+
+  @override
+  Future<void> setCrossAxisCount(bool switcher) async {
+    final customization = Hive.box('customization');
+    return await customization.put('cross axis count', switcher);
   }
 }

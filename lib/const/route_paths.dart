@@ -14,3 +14,4 @@ const krAppInformation = '/appInformation';
 const krPurchases = '/purchases';
 const krDiscoverMore = '/discover_more';
 const krDevInfo = '/dev_info';
+const krBenefitsInfo = '/purchases/benefits';

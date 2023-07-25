@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/common/ui/on_page_item.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/about_sliver_scroll_view.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
 import 'package:wallnex/features/profile/widgets/account_item.dart';

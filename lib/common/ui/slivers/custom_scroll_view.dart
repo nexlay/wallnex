@@ -14,7 +14,6 @@ class BodyScrollView extends StatelessWidget {
   final String title;
   final Widget childWidget;
 
-
   @override
   Widget build(BuildContext context) {
     final home = L.of(context).home;
@@ -24,7 +23,7 @@ class BodyScrollView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       slivers: [
         SliverAppBar(
-          elevation: kAppBarElevation,
+          elevation: kDefaultValue,
           expandedHeight: MediaQuery.of(context).size.height / 7,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
@@ -38,7 +37,12 @@ class BodyScrollView extends StatelessWidget {
           padding: kAppPadding,
           sliver: childWidget,
         ),
-        show ? const BannerAdWidget() : kEmpty,
+        show
+            ? const SliverPadding(
+                padding: kAppPadding,
+                sliver: BannerAdWidget(),
+              )
+            : kEmpty,
       ],
     );
   }

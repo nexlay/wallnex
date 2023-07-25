@@ -54,7 +54,7 @@ class PurchasesAndSubscriptions extends StatelessWidget {
                 : !isLoading && list.isNotEmpty && !purchaseResult
                     ? const PurchasesPage()
                     : !isLoading && purchaseResult
-                        ? const PremiumUserStatus()
+                        ? const PurchasesPage()
                         : emptyScreen,
       ),
     );

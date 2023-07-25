@@ -41,6 +41,12 @@ class LEn extends L {
   String get navigationDesc => 'Get custom navigation bar with animated icon';
 
   @override
+  String get gridCount => 'Column width';
+
+  @override
+  String get gridCountDesc => 'Allows you to change the number columns and change the size of preview';
+
+  @override
   String get appearance => 'Appearance';
 
   @override
@@ -59,10 +65,40 @@ class LEn extends L {
   String get premium => 'Enhance your user experience';
 
   @override
+  String get prem => 'Premium';
+
+  @override
+  String get free => 'Free';
+
+  @override
+  String get month => 'month';
+
+  @override
+  String get features => 'Features';
+
+  @override
   String get premiumDesc => 'Buy premium features';
 
   @override
   String get yourPremium => 'Your Premium';
+
+  @override
+  String get premiumBenefit_1 => 'An ad-free experience';
+
+  @override
+  String get premiumBenefit_2 => 'Priority customer support';
+
+  @override
+  String get premiumBenefit_3 => 'Advanced customization features';
+
+  @override
+  String get thanksForPremium => 'Thanks for being a Premium member';
+
+  @override
+  String get expirationDate => 'Expiration date: ';
+
+  @override
+  String get menageSubscription => 'Menage your subscription';
 
   @override
   String get discoverMore => 'Discover more';

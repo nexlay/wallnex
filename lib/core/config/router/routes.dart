@@ -7,6 +7,7 @@ import 'package:wallnex/features/profile/account_and_login/presentation/page/acc
 import 'package:wallnex/features/profile/account_and_login/presentation/page/forgot_password.dart';
 import 'package:wallnex/features/profile/customization/presentation/page/appearance/appearance.dart';
 import 'package:wallnex/features/profile/customization/presentation/page/customization/customization.dart';
+import 'package:wallnex/features/subscription/presentation/page/benefits.dart';
 import 'package:wallnex/wrapper.dart';
 import '../../../const/route_paths.dart';
 import '../../../features/preview/presentation/page/preview_page.dart';
@@ -37,7 +38,10 @@ class AppRouter {
   static Widget _appInformationRouteBuilder(_, state) => const AppInformation();
   static Widget _discoverMoreRouteBuilder(_, state) => const DiscoverMore();
   static Widget _devInfoRouteBuilder(_, state) => const DeveloperInfo();
-  static Widget _purchasesRouteBuilder(_, state) => const PurchasesAndSubscriptions();
+  static Widget _purchasesRouteBuilder(_, state) =>
+      const PurchasesAndSubscriptions();
+  static Widget _benefitsRouteBuilder(_, state) =>
+      const Benefits();
 
   ///[MaterialApp.router]
   static final _router = GoRouter(
@@ -50,7 +54,8 @@ class AppRouter {
       GoRoute(path: krProfile, builder: _profileRouteBuilder),
       GoRoute(path: krAccount, builder: _accountRouteBuilder),
       GoRoute(path: krLogin, builder: _loginRouteBuilder),
-      GoRoute(path: krEmailVerification, builder: _emailVerificationRouteBuilder),
+      GoRoute(
+          path: krEmailVerification, builder: _emailVerificationRouteBuilder),
       GoRoute(path: krForgotPassword, builder: _forgotPasswordRouteBuilder),
       GoRoute(path: krAppearance, builder: _appearanceRouteBuilder),
       GoRoute(path: krCustomization, builder: _customizationRouteBuilder),
@@ -58,6 +63,7 @@ class AppRouter {
       GoRoute(path: krDiscoverMore, builder: _discoverMoreRouteBuilder),
       GoRoute(path: krDevInfo, builder: _devInfoRouteBuilder),
       GoRoute(path: krPurchases, builder: _purchasesRouteBuilder),
+      GoRoute(path: krBenefitsInfo, builder: _benefitsRouteBuilder),
     ],
   );
 

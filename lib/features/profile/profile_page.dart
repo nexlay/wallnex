@@ -7,7 +7,7 @@ import 'package:wallnex/features/profile/widgets/account_item.dart';
 import 'package:wallnex/common/ui/on_page_item.dart';
 import '../../const/route_paths.dart';
 import '../../core/config/l10n/generated/app_localizations.dart';
-
+import '../subscription/presentation/provider/purchase_provider.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -15,14 +15,15 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = L.of(context);
+    final purchaseResult =
+        context.select((PurchaseProvider provider) => provider.purchaseResult);
     return SliverToBoxAdapter(
       child: Column(
         children: [
           Consumer<LocalUser>(
             builder: (_, localUser, __) => AccountItem(
-              title: Text(localUser.name.isEmpty
-                  ? locale.welcome
-                  : localUser.name),
+              title: Text(
+                  localUser.name.isEmpty ? locale.welcome : localUser.name),
               subtitle: Text(localUser.email.isEmpty
                   ? locale.creatingAccount
                   : localUser.email),
@@ -37,25 +38,29 @@ class Profile extends StatelessWidget {
             ),
           ),
           showSpacer(height: 20.0, width: 0.0),
-          OnListItem(
+          OnPageItem(
             title: Text(locale.premium),
-            subtitle: Text(locale.premiumDesc,),
+            subtitle: Text(
+              locale.premiumDesc,
+            ),
             path: krPurchases,
             leading: const Icon(Icons.workspace_premium),
           ),
-          OnListItem(
+          OnPageItem(
             title: Text(locale.appearance),
             subtitle: Text(locale.darkTheme),
             path: krAppearance,
             leading: const Icon(Icons.dark_mode_outlined),
           ),
-          OnListItem(
-            title: Text(locale.customization),
-            subtitle: Text(locale.customizationDesc),
-            path: krCustomization,
-            leading: const Icon(Icons.dashboard_customize_outlined),
-          ),
-          OnListItem(
+          purchaseResult
+              ? OnPageItem(
+                  title: Text(locale.customization),
+                  subtitle: Text(locale.customizationDesc),
+                  path: krCustomization,
+                  leading: const Icon(Icons.dashboard_customize_outlined),
+                )
+              : const SizedBox(),
+          OnPageItem(
             title: Text(locale.appInfo),
             subtitle: Text(locale.version),
             path: krAppInformation,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-class OnListItem extends StatelessWidget {
-  const OnListItem({
+class OnPageItem extends StatelessWidget {
+  const OnPageItem({
     Key? key,
     required this.title,
     required this.subtitle,
@@ -12,9 +12,8 @@ class OnListItem extends StatelessWidget {
   }) : super(key: key);
   final Widget title;
   final Widget subtitle;
-  final String path ;
+  final String path;
   final Widget? leading;
-
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class OnListItem extends StatelessWidget {
       title: title,
       subtitle: subtitle,
       onTap: () {
-       context.push(path);
+        context.push(path);
       },
     );
   }

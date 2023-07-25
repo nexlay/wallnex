@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
           child: const Appearance(),
         ),
         ChangeNotifierProvider<CustomizationProvider>(
-          create: (_) => di.getIt<CustomizationProvider>()..getNavBarStyle(),
+          create: (_) => di.getIt<CustomizationProvider>()..getNavBarStyle()..getCrossAxisCount(),
           child: const Customization(),
         ),
         ChangeNotifierProvider<SetImageASWallpaperNotifier>(

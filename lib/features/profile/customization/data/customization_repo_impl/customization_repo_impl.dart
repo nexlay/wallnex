@@ -54,4 +54,24 @@ class CustomizationRepoImpl implements CustomizationRepo {
       return Left(LocalFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> getCrossAxisCount() async{
+    try {
+      final switcher = await hiveDatabase.getCrossAxisCount();
+      return Right(switcher);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> setCrossAxisCount(currentSwitcher) async {
+    try {
+      final switcher = await hiveDatabase.setCrossAxisCount(currentSwitcher);
+      return Right(switcher);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
+  }
 }

@@ -12,6 +12,9 @@
 "navigation":"Navigation",
 "themeDesc": "Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.",
 "navigationDesc": "Get custom navigation bar with animated icon",
+  "gridCount": "Column width",
+  "gridCountDesc": "Allows you to change the number columns and change the size of preview",
+
 
 "appearance": "Appearance",
 "darkTheme": "Dark theme",
@@ -19,8 +22,18 @@
 "version": "Version",
 "customizationDesc": "Change application look",
 "premium": "Enhance your user experience",
+  "prem": "Premium",
+  "free": "Free",
+  "month": "month",
+  "features": "Features",
 "premiumDesc": "Buy premium features",
 "yourPremium": "Your Premium",
+"premiumBenefit_1": "An ad-free experience",
+"premiumBenefit_2": "Priority customer support",
+"premiumBenefit_3": "Advanced customization features",
+"thanksForPremium": "Thanks for being a Premium member",
+"expirationDate": "Expiration date: ",
+"menageSubscription": "Menage your subscription",
 
 "discoverMore": "Discover more",
 "exit": "Exit",

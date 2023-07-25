@@ -17,7 +17,8 @@ class _AppearanceState extends State<Appearance> {
   //Trigger for activating rive animation
   SMIBool? _activateRiveAnimation;
   ThemeValue themeValue = ThemeValue.auto;
-  var brightness = WidgetsBinding.instance.window.platformBrightness;
+  var brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
+
 
   void onRiveInit(Artboard artboard) async {
     final controller = StateMachineController.fromArtboard(
@@ -43,7 +44,7 @@ class _AppearanceState extends State<Appearance> {
   @override
   Widget build(BuildContext context) {
     final locale = L.of(context);
-    final themeNavBar = [
+    final themeNavBarWithPremium = [
       NavigationDestination(
         icon: const Icon(Icons.auto_awesome_outlined),
         selectedIcon: const Icon(Icons.auto_awesome),
@@ -59,19 +60,22 @@ class _AppearanceState extends State<Appearance> {
           label: locale.dark),
     ];
 
+
     return Scaffold(
-      bottomNavigationBar:
-          Consumer<ThemeProvider>(builder: (_, themeProvider, __) {
-        themeValue = themeProvider.value;
-        //Check on theme changed
-        activateAnimation();
-        return NavigationBar(
-          selectedIndex: themeProvider.value.value,
-          onDestinationSelected: (index) =>
-              context.read<ThemeProvider>().setThemeValue(index),
-          destinations: themeNavBar,
-        );
-      }),
+      bottomNavigationBar: Consumer<ThemeProvider>(
+        builder: (_, themeProvider, __) {
+          themeValue = themeProvider.value;
+          //Check on theme changed
+          activateAnimation();
+          return NavigationBar(
+            selectedIndex: themeProvider.value.value,
+            onDestinationSelected: (index) =>
+                context.read<ThemeProvider>().setThemeValue(index),
+            destinations:
+                themeNavBarWithPremium,
+          );
+        },
+      ),
       body: BodyScrollView(
         title: locale.theme,
         childWidget: SliverFillRemaining(

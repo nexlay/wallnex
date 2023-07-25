@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../const/const.dart';
+
 class AppDarkTheme {
   static ThemeData get darkTheme {
     return ThemeData(
@@ -101,8 +103,9 @@ class AppDarkTheme {
         ),
       ),
       listTileTheme: ListTileThemeData(
+        titleTextStyle: const TextStyle(fontSize: kFontSize, color: Colors.white),
         shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0)),
+        borderRadius: BorderRadius.circular(16.0),),
       ),
 
       inputDecorationTheme: InputDecorationTheme(

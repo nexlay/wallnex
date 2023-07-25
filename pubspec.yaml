@@ -15,11 +15,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # Provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
-  intl: ^0.17.0
+  intl: ^0.18.0
   # For implementing Rive animations
   rive: ^0.9.1
   # A Flutter package to use fonts from https://fonts.google.com.
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.4
   # Provider for state management
   provider: ^6.0.3
   # A library providing a tuple data structure.

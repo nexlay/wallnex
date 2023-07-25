@@ -4,7 +4,6 @@ import 'package:wallnex/features/profile/customization/presentation/provider/cus
 import '../../../../../../common/ui/slivers/custom_scroll_view.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 
-
 class Customization extends StatelessWidget {
   const Customization({Key? key}) : super(key: key);
 
@@ -14,24 +13,32 @@ class Customization extends StatelessWidget {
     return Scaffold(
       body: BodyScrollView(
         title: locale.customization,
-
         childWidget: SliverToBoxAdapter(
-          child: Column(
-            children: [
-              ListTile(
-                title: Text(locale.navigation),
-                subtitle:
-                    Text(locale.navigationDesc),
-                trailing: Consumer<CustomizationProvider>(
-                  builder: (_, value, __) => Switch(
-                    value: value.value,
+          child: Consumer<CustomizationProvider>(
+            builder: (_, value, __) => Column(
+              children: [
+                ListTile(
+                  title: Text(locale.navigation),
+                  subtitle: Text(locale.navigationDesc),
+                  trailing: Switch(
+                    value: value.customNavBar,
                     onChanged: (bool switchTo) {
                       value.setNavBarStyle(switchTo);
                     },
                   ),
                 ),
-              ),
-            ],
+                ListTile(
+                  title: Text(locale.gridCount,),
+                  subtitle: Text(locale.gridCountDesc),
+                  trailing: Switch(
+                    value: value.crossAxisCount,
+                    onChanged: (bool switchTo) {
+                      value.setCrossAxisCount(switchTo);
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
