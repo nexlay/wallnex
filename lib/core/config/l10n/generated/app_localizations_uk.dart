@@ -101,6 +101,21 @@ class LUk extends L {
   String get menageSubscription => 'Управління підпискою';
 
   @override
+  String get special_offers_and_features => 'Спеціальні пропозиції та особливості';
+
+  @override
+  String get check_what_you_might_get => 'Перевірте, що ви можете отримати';
+
+  @override
+  String get start => 'Cтарт';
+
+  @override
+  String get billed_yearly_cancel_anytime => 'Без зобов’язань, скасуйте будь-коли';
+
+  @override
+  String get getting_the_best_of_Wallnex => 'Тепер ви отримуєте найкраще від Wallnex';
+
+  @override
   String get discoverMore => 'Дізнайтеся більше';
 
   @override

@@ -23,7 +23,7 @@ class AccountItem extends OnPageItem {
       title: title,
       subtitle: subtitle,
       onTap: () {
-        context.push(path);
+        context.push(path!);
       },
     );
   }

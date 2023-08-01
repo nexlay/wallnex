@@ -4,6 +4,15 @@ import '../../domain/usecase/check_subscription_status.dart';
 import '../../domain/usecase/fetch_products_use_case.dart';
 import '../../domain/usecase/purchase_product_use_case.dart';
 
+enum PurchaseOffer {
+  free(value: 0),
+  premium(value: 1);
+
+  final int value;
+
+  const PurchaseOffer({required this.value});
+}
+
 class PurchaseProvider extends ChangeNotifier {
   final PurchaseProduct _purchaseProduct;
   final FetchProducts _fetchProducts;
@@ -14,8 +23,9 @@ class PurchaseProvider extends ChangeNotifier {
 
   bool isLoading = false;
   bool purchaseResult = false;
-  List<Product> products = [];
+  Product product = Product.initialValue();
   String error = '';
+  PurchaseOffer offer = PurchaseOffer.free;
 
   Future<void> fetchProducts() async {
     isLoading = true;
@@ -24,7 +34,7 @@ class PurchaseProvider extends ChangeNotifier {
     fetchedProducts.fold(
       (l) => l,
       (r) {
-        products = r;
+        product = r[0];
         isLoading = false;
         notifyListeners();
       },
@@ -50,9 +60,14 @@ class PurchaseProvider extends ChangeNotifier {
       (l) => l,
       (r) => purchaseResult = r.success,
     );
-
     await fetchProducts();
     isLoading = false;
     notifyListeners();
   }
+
+  setPurchases(PurchaseOffer purchaseOffer) {
+    offer = purchaseOffer;
+    notifyListeners();
+  }
+
 }

@@ -9,7 +9,7 @@ class DownloadProvider extends ValueNotifier<int> {
   final _receivePort = ReceivePort();
 
   @pragma('vm:entry-point')
-  static void callback(String id, DownloadTaskStatus status, int progress) {
+  static void callback(String id, int status, int progress) {
     final SendPort sPort = IsolateNameServer.lookupPortByName('downloader')!;
     sPort.send([progress]);
   }

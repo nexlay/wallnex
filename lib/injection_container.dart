@@ -113,7 +113,7 @@ void initAds() {
 
   //TODO: Delete this on release app
   RequestConfiguration configuration =
-  RequestConfiguration(testDeviceIds: ["F9CFA22F63CC3F90AF1B70CC45E7AFFA"]);
+  RequestConfiguration(testDeviceIds: ["43978BE68FF3A452E889AE0827D2DD77"]);
   MobileAds.instance.updateRequestConfiguration(configuration);
 }
 

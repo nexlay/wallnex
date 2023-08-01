@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 Future<void> showMyDialog(
-    context, title, content, actionTitle1, actionTitle2) async {
+    context, title, content, actionTitle1, actionTitle2, function) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -15,7 +14,7 @@ Future<void> showMyDialog(
           ElevatedButton(
             child: Text(actionTitle1),
             onPressed: () {
-              openAppSettings();
+              function;
               Navigator.of(context).pop();
             },
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:wallnex/common/ui/on_page_item.dart';
 import 'package:wallnex/const/const.dart';
 
 class EmptySliverScreen extends StatelessWidget {
@@ -22,23 +23,26 @@ class EmptySliverScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-           AspectRatio(
+          AspectRatio(
             aspectRatio: 2 / 1,
             child: RiveAnimation.asset(
               assetPath,
             ),
           ),
-          ListTile(
+          OnPageItem(
             title: Center(
               child: Text(
-               title,
+                title,
                 style: const TextStyle(fontSize: kFontSize),
               ),
             ),
             subtitle: Center(
               child: Text(subtitle),
             ),
-          ),
+            path: '',
+            leading: null,
+            enabled: false,
+          )
         ],
       ),
     );

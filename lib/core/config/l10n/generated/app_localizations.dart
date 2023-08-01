@@ -287,6 +287,36 @@ abstract class L {
   /// **'Menage your subscription'**
   String get menageSubscription;
 
+  /// No description provided for @special_offers_and_features.
+  ///
+  /// In en, this message translates to:
+  /// **'Special offers and features'**
+  String get special_offers_and_features;
+
+  /// No description provided for @check_what_you_might_get.
+  ///
+  /// In en, this message translates to:
+  /// **'Check what you might get'**
+  String get check_what_you_might_get;
+
+  /// No description provided for @start.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// No description provided for @billed_yearly_cancel_anytime.
+  ///
+  /// In en, this message translates to:
+  /// **'No commitment, cancel anytime'**
+  String get billed_yearly_cancel_anytime;
+
+  /// No description provided for @getting_the_best_of_Wallnex.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re now getting the best of Wallnex'**
+  String get getting_the_best_of_Wallnex;
+
   /// No description provided for @discoverMore.
   ///
   /// In en, this message translates to:

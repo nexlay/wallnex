@@ -32,7 +32,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -72,6 +72,7 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    namespace 'com.pryhodskyimykola.wallnex'
 
 }
 
@@ -82,5 +83,5 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.multidex:multidex:2.0.1"
-    implementation "androidx.activity:activity:1.7.0-alpha03"
+    implementation "androidx.activity:activity:1.8.0-alpha06"
 }

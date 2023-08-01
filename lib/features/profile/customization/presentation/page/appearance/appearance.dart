@@ -17,8 +17,8 @@ class _AppearanceState extends State<Appearance> {
   //Trigger for activating rive animation
   SMIBool? _activateRiveAnimation;
   ThemeValue themeValue = ThemeValue.auto;
-  var brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
-
+  var brightness =
+      WidgetsBinding.instance.platformDispatcher.platformBrightness;
 
   void onRiveInit(Artboard artboard) async {
     final controller = StateMachineController.fromArtboard(
@@ -44,38 +44,8 @@ class _AppearanceState extends State<Appearance> {
   @override
   Widget build(BuildContext context) {
     final locale = L.of(context);
-    final themeNavBarWithPremium = [
-      NavigationDestination(
-        icon: const Icon(Icons.auto_awesome_outlined),
-        selectedIcon: const Icon(Icons.auto_awesome),
-        label: locale.auto,
-      ),
-      NavigationDestination(
-          icon: const Icon(Icons.light_mode_outlined),
-          selectedIcon: const Icon(Icons.light_mode),
-          label: locale.light),
-      NavigationDestination(
-          icon: const Icon(Icons.dark_mode_outlined),
-          selectedIcon: const Icon(Icons.dark_mode),
-          label: locale.dark),
-    ];
-
 
     return Scaffold(
-      bottomNavigationBar: Consumer<ThemeProvider>(
-        builder: (_, themeProvider, __) {
-          themeValue = themeProvider.value;
-          //Check on theme changed
-          activateAnimation();
-          return NavigationBar(
-            selectedIndex: themeProvider.value.value,
-            onDestinationSelected: (index) =>
-                context.read<ThemeProvider>().setThemeValue(index),
-            destinations:
-                themeNavBarWithPremium,
-          );
-        },
-      ),
       body: BodyScrollView(
         title: locale.theme,
         childWidget: SliverFillRemaining(
@@ -94,6 +64,40 @@ class _AppearanceState extends State<Appearance> {
                     kLamp,
                     onInit: onRiveInit,
                   ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                heightFactor: 13,
+                child: Consumer<ThemeProvider>(
+                  builder: (_, themeProvider, __) {
+                    themeValue = themeProvider.value;
+                    //Check on theme changed
+                    activateAnimation();
+                    return SegmentedButton<int>(
+                      segments: <ButtonSegment<int>>[
+                        ButtonSegment<int>(
+                          value: ThemeValue.auto.value,
+                          icon: const Icon(Icons.auto_awesome_outlined),
+                          label: Text(locale.auto),
+                        ),
+                        ButtonSegment<int>(
+                          icon: const Icon(Icons.light_mode_outlined),
+                          value: ThemeValue.light.value,
+                          label: Text(locale.light),
+                        ),
+                        ButtonSegment<int>(
+                          icon: const Icon(Icons.dark_mode_outlined),
+                          value: ThemeValue.dark.value,
+                          label: Text(locale.dark),
+                        ),
+                      ],
+                      selected: <int>{themeProvider.value.value},
+                      onSelectionChanged: (Set<int> newSelection) {
+                        themeProvider.setThemeValue(newSelection.first);
+                      },
+                    );
+                  },
                 ),
               ),
             ],

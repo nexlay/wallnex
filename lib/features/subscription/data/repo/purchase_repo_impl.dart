@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:wallnex/core/exceptions/exceptions.dart';
-
 import '../../../../core/errors/failure.dart';
 import '../../domain/entities/product.dart';
 import '../../domain/entities/purchase_result.dart';
@@ -19,7 +18,9 @@ class PurchaseRepositoryImpl implements PurchaseRepository {
       final productsList = await purchaseDataSource.fetchProducts();
       return Right(productsList);
     } on LocalExceptions {
-      return Left(LocalFailure());
+      return Left(
+        LocalFailure(),
+      );
     }
   }
 
@@ -40,7 +41,9 @@ class PurchaseRepositoryImpl implements PurchaseRepository {
       final result = await purchaseDataSource.checkSubscriptionsStatus();
       return Right(result);
     } on LocalExceptions {
-      return Left(LocalFailure());
+      return Left(
+        LocalFailure(),
+      );
     }
   }
 }

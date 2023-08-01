@@ -23,4 +23,7 @@ class Product extends Equatable {
         expirationDate,
         shopUrl,
       ];
+
+  factory Product.initialValue() => const Product(
+      id: '', price: 0.0, currencyCode: '', expirationDate: '', shopUrl: '');
 }

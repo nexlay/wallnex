@@ -18,18 +18,27 @@ class Benefits extends StatelessWidget {
       tag: 'benefits',
       child: Scaffold(
         body: BodyScrollView(
-          title: 'Your benefits',
+          title: l.features,
           childWidget: SliverFillRemaining(
+            hasScrollBody: false,
             child: Column(
               children: List<Widget>.generate(
                 kSubscriptionBenefits.length,
                 (index) => Expanded(
                   child: Column(
                     children: [
-                      Image.asset(
-                        kSubscriptionBenefits[index],
+                      Expanded(
+                        flex: 8,
+                        child: Image.asset(
+                          kSubscriptionBenefits[index],
+                        ),
                       ),
-                      Text(benefits[index]),
+                      Expanded(
+                        child: Text(
+                          benefits[index],
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ],
                   ),
                 ),

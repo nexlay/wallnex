@@ -4,17 +4,17 @@ part 'env.g.dart';
 @Envied(path: 'lib/core/config/env/.env')
 abstract class Env {
   @EnviedField(varName: 'GOOGLE_CLIENT_ID', obfuscate: true)
-  static final googleClientId = _Env.googleClientId;
+  static final String googleClientId = _Env.googleClientId;
   @EnviedField(varName: 'TWITTER_URL', obfuscate: true)
-  static final twitterUrl = _Env.twitterUrl;
+  static final String twitterUrl = _Env.twitterUrl;
   @EnviedField(varName: 'GITHUB_URL', obfuscate: true)
-  static final gitUrl = _Env.gitUrl;
+  static final String gitUrl = _Env.gitUrl;
   @EnviedField(varName: 'LINKED_IN_URL', obfuscate: true)
-  static final linkedUrl = _Env.linkedUrl;
+  static final String linkedUrl = _Env.linkedUrl;
   @EnviedField(varName: 'ANDROID_BANNER_AD_ID', obfuscate: true)
-  static final bannerId = _Env.bannerId;
+  static final String bannerId = _Env.bannerId;
   @EnviedField(varName: 'ENTITLEMENTS_ID', obfuscate: true)
-  static final entitlementsId = _Env.entitlementsId;
+  static final String entitlementsId = _Env.entitlementsId;
   @EnviedField(varName: 'GOOGLE_API_PURCHASE_KEY', obfuscate: true)
-  static final googleApiPurchaseKey = _Env.googleApiPurchaseKey;
+  static final String googleApiPurchaseKey = _Env.googleApiPurchaseKey;
 }

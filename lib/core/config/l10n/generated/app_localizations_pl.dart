@@ -101,6 +101,21 @@ class LPl extends L {
   String get menageSubscription => 'Zarządzaj swoją subskrypcją';
 
   @override
+  String get special_offers_and_features => 'Specjalne oferty i funkcje';
+
+  @override
+  String get check_what_you_might_get => 'Sprawdź, co możesz zyskać';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get billed_yearly_cancel_anytime => 'Bez zobowiązań, anuluj w dowolnym momencie';
+
+  @override
+  String get getting_the_best_of_Wallnex => 'Teraz wykorzystujesz to, co najlepsze w Wallnex';
+
+  @override
   String get discoverMore => 'Odkryj więcej';
 
   @override

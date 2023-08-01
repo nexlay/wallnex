@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:wallnex/core/config/env/env.dart';
 import '../../domain/entities/product.dart';
@@ -16,9 +17,10 @@ class PurchaseDataSourceImpl implements PurchaseDataSource {
     final customerInfo = await Purchases.getCustomerInfo();
     if (customerInfo.activeSubscriptions.isNotEmpty &&
         customerInfo.entitlements.all[Env.entitlementsId]!.isActive) {
-      return Future.value(
-          customerInfo.activeSubscriptions
-          .map((e) => ProductModel.fromJson(null, customerInfo))
+      return Future.value(customerInfo.activeSubscriptions
+          .map(
+            (e) => ProductModel.fromJson(null, customerInfo),
+          )
           .toList());
     } else {
       final offerings = await Purchases.getOfferings();
@@ -34,10 +36,18 @@ class PurchaseDataSourceImpl implements PurchaseDataSource {
 
   @override
   Future<PurchaseResultModel> purchaseProduct(Product product) async {
-    final purchaserInfo = await Purchases.purchaseProduct(product.id);
-    if (purchaserInfo.entitlements.all[Env.entitlementsId]!.isActive) {
-      return const PurchaseResultModel(success: true);
-    } else {
+    try {
+      final purchaserInfo = await Purchases.purchaseProduct(product.id);
+      if (purchaserInfo.entitlements.all[Env.entitlementsId]!.isActive) {
+        return const PurchaseResultModel(success: true);
+      } else {
+        return const PurchaseResultModel(success: false);
+      }
+    } on PlatformException catch (e) {
+      var errorCode = PurchasesErrorHelper.getErrorCode(e);
+      if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
+        return const PurchaseResultModel(success: false);
+      }
       return const PurchaseResultModel(success: false);
     }
   }
@@ -45,7 +55,6 @@ class PurchaseDataSourceImpl implements PurchaseDataSource {
   @override
   Future<PurchaseResultModel> checkSubscriptionsStatus() async {
     final customerInfo = await Purchases.getCustomerInfo();
-
     if (customerInfo.activeSubscriptions.isNotEmpty &&
         customerInfo.entitlements.all[Env.entitlementsId]!.isActive) {
       return const PurchaseResultModel(success: true);

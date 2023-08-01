@@ -4,4 +4,6 @@ abstract class Failure extends Equatable {
   List<Object?> get props => [];
 }
 
-class LocalFailure extends Failure{}
+class LocalFailure extends Failure{
+
+}

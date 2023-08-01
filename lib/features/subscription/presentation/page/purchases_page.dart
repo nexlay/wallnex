@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/on_page_item.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/const/route_paths.dart';
 import 'package:wallnex/features/subscription/presentation/page/widgets/subscription_offer.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
@@ -11,55 +12,55 @@ class PurchasesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final products =
-        context.select((PurchaseProvider provider) => provider.products);
     final l = L.of(context);
-    return SliverToBoxAdapter(
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index) => Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SubscriptionOffer(
-                currency: products[index].currencyCode,
-                price: products[index].price.toString(),
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: Consumer<PurchaseProvider>(
+        builder: (_, purchasesProvider, __) => Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SubscriptionOffer(),
+            AnimatedCrossFade(
+              duration: const Duration(seconds: 1),
+              firstChild: Column(
+                children: [
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: Size.fromHeight(
+                          MediaQuery.of(context).size.height / 20),
+                    ),
+                    onPressed: () => purchasesProvider.purchase(
+                      purchasesProvider.product,
+                    ),
+                    child: Text(l.start),
+                  ),
+                  Text(
+                    l.billed_yearly_cancel_anytime,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                ],
               ),
-              const Hero(
+              secondChild: Hero(
                 tag: 'benefits',
                 child: Material(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(8.0),
+                      Radius.circular(kRadius),
                     ),
                   ),
                   child: OnPageItem(
-                    title: Text('Special offers and features'),
-                    subtitle: Text('Check what you get'),
+                    title: Text(l.special_offers_and_features),
+                    subtitle: Text(l.check_what_you_might_get),
                     path: krBenefitsInfo,
-                    leading: Icon(
-                      Icons.info_outline,
-                      color: Colors.amberAccent,
-                    ),
+                    leading: const Icon(Icons.info_outline),
                   ),
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: OutlinedButton(
-                  onPressed: () => context.read<PurchaseProvider>().purchase(
-                        products[index],
-                      ),
-                  child: const Text('Start'),
-                ),
-              ),
-              const Text(
-                'Billed yearly, cancel anytime',
-                style: TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
+              crossFadeState: purchasesProvider.offer == PurchaseOffer.premium
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+            ),
+          ],
         ),
       ),
     );

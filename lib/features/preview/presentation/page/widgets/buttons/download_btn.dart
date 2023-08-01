@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../../../../common/ui/dialogs/allert_dialog.dart';
@@ -68,6 +69,7 @@ class _DownloadCompleteBtnState extends State<DownloadBtn>
                   locale.permissionDesc,
                   locale.settings,
                   locale.exit,
+                  openAppSettings(),
                 );
                 break;
               case AppPermissionsStatus.restricted:

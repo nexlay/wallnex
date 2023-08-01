@@ -1,9 +1,9 @@
 name: wallnex
-description: A new Flutter project.
+description: Wallpaper app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+12
+version: 1.0.0+14
 
 environment:
   sdk: ">=2.18.6 <3.0.0"
@@ -31,7 +31,7 @@ dependencies:
   # This is a simple Service Locator for Dart and Flutter
   get_it: ^7.2.0
   # Provides an API for querying information about an application package.
-  package_info_plus: ^3.0.1
+  package_info_plus: ^4.0.2
   # This package automatically generates iOS, Android, and Web-native code for customizing this native splash screen background color and splash image.
   flutter_native_splash: ^2.2.14
   # Hive is a lightweight and blazing fast key-value database written in pure Dart.
@@ -105,7 +105,7 @@ dev_dependencies:
   # Used for creating custom TypeAdapters in Hive
   hive_generator: ^2.0.0
   envied_generator: ^0.3.0
-  build_runner: ^2.3.3
+  build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
 

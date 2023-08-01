@@ -1,5 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pryhodskyimykola.wallnex"
     android:versionCode="1"
     android:versionName="1">
     <!-- Required to fetch data from the internet. -->

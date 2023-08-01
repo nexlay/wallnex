@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
-import 'package:wallnex/features/subscription/presentation/page/premium_user.dart';
+import 'package:wallnex/features/subscription/presentation/page/premium_page.dart';
 import 'package:wallnex/features/subscription/presentation/page/purchases_page.dart';
 import '../../../../common/ui/epty_screen/empty_sliver_screen.dart';
 import '../../../../common/ui/loading_status/progess_indicator.dart';
@@ -16,7 +16,7 @@ class PurchasesAndSubscriptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final subscriptions =
-        context.select((PurchaseProvider provider) => provider.products);
+        context.select((PurchaseProvider provider) => provider.product);
     final isLoading =
         context.select((PurchaseProvider provider) => provider.isLoading);
     final purchaseResult =
@@ -31,7 +31,7 @@ class PurchasesAndSubscriptions extends StatelessWidget {
 
   Widget _showBody(
     BuildContext context,
-    List<Product> list,
+    Product product,
     bool isLoading,
     bool purchaseResult,
   ) {
@@ -49,12 +49,12 @@ class PurchasesAndSubscriptions extends StatelessWidget {
             ? const SliverFillRemaining(
                 child: ProgressLoader(),
               )
-            : !isLoading && list.isEmpty && !purchaseResult
+            : !isLoading && product.id.isEmpty && !purchaseResult
                 ? emptyScreen
-                : !isLoading && list.isNotEmpty && !purchaseResult
+                : !isLoading && product.id.isNotEmpty && !purchaseResult
                     ? const PurchasesPage()
                     : !isLoading && purchaseResult
-                        ? const PurchasesPage()
+                        ? const PremiumUserStatus()
                         : emptyScreen,
       ),
     );

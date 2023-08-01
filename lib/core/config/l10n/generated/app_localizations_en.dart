@@ -101,6 +101,21 @@ class LEn extends L {
   String get menageSubscription => 'Menage your subscription';
 
   @override
+  String get special_offers_and_features => 'Special offers and features';
+
+  @override
+  String get check_what_you_might_get => 'Check what you might get';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get billed_yearly_cancel_anytime => 'No commitment, cancel anytime';
+
+  @override
+  String get getting_the_best_of_Wallnex => 'You\'re now getting the best of Wallnex';
+
+  @override
   String get discoverMore => 'Discover more';
 
   @override
