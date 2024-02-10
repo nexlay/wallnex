@@ -13,10 +13,10 @@ enum Screen {
   const Screen({required this.screen});
 }
 
-const defaultValue = 18.0;
+const defaultValue = 20.0;
 
 class BtnContainer extends StatelessWidget {
-  const BtnContainer({Key? key, required this.wallpaper}) : super(key: key);
+  const BtnContainer({super.key, required this.wallpaper});
   final Wallpaper wallpaper;
   @override
   Widget build(BuildContext context) {
@@ -53,20 +53,26 @@ class BtnContainer extends StatelessWidget {
               ),
             ),
           ),
-          setWallpaperBtn(
-            context: context,
-            title: locale.homeScreen,
-            setOn: Screen.home,
-          ),
-          setWallpaperBtn(
-            context: context,
-            title: locale.lockScreen,
-            setOn: Screen.lock,
-          ),
-          setWallpaperBtn(
-            context: context,
-            title: locale.both,
-            setOn: Screen.both,
+          PopupMenuItem(
+            child: Column(
+              children: [
+                setWallpaperBtn(
+                  context: context,
+                  title: locale.homeScreen,
+                  setOn: Screen.home,
+                ),
+                setWallpaperBtn(
+                  context: context,
+                  title: locale.lockScreen,
+                  setOn: Screen.lock,
+                ),
+                setWallpaperBtn(
+                  context: context,
+                  title: locale.both,
+                  setOn: Screen.both,
+                ),
+              ],
+            ),
           ),
           PopupMenuItem<Widget?>(
             child: PreviewBar(wallpaper: wallpaper),

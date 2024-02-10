@@ -1,7 +1,9 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
 import 'package:wallnex/features/file_manager/presentation/provider/download_provider.dart';
+import 'package:wallnex/features/messaging/presentation/provider/messaging_provider.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/customization_provider.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/theme_provider.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
@@ -23,6 +25,8 @@ import 'features/profile/app_info/presentation/page/about.dart';
 import 'features/profile/app_info/presentation/provider/get_app_info_notifier.dart';
 import 'features/profile/customization/presentation/page/appearance/appearance.dart';
 import 'features/profile/customization/presentation/page/customization/customization.dart';
+import 'features/sorting/presentation/page/sorting_images_premium_only.dart';
+import 'features/sorting/presentation/provider/sorting_provider.dart';
 import 'features/subscription/presentation/page/purchases.dart';
 import 'features/subscription/presentation/provider/purchase_provider.dart';
 import 'features/suggestions/presentation/page/suggestions.dart';
@@ -53,7 +57,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<PurchaseProvider>(
           create: (_) =>
-          di.getIt<PurchaseProvider>()..checkSubscriptionStatus(),
+              di.getIt<PurchaseProvider>()..checkSubscriptionStatus(),
           child: const PurchasesAndSubscriptions(),
         ),
         ChangeNotifierProvider<GetPermissionNotifier>(
@@ -85,7 +89,9 @@ class MyApp extends StatelessWidget {
           child: const Appearance(),
         ),
         ChangeNotifierProvider<CustomizationProvider>(
-          create: (_) => di.getIt<CustomizationProvider>()..getNavBarStyle()..getCrossAxisCount(),
+          create: (_) => di.getIt<CustomizationProvider>()
+            ..getNavBarStyle()
+            ..getCrossAxisCount(),
           child: const Customization(),
         ),
         ChangeNotifierProvider<SetImageASWallpaperNotifier>(
@@ -105,8 +111,17 @@ class MyApp extends StatelessWidget {
           initialData: LocalUser.initialData(),
         ),
         ChangeNotifierProvider<AdProvider>(
-          create: (_) =>
-          di.getIt<AdProvider>()..createBanner(),
+          create: (_) => di.getIt<AdProvider>()..createBanner(),
+        ),
+        ChangeNotifierProvider<SortingProvider>(
+          create: (_) => di.getIt<SortingProvider>(),
+          child: const SortingImages(),
+        ),
+        ChangeNotifierProvider<LocalUserProvider>(
+          create: (_) => di.getIt<LocalUserProvider>(),
+        ),
+        ChangeNotifierProvider<MessagingProvider>(
+          create: (_) => di.getIt<MessagingProvider>(),
         ),
       ],
       child: const Wallnex(),
@@ -115,33 +130,36 @@ class MyApp extends StatelessWidget {
 }
 
 class Wallnex extends StatelessWidget {
-  const Wallnex({Key? key}) : super(key: key);
+  const Wallnex({super.key});
 
   @override
   Widget build(BuildContext context) {
     final value = context.select((ThemeProvider themeMode) => themeMode.value);
-    return MaterialApp.router(
-      routeInformationProvider: AppRouter().router.routeInformationProvider,
-      routeInformationParser: AppRouter().router.routeInformationParser,
-      routerDelegate: AppRouter().router.routerDelegate,
-      localizationsDelegates: [
-        L.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        FirebaseUILocalizations.delegate,
-      ],
-      supportedLocales: L.supportedLocales,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppDarkTheme.darkTheme,
-      themeMode: value == ThemeValue.light
-          ? ThemeMode.light
-          : value == ThemeValue.dark
-              ? ThemeMode.dark
-              : value == ThemeValue.auto
-                  ? ThemeMode.system
-                  : ThemeMode.dark,
-      debugShowCheckedModeBanner: false,
-    );
+    return DynamicColorBuilder(
+        builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+      return MaterialApp.router(
+        routeInformationProvider: AppRouter().router.routeInformationProvider,
+        routeInformationParser: AppRouter().router.routeInformationParser,
+        routerDelegate: AppRouter().router.routerDelegate,
+        localizationsDelegates: [
+          L.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          FirebaseUILocalizations.delegate,
+        ],
+        supportedLocales: L.supportedLocales,
+        theme: AppTheme.lightTheme(lightDynamic!),
+        darkTheme: AppDarkTheme.darkTheme(darkDynamic!),
+        themeMode: value == ThemeValue.light
+            ? ThemeMode.light
+            : value == ThemeValue.dark
+                ? ThemeMode.dark
+                : value == ThemeValue.auto
+                    ? ThemeMode.system
+                    : ThemeMode.dark,
+        debugShowCheckedModeBanner: false,
+      );
+    });
   }
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:wallnex/common/ui/on_page_list_tile.dart';
 
 class EmptyScreen extends StatelessWidget {
   const EmptyScreen(
-      {Key? key,
-        required this.assetPath,
-        required this.title,
-        required this.subtitle})
-      : super(key: key);
+      {super.key,
+      required this.assetPath,
+      required this.title,
+      required this.subtitle});
 
   final String assetPath;
   final String title;
@@ -19,17 +19,16 @@ class EmptyScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: [
-        AspectRatio(
-          aspectRatio: 2 / 1,
+        Expanded(
           child: RiveAnimation.asset(
             assetPath,
           ),
         ),
-        ListTile(
+        OnPageListTile(
+          enabled: false,
           title: Center(
             child: Text(
               title,
-              style: const TextStyle(fontSize: 20.0),
             ),
           ),
           subtitle: Center(

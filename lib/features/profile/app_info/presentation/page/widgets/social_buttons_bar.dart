@@ -5,7 +5,7 @@ import '../../../../../../const/custom_social_icons.dart';
 import '../../../../../../core/config/env/env.dart';
 
 class SocialButtonsBar extends StatelessWidget {
-  const SocialButtonsBar({Key? key}) : super(key: key);
+  const SocialButtonsBar({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../../widgets/account_item.dart';
-
-const itemTextStyle = TextStyle(
-  color: Colors.grey,
-);
-
-const assetPath = 'assets/image/dev/developer.jpg';
+import '../../../profile_list_tile.dart';
 
 class DeveloperInfo extends StatelessWidget {
-  const DeveloperInfo({Key? key}) : super(key: key);
+  const DeveloperInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,79 +15,85 @@ class DeveloperInfo extends StatelessWidget {
       body: BodyScrollView(
         title: locale.contact,
         childWidget: SliverFillRemaining(
-          hasScrollBody: false,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
+              Stack(
+                alignment: Alignment.topCenter,
                 children: [
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Card(
+                        elevation: 0.5,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            ProfileListTile(
+                              isCenter: true,
+                              enabled: false,
+                              title: Text(
+                                locale.madeBy,
+                              ),
+                              subtitle: Text(
+                                locale.developer_email,
+                              ),
+                            ),
+                            const SocialButtonsBar(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                   const CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 50.0,
-                    backgroundImage: AssetImage(
-                      assetPath,
-                    ),
-                  ),
-                  AccountItem(
-                    title: Center(
-                      child: Text(
-                        locale.madeBy,
+                    radius: 52,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 50.0,
+                      backgroundImage: AssetImage(
+                        kDevPhoto,
                       ),
                     ),
-                    subtitle: Center(
-                      child: Text(
-                        locale.developer_email,
-                        style: itemTextStyle,
-                      ),
-                    ),
-                    path: '',
-                    trailing: null,
-                    leading: null,
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  AccountItem(
-                    title: Text(
-                      locale.location,
-                    ),
-                    subtitle: Text(
-                      locale.location_description,
-                      style: itemTextStyle,
-                    ),
-                    path: '',
-                    trailing: null,
-                    leading: const Icon(Icons.location_on_outlined),
-                  ),
-                  AccountItem(
-                    title: Text(
-                      locale.languages_and_tools,
-                    ),
-                    subtitle: Text(
-                      locale.tool_description,
-                      style: itemTextStyle,
-                    ),
-                    path: '',
-                    trailing: null,
-                    leading: const Icon(Icons.pan_tool_alt_outlined),
-                  ),
-                  AccountItem(
-                    title: Text(
-                      locale.fun_fact,
-                    ),
-                    subtitle: Text(
-                      locale.fun_fact_description,
-                      style: itemTextStyle,
-                    ),
-                    path: '',
-                    trailing: null,
-                    leading: const Icon(Icons.fact_check_outlined),
-                  ),
-                ],
+              ProfileListTile(
+                isCenter: false,
+                enabled: false,
+                title: Text(
+                  locale.location,
+                ),
+                subtitle: Text(
+                  locale.location_description,
+                ),
+                leading: const Icon(Icons.location_on_outlined),
               ),
-              const SocialButtonsBar(),
+              ProfileListTile(
+                isCenter: false,
+                enabled: false,
+                title: Text(
+                  locale.languages_and_tools,
+                ),
+                subtitle: Text(
+                  locale.tool_description,
+                ),
+                leading: const Icon(Icons.pan_tool_alt_outlined),
+              ),
+              ProfileListTile(
+                isCenter: false,
+                enabled: false,
+                title: Text(
+                  locale.fun_fact,
+                ),
+                subtitle: Text(
+                  locale.fun_fact_description,
+                ),
+                leading: const Icon(Icons.fact_check_outlined),
+              ),
             ],
           ),
         ),

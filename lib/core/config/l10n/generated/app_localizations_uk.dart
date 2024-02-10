@@ -17,13 +17,13 @@ class LUk extends L {
   String get theme => 'Тема';
 
   @override
-  String get dark => 'Темний';
+  String get dark => 'Темна';
 
   @override
-  String get light => 'Світлий';
+  String get light => 'Світла';
 
   @override
-  String get auto => 'Автоматичний';
+  String get auto => 'Авто';
 
   @override
   String get preview => 'Перегляд';
@@ -54,6 +54,18 @@ class LUk extends L {
 
   @override
   String get appInfo => 'Інформація';
+
+  @override
+  String get rate_this_app => 'Оцініть додаток';
+
+  @override
+  String get share_this_app => 'Поділіться';
+
+  @override
+  String get bugs_feedback => 'Відгуки';
+
+  @override
+  String get share_text => 'Wallnex: Ваші шпалери, ваш стиль! Завантажте за адресою:';
 
   @override
   String get version => 'Версія';
@@ -89,7 +101,22 @@ class LUk extends L {
   String get premiumBenefit_2 => 'Пріоритетна підтримка клієнтів';
 
   @override
-  String get premiumBenefit_3 => 'Розширені функції налаштування';
+  String get premiumBenefit_3 => 'Функції налаштування';
+
+  @override
+  String get premiumBenefit_4 => 'Упорядкуйте свої зображення';
+
+  @override
+  String get premiumBenefit_sub_1 => 'Без реклами, лише контент';
+
+  @override
+  String get premiumBenefit_sub_2 => 'Для критичних і термінових питань';
+
+  @override
+  String get premiumBenefit_sub_3 => 'Створіть свій власний стиль';
+
+  @override
+  String get premiumBenefit_sub_4 => 'Знайдіть ідеальні шпалери з функціями сортування';
 
   @override
   String get thanksForPremium => 'Дякуємо за участь в Premium';
@@ -107,7 +134,7 @@ class LUk extends L {
   String get check_what_you_might_get => 'Перевірте, що ви можете отримати';
 
   @override
-  String get start => 'Cтарт';
+  String get start => 'Купити';
 
   @override
   String get billed_yearly_cancel_anytime => 'Без зобов’язань, скасуйте будь-коли';
@@ -140,6 +167,9 @@ class LUk extends L {
   String get tryToReload => 'Спробуйте перезавантажити.';
 
   @override
+  String get reload => 'Перезавантажити';
+
+  @override
   String get noFavorites => 'Обраних ще немає!';
 
   @override
@@ -164,6 +194,18 @@ class LUk extends L {
   String get cars => 'Авто';
 
   @override
+  String get relevance_sorting => 'актуальні';
+
+  @override
+  String get random_sorting => 'довільні';
+
+  @override
+  String get favorites_sorting => 'обрані';
+
+  @override
+  String get toplist_sorting => 'топ';
+
+  @override
   String get noSearchHistory => 'Історія пошуку відсутня';
 
   @override
@@ -177,6 +219,15 @@ class LUk extends L {
 
   @override
   String get fileType => 'тип файлу';
+
+  @override
+  String get size => 'розмір';
+
+  @override
+  String get views => 'перегляди';
+
+  @override
+  String get resolution => 'роздільна здатність';
 
   @override
   String get homeScreen => 'Домашній екран';
@@ -216,6 +267,12 @@ class LUk extends L {
 
   @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
+
+  @override
+  String get subscribe => 'Підпиcка';
+
+  @override
+  String get subscribe_desc => 'Дізнайтеся про новинки';
 
   @override
   String get contact => 'Контакт';

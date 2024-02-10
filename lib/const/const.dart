@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wallnex/features/images/presentation/page/home/widgets/categories_header.dart';
-import 'package:wallnex/features/subscription/presentation/page/purchases_page.dart';
+import 'package:wallnex/features/sorting/presentation/page/sorting_images_premium_only.dart';
+import 'package:wallnex/features/profile/app_info/presentation/page/developer_info.dart';
 import '../features/favorites/presentation/page/favorites.dart';
 import '../features/images/presentation/page/home/home.dart';
 import '../features/profile/profile_page.dart';
@@ -17,14 +18,19 @@ const kCategoriesListAsset = [
   'Space',
   'Cars',
 ];
-///[PurchasesPage] assets
-final kSubscriptionBenefits = [
-  'assets/image/subscription/ad_free.png',
-  'assets/image/subscription/customer_support.png',
-  'assets/image/subscription/customization.png',
+
+/// [SortingImages]
+const kSortingListAsset = [
+  'views',
+  'relevance',
+  'random',
+  'favorites',
+  'toplist',
 ];
 
-const kEmpty = SliverToBoxAdapter();
+/// [DeveloperInfo]
+const kDevPhoto = 'assets/image/dev/developer.jpg';
+
 
 const kDefaultValue = 0.0;
 const kTitleScale = 1.5;
@@ -33,6 +39,7 @@ const kSocialIconSize = 35.0;
 const kFontSize = 18.0;
 const kOpacity = 0.1;
 const kRadius = 8.0;
+const kAppSize = 5.0;
 
 
 

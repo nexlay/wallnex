@@ -56,6 +56,18 @@ class LEn extends L {
   String get appInfo => 'App info';
 
   @override
+  String get rate_this_app => 'Rate this app';
+
+  @override
+  String get share_this_app => 'Share this app';
+
+  @override
+  String get bugs_feedback => 'Bugs & Feedback';
+
+  @override
+  String get share_text => 'Wallnex: Your walls, your way! Download it at:';
+
+  @override
   String get version => 'Version';
 
   @override
@@ -89,7 +101,22 @@ class LEn extends L {
   String get premiumBenefit_2 => 'Priority customer support';
 
   @override
-  String get premiumBenefit_3 => 'Advanced customization features';
+  String get premiumBenefit_3 => 'Customization features';
+
+  @override
+  String get premiumBenefit_4 => 'Organize your images';
+
+  @override
+  String get premiumBenefit_sub_1 => 'No ads, just content';
+
+  @override
+  String get premiumBenefit_sub_2 => 'For critical issues and urgent requests';
+
+  @override
+  String get premiumBenefit_sub_3 => 'Create your own look';
+
+  @override
+  String get premiumBenefit_sub_4 => 'Find perfect wallpapers with sorting features';
 
   @override
   String get thanksForPremium => 'Thanks for being a Premium member';
@@ -107,7 +134,7 @@ class LEn extends L {
   String get check_what_you_might_get => 'Check what you might get';
 
   @override
-  String get start => 'Start';
+  String get start => 'Buy';
 
   @override
   String get billed_yearly_cancel_anytime => 'No commitment, cancel anytime';
@@ -140,6 +167,9 @@ class LEn extends L {
   String get tryToReload => 'Try to reload.';
 
   @override
+  String get reload => 'Reload';
+
+  @override
   String get noFavorites => 'No favorites yet!';
 
   @override
@@ -164,6 +194,18 @@ class LEn extends L {
   String get cars => 'Cars';
 
   @override
+  String get relevance_sorting => 'relevance';
+
+  @override
+  String get random_sorting => 'random';
+
+  @override
+  String get favorites_sorting => 'favorites';
+
+  @override
+  String get toplist_sorting => 'toplist';
+
+  @override
   String get noSearchHistory => 'Nothing to show';
 
   @override
@@ -173,10 +215,19 @@ class LEn extends L {
   String get uploader => 'uploader';
 
   @override
-  String get imageName => 'image name';
+  String get imageName => 'name';
 
   @override
   String get fileType => 'file type';
+
+  @override
+  String get size => 'size';
+
+  @override
+  String get views => 'views';
+
+  @override
+  String get resolution => 'resolution';
 
   @override
   String get homeScreen => 'Home screen';
@@ -216,6 +267,12 @@ class LEn extends L {
 
   @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
+
+  @override
+  String get subscribe => 'Subscribe';
+
+  @override
+  String get subscribe_desc => 'To know about new products';
 
   @override
   String get contact => 'Contact';

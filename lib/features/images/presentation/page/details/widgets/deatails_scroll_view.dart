@@ -7,8 +7,7 @@ import '../../../../../../const/route_paths.dart';
 class DetailScrollView extends BodyScrollView {
   const DetailScrollView(
       {super.key,
-      required super.title,
-      required super.childWidget,
+      required super.childWidget, required super.title,
 });
 
   @override
@@ -18,12 +17,7 @@ class DetailScrollView extends BodyScrollView {
       slivers: [
         SliverAppBar(
           elevation: kDefaultValue,
-          expandedHeight: MediaQuery.of(context).size.height / 7,
           pinned: true,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text(title),
-            expandedTitleScale: kTitleScale,
-          ),
           leading: IconButton(
             onPressed: () => context.go(krRoot),
             icon: const Icon(Icons.arrow_back),

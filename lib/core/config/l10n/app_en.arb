@@ -19,6 +19,10 @@
 "appearance": "Appearance",
 "darkTheme": "Dark theme",
 "appInfo": "App info",
+  "rate_this_app": "Rate this app",
+  "share_this_app": "Share this app",
+  "bugs_feedback": "Bugs & Feedback",
+  "share_text": "Wallnex: Your walls, your way! Download it at:",
 "version": "Version",
 "customizationDesc": "Change application look",
 "premium": "Enhance your user experience",
@@ -30,13 +34,18 @@
 "yourPremium": "Your Premium",
 "premiumBenefit_1": "An ad-free experience",
 "premiumBenefit_2": "Priority customer support",
-"premiumBenefit_3": "Advanced customization features",
+"premiumBenefit_3": "Customization features",
+  "premiumBenefit_4": "Organize your images",
+  "premiumBenefit_sub_1": "No ads, just content",
+  "premiumBenefit_sub_2": "For critical issues and urgent requests",
+  "premiumBenefit_sub_3": "Create your own look",
+  "premiumBenefit_sub_4": "Find perfect wallpapers with sorting features",
 "thanksForPremium": "Thanks for being a Premium member",
 "expirationDate": "Expiration date: ",
 "menageSubscription": "Menage your subscription",
   "special_offers_and_features": "Special offers and features",
   "check_what_you_might_get": "Check what you might get",
-  "start": "Start",
+  "start": "Buy",
   "billed_yearly_cancel_anytime": "No commitment, cancel anytime",
   "getting_the_best_of_Wallnex": "You're now getting the best of Wallnex",
 
@@ -50,6 +59,7 @@
 
 "imagesNotFound": "Oops...Something went wrong!",
 "tryToReload": "Try to reload.",
+  "reload": "Reload",
 
 "noFavorites": "No favorites yet!",
 "noFavoritesDesc": "Once you favorite an image, you'll see it here.",
@@ -62,12 +72,21 @@
 "space": "Space",
 "cars": "Cars",
 
+  "relevance_sorting": "relevance" ,
+  "random_sorting": "random" ,
+  "favorites_sorting": "favorites" ,
+  "toplist_sorting":  "toplist" ,
+
 "noSearchHistory": "Nothing to show",
 
 "category": "category",
 "uploader": "uploader",
-"imageName": "image name",
+"imageName": "name",
 "fileType": "file type",
+  "size": "size",
+  "views": "views",
+  "resolution": "resolution",
+
 
 "homeScreen": "Home screen",
 "lockScreen": "Lock screen",
@@ -85,6 +104,8 @@
 "yourInfo": "Your info",
 "madeBy": "Mykola Pryhodskyi",
 "developer_email": "pryhodskyimykola@gmail.com",
+  "subscribe": "Subscribe",
+  "subscribe_desc": "To know about new products",
 
 "contact": "Contact",
 "location": "Location",

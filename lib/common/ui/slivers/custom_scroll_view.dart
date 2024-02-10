@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/const/const.dart';
+import 'package:wallnex/features/sorting/presentation/page/sorting_images_premium_only.dart';
 import '../../../../features/images/presentation/page/home/widgets/categories_header.dart';
 import '../../../../features/search/presentation/page/search.dart';
 import '../../../core/config/l10n/generated/app_localizations.dart';
@@ -7,10 +8,10 @@ import '../../../features/ads/presentation/page/banner_ad_widget.dart';
 
 class BodyScrollView extends StatelessWidget {
   const BodyScrollView({
-    Key? key,
+    super.key,
     required this.title,
     required this.childWidget,
-  }) : super(key: key);
+  });
   final String title;
   final Widget childWidget;
 
@@ -31,18 +32,29 @@ class BodyScrollView extends StatelessWidget {
             expandedTitleScale: kTitleScale,
           ),
         ),
-        show ? const CategoriesHeader() : kEmpty,
-        show ? const Search() : kEmpty,
+        SliverVisibility(
+          visible: show,
+          sliver: const CategoriesHeader(),
+        ),
+        SliverVisibility(
+          visible: show,
+          sliver: const SortingImages(),
+        ),
+        SliverVisibility(
+          visible: show,
+          sliver: const Search(),
+        ),
         SliverPadding(
           padding: kAppPadding,
           sliver: childWidget,
         ),
-        show
-            ? const SliverPadding(
-                padding: kAppPadding,
-                sliver: BannerAdWidget(),
-              )
-            : kEmpty,
+        SliverVisibility(
+          visible: show,
+          sliver: const SliverPadding(
+            padding: kAppPadding,
+            sliver: BannerAdWidget(),
+          ),
+        ),
       ],
     );
   }

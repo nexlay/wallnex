@@ -21,7 +21,7 @@ class GetImagesNotifier extends ValueNotifier<int> {
 
   String error = '';
 
-  String _url = kUrl + kPage;
+  String _searchUrl = kSearchUrl + kPage;
 
   pagePlus() {
     value++;
@@ -37,14 +37,29 @@ class GetImagesNotifier extends ValueNotifier<int> {
   }
 
   searchByCategories(String category) {
-    _url = kUrl + category + kPage;
+    _searchUrl = kSearchUrl + category + kPage;
     value = 1;
     notifyListeners();
     loadImages();
   }
 
   searchByQuery(String query) {
-    _url = kUrl + query + kPage;
+    _searchUrl = kSearchUrl + query + kPage;
+    value = 1;
+    notifyListeners();
+    loadImages();
+  }
+
+  searchBySorting(String sorting) {
+    _searchUrl = kSortingImagesUrl + sorting + kPage;
+    value = 1;
+    notifyListeners();
+
+    loadImages();
+  }
+
+  reload() {
+    _searchUrl = kSearchUrl + kPage;
     value = 1;
     notifyListeners();
     loadImages();
@@ -56,7 +71,7 @@ class GetImagesNotifier extends ValueNotifier<int> {
     notifyListeners();
     // Fetch the list
     final result = await getWallpaperUseCase(
-      UrlAndPage(params1: _url, params2: value),
+      UrlAndPage(params1: _searchUrl, params2: value),
     );
     // Handle success or error
     result.fold(

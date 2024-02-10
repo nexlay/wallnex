@@ -6,7 +6,7 @@ import '../../../../const/const.dart';
 import '../../../subscription/presentation/provider/purchase_provider.dart';
 
 class BannerAdWidget extends StatefulWidget {
-  const BannerAdWidget({Key? key}) : super(key: key);
+  const BannerAdWidget({super.key});
 
   @override
   State<BannerAdWidget> createState() => _BannerAdWidgetState();
@@ -20,6 +20,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     final provider = context.watch<AdProvider>();
 
     if (provider.bannerAD.adUnitId != null) {
+      print(provider.bannerAD.adUnitId!);
       setState(() {
         _bannerAd = BannerAd(
             size: provider.bannerAD.size!,
@@ -58,6 +59,6 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
               ),
             ),
           )
-        : kEmpty;
+        : const SliverToBoxAdapter();
   }
 }

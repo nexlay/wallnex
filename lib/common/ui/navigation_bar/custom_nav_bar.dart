@@ -4,7 +4,7 @@ import '../../../core/config/l10n/generated/app_localizations.dart';
 import 'custom_nav_bar_item.dart';
 
 class CustomNavBar extends StatelessWidget {
-  const CustomNavBar({Key? key}) : super(key: key);
+  const CustomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {

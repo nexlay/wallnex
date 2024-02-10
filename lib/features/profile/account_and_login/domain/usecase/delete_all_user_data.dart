@@ -12,6 +12,6 @@ final UserRepo userRepo;
 
   @override
   Future<Either<Failure, void>> call(NoParams params) async {
-    return await userRepo.deleteAllDataFromFirebaseStorage();
+    return await userRepo.deleteAllDataFromFirebaseDb();
   }
 }

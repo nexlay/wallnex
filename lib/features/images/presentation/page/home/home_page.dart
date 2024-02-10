@@ -8,7 +8,7 @@ import '../../../../suggestions/presentation/provider/get_suggestions_notifier.d
 import '../../provider/get_images_notifier.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         childCount: list.length,
         (context, index) => ImageCard(
+
           goTo: () {
             context.read<GetImagesNotifier>().getImageById(list[index].id);
             context
@@ -27,9 +28,7 @@ class HomePage extends StatelessWidget {
             context.push(krDetails, extra: list[index]);
           },
           path: list[index].thumbsLarge,
-          wallpaper: list[index],
-          favorite: null,
-          imageSpecs: null,
+          wallpaper: list[index], showFavoriteBtn: false, showImageSpecsBtn: false, showSendBtn: false,
         ),
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

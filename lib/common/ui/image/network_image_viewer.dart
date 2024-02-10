@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../loading_status/loader.dart';
 
 class NetworkImageViewer extends StatelessWidget {
-  const NetworkImageViewer({Key? key, required this.url})
-      : super(key: key);
+  const NetworkImageViewer({super.key, required this.url, this.imageColor});
   final String url;
+  final String? imageColor;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -15,7 +15,10 @@ class NetworkImageViewer extends StatelessWidget {
         Icons.broken_image,
         size: 50.0,
       ),
-      progressIndicatorBuilder: (_, url, progress) => const Loader(),
+      progressIndicatorBuilder: (_, url, progress) => Loader(
+        progress: progress.progress,
+        imageColor: imageColor,
+      ),
       imageUrl: url,
       fit: BoxFit.cover,
     );

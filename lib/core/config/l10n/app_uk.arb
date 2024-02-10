@@ -12,10 +12,14 @@
 
 "appearance": "Зовнішній вигляд",
 "darkTheme": "Hічний режим",
-"dark": "Темний",
-"light": "Світлий",
-"auto": "Автоматичний",
+"dark": "Темна",
+"light": "Світла",
+"auto": "Авто",
 "appInfo": "Інформація",
+  "rate_this_app": "Оцініть додаток",
+  "share_this_app": "Поділіться",
+  "bugs_feedback": "Відгуки",
+  "share_text": "Wallnex: Ваші шпалери, ваш стиль! Завантажте за адресою:",
 "version": "Версія",
 "customizationDesc": "Змінити вигляд програми",
   "gridCount": "Ширина стовпця на головному екрані",
@@ -29,12 +33,18 @@
 "yourPremium": "Ваш Premium",
   "special_offers_and_features": "Спеціальні пропозиції та особливості",
   "check_what_you_might_get": "Перевірте, що ви можете отримати",
-  "start": "Cтарт",
+  "start": "Купити",
   "billed_yearly_cancel_anytime": "Без зобов’язань, скасуйте будь-коли",
   "getting_the_best_of_Wallnex": "Тепер ви отримуєте найкраще від Wallnex",
 "premiumBenefit_1": "Насолоджуйтесь додатком без реклами",
 "premiumBenefit_2": "Пріоритетна підтримка клієнтів",
-"premiumBenefit_3": "Розширені функції налаштування",
+"premiumBenefit_3": "Функції налаштування",
+  "premiumBenefit_4": "Упорядкуйте свої зображення",
+
+  "premiumBenefit_sub_1": "Без реклами, лише контент",
+  "premiumBenefit_sub_2": "Для критичних і термінових питань",
+  "premiumBenefit_sub_3": "Створіть свій власний стиль",
+  "premiumBenefit_sub_4": "Знайдіть ідеальні шпалери з функціями сортування",
 "thanksForPremium": "Дякуємо за участь в Premium",
 "expirationDate": "Дата закінчення підписки",
 "menageSubscription": "Управління підпискою",
@@ -49,6 +59,7 @@
 
 "imagesNotFound": "Щось пішло не так!",
 "tryToReload": "Спробуйте перезавантажити.",
+  "reload": "Перезавантажити",
 
 
 
@@ -63,12 +74,20 @@
 "space": "Космос",
 "cars": "Авто",
 
+  "relevance_sorting": "актуальні" ,
+  "random_sorting": "довільні" ,
+  "favorites_sorting": "обрані" ,
+  "toplist_sorting":  "топ" ,
+
 "noSearchHistory": "Історія пошуку відсутня",
 
 "category": "категорія",
 "uploader": "завантажив",
 "imageName": "назва",
 "fileType": "тип файлу",
+  "size": "розмір",
+  "views": "перегляди",
+  "resolution": "роздільна здатність",
 
 "homeScreen": "Домашній екран",
 "lockScreen": "Екран блокування",
@@ -86,6 +105,8 @@
 "yourInfo": "Ваша інформація",
 "madeBy": "Mykola Pryhodskyi",
 "developer_email": "pryhodskyimykola@gmail.com",
+  "subscribe": "Підпиcка",
+  "subscribe_desc": "Дізнайтеся про новинки",
 
 "contact": "Контакт",
 "location": "Місцезнаходження",

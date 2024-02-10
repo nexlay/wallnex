@@ -7,7 +7,7 @@ const btnHeight = 65.0;
 const opacity = 0.4;
 
 class FloatingButtonsBar extends StatelessWidget {
-  const FloatingButtonsBar({Key? key}) : super(key: key);
+  const FloatingButtonsBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,8 @@ class FloatingButtonsBar extends StatelessWidget {
           children: [
             IconButton(
               isSelected: selected,
-              disabledColor: page > firstPage ? Colors.grey.withOpacity(opacity) : null,
+              disabledColor:
+                  page > firstPage ? Colors.grey.withOpacity(opacity) : null,
               onPressed: page == firstPage
                   ? null
                   : () => context.read<GetImagesNotifier>().pageMinus(),

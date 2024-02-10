@@ -5,9 +5,10 @@ import 'package:wallnex/features/profile/account_and_login/domain/entities/user.
 abstract class UserRepo {
   Stream<LocalUser> get user;
 
-  Future<Either<LocalFailure, void>> updateUserPhoto ();
-
   ///Storage
-  Future<Either<Failure, void>> deleteAllDataFromFirebaseStorage();
+  Future<Either<LocalFailure, void>> updateUserPhoto();
 
+  ///DB
+  Future<Either<Failure, void>> deleteAllDataFromFirebaseDb();
+  Future<Either<Failure, void>> createUser();
 }

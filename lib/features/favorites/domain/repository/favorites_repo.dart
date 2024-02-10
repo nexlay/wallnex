@@ -11,7 +11,7 @@ abstract class FavoritesRepo {
 
   ///Favorites in FireStore
   Future<Either<Failure, void>> addToFireStore(Wallpaper wallpaper);
-  Future<Either<Failure, void>> deleteFromFireStore(String imageId);
+  Future<Either<Failure, void>> deleteFromFireStore(String id);
 
   ///Get favorites
   Future<Either<Failure, List<Wallpaper>>> getFavorites();

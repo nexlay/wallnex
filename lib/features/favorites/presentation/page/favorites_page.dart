@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../../../../common/ui/image/image_card.dart';
-import '../../../../common/ui/buttons/favorite_button.dart';
 import '../../../../const/route_paths.dart';
 import '../../../images/domain/entities/wallpaper.dart';
 import '../../../images/presentation/provider/get_images_notifier.dart';
 import '../../../suggestions/presentation/provider/get_suggestions_notifier.dart';
 
 class FavoritesPage extends StatelessWidget {
-  const FavoritesPage({Key? key, required this.favorites}) : super(key: key);
+  const FavoritesPage({super.key, required this.favorites});
 
   final List<Wallpaper> favorites;
 
@@ -33,14 +32,9 @@ class FavoritesPage extends StatelessWidget {
               },
               path: favorites[index].thumbsLarge,
               wallpaper: favorites[index],
-              imageSpecs: null,
-              favorite: Positioned(
-                bottom: 5.0,
-                right: 5.0,
-                child: FavoriteButton(
-                  wallpaper: favorites[index],
-                ),
-              ),
+              showImageSpecsBtn: false,
+              showFavoriteBtn: true,
+              showSendBtn: false,
             ),
           );
         },

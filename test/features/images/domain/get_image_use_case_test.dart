@@ -26,12 +26,12 @@ void main() {
   test(
     'should return Iterable with Images from repository',
     () async {
-      when(mockImageRepo.getWallpapers(kUrl, page))
+      when(mockImageRepo.getWallpapers(kSearchUrl, page))
           .thenAnswer((_) async => Right(list));
-      final result = await getImageUseCase(UrlAndPage(params1: kUrl, params2: page));
+      final result = await getImageUseCase(UrlAndPage(params1: kSearchUrl, params2: page));
 
       expect(result, list);
-      verify(mockImageRepo.getWallpapers(kUrl, page));
+      verify(mockImageRepo.getWallpapers(kSearchUrl, page));
       verifyNoMoreInteractions(mockImageRepo);
     },
   );

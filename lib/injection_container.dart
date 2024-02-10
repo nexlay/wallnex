@@ -17,13 +17,20 @@ import 'package:wallnex/features/favorites/domain/usecase/delete_from_local_db.d
 import 'package:wallnex/features/favorites/domain/usecase/get_favorites.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:wallnex/features/file_manager/presentation/provider/download_provider.dart';
+import 'package:wallnex/features/messaging/domain/usecase/get_a_message.dart';
+import 'package:wallnex/features/messaging/domain/usecase/get_from_history.dart';
+import 'package:wallnex/features/messaging/domain/usecase/serch_user_in_firebase.dart';
+import 'package:wallnex/features/messaging/domain/usecase/set_to_history.dart';
+import 'package:wallnex/features/messaging/presentation/provider/messaging_provider.dart';
 import 'package:wallnex/features/profile/account_and_login/data/database/firebase_db.dart';
 import 'package:wallnex/features/profile/account_and_login/data/repo/repository_impl.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/repo/repository.dart';
+import 'package:wallnex/features/profile/account_and_login/domain/usecase/write_user_data.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/get_crossAxisCount_usecase.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_crossAxisCount_usecase.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_custom_nav_bar_use_case.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_theme_usecase.dart';
+import 'package:wallnex/features/sorting/presentation/provider/sorting_provider.dart';
 import 'package:wallnex/features/suggestions/data/repository/suggestion_repo_impl.dart';
 import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_usecase.dart';
 import 'package:wallnex/features/images/domain/usecases/get_tags_uploader_use_case.dart';
@@ -47,6 +54,11 @@ import 'features/images/domain/entities/wallpaper.dart';
 import 'features/images/domain/repository/image_repo.dart';
 import 'features/images/domain/usecases/get_image_use_case.dart';
 import 'features/file_manager/presentation/provider/file_manager_notifier.dart';
+import 'features/messaging/data/database/database.dart';
+import 'features/messaging/data/repository/repository_impl.dart';
+import 'features/messaging/domain/entities/search_user.dart';
+import 'features/messaging/domain/repository/repository.dart';
+import 'features/messaging/domain/usecase/send_a_message.dart';
 import 'features/permissions/data/datasource/datasource.dart';
 import 'features/permissions/data/repository/permission_repo_impl.dart';
 import 'features/permissions/domain/repo/permission_repo.dart';
@@ -96,6 +108,9 @@ Future<void> initHive() async {
   Hive.registerAdapter(
     WallpaperAdapter(),
   );
+  Hive.registerAdapter(
+    SearchUserAdapter(),
+  );
 }
 
 Future<void> initFlutterDownloader() async {
@@ -112,8 +127,9 @@ void initAds() {
   MobileAds.instance.initialize();
 
   //TODO: Delete this on release app
-  RequestConfiguration configuration =
-  RequestConfiguration(testDeviceIds: ["43978BE68FF3A452E889AE0827D2DD77"]);
+  RequestConfiguration configuration = RequestConfiguration(
+    testDeviceIds: ["C7D15C553E982D22CCEEB2D458ECD420"],
+  );
   MobileAds.instance.updateRequestConfiguration(configuration);
 }
 
@@ -133,6 +149,20 @@ Future<void> init() async {
 //Providers (ChangeNotifiers)
 //-----------------------------
   getIt.registerFactory(
+    () => MessagingProvider(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerFactory(
+    () => SortingProvider(),
+  );
+//-----------------------------
+  getIt.registerFactory(
     () => PurchaseProvider(
       getIt(),
       getIt(),
@@ -148,6 +178,7 @@ Future<void> init() async {
 //-----------------------------
   getIt.registerFactory(
     () => LocalUserProvider(
+      getIt(),
       getIt(),
       getIt(),
       getIt(),
@@ -233,7 +264,37 @@ Future<void> init() async {
   //Domain layer
   // -----------------------------
   getIt.registerLazySingleton(
-        () => CheckSubscriptionStatus(
+    () => SendMessage(
+      messagingRepository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => GetMessage(
+      messagingRepository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => SearchUserInFirebase(
+      messagingRepository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => SetToHistory(
+      messagingRepository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => GetFromHistory(
+      messagingRepository: getIt(),
+    ),
+  );
+  // -----------------------------
+  getIt.registerLazySingleton(
+    () => CheckSubscriptionStatus(
       repository: getIt(),
     ),
   );
@@ -256,6 +317,11 @@ Future<void> init() async {
     ),
   );
 //-----------------------------
+  getIt.registerLazySingleton(
+    () => WriteUserDataUseCase(
+      userRepo: getIt(),
+    ),
+  );
   getIt.registerLazySingleton(
     () => GetUserUseCase(
       userRepo: getIt(),
@@ -368,13 +434,13 @@ Future<void> init() async {
   );
 //-----------------------------
   getIt.registerLazySingleton(
-        () => GetCrossAxisCount(
+    () => GetCrossAxisCount(
       customizationRepo: getIt(),
     ),
   );
 
   getIt.registerLazySingleton(
-        () => SetCrossAxisCount(
+    () => SetCrossAxisCount(
       customizationRepo: getIt(),
     ),
   );
@@ -386,6 +452,12 @@ Future<void> init() async {
   );
 //-----------------------------
   //Repository
+//-----------------------------
+  getIt.registerLazySingleton<MessagingRepository>(
+    () => MessagingRepoImpl(
+      messagingDatabase: getIt(),
+    ),
+  );
 //-----------------------------
   getIt.registerLazySingleton<PurchaseRepository>(
     () => PurchaseRepositoryImpl(
@@ -456,6 +528,10 @@ Future<void> init() async {
   );
 //-----------------------------
   //Data
+//-----------------------------
+  getIt.registerLazySingleton<MessagingDatabase>(
+    () => MessagingDatabaseImpl(),
+  );
 //-----------------------------
   getIt.registerLazySingleton<PurchaseDataSource>(
     () => PurchaseDataSourceImpl(),

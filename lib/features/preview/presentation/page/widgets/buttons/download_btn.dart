@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import '../../../../../../common/ui/dialogs/allert_dialog.dart';
+import '../../../../../../common/ui/pop_up_dialogs/allert_dialog.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../../file_manager/presentation/provider/download_provider.dart';
 import '../../../../../permissions/presentation/provider/get_permission_status_notifier.dart';
 
 class DownloadBtn extends StatefulWidget {
-  const DownloadBtn({Key? key, required this.wallpaper}) : super(key: key);
+  const DownloadBtn({super.key, required this.wallpaper});
   final Wallpaper wallpaper;
   @override
   State<DownloadBtn> createState() => _DownloadCompleteBtnState();

@@ -6,7 +6,7 @@ import '../../../../../common/ui/animations/animation_with_rive.dart';
 import '../provider/get_app_info_notifier.dart';
 
 class DiscoverMore extends StatelessWidget {
-  const DiscoverMore({Key? key}) : super(key: key);
+  const DiscoverMore({super.key});
 
   @override
   Widget build(BuildContext context) {

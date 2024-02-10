@@ -11,7 +11,7 @@ import '../../domain/entities/product.dart';
 import '../provider/purchase_provider.dart';
 
 class PurchasesAndSubscriptions extends StatelessWidget {
-  const PurchasesAndSubscriptions({Key? key}) : super(key: key);
+  const PurchasesAndSubscriptions({super.key});
 
   @override
   Widget build(BuildContext context) {

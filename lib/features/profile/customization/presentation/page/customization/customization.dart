@@ -5,7 +5,7 @@ import '../../../../../../common/ui/slivers/custom_scroll_view.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 
 class Customization extends StatelessWidget {
-  const Customization({Key? key}) : super(key: key);
+  const Customization({super.key});
 
   @override
   Widget build(BuildContext context) {

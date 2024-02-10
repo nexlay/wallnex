@@ -7,7 +7,7 @@ import '../../../../../common/ui/loading_status/loader.dart';
 import '../../../../file_manager/presentation/provider/file_manager_notifier.dart';
 
 class PreviewViewer extends StatefulWidget {
-  const PreviewViewer({Key? key, required this.wallpaper}) : super(key: key);
+  const PreviewViewer({super.key, required this.wallpaper});
   final Wallpaper wallpaper;
 
   @override

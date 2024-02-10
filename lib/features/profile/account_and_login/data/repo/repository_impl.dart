@@ -11,13 +11,12 @@ class FirebaseRepoImpl implements UserRepo {
   FirebaseRepoImpl({required this.firebaseDb});
 
   @override
-  Stream<UserModel> get user {
+  Stream<LocalUserModel> get user {
     return firebaseDb.userModel;
   }
 
   @override
-  Future<Either<LocalFailure, void>> updateUserPhoto(
-      ) async {
+  Future<Either<LocalFailure, void>> updateUserPhoto() async {
     try {
       final url = await firebaseDb.updatePhotoUrl();
       return Right(url);
@@ -27,13 +26,22 @@ class FirebaseRepoImpl implements UserRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteAllDataFromFirebaseStorage() async {
+  Future<Either<Failure, void>> deleteAllDataFromFirebaseDb() async {
+    try {
+      final delete = await firebaseDb.deleteAllUserData();
+      return Right(delete);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
+  }
 
-      try {
-        final delete = await firebaseDb.deleteAllUserData();
-        return Right(delete);
-      } on LocalExceptions {
-        return Left(LocalFailure());
-      }
+  @override
+  Future<Either<Failure, void>> createUser() async {
+    try {
+      final createUser = await firebaseDb.createUser();
+      return Right(createUser);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
   }
 }

@@ -4,7 +4,7 @@ import '../../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../../const/const_rive.dart';
 
 class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({Key? key, required this.email}) : super(key: key);
+  const ForgotPassword({super.key, required this.email});
 
   final String email;
 

@@ -12,6 +12,7 @@ class BannerAdDataSourceImpl implements BannerAdDatasource {
 
   @override
   Future<BannerAdModel> getBannerAd() async {
+    print('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO $_bannerUid');
     return Future.value(
       BannerAdModel.createBanner(
         listener: _listener,

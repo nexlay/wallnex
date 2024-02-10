@@ -7,7 +7,7 @@ import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../provider/theme_provider.dart';
 
 class Appearance extends StatefulWidget {
-  const Appearance({Key? key}) : super(key: key);
+  const Appearance({super.key});
 
   @override
   State<Appearance> createState() => _AppearanceState();
@@ -49,56 +49,50 @@ class _AppearanceState extends State<Appearance> {
       body: BodyScrollView(
         title: locale.theme,
         childWidget: SliverFillRemaining(
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
                 locale.themeDesc,
                 textAlign: TextAlign.justify,
               ),
-              Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width,
-                  child: RiveAnimation.asset(
-                    kLamp,
-                    onInit: onRiveInit,
-                  ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 4,
+                width: MediaQuery.of(context).size.width,
+                child: RiveAnimation.asset(
+                  kLamp,
+                  onInit: onRiveInit,
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                heightFactor: 13,
-                child: Consumer<ThemeProvider>(
-                  builder: (_, themeProvider, __) {
-                    themeValue = themeProvider.value;
-                    //Check on theme changed
-                    activateAnimation();
-                    return SegmentedButton<int>(
-                      segments: <ButtonSegment<int>>[
-                        ButtonSegment<int>(
-                          value: ThemeValue.auto.value,
-                          icon: const Icon(Icons.auto_awesome_outlined),
-                          label: Text(locale.auto),
-                        ),
-                        ButtonSegment<int>(
-                          icon: const Icon(Icons.light_mode_outlined),
-                          value: ThemeValue.light.value,
-                          label: Text(locale.light),
-                        ),
-                        ButtonSegment<int>(
-                          icon: const Icon(Icons.dark_mode_outlined),
-                          value: ThemeValue.dark.value,
-                          label: Text(locale.dark),
-                        ),
-                      ],
-                      selected: <int>{themeProvider.value.value},
-                      onSelectionChanged: (Set<int> newSelection) {
-                        themeProvider.setThemeValue(newSelection.first);
-                      },
-                    );
-                  },
-                ),
+              Consumer<ThemeProvider>(
+                builder: (_, themeProvider, __) {
+                  themeValue = themeProvider.value;
+                  //Check on theme changed
+                  activateAnimation();
+                  return SegmentedButton<int>(
+                    segments: <ButtonSegment<int>>[
+                      ButtonSegment<int>(
+                        value: ThemeValue.auto.value,
+                        icon: const Icon(Icons.auto_awesome_outlined),
+                        label: Text(locale.auto),
+                      ),
+                      ButtonSegment<int>(
+                        icon: const Icon(Icons.light_mode_outlined),
+                        value: ThemeValue.light.value,
+                        label: Text(locale.light),
+                      ),
+                      ButtonSegment<int>(
+                        icon: const Icon(Icons.dark_mode_outlined),
+                        value: ThemeValue.dark.value,
+                        label: Text(locale.dark),
+                      ),
+                    ],
+                    selected: <int>{themeProvider.value.value},
+                    onSelectionChanged: (Set<int> newSelection) {
+                      themeProvider.setThemeValue(newSelection.first);
+                    },
+                  );
+                },
               ),
             ],
           ),

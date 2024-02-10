@@ -8,9 +8,9 @@ abstract class SearchDatabase {
 class SearchDatabaseImpl implements SearchDatabase {
   @override
   Future<List<String>> getSearchHistory() async {
-    final searchBox =  await Hive.openBox('search_history');
+    final searchBox = await Hive.openBox('search_history');
     return Future.value(searchBox.values.map((e) {
-     return e.toString();
+      return e.toString();
     }).toList());
   }
 

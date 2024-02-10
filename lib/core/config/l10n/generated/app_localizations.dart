@@ -197,6 +197,30 @@ abstract class L {
   /// **'App info'**
   String get appInfo;
 
+  /// No description provided for @rate_this_app.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate this app'**
+  String get rate_this_app;
+
+  /// No description provided for @share_this_app.
+  ///
+  /// In en, this message translates to:
+  /// **'Share this app'**
+  String get share_this_app;
+
+  /// No description provided for @bugs_feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Bugs & Feedback'**
+  String get bugs_feedback;
+
+  /// No description provided for @share_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallnex: Your walls, your way! Download it at:'**
+  String get share_text;
+
   /// No description provided for @version.
   ///
   /// In en, this message translates to:
@@ -266,8 +290,38 @@ abstract class L {
   /// No description provided for @premiumBenefit_3.
   ///
   /// In en, this message translates to:
-  /// **'Advanced customization features'**
+  /// **'Customization features'**
   String get premiumBenefit_3;
+
+  /// No description provided for @premiumBenefit_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Organize your images'**
+  String get premiumBenefit_4;
+
+  /// No description provided for @premiumBenefit_sub_1.
+  ///
+  /// In en, this message translates to:
+  /// **'No ads, just content'**
+  String get premiumBenefit_sub_1;
+
+  /// No description provided for @premiumBenefit_sub_2.
+  ///
+  /// In en, this message translates to:
+  /// **'For critical issues and urgent requests'**
+  String get premiumBenefit_sub_2;
+
+  /// No description provided for @premiumBenefit_sub_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your own look'**
+  String get premiumBenefit_sub_3;
+
+  /// No description provided for @premiumBenefit_sub_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Find perfect wallpapers with sorting features'**
+  String get premiumBenefit_sub_4;
 
   /// No description provided for @thanksForPremium.
   ///
@@ -302,7 +356,7 @@ abstract class L {
   /// No description provided for @start.
   ///
   /// In en, this message translates to:
-  /// **'Start'**
+  /// **'Buy'**
   String get start;
 
   /// No description provided for @billed_yearly_cancel_anytime.
@@ -365,6 +419,12 @@ abstract class L {
   /// **'Try to reload.'**
   String get tryToReload;
 
+  /// No description provided for @reload.
+  ///
+  /// In en, this message translates to:
+  /// **'Reload'**
+  String get reload;
+
   /// No description provided for @noFavorites.
   ///
   /// In en, this message translates to:
@@ -413,6 +473,30 @@ abstract class L {
   /// **'Cars'**
   String get cars;
 
+  /// No description provided for @relevance_sorting.
+  ///
+  /// In en, this message translates to:
+  /// **'relevance'**
+  String get relevance_sorting;
+
+  /// No description provided for @random_sorting.
+  ///
+  /// In en, this message translates to:
+  /// **'random'**
+  String get random_sorting;
+
+  /// No description provided for @favorites_sorting.
+  ///
+  /// In en, this message translates to:
+  /// **'favorites'**
+  String get favorites_sorting;
+
+  /// No description provided for @toplist_sorting.
+  ///
+  /// In en, this message translates to:
+  /// **'toplist'**
+  String get toplist_sorting;
+
   /// No description provided for @noSearchHistory.
   ///
   /// In en, this message translates to:
@@ -434,7 +518,7 @@ abstract class L {
   /// No description provided for @imageName.
   ///
   /// In en, this message translates to:
-  /// **'image name'**
+  /// **'name'**
   String get imageName;
 
   /// No description provided for @fileType.
@@ -442,6 +526,24 @@ abstract class L {
   /// In en, this message translates to:
   /// **'file type'**
   String get fileType;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'size'**
+  String get size;
+
+  /// No description provided for @views.
+  ///
+  /// In en, this message translates to:
+  /// **'views'**
+  String get views;
+
+  /// No description provided for @resolution.
+  ///
+  /// In en, this message translates to:
+  /// **'resolution'**
+  String get resolution;
 
   /// No description provided for @homeScreen.
   ///
@@ -520,6 +622,18 @@ abstract class L {
   /// In en, this message translates to:
   /// **'pryhodskyimykola@gmail.com'**
   String get developer_email;
+
+  /// No description provided for @subscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe'**
+  String get subscribe;
+
+  /// No description provided for @subscribe_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'To know about new products'**
+  String get subscribe_desc;
 
   /// No description provided for @contact.
   ///

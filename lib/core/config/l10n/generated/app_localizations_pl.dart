@@ -56,6 +56,18 @@ class LPl extends L {
   String get appInfo => 'Informacje o aplikacji';
 
   @override
+  String get rate_this_app => 'Oceń aplikację';
+
+  @override
+  String get share_this_app => 'Udostępnij';
+
+  @override
+  String get bugs_feedback => 'Błędy i opinie';
+
+  @override
+  String get share_text => 'Wallnex: Twoje tapety, twój styl! Pobierz na:';
+
+  @override
   String get version => 'Wersja';
 
   @override
@@ -89,7 +101,22 @@ class LPl extends L {
   String get premiumBenefit_2 => 'Priorytetowa obsługa klienta';
 
   @override
-  String get premiumBenefit_3 => 'Zaawansowane funkcje dostosowywania';
+  String get premiumBenefit_3 => 'Funkcje dostosowywania';
+
+  @override
+  String get premiumBenefit_4 => 'Uporządkuj obrazki';
+
+  @override
+  String get premiumBenefit_sub_1 => 'Bez reklam, tylko treść';
+
+  @override
+  String get premiumBenefit_sub_2 => 'W sprawach krytycznych i pilnych';
+
+  @override
+  String get premiumBenefit_sub_3 => 'Stwórz swój własny wygląd';
+
+  @override
+  String get premiumBenefit_sub_4 => 'Znajdź idealne tapety z funkcjami sortowania';
 
   @override
   String get thanksForPremium => 'Dziękujemy za bycie członkiem Premium';
@@ -107,7 +134,7 @@ class LPl extends L {
   String get check_what_you_might_get => 'Sprawdź, co możesz zyskać';
 
   @override
-  String get start => 'Start';
+  String get start => 'Kupić';
 
   @override
   String get billed_yearly_cancel_anytime => 'Bez zobowiązań, anuluj w dowolnym momencie';
@@ -140,6 +167,9 @@ class LPl extends L {
   String get tryToReload => 'Spróbuj ponownie.';
 
   @override
+  String get reload => 'Odśwież';
+
+  @override
   String get noFavorites => 'Brak ulubionych!';
 
   @override
@@ -164,6 +194,18 @@ class LPl extends L {
   String get cars => 'Auta';
 
   @override
+  String get relevance_sorting => 'aktualności';
+
+  @override
+  String get random_sorting => 'losowe';
+
+  @override
+  String get favorites_sorting => 'ulubione';
+
+  @override
+  String get toplist_sorting => 'toplist';
+
+  @override
   String get noSearchHistory => 'Brak historii wyszukiwania';
 
   @override
@@ -177,6 +219,15 @@ class LPl extends L {
 
   @override
   String get fileType => 'typ pliku';
+
+  @override
+  String get size => 'rozmiar';
+
+  @override
+  String get views => 'wyświetlenia';
+
+  @override
+  String get resolution => 'rozdzielczość';
 
   @override
   String get homeScreen => 'Ekran główny';
@@ -216,6 +267,12 @@ class LPl extends L {
 
   @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
+
+  @override
+  String get subscribe => 'Subskrybuj';
+
+  @override
+  String get subscribe_desc => 'Dowiedz się o nowościach';
 
   @override
   String get contact => 'Kontakt';

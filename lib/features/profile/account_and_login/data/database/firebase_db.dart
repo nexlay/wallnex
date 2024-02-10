@@ -6,9 +6,10 @@ import '../model/user_model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 abstract class FirebaseAuthDb {
-  Stream<UserModel> get userModel;
+  Stream<LocalUserModel> get userModel;
   Future<void> updatePhotoUrl();
   Future<void> deleteAllUserData();
+  Future<void> createUser();
 }
 
 class FirebaseAuthDbImpl implements FirebaseAuthDb {
@@ -18,11 +19,11 @@ class FirebaseAuthDbImpl implements FirebaseAuthDb {
   final _firebaseFireStore = FirebaseFirestore.instance;
 
   @override
-  Stream<UserModel> get userModel =>
-      _firebaseAuth.userChanges().map<UserModel>(_userFromFirebase);
+  Stream<LocalUserModel> get userModel =>
+      _firebaseAuth.userChanges().map<LocalUserModel>(_userFromFirebase);
 
-  UserModel _userFromFirebase(User? user) {
-    return UserModel.fromAuthUser(user);
+  LocalUserModel _userFromFirebase(User? user) {
+    return LocalUserModel.fromAuthUser(user);
   }
 
   @override
@@ -50,5 +51,23 @@ class FirebaseAuthDbImpl implements FirebaseAuthDb {
     }
     await _firebaseStorage.ref().child(user.uid).delete();
     await user.delete();
+  }
+
+  @override
+  Future<void> createUser() async {
+    final user = _firebaseAuth.currentUser;
+    if (user != null) {
+      final docRef = _firebaseFireStore
+          .collection('users_data')
+          .withConverter<LocalUserModel>(
+            fromFirestore: (snapshot, options) =>
+                LocalUserModel.fromFireStore(snapshot, options!),
+            toFirestore: (model, _) => model.toFireStore(),
+          )
+          .doc(user.uid);
+      await docRef.set(
+        LocalUserModel.fromAuthUser(user),
+      );
+    }
   }
 }

@@ -10,8 +10,8 @@ import '../provider/get_suggestions_notifier.dart';
 
 class Suggestions extends StatelessWidget {
   const Suggestions({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

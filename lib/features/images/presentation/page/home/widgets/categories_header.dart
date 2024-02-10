@@ -8,8 +8,8 @@ import '../../../provider/get_images_notifier.dart';
 
 class CategoriesHeader extends StatelessWidget {
   const CategoriesHeader({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,8 @@ class CategoriesHeader extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
                         child: Image(
-                          image: AssetImage('assets/image/categories/${kCategoriesListAsset[index]}.jpg'),
+                          image: AssetImage(
+                              'assets/image/categories/${kCategoriesListAsset[index]}.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -56,12 +57,9 @@ class CategoriesHeader extends StatelessWidget {
                             sigmaY: 1,
                           ),
                           child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.all(1.0),
-                              child: Text(
-                                list[index],
-                                style: const TextStyle(color: Colors.white),
-                              ),
+                            child: Text(
+                              list[index],
+                              style: const TextStyle(color: Colors.white),
                             ),
                           ),
                         ),

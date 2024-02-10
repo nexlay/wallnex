@@ -1,66 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/common/ui/on_page_item.dart';
-import 'package:wallnex/const/const.dart';
-import 'package:wallnex/const/route_paths.dart';
-import 'package:wallnex/features/subscription/presentation/page/widgets/subscription_offer.dart';
+import '../../../../common/ui/animations/animation_with_rive.dart';
+import '../../../../common/ui/on_page_list_tile.dart';
+import '../../../../const/const.dart';
+import '../../../../const/const_rive.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/purchase_provider.dart';
 
 class PurchasesPage extends StatelessWidget {
-  const PurchasesPage({Key? key}) : super(key: key);
+  const PurchasesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final l = L.of(context);
+
+    final benefits = [
+      l.premiumBenefit_1,
+      l.premiumBenefit_2,
+      l.premiumBenefit_3,
+      l.premiumBenefit_4,
+    ];
+
+    final benefitsSubtitle = [
+      l.premiumBenefit_sub_1,
+      l.premiumBenefit_sub_2,
+      l.premiumBenefit_sub_3,
+      l.premiumBenefit_sub_4,
+    ];
+
     return SliverFillRemaining(
-      hasScrollBody: false,
-      child: Consumer<PurchaseProvider>(
-        builder: (_, purchasesProvider, __) => Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SubscriptionOffer(),
-            AnimatedCrossFade(
-              duration: const Duration(seconds: 1),
-              firstChild: Column(
-                children: [
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: Size.fromHeight(
-                          MediaQuery.of(context).size.height / 20),
-                    ),
-                    onPressed: () => purchasesProvider.purchase(
-                      purchasesProvider.product,
-                    ),
-                    child: Text(l.start),
-                  ),
-                  Text(
-                    l.billed_yearly_cancel_anytime,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                ],
+      child: SingleChildScrollView(
+        child: Consumer<PurchaseProvider>(
+          builder: (_, purchasesProvider, __) => Column(
+            children: [
+              const AnimationWithRive(
+                path: kLogo,
               ),
-              secondChild: Hero(
-                tag: 'benefits',
-                child: Material(
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(kRadius),
-                    ),
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: benefits.length,
+                itemBuilder: (_, index) => OnPageListTile(
+                  title: Text(
+                    benefits[index],
                   ),
-                  child: OnPageItem(
-                    title: Text(l.special_offers_and_features),
-                    subtitle: Text(l.check_what_you_might_get),
-                    path: krBenefitsInfo,
-                    leading: const Icon(Icons.info_outline),
+                  enabled: false,
+                  subtitle: Text(benefitsSubtitle[index]),
+                  leading: const Icon(
+                    Icons.check_circle_outline,
+                    color: Colors.green,
                   ),
                 ),
               ),
-              crossFadeState: purchasesProvider.offer == PurchaseOffer.premium
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
-            ),
-          ],
+              const SizedBox(
+                height: 50.0,
+              ),
+              OutlinedButton(
+                onPressed: () =>
+                    purchasesProvider.purchase(purchasesProvider.product),
+                child: Text(
+                  '${purchasesProvider.product.currencyCode} ${purchasesProvider.product.price.toString()} /${l.month}',
+                  style: const TextStyle(fontSize: kFontSize),
+                ),
+              ),
+              Text(
+                l.billed_yearly_cancel_anytime,
+                style: const TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
         ),
       ),
     );

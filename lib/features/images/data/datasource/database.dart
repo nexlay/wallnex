@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 abstract class ImageDatabase {
   Future<Iterable<WallpaperModel>> getImagesFromApi(int page, String url);
   Future<WallpaperModel> getTagsAndUploader(String id);
+
 }
 
 class ImageDatabaseImpl extends ImageDatabase {
@@ -34,4 +35,5 @@ class ImageDatabaseImpl extends ImageDatabase {
           'Failed to load images. Status code: ${response.statusCode}');
     }
   }
+
 }

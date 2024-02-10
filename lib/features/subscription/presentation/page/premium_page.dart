@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,26 +7,8 @@ import '../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/purchase_provider.dart';
 
-class PremiumUserStatus extends StatefulWidget {
+class PremiumUserStatus extends StatelessWidget {
   const PremiumUserStatus({super.key});
-
-  @override
-  State<PremiumUserStatus> createState() => _PremiumUserStatusState();
-}
-
-class _PremiumUserStatusState extends State<PremiumUserStatus> {
-  double _size = 0.0;
-
-  @override
-  void initState() {
-    Future.delayed(const Duration(microseconds: 200)).then(
-      (value) => setState(() {
-        _size = 1.0;
-      }),
-    );
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +18,11 @@ class _PremiumUserStatusState extends State<PremiumUserStatus> {
     return SliverFillRemaining(
       hasScrollBody: false,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
             children: [
+              const AnimationWithRive(path: kPremiumCongratulation),
               Text(
                 l.thanksForPremium,
                 style: const TextStyle(
@@ -50,19 +32,14 @@ class _PremiumUserStatusState extends State<PremiumUserStatus> {
                 l.getting_the_best_of_Wallnex,
                 style: const TextStyle(color: Colors.grey),
               ),
-              AnimatedScale(
-                curve: Curves.easeIn,
-                duration: const Duration(microseconds: 500),
-                scale: _size,
-                child: const AnimationWithRive(
-                  path: kPremiumSuccess,
-                ),
-              ),
             ],
           ),
-          /* Text(
+          Text(
             '${l.expirationDate}${product.expirationDate.substring(0, 10)}',
-          ),*/
+          ),
+          const AnimationWithRive(
+            path: kPremiumSuccess,
+          ),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
               minimumSize:
@@ -70,6 +47,7 @@ class _PremiumUserStatusState extends State<PremiumUserStatus> {
             ),
             onPressed: () async {
               if (!await launchUrl(
+                mode: LaunchMode.externalApplication,
                 Uri.parse(product.shopUrl),
               )) {
                 throw 'Could not launch ${product.shopUrl}';

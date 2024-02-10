@@ -9,7 +9,7 @@ import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import 'home_page.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class Home extends StatelessWidget {
       assetPath: kEmptySuggestions,
       title: locale.imagesNotFound,
       subtitle: locale.tryToReload,
+      showReload: true,
     );
 
     return isLoading

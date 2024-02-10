@@ -25,7 +25,7 @@ class PurchaseProvider extends ChangeNotifier {
   bool purchaseResult = false;
   Product product = Product.initialValue();
   String error = '';
-  PurchaseOffer offer = PurchaseOffer.free;
+  PurchaseOffer offer = PurchaseOffer.premium;
 
   Future<void> fetchProducts() async {
     isLoading = true;

@@ -3,13 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:wallnex/features/favorites/presentation/page/favorites.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/images/presentation/page/details/image_details_page.dart';
+import 'package:wallnex/features/messaging/presentation/page/conversations.dart';
 import 'package:wallnex/features/profile/account_and_login/presentation/page/account.dart';
 import 'package:wallnex/features/profile/account_and_login/presentation/page/forgot_password.dart';
 import 'package:wallnex/features/profile/customization/presentation/page/appearance/appearance.dart';
 import 'package:wallnex/features/profile/customization/presentation/page/customization/customization.dart';
-import 'package:wallnex/features/subscription/presentation/page/benefits.dart';
 import 'package:wallnex/wrapper.dart';
 import '../../../const/route_paths.dart';
+import '../../../features/messaging/presentation/page/chat.dart';
 import '../../../features/preview/presentation/page/preview_page.dart';
 import '../../../features/profile/account_and_login/presentation/page/email_verification.dart';
 import '../../../features/profile/account_and_login/presentation/page/login.dart';
@@ -40,8 +41,10 @@ class AppRouter {
   static Widget _devInfoRouteBuilder(_, state) => const DeveloperInfo();
   static Widget _purchasesRouteBuilder(_, state) =>
       const PurchasesAndSubscriptions();
-  static Widget _benefitsRouteBuilder(_, state) =>
-      const Benefits();
+  static Widget _conversationListRouteBuilder(_, state) =>
+       ConversationsList(wallpaper: state.extra as Wallpaper);
+  static Widget _chatScreenRouteBuilder(_, state) =>
+       ChatScreen(wallpaper: state.extra as Wallpaper);
 
   ///[MaterialApp.router]
   static final _router = GoRouter(
@@ -63,7 +66,8 @@ class AppRouter {
       GoRoute(path: krDiscoverMore, builder: _discoverMoreRouteBuilder),
       GoRoute(path: krDevInfo, builder: _devInfoRouteBuilder),
       GoRoute(path: krPurchases, builder: _purchasesRouteBuilder),
-      GoRoute(path: krBenefitsInfo, builder: _benefitsRouteBuilder),
+      GoRoute(path: krConversationList, builder: _conversationListRouteBuilder),
+      GoRoute(path: krChatScreen, builder: _chatScreenRouteBuilder),
     ],
   );
 

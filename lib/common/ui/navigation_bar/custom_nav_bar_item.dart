@@ -3,15 +3,13 @@ import 'package:rive/rive.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
 import '../../../const/const_rive.dart';
-import '../spacer.dart';
 
 class CustomNavBarItem extends StatefulWidget {
   const CustomNavBarItem(
-      {Key? key,
+      {super.key,
       required this.path,
       required this.label,
-      required this.tabIndex})
-      : super(key: key);
+      required this.tabIndex});
 
   final String path;
   final String label;
@@ -77,7 +75,7 @@ class _CustomNavBarItemState extends State<CustomNavBarItem> {
             ),
           ],
         ),
-        showSpacer(height: 10.0, width: 0.0),
+        const SizedBox(height: 10.0,),
         Text(
           widget.label,
           style: TextStyle(

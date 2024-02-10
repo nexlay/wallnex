@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wallnex/features/profile/account_and_login/domain/entities/user.dart';
 
-class UserModel extends LocalUser {
-  const UserModel({
+class LocalUserModel extends LocalUser {
+  const LocalUserModel({
     required super.uId,
     required super.email,
     required super.name,
@@ -10,9 +11,9 @@ class UserModel extends LocalUser {
     required super.isAnonymous,
   });
 
-  factory UserModel.fromAuthUser(User? user) {
+  factory LocalUserModel.fromAuthUser(User? user) {
     if (user != null) {
-      return UserModel(
+      return LocalUserModel(
         uId: user.uid,
         email: user.email ?? '',
         name: user.displayName ?? '',
@@ -20,7 +21,7 @@ class UserModel extends LocalUser {
         isAnonymous: user.isAnonymous,
       );
     } else {
-      return const UserModel(
+      return const LocalUserModel(
         uId: '',
         email: '',
         name: '',
@@ -28,5 +29,28 @@ class UserModel extends LocalUser {
         isAnonymous: true,
       );
     }
+  }
+
+  factory LocalUserModel.fromFireStore(
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      [SnapshotOptions? options]) {
+    final data = snapshot.data();
+    return LocalUserModel(
+      email: data?['email'],
+      name: data?['name'],
+      uId: data?['uId'],
+      photoUrl: data?['photoUrl'],
+      isAnonymous: data?['isAnonymous'] ?? false,
+    );
+  }
+
+  Map<String, dynamic> toFireStore() {
+    return {
+      'email': email,
+      'name': name,
+      'uId': uId,
+      'photoUrl': photoUrl,
+      'iSAnonymous': isAnonymous,
+    };
   }
 }

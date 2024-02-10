@@ -4,6 +4,7 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
+import 'package:wallnex/features/profile/account_and_login/presentation/provider/local_user_provider.dart';
 import '../../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../../const/const_rive.dart';
 import '../../../../../const/route_paths.dart';
@@ -12,13 +13,13 @@ import '../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../favorites/presentation/provider/favorites_images_notifier.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyScrollView(
-        title:L.of(context).welcome,
+        title: L.of(context).welcome,
         childWidget: SliverFillRemaining(
           hasScrollBody: false,
           child: SignInScreen(
@@ -36,10 +37,15 @@ class Login extends StatelessWidget {
                     context.pushReplacement(krEmailVerification);
                   } else {
                     context
-                        .read<FavoritesNotifier>()
-                        .getFavorites()
+                        .read<LocalUserProvider>()
+                        .writeUserDataIntoDb()
                         .whenComplete(
-                          () => context.pushReplacement(krAccount),
+                          () => context
+                              .read<FavoritesNotifier>()
+                              .getFavorites()
+                              .whenComplete(
+                                () => context.pushReplacement(krAccount),
+                              ),
                         );
                   }
                 },
@@ -49,7 +55,12 @@ class Login extends StatelessWidget {
                   if (!state.credential.user!.emailVerified) {
                     context.pushReplacement(krEmailVerification);
                   } else {
-                    context.pushReplacement(krAccount);
+                    context
+                        .read<LocalUserProvider>()
+                        .writeUserDataIntoDb()
+                        .whenComplete(
+                          () => context.pushReplacement(krAccount),
+                        );
                   }
                 },
               ),

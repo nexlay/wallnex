@@ -3,9 +3,9 @@ import 'package:rive/rive.dart';
 
 class AnimationWithRive extends StatelessWidget {
   const AnimationWithRive({
-    Key? key,
+    super.key,
     required this.path,
-  }) : super(key: key);
+  });
 
   final String path;
 

@@ -10,7 +10,7 @@ import '../../../../../core/config/l10n/generated/app_localizations.dart';
 const avatarSize = 100.00;
 
 class Account extends ProfileScreen {
-  const Account({Key? key}) : super(key: key);
+  const Account({super.key});
   @override
   Widget buildPage(BuildContext context) {
     return Scaffold(

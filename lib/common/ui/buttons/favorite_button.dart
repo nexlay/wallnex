@@ -4,7 +4,7 @@ import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../features/favorites/presentation/provider/favorites_images_notifier.dart';
 
 class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({Key? key, required this.wallpaper}) : super(key: key);
+  const FavoriteButton({super.key, required this.wallpaper});
 
   final Wallpaper wallpaper;
 

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:purchases_flutter/models/customer_info_wrapper.dart';
 
 class Product extends Equatable {
   final String id;

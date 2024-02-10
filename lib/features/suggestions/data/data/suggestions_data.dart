@@ -26,8 +26,7 @@ class SuggestionsDataImpl implements SuggestionsData {
         }
       }
 
-      return Future.value(
-          items.map((e) => WallpaperModel.fromJson(e)));
+      return Future.value(items.map((e) => WallpaperModel.fromJson(e)));
     } else {
       throw Exception(
           'Failed to load images. Status code: ${response.statusCode}');

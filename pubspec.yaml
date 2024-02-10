@@ -3,23 +3,25 @@ description: Wallpaper app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+14
+version: 1.0.0+19
+
 
 environment:
-  sdk: ">=2.18.6 <3.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 
 dependencies:
   flutter:
+
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   # Provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
-  intl: ^0.18.0
+  intl: ^0.18.1
   # For implementing Rive animations
-  rive: ^0.9.1
+  rive: ^0.12.4
   # A Flutter package to use fonts from https://fonts.google.com.
-  google_fonts: ^4.0.4
+  google_fonts: 4.0.3
   # Provider for state management
   provider: ^6.0.3
   # A library providing a tuple data structure.
@@ -31,16 +33,16 @@ dependencies:
   # This is a simple Service Locator for Dart and Flutter
   get_it: ^7.2.0
   # Provides an API for querying information about an application package.
-  package_info_plus: ^4.0.2
+  package_info_plus: ^4.0.1
   # This package automatically generates iOS, Android, and Web-native code for customizing this native splash screen background color and splash image.
-  flutter_native_splash: ^2.2.14
+  flutter_native_splash: ^2.3.10
   # Hive is a lightweight and blazing fast key-value database written in pure Dart.
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   # A Flutter plugin for finding commonly used locations on the filesystem
   path_provider: ^2.0.11
   # A composable, Future-based library for making HTTP requests.
-  http: ^0.13.5
+  http: ^0.13.0
   # A flutter library to show images from the internet and keep them in the cache directory.
   cached_network_image: ^3.2.3
   # A CacheManager to download and cache files in the cache directory of the app. Various settings on how long to keep a file can be changed.
@@ -50,30 +52,28 @@ dependencies:
   # A flutter plugin to set wallpaper on your android device. It support Home Screen, Lock Screen and Both Screen mode
   flutter_wallpaper_manager: ^0.0.3
   # A Dart library providing the ability to load, save and manipulate images in a variety of different file formats.
-  image: ^3.2.2
+  image: ^4.1.6
   # This plugin provides a cross-platform (iOS, Android) API to request permissions and check their status.
-  permission_handler: ^10.2.0
+  permission_handler: ^11.2.0
   # A plugin for creating and managing download tasks. Supports iOS and Android.
   flutter_downloader: ^1.10.1
-  # Badges for Flutter
   # A Flutter plugin to use the Firebase Authentication API.
-  firebase_auth: ^4.2.5
+  firebase_auth: 4.12.0
   # A Flutter plugin to use the Firebase Core API, which enables connecting to multiple Firebase apps.
   firebase_core: ^2.4.1
   # Firebase UI Auth is a set of Flutter widgets and utilities designed to help you build and integrate your user interface with Firebase Authentication.
-  firebase_ui_auth: ^1.1.9
+  firebase_ui_auth: ^1.7.0
   # Google
-  firebase_ui_oauth_google: ^1.0.16
+  firebase_ui_oauth_google: ^1.2.1
   # Twitter
-  firebase_ui_oauth_twitter: ^1.0.16
   # Firebase localization
   firebase_ui_localizations: ^1.0.0
   # A cleaner way to handle your environment variables in Dart/Flutter.
-  envied: ^0.3.0
+  envied: ^0.5.3
   # A package that allows you to use the native file explorer to pick single or multiple files, with extensions filtering support.
   file_picker: ^5.2.5
   # A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.
-  image_picker: ^0.8.6+1
+  image_picker: ^1.0.7
   # A Flutter plugin to use the Firebase Cloud Storage API.
   firebase_storage: ^11.0.10
   # Firebase Cloud Firestore
@@ -81,15 +81,21 @@ dependencies:
   # A library for Dart that generates fake data. Using for [FakeWallpaper]
   faker: ^2.1.0
   # A declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens.
-  go_router: ^6.0.4
+  go_router: ^13.1.0
   # Get current device information from within the Flutter application.
   device_info_plus: ^8.1.0
   # This repository contains the source code for the Google Mobile Ads Flutter plugin, which enables publishers to monetize Flutter apps using the Google Mobile Ads SDK.
-  google_mobile_ads: ^2.3.0
+  google_mobile_ads: ^4.0.0
   # A simple zoomable image/content widget for Flutter.
   photo_view: ^0.14.0
   # Purchases_flutter is a client for the RevenueCat subscription and purchase tracking system.
-  purchases_flutter: ^4.11.3
+  purchases_flutter: ^6.19.0
+  # Free Google Translate API for Dart
+  translator: ^0.1.6
+  # A Flutter plugin to share content from your Flutter app via the platform's share dialog.
+  share_plus: ^7.1.0
+  # A Flutter package to create Material color schemes based on a platform's implementation of dynamic color
+  dynamic_color: ^1.6.9
 
 
 
@@ -100,16 +106,16 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
-  # 
+  #
   mockito: ^5.3.2
   # Used for creating custom TypeAdapters in Hive
   hive_generator: ^2.0.0
-  envied_generator: ^0.3.0
+  envied_generator: ^0.5.3
   build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
   # Customize the parameters below, and run the following command in the terminal:
   # flutter pub run flutter_native_splash:create
@@ -138,7 +144,6 @@ flutter:
     # To add assets to your application, add an assets section, like this:
   assets:
     - assets/image/categories/
-    - assets/image/subscription/
     - assets/image/dev/
     - assets/rive/
     - assets/json/

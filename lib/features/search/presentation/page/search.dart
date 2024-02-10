@@ -8,7 +8,7 @@ import '../../../../core/delegates/image_search.dart';
 const defaultValue = 60.0;
 
 class Search extends StatelessWidget {
-  const Search({Key? key}) : super(key: key);
+  const Search({super.key});
 
   @override
   Widget build(BuildContext context) {

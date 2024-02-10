@@ -7,7 +7,7 @@ import '../../../../../const/route_paths.dart';
 
 
 class EmailVerification extends StatelessWidget {
-  const EmailVerification({Key? key}) : super(key: key);
+  const EmailVerification({super.key});
 
   @override
   Widget build(BuildContext context) {

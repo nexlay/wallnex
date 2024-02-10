@@ -27,7 +27,8 @@ Future<img.Image> _calculateCrop(
   double c = (image.width - dxOffset.abs()) / deviceWidth;
   x = (dxOffset.abs() * c).toInt();
 
-  return img.copyCrop(image, x, y, image.width, image.height);
+
+  return img.copyCrop(image,x: x, y: y, width: image.width, height: image.height);
 }
 
 class FileManagerNotifier extends ChangeNotifier {

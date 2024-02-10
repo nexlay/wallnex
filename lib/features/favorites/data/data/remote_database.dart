@@ -22,18 +22,20 @@ class FavoritesFirebaseDbImpl implements RemoteDb {
   Future<void> addToFireStore(Wallpaper wallpaper) async {
     //An instance of FirebaseAuth
 
-    //An instance of FirebaseAuth
     final user = _firebaseAuth.currentUser;
 
     if (user != null) {
       final docRef = db
           .collection(user.uid)
           .withConverter<WallpaperModel>(
-              fromFirestore: (snapshot, options) =>
-                  WallpaperModel.fromFireStore(snapshot, options!),
-              toFirestore: (model, _) => model.toFireStore())
+            fromFirestore: (snapshot, options) =>
+                WallpaperModel.fromFireStore(snapshot, options!),
+            toFirestore: (model, _) => model.toFireStore(),
+          )
           .doc(wallpaper.id);
-      await docRef.set(WallpaperModel.fromIterable(wallpaper));
+      await docRef.set(
+        WallpaperModel.fromIterable(wallpaper),
+      );
     }
   }
 
@@ -54,10 +56,15 @@ class FavoritesFirebaseDbImpl implements RemoteDb {
 
     if (user != null) {
       final snapshot = await db.collection(user.uid).get();
-      return Future.value(snapshot.docs
-          .map((e) => WallpaperModel.fromQueryDocumentSnapshot(e))
-          .toList());
+      return Future.value(
+        snapshot.docs
+            .map(
+              (e) => WallpaperModel.fromQueryDocumentSnapshot(e),
+            )
+            .toList(),
+      );
     } else {
+      //Get from internal DB if user has favorites and don't login
       return await _localDb.getFavorites();
     }
   }

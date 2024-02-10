@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:translator/translator.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
 import '../config/l10n/generated/app_localizations.dart';
 
-
-
 class ImageSearch extends SearchDelegate<List<Wallpaper>> {
   set searchFieldLabel(String? field) => super.searchFieldLabel;
 
+  final translator = GoogleTranslator();
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -38,9 +38,12 @@ class ImageSearch extends SearchDelegate<List<Wallpaper>> {
   @override
   Widget buildResults(BuildContext context) {
     final list = context.select((GetImagesNotifier n) => n.imageList);
+
     Future.delayed(Duration.zero, () async {
-      context.read<GetSearchHistoryNotifier>().pushSearchHistory(query);
-      context.read<GetImagesNotifier>().searchByQuery(query);
+      translator.translate(query, to: 'en').then((translateQuery) {
+        context.read<GetImagesNotifier>().searchByQuery(translateQuery.text);
+        context.read<GetSearchHistoryNotifier>().pushSearchHistory(query);
+      });
       close(context, list);
     });
     return Container();
@@ -56,48 +59,55 @@ class ImageSearch extends SearchDelegate<List<Wallpaper>> {
         horizontal: 15.0,
       ),
       child: Center(
-        child: searchHistory.isEmpty ? Text(L.of(context).noSearchHistory) : Card(
-          color: Colors.transparent,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: ListView.separated(
-            shrinkWrap: true,
-            separatorBuilder: (context, index) {
-              return const Divider(
-                thickness: 0.1,
-                height: 2.0,
+        child: searchHistory.isEmpty
+            ? Text(L.of(context).noSearchHistory)
+            : Card(
                 color: Colors.transparent,
-              );
-            },
-            itemCount: searchHistory.length,
-            itemBuilder: (_, index) => ListTile(
-              tileColor: Theme.of(context).colorScheme.background,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6.0),
-              ),
-              trailing: IconButton(
-                icon: const Icon(
-                  Icons.north_west,
-                  size: 18.0,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, index) {
+                    return const Divider(
+                      thickness: 0.1,
+                      height: 2.0,
+                      color: Colors.transparent,
+                    );
+                  },
+                  itemCount: searchHistory.length,
+                  itemBuilder: (_, index) => ListTile(
+                    tileColor: Theme.of(context).secondaryHeaderColor.withOpacity(0.3),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6.0),
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(
+                        Icons.north_west,
+                        size: 18.0,
+                      ),
+                      onPressed: () {
+                        query = searchHistory[index];
+                      },
+                    ),
+                    leading: const Icon(Icons.history),
+                    title: Text(searchHistory[index]),
+                    onTap: () {
+                      query = searchHistory[index];
+                      context
+                          .read<GetSearchHistoryNotifier>()
+                          .pushSearchHistory(query);
+
+                      translator
+                          .translate(query, to: 'en')
+                          .then((translateQuery) {
+                        context
+                            .read<GetImagesNotifier>()
+                            .searchByQuery(translateQuery.text);
+                      });
+                      close(context, list);
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  query =
-                      searchHistory[index];
-                },
               ),
-              leading: const Icon(Icons.history),
-              title: Text(searchHistory[index]),
-              onTap: () {
-                query =
-                    searchHistory[index];
-                context
-                    .read<GetSearchHistoryNotifier>()
-                    .pushSearchHistory(query);
-                context.read<GetImagesNotifier>().searchByQuery(query);
-                close(context, list);
-              },
-            ),
-          ),
-        ),
       ),
     );
   }

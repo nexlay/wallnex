@@ -31,7 +31,7 @@ class AboutSliverScrollView extends BodyScrollView {
             ),
           ],
         ),
-        childWidget,
+        SliverPadding(padding: kAppPadding, sliver: childWidget),
       ],
     );
   }
