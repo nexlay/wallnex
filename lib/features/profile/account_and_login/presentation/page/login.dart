@@ -65,9 +65,6 @@ class Login extends StatelessWidget {
                 },
               ),
             ],
-            headerBuilder: (_, action, shrink) => const AnimationWithRive(
-              path: kLogo,
-            ),
             oauthButtonVariant: OAuthButtonVariant.icon_and_text,
             providers: [
               EmailAuthProvider(),

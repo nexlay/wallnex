@@ -52,11 +52,14 @@ android {
         applicationId "com.pryhodskyimykola.wallnex"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 19
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled = true
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
     }
 
     signingConfigs {
@@ -70,6 +73,9 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
+            /*ndk {
+                abiFilters 'arm64-v8a'
+            }*/
         }
     }
     namespace 'com.pryhodskyimykola.wallnex'

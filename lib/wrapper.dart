@@ -17,33 +17,56 @@ class Wrapper extends StatelessWidget {
 
     final List<NavigationDestination> navDestinations = [
       NavigationDestination(
-        icon: const Icon(Icons.home_outlined),
-        selectedIcon: const Icon(Icons.home),
+        icon: Icon(
+          kNavBarIcons.elementAt(0),
+        ),
+        selectedIcon: Icon(
+          kNavBarFilledIcons.elementAt(0),
+        ),
+        label: locale.categories,
+      ),
+      NavigationDestination(
+        icon: Icon(
+          kNavBarIcons.elementAt(1),
+        ),
+        selectedIcon: Icon(
+          kNavBarFilledIcons.elementAt(1),
+        ),
         label: locale.home,
       ),
       NavigationDestination(
-        icon: const Icon(Icons.favorite_border),
-        selectedIcon: const Icon(Icons.favorite),
+        icon: Icon(
+          kNavBarIcons.elementAt(2),
+        ),
+        selectedIcon: Icon(
+          kNavBarFilledIcons.elementAt(2),
+        ),
         label: locale.favorites,
       ),
       NavigationDestination(
-        icon: const Icon(Icons.account_circle_outlined),
-        selectedIcon: const Icon(Icons.account_circle),
+        icon: Icon(
+          kNavBarIcons.elementAt(3),
+        ),
+        selectedIcon: Icon(
+          kNavBarFilledIcons.elementAt(3),
+        ),
         label: locale.profile,
       ),
     ];
 
     final titles = [
+      locale.categories,
       locale.home,
       locale.favorites,
       locale.profile,
     ];
 
     final pageIndex = context.select((GetPages i) => i.value);
-    final customNavBar = context.select((CustomizationProvider c) => c.customNavBar);
+    final customNavBar =
+        context.select((CustomizationProvider c) => c.customNavBar);
 
     return Scaffold(
-      floatingActionButton: pageIndex == 0 ? const FloatingButtonsBar() : null,
+      floatingActionButton: pageIndex == 1 ? const FloatingButtonsBar() : null,
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       bottomNavigationBar: customNavBar

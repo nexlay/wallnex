@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../../../../common/ui/animations/animation_with_rive.dart';
 import '../../../../common/ui/on_page_list_tile.dart';
 import '../../../../const/const.dart';
-import '../../../../const/const_rive.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/purchase_provider.dart';
 
@@ -33,9 +32,6 @@ class PurchasesPage extends StatelessWidget {
         child: Consumer<PurchaseProvider>(
           builder: (_, purchasesProvider, __) => Column(
             children: [
-              const AnimationWithRive(
-                path: kLogo,
-              ),
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -59,7 +55,7 @@ class PurchasesPage extends StatelessWidget {
                 onPressed: () =>
                     purchasesProvider.purchase(purchasesProvider.product),
                 child: Text(
-                  '${purchasesProvider.product.currencyCode} ${purchasesProvider.product.price.toString()} /${l.month}',
+                  '${purchasesProvider.product.currencyCode} ${purchasesProvider.product.price.toString()}/${l.month}',
                   style: const TextStyle(fontSize: kFontSize),
                 ),
               ),

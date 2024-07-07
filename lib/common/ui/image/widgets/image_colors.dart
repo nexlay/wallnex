@@ -19,8 +19,8 @@ class ImageColors extends StatelessWidget {
             ),
           ),
           child: const SizedBox(
-            height: kSocialIconSize,
-            width: kSocialIconSize,
+            height: kUnselectedIconSize,
+            width: kUnselectedIconSize,
           ),
         ),
       ).toList(),

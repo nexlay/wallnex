@@ -11,6 +11,9 @@ class LEn extends L {
   String get favorites => 'Favorites';
 
   @override
+  String get categories => 'Categories';
+
+  @override
   String get profile => 'Profile';
 
   @override
@@ -38,6 +41,21 @@ class LEn extends L {
   String get themeDesc => 'Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.';
 
   @override
+  String get language => 'Language';
+
+  @override
+  String get languageDesc => 'Select your preferred language and customize your app experience.';
+
+  @override
+  String get en => 'EN';
+
+  @override
+  String get pl => 'PL';
+
+  @override
+  String get uk => 'UK';
+
+  @override
   String get navigationDesc => 'Get custom navigation bar with animated icon';
 
   @override
@@ -50,7 +68,7 @@ class LEn extends L {
   String get appearance => 'Appearance';
 
   @override
-  String get darkTheme => 'Dark theme';
+  String get darkTheme => 'Dark theme and language';
 
   @override
   String get appInfo => 'App info';

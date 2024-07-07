@@ -17,7 +17,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # Provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
-  intl: ^0.18.1
+  intl: ^0.19.0
   # For implementing Rive animations
   rive: ^0.12.4
   # A Flutter package to use fonts from https://fonts.google.com.
@@ -122,18 +122,18 @@ dev_dependencies:
   # To restore Flutter's default white splash screen, run the following command in the terminal:
   # flutter pub run flutter_native_splash:remove
 flutter_native_splash:
-  color: '#935E5E'
-  color_dark: '#935E5E'
+  color: '#fcfcfc'
+  color_dark: '#000000'
   image: assets/core/launch_image.png
   image_dark: assets/core/launch_image.png
 
   android_12:
-    color: '#935E5E'
-    color_dark: '#935E5E'
+    color: '#fcfcfc'
+    color_dark: '#000000'
     image: assets/core/launch_image.png
-    icon_background_color: '#935E5E'
+    icon_background_color: '#fcfcfc'
     image_dark: assets/core/launch_image.png
-    icon_background_color_dark: '#935E5E'
+    icon_background_color_dark: '#000000'
 
 
 flutter:

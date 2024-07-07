@@ -107,6 +107,12 @@ abstract class L {
   /// **'Favorites'**
   String get favorites;
 
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
   /// No description provided for @profile.
   ///
   /// In en, this message translates to:
@@ -161,6 +167,36 @@ abstract class L {
   /// **'Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.'**
   String get themeDesc;
 
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @languageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your preferred language and customize your app experience.'**
+  String get languageDesc;
+
+  /// No description provided for @en.
+  ///
+  /// In en, this message translates to:
+  /// **'EN'**
+  String get en;
+
+  /// No description provided for @pl.
+  ///
+  /// In en, this message translates to:
+  /// **'PL'**
+  String get pl;
+
+  /// No description provided for @uk.
+  ///
+  /// In en, this message translates to:
+  /// **'UK'**
+  String get uk;
+
   /// No description provided for @navigationDesc.
   ///
   /// In en, this message translates to:
@@ -188,7 +224,7 @@ abstract class L {
   /// No description provided for @darkTheme.
   ///
   /// In en, this message translates to:
-  /// **'Dark theme'**
+  /// **'Dark theme and language'**
   String get darkTheme;
 
   /// No description provided for @appInfo.

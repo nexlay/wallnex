@@ -46,7 +46,7 @@ showPopUpMenu({required BuildContext context, required String id}) {
     child: PopupMenuButton<Widget?>(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       constraints: const BoxConstraints.tightFor(),
-      icon: const Icon(Icons.more_horiz),
+      icon: const Icon(Icons.info_outline),
       itemBuilder: (BuildContext context) => [
         PopupMenuItem<OnPopUpSpecsMenuItem>(
           onTap: () => context.read<GetImagesNotifier>().getImageById(id),

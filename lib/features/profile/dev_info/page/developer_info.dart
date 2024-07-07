@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/const/const.dart';
-import 'package:wallnex/features/profile/app_info/presentation/page/widgets/social_buttons_bar.dart';
-import '../../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../../profile_list_tile.dart';
+import 'package:wallnex/features/profile/dev_info/widgets/social_buttons_bar.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
+import '../../profile_list_tile.dart';
 
 class DeveloperInfo extends StatelessWidget {
   const DeveloperInfo({super.key});
@@ -26,12 +26,12 @@ class DeveloperInfo extends StatelessWidget {
                         height: 50,
                       ),
                       Card(
-                        elevation: 0.5,
+                        elevation: 0.1,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const SizedBox(
-                              height: 50,
+                              height: 60,
                             ),
                             ProfileListTile(
                               isCenter: true,
@@ -50,10 +50,10 @@ class DeveloperInfo extends StatelessWidget {
                     ],
                   ),
                   const CircleAvatar(
-                    radius: 52,
+                    radius: 62,
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      radius: 50.0,
+                      radius: 60.0,
                       backgroundImage: AssetImage(
                         kDevPhoto,
                       ),
@@ -61,38 +61,34 @@ class DeveloperInfo extends StatelessWidget {
                   ),
                 ],
               ),
-              ProfileListTile(
-                isCenter: false,
-                enabled: false,
-                title: Text(
-                  locale.location,
+              Card(
+                elevation: 0.1,
+                child: Column(
+                  children: [
+                    ProfileListTile(
+                      isCenter: false,
+                      enabled: false,
+                      title: Text(
+                        locale.location_description,
+                      ),
+                      subtitle: Text(
+                        locale.location,
+                      ),
+                      leading: const Icon(Icons.location_on_outlined),
+                    ),
+                    ProfileListTile(
+                      isCenter: false,
+                      enabled: false,
+                      title: Text(
+                        locale.tool_description,
+                      ),
+                      subtitle: Text(
+                        locale.languages_and_tools,
+                      ),
+                      leading: const Icon(Icons.pan_tool_alt_outlined),
+                    ),
+                  ],
                 ),
-                subtitle: Text(
-                  locale.location_description,
-                ),
-                leading: const Icon(Icons.location_on_outlined),
-              ),
-              ProfileListTile(
-                isCenter: false,
-                enabled: false,
-                title: Text(
-                  locale.languages_and_tools,
-                ),
-                subtitle: Text(
-                  locale.tool_description,
-                ),
-                leading: const Icon(Icons.pan_tool_alt_outlined),
-              ),
-              ProfileListTile(
-                isCenter: false,
-                enabled: false,
-                title: Text(
-                  locale.fun_fact,
-                ),
-                subtitle: Text(
-                  locale.fun_fact_description,
-                ),
-                leading: const Icon(Icons.fact_check_outlined),
               ),
             ],
           ),

@@ -11,6 +11,9 @@ class LUk extends L {
   String get favorites => 'Обрані';
 
   @override
+  String get categories => 'Категорії';
+
+  @override
   String get profile => 'Профіль';
 
   @override
@@ -38,6 +41,21 @@ class LUk extends L {
   String get themeDesc => 'Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.';
 
   @override
+  String get language => 'Мова';
+
+  @override
+  String get languageDesc => 'Оберіть бажану мову та налаштуйте спосіб використання програми.';
+
+  @override
+  String get en => 'EN';
+
+  @override
+  String get pl => 'PL';
+
+  @override
+  String get uk => 'UK';
+
+  @override
   String get navigationDesc => 'Спеціальна панель навігації';
 
   @override
@@ -47,10 +65,10 @@ class LUk extends L {
   String get gridCountDesc => 'Дозволяє змінювати кількість стовпців і розмір попереднього перегляду';
 
   @override
-  String get appearance => 'Зовнішній вигляд';
+  String get appearance => 'Bигляд';
 
   @override
-  String get darkTheme => 'Hічний режим';
+  String get darkTheme => 'Темна тема та мова додатку';
 
   @override
   String get appInfo => 'Інформація';
@@ -71,10 +89,10 @@ class LUk extends L {
   String get version => 'Версія';
 
   @override
-  String get customizationDesc => 'Змінити вигляд програми';
+  String get customizationDesc => 'Додаткові налаштування';
 
   @override
-  String get premium => 'Підвищуйте комфорт користування додатком';
+  String get premium => 'Підвищіть комфорт користування';
 
   @override
   String get prem => 'Преміум';
@@ -95,28 +113,28 @@ class LUk extends L {
   String get yourPremium => 'Ваш Premium';
 
   @override
-  String get premiumBenefit_1 => 'Насолоджуйтесь додатком без реклами';
+  String get premiumBenefit_1 => 'Лише важливий контент';
 
   @override
-  String get premiumBenefit_2 => 'Пріоритетна підтримка клієнтів';
+  String get premiumBenefit_2 => 'Пріоритетна підтримка';
 
   @override
-  String get premiumBenefit_3 => 'Функції налаштування';
+  String get premiumBenefit_3 => 'Створіть свій власний стиль';
 
   @override
-  String get premiumBenefit_4 => 'Упорядкуйте свої зображення';
+  String get premiumBenefit_4 => 'Знайдіть свої зображення швидше';
 
   @override
-  String get premiumBenefit_sub_1 => 'Без реклами, лише контент';
+  String get premiumBenefit_sub_1 => 'Без реклами';
 
   @override
   String get premiumBenefit_sub_2 => 'Для критичних і термінових питань';
 
   @override
-  String get premiumBenefit_sub_3 => 'Створіть свій власний стиль';
+  String get premiumBenefit_sub_3 => 'Функції налаштування вигляду';
 
   @override
-  String get premiumBenefit_sub_4 => 'Знайдіть ідеальні шпалери з функціями сортування';
+  String get premiumBenefit_sub_4 => 'Функції фільтрування зображень';
 
   @override
   String get thanksForPremium => 'Дякуємо за участь в Premium';
@@ -293,5 +311,5 @@ class LUk extends L {
   String get fun_fact => 'Кумедний факт';
 
   @override
-  String get fun_fact_description => 'Можу знизити ціну до 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
+  String get fun_fact_description => 'Можу знизити ціну на 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
 }

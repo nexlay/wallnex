@@ -8,6 +8,10 @@ abstract class CustomizationRepo {
   Future<Either<Failure, void>> setTheme(int themeValue);
   Future<Either<Failure, int>> getTheme();
 
+  ///Language
+  Future<Either<Failure, void>> setLanguage (String locale);
+  Future<Either<Failure, String>> getLanguage();
+
   ///Custom NavBar
   Future<Either<Failure, void>> setCustomNavBar (currentSwitcher);
   Future<Either<Failure, bool>> getCustomNavBar ();

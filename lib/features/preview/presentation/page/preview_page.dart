@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/buttons/btn_container.dart';
+import 'package:wallnex/features/preview/presentation/page/widgets/buttons/preview_buttons_bar.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/previewer.dart';
 import 'package:wallnex/features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
 import '../../../../common/ui/loading_status/set_up_wallpaper_loader.dart';
@@ -18,7 +20,6 @@ class PreviewPage extends StatelessWidget {
         wallpaper.colors[1].replaceAll('#', '0xff'),
       ),
     ).computeLuminance();
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -56,11 +57,21 @@ class PreviewPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 5.0,
-                bottom: 10.0,
-                child: BtnContainer(
-                  wallpaper: wallpaper,
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SetUpBtn(
+                      wallpaper: wallpaper,
+                    ),
+                    const SizedBox(
+                      height: kFontSize,
+                    ),
+                    PreviewBar(
+                      wallpaper: wallpaper,
+                    ),
+                  ],
                 ),
               ),
               loader ? const LoadingWhenWallpaperSetUp() : const SizedBox(),

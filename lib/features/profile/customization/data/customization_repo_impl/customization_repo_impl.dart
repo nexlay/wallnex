@@ -74,4 +74,28 @@ class CustomizationRepoImpl implements CustomizationRepo {
       return Left(LocalFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, String>> getLanguage() async {
+    try {
+      final language = await hiveDatabase.getLanguage();
+      return Right(language);
+    } on LocalExceptions {
+      return Left(
+        LocalFailure(),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> setLanguage(String locale) async {
+    try {
+      final language = await hiveDatabase.setLanguage(locale);
+      return Right(language);
+    } on LocalExceptions {
+      return Left(
+        LocalFailure(),
+      );
+    }
+  }
 }

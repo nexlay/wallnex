@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../const/const.dart';
 
 class AppDarkTheme {
-  static ThemeData darkTheme(ColorScheme colorScheme) => ThemeData(
+  static ThemeData darkTheme(ColorScheme colorScheme, BuildContext context) =>
+      ThemeData(
         colorScheme: colorScheme,
         disabledColor: Colors.grey,
         brightness: Brightness.dark,
         cardTheme: CardTheme(
-          color: Colors.black.withOpacity(0.7),
+          color: colorScheme.onPrimary.withOpacity(0.5),
           elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
@@ -21,7 +22,7 @@ class AppDarkTheme {
           elevation: 0.0,
         ),
         navigationBarTheme: NavigationBarThemeData(
-          labelTextStyle: MaterialStateProperty.resolveWith(
+          labelTextStyle: WidgetStateProperty.resolveWith(
             (states) => const TextStyle(fontSize: 14),
           ),
           height: 80,
@@ -123,6 +124,16 @@ class AppDarkTheme {
           elevation: 20,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(kFontSize),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            minimumSize: Size(MediaQuery.of(context).size.width - 100,
+                MediaQuery.of(context).size.height / kFontSize),
+            backgroundColor: colorScheme.surface.withOpacity(0.7),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(kFontSize),
+            ),
           ),
         ),
       );

@@ -11,6 +11,9 @@ class LPl extends L {
   String get favorites => 'Ulubione';
 
   @override
+  String get categories => 'Kategorie';
+
+  @override
   String get profile => 'Konto';
 
   @override
@@ -38,6 +41,21 @@ class LPl extends L {
   String get themeDesc => 'Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.';
 
   @override
+  String get language => 'Język';
+
+  @override
+  String get languageDesc => 'Wybierz preferowany język i dostosuj sposób korzystania z aplikacji.';
+
+  @override
+  String get en => 'EN';
+
+  @override
+  String get pl => 'PL';
+
+  @override
+  String get uk => 'UK';
+
+  @override
   String get navigationDesc => 'Niestandardowy pasek nawigacyjny z animacją';
 
   @override
@@ -47,10 +65,10 @@ class LPl extends L {
   String get gridCountDesc => 'Umożliwia zmianę liczby kolumn oraz zmianę rozmiaru podglądu obrazków';
 
   @override
-  String get appearance => 'Ciemny motyw';
+  String get appearance => 'Wygląd';
 
   @override
-  String get darkTheme => 'Będzie włączać się autamytycznie w trybie auto';
+  String get darkTheme => 'Ciemny motyw i język aplikacji';
 
   @override
   String get appInfo => 'Informacje o aplikacji';
@@ -74,7 +92,7 @@ class LPl extends L {
   String get customizationDesc => 'Zmień wygląd aplikacji';
 
   @override
-  String get premium => 'Zwiększ komfort korzystania z aplikacji';
+  String get premium => 'Odblokuj pełny potencjał';
 
   @override
   String get prem => 'Premium';
@@ -89,7 +107,7 @@ class LPl extends L {
   String get features => 'Cechy';
 
   @override
-  String get premiumDesc => 'Kup funkcje premium';
+  String get premiumDesc => 'Uzyskaj dostęp do ekskluzywnych funkcji';
 
   @override
   String get yourPremium => 'Twój Premium';

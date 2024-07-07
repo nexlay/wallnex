@@ -36,6 +36,7 @@ class Profile extends StatelessWidget {
               leading: null,
             ),
           ),
+          const Divider(),
           OnPageListTile(
             title: Text(locale.premium),
             subtitle: Text(

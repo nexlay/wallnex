@@ -1,88 +1,143 @@
 import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
-import '../../../const/const_rive.dart';
+import 'dart:math' as math;
+import '../../../const/const.dart'; // Assuming this is your provider
 
 class CustomNavBarItem extends StatefulWidget {
-  const CustomNavBarItem(
-      {super.key,
-      required this.path,
-      required this.label,
-      required this.tabIndex});
+  const CustomNavBarItem({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.tabIndex,
+    required this.filledIcon, // Add this for the filled icon
+  });
 
-  final String path;
+  final IconData icon;
   final String label;
   final int tabIndex;
+  final IconData filledIcon; // Icon to be used when the tab is selected
 
   @override
   State<CustomNavBarItem> createState() => _CustomNavBarItemState();
 }
 
-class _CustomNavBarItemState extends State<CustomNavBarItem> {
-  SMIBool? _active;
-  bool _selected = false;
+class _CustomNavBarItemState extends State<CustomNavBarItem>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _positionAnimation;
+  late Animation<double> _fillAnimation;
+  late Animation<double> _shakeAnimation;
 
-  void _onRiveInit(Artboard artboard) async {
-    final controller = StateMachineController.fromArtboard(
-      artboard,
-      kStateMachine,
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: kAnimationDuration,
     );
-    artboard.addController(controller!);
-    _active = controller.findInput<bool>(kRiveSwitch) as SMIBool;
+
+    _positionAnimation = Tween<double>(begin: 10.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    _fillAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _shakeAnimation = Tween<double>(begin: 0.0, end: 2 * math.pi).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final page = context.select((GetPages p) => p.value);
-    _selected = widget.tabIndex == page;
-    _active?.value = _selected;
+    final selectedPage = Provider.of<GetPages>(context);
+    final selected = selectedPage.selectedIndex == widget.tabIndex;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Stack(
-          alignment: Alignment.topCenter,
+    if (selected) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+
+    return InkWell(
+      customBorder: RoundedRectangleBorder(
+        // Add customBorder
+        borderRadius: BorderRadius.circular(kRadius),
+      ),
+      onTap: () {
+        context.read<GetPages>().changeTab(widget.tabIndex);
+      },
+      child: AnimatedContainer(
+        duration: kAnimationDuration,
+        padding: kAppPadding,
+        decoration: BoxDecoration(
+          color: selected
+              ? Theme.of(context).primaryColor.withOpacity(kOpacity)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(kRadius),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedContainer(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(18.0),
-                ),
-                color: _selected ? Colors.red.shade50 : Colors.transparent,
-              ),
-              height: _selected ? 32 : 0,
-              width: _selected ? 60 : 0,
-              duration: const Duration(milliseconds: 100),
-            ),
-            GestureDetector(
-              onTap: () {
-                context.read<GetPages>().value = widget.tabIndex;
-                setState(
-                  () {
-                    _selected = !_selected;
-                  },
+            AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(_positionAnimation.value, 0),
+                  child: ClipRect(
+                    child: Transform.rotate(
+                      angle: selected ? _shakeAnimation.value : 0.0,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          // Outline icon
+                          Opacity(
+                            opacity: 1 - _fillAnimation.value,
+                            child: Icon(
+                              widget.icon,
+                              size: kUnselectedIconSize,
+                              color: selected
+                                  ? Theme.of(context).colorScheme.inversePrimary
+                                  : Theme.of(context).unselectedWidgetColor,
+                            ),
+                          ),
+                          // Filled icon
+                          Opacity(
+                            opacity: _fillAnimation.value,
+                            child: Icon(
+                              widget.filledIcon, // Use the filled icon here
+                              size: kSelectedIconSize,
+                              color: selected
+                                  ? Theme.of(context).colorScheme.inversePrimary
+                                  : Theme.of(context).unselectedWidgetColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               },
-              child: SizedBox(
-                width: 60,
-                height: _selected ? 32 : 30,
-                child: RiveAnimation.asset(
-                  widget.path,
-                  onInit: _onRiveInit,
-                ),
-              ),
             ),
           ],
         ),
-        const SizedBox(height: 10.0,),
-        Text(
-          widget.label,
-          style: TextStyle(
-            fontSize: _selected ? 12.0 : 0.0,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

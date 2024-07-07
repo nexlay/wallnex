@@ -16,7 +16,7 @@ import '../../../features/profile/account_and_login/presentation/page/email_veri
 import '../../../features/profile/account_and_login/presentation/page/login.dart';
 import '../../../features/profile/app_info/presentation/page/about.dart';
 import '../../../features/profile/app_info/presentation/page/discover_more.dart';
-import '../../../features/profile/app_info/presentation/page/developer_info.dart';
+import '../../../features/profile/dev_info/page/developer_info.dart';
 import '../../../features/profile/profile_page.dart';
 import '../../../features/subscription/presentation/page/purchases.dart';
 

@@ -34,10 +34,6 @@ class BodyScrollView extends StatelessWidget {
         ),
         SliverVisibility(
           visible: show,
-          sliver: const CategoriesHeader(),
-        ),
-        SliverVisibility(
-          visible: show,
           sliver: const SortingImages(),
         ),
         SliverVisibility(

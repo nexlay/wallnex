@@ -11,6 +11,7 @@ class PreviewBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ButtonBar(
+      mainAxisSize: MainAxisSize.max,
       children: [
         FavoriteButton(
           wallpaper: wallpaper,

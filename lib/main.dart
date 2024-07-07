@@ -5,11 +5,13 @@ import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
 import 'package:wallnex/features/file_manager/presentation/provider/download_provider.dart';
 import 'package:wallnex/features/messaging/presentation/provider/messaging_provider.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/customization_provider.dart';
+import 'package:wallnex/features/profile/customization/presentation/provider/language_provider.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/theme_provider.dart';
 import 'package:wallnex/features/search/presentation/provider/get_search_history_notifier.dart';
 import 'package:wallnex/wrapper.dart';
 import 'package:wallnex/features/images/presentation/provider/get_images_notifier.dart';
 import 'common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
+import 'const/const.dart';
 import 'core/config/l10n/generated/app_localizations.dart';
 import 'core/config/router/routes.dart';
 import 'core/config/theme/dark_theme.dart';
@@ -88,6 +90,10 @@ class MyApp extends StatelessWidget {
           create: (_) => di.getIt<ThemeProvider>()..getThemeValue(),
           child: const Appearance(),
         ),
+        ChangeNotifierProvider<LanguageProvider>(
+          create: (_) => di.getIt<LanguageProvider>()..getLanguageValue(),
+          child: const Appearance(),
+        ),
         ChangeNotifierProvider<CustomizationProvider>(
           create: (_) => di.getIt<CustomizationProvider>()
             ..getNavBarStyle()
@@ -135,12 +141,14 @@ class Wallnex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = context.select((ThemeProvider themeMode) => themeMode.value);
+    final language = context.select((LanguageProvider locale) => locale.value);
     return DynamicColorBuilder(
         builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
       return MaterialApp.router(
         routeInformationProvider: AppRouter().router.routeInformationProvider,
         routeInformationParser: AppRouter().router.routeInformationParser,
         routerDelegate: AppRouter().router.routerDelegate,
+        locale: language,
         localizationsDelegates: [
           L.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -149,8 +157,12 @@ class Wallnex extends StatelessWidget {
           FirebaseUILocalizations.delegate,
         ],
         supportedLocales: L.supportedLocales,
-        theme: AppTheme.lightTheme(lightDynamic!),
-        darkTheme: AppDarkTheme.darkTheme(darkDynamic!),
+        theme: AppTheme.lightTheme(lightDynamic!, context),
+        darkTheme: AppDarkTheme.darkTheme(darkDynamic!, context),
+        themeAnimationStyle: AnimationStyle(
+            duration: kAnimationDuration,
+            curve: Curves.easeIn,
+            reverseCurve: Curves.bounceOut),
         themeMode: value == ThemeValue.light
             ? ThemeMode.light
             : value == ThemeValue.dark

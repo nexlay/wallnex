@@ -1,7 +1,7 @@
 {
 "home": "Home",
 "favorites":"Favorites",
-
+"categories": "Categories",
 "profile": "Profile",
 "theme": "Theme",
 "dark": "Dark",
@@ -11,13 +11,18 @@
 "customization": "Customization",
 "navigation":"Navigation",
 "themeDesc": "Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.",
+  "language": "Language",
+  "languageDesc": "Select your preferred language and customize your app experience.",
+  "en": "EN",
+  "pl": "PL",
+  "uk": "UK",
 "navigationDesc": "Get custom navigation bar with animated icon",
   "gridCount": "Column width",
   "gridCountDesc": "Allows you to change the number columns and change the size of preview",
 
 
 "appearance": "Appearance",
-"darkTheme": "Dark theme",
+"darkTheme": "Dark theme and language",
 "appInfo": "App info",
   "rate_this_app": "Rate this app",
   "share_this_app": "Share this app",

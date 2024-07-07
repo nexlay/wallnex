@@ -19,7 +19,6 @@ class HomePage extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         childCount: list.length,
         (context, index) => ImageCard(
-
           goTo: () {
             context.read<GetImagesNotifier>().getImageById(list[index].id);
             context
@@ -28,7 +27,10 @@ class HomePage extends StatelessWidget {
             context.push(krDetails, extra: list[index]);
           },
           path: list[index].thumbsLarge,
-          wallpaper: list[index], showFavoriteBtn: false, showImageSpecsBtn: false, showSendBtn: false,
+          wallpaper: list[index],
+          showFavoriteBtn: false,
+          showImageSpecsBtn: false,
+          showSendBtn: false,
         ),
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rive/rive.dart';
+import 'package:wallnex/const/const.dart';
+import 'package:wallnex/features/profile/customization/presentation/provider/language_provider.dart';
+import 'package:wallnex/features/profile/profile_list_tile.dart';
 import '../../../../../../common/ui/slivers/custom_scroll_view.dart';
-import '../../../../../../const/const_rive.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../provider/theme_provider.dart';
 
@@ -14,32 +15,7 @@ class Appearance extends StatefulWidget {
 }
 
 class _AppearanceState extends State<Appearance> {
-  //Trigger for activating rive animation
-  SMIBool? _activateRiveAnimation;
   ThemeValue themeValue = ThemeValue.auto;
-  var brightness =
-      WidgetsBinding.instance.platformDispatcher.platformBrightness;
-
-  void onRiveInit(Artboard artboard) async {
-    final controller = StateMachineController.fromArtboard(
-      artboard,
-      kStateMachine,
-    );
-    artboard.addController(controller!);
-    _activateRiveAnimation = controller.findInput<bool>(kRiveSwitch) as SMIBool;
-    //Check on animation init
-    activateAnimation();
-  }
-
-  void activateAnimation() {
-    _activateRiveAnimation?.value = themeValue.value == 0
-        ? brightness == Brightness.dark
-        : themeValue.value == 1
-            ? false
-            : themeValue.value == 2
-                ? true
-                : false;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,28 +23,30 @@ class _AppearanceState extends State<Appearance> {
 
     return Scaffold(
       body: BodyScrollView(
-        title: locale.theme,
+        title: locale.appearance,
         childWidget: SliverFillRemaining(
+          hasScrollBody: false,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(
-                locale.themeDesc,
-                textAlign: TextAlign.justify,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 4,
-                width: MediaQuery.of(context).size.width,
-                child: RiveAnimation.asset(
-                  kLamp,
-                  onInit: onRiveInit,
+              ProfileListTile(
+                title: Text(
+                  locale.theme,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: kFontSize),
+                ),
+                isCenter: false,
+                enabled: false,
+                subtitle: Text(
+                  locale.themeDesc,
+                  textAlign: TextAlign.justify,
                 ),
               ),
               Consumer<ThemeProvider>(
                 builder: (_, themeProvider, __) {
                   themeValue = themeProvider.value;
                   //Check on theme changed
-                  activateAnimation();
+
                   return SegmentedButton<int>(
                     segments: <ButtonSegment<int>>[
                       ButtonSegment<int>(
@@ -90,6 +68,48 @@ class _AppearanceState extends State<Appearance> {
                     selected: <int>{themeProvider.value.value},
                     onSelectionChanged: (Set<int> newSelection) {
                       themeProvider.setThemeValue(newSelection.first);
+                    },
+                  );
+                },
+              ),
+              ProfileListTile(
+                title: Text(
+                  locale.language,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: kFontSize),
+                ),
+                isCenter: false,
+                enabled: false,
+                subtitle: Text(
+                  locale.languageDesc,
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+              Consumer<LanguageProvider>(
+                builder: (_, languageProvider, __) {
+                  return SegmentedButton<Locale>(
+                    segments: <ButtonSegment<Locale>>[
+                      ButtonSegment<Locale>(
+                        value: Locale(AppLanguage.english.value),
+                        // icon: const Icon(Icons.auto_awesome_outlined),
+                        label: Text(locale.en),
+                      ),
+                      ButtonSegment<Locale>(
+                        // icon: const Icon(Icons.light_mode_outlined),
+                        value: Locale(AppLanguage.polish.value),
+                        label: Text(locale.pl),
+                      ),
+                      ButtonSegment<Locale>(
+                        // icon: const Icon(Icons.dark_mode_outlined),
+                        value: Locale(AppLanguage.ukraine.value),
+                        label: Text(locale.uk),
+                      ),
+                    ],
+                    selected: <Locale>{languageProvider.value},
+                    onSelectionChanged: (Set<Locale> newSelection) {
+                      languageProvider
+                          .setLanguageValue(newSelection.first.languageCode);
                     },
                   );
                 },

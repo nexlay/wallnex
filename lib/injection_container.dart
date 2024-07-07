@@ -30,6 +30,7 @@ import 'package:wallnex/features/profile/customization/domain/usecase/get_crossA
 import 'package:wallnex/features/profile/customization/domain/usecase/set_crossAxisCount_usecase.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_custom_nav_bar_use_case.dart';
 import 'package:wallnex/features/profile/customization/domain/usecase/set_theme_usecase.dart';
+import 'package:wallnex/features/profile/customization/presentation/provider/language_provider.dart';
 import 'package:wallnex/features/sorting/presentation/provider/sorting_provider.dart';
 import 'package:wallnex/features/suggestions/data/repository/suggestion_repo_impl.dart';
 import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_usecase.dart';
@@ -81,8 +82,10 @@ import 'features/profile/app_info/presentation/provider/get_app_info_notifier.da
 import 'features/profile/customization/data/customization_repo_impl/customization_repo_impl.dart';
 import 'features/profile/customization/data/database/database.dart';
 import 'features/profile/customization/domain/repo/customization_repo.dart';
+import 'features/profile/customization/domain/usecase/get_language_use_case.dart';
 import 'features/profile/customization/domain/usecase/get_nav_bar_usecase.dart';
 import 'features/profile/customization/domain/usecase/get_theme_usecase.dart';
+import 'features/profile/customization/domain/usecase/set_language_use_case.dart';
 import 'features/profile/customization/presentation/provider/customization_provider.dart';
 import 'features/profile/customization/presentation/provider/theme_provider.dart';
 import 'features/subscription/data/datasource/purchase_datasource.dart';
@@ -237,6 +240,13 @@ Future<void> init() async {
 //-----------------------------
   getIt.registerFactory(
     () => ThemeProvider(
+      getIt(),
+      getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerFactory(
+        () => LanguageProvider(
       getIt(),
       getIt(),
     ),
@@ -418,6 +428,17 @@ Future<void> init() async {
   getIt.registerLazySingleton(
     () => SetThemeUseCase(
       themeRepo: getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerLazySingleton(
+        () => GetLanguageUseCase(
+      customizationRepo: getIt(),
+    ),
+  );
+  getIt.registerLazySingleton(
+        () => SetLanguageUseCase(
+      customizationRepo: getIt(),
     ),
   );
 //-----------------------------
