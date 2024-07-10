@@ -24,7 +24,6 @@ class ImageCard extends StatelessWidget {
   final bool showSendBtn;
   final Function()? goTo;
 
-
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -38,7 +37,8 @@ class ImageCard extends StatelessWidget {
                 onTap: goTo,
                 child: NetworkImageViewer(
                   url: path,
-                  imageColor: wallpaper.colors[2],
+                  imageColor: Color(
+                      int.parse(wallpaper.colors[2].replaceFirst('#', '0xff'))),
                 ),
               ),
             ),

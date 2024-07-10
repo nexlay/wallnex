@@ -36,7 +36,7 @@ class GetImagesNotifier extends ValueNotifier<int> {
     loadImages();
   }
 
-  searchByCategories(String category) {
+  Future<void>searchByCategories(String category) async {
     _searchUrl = kSearchUrl + category + kPage;
     value = 1;
     notifyListeners();

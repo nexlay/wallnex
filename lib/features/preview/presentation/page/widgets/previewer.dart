@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
-import '../../../../../common/ui/loading_status/loader.dart';
+import '../../../../../common/ui/loading_status/placeholder.dart';
 import '../../../../file_manager/presentation/provider/file_manager_notifier.dart';
 
 class PreviewViewer extends StatefulWidget {
@@ -52,7 +52,7 @@ class _PreviewViewerState extends State<PreviewViewer> {
           initialScale: PhotoViewComputedScale.covered,
           minScale: PhotoViewComputedScale.covered,
           maxScale: PhotoViewComputedScale.covered,
-          loadingBuilder: (_, __) => const Loader(),
+          loadingBuilder: (_, __) => const CustomPlaceholder(),
           imageProvider: CachedNetworkImageProvider(_path),
         );
       }

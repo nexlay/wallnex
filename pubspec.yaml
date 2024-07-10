@@ -69,7 +69,7 @@ dependencies:
   # Firebase localization
   firebase_ui_localizations: ^1.0.0
   # A cleaner way to handle your environment variables in Dart/Flutter.
-  envied: ^0.5.3
+  envied: ^0.5.4+1
   # A package that allows you to use the native file explorer to pick single or multiple files, with extensions filtering support.
   file_picker: ^5.2.5
   # A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.

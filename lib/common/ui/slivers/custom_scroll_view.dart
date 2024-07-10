@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/sorting/presentation/page/sorting_images_premium_only.dart';
-import '../../../../features/images/presentation/page/home/widgets/categories_header.dart';
 import '../../../../features/search/presentation/page/search.dart';
 import '../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../features/ads/presentation/page/banner_ad_widget.dart';

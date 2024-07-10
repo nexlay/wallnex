@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-
 import '../../../../const/const.dart';
 
 class ImageColors extends StatelessWidget {
-  const ImageColors({super.key, required this.list});
-  final List list;
+  const ImageColors({super.key, required this.colorHexList});
+  final List<String> colorHexList; // Renamed for clarity
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List<Widget>.generate(
-        list.length,
-        (index) => Card(
-          color: Color(
-            int.parse(
-              list[index].replaceAll('#', '0xff'),
-            ),
-          ),
+      children: colorHexList.map((colorHex) {
+        // Use map for more concise and readable iteration
+        return Card(
+          color: Color(int.parse(colorHex.replaceFirst('#', '0xff'))),
+          // Simplified color parsing
           child: const SizedBox(
             height: kUnselectedIconSize,
             width: kUnselectedIconSize,
           ),
-        ),
-      ).toList(),
+        );
+      }).toList(),
     );
   }
 }
