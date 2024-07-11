@@ -61,34 +61,31 @@ class DeveloperInfo extends StatelessWidget {
                   ),
                 ],
               ),
-              Card(
-                elevation: 0.1,
-                child: Column(
-                  children: [
-                    ProfileListTile(
-                      isCenter: false,
-                      enabled: false,
-                      title: Text(
-                        locale.location_description,
-                      ),
-                      subtitle: Text(
-                        locale.location,
-                      ),
-                      leading: const Icon(Icons.location_on_outlined),
+              Column(
+                children: [
+                  ProfileListTile(
+                    isCenter: false,
+                    enabled: false,
+                    title: Text(
+                      locale.location_description,
                     ),
-                    ProfileListTile(
-                      isCenter: false,
-                      enabled: false,
-                      title: Text(
-                        locale.tool_description,
-                      ),
-                      subtitle: Text(
-                        locale.languages_and_tools,
-                      ),
-                      leading: const Icon(Icons.pan_tool_alt_outlined),
+                    subtitle: Text(
+                      locale.location,
                     ),
-                  ],
-                ),
+                    leading: const Icon(Icons.location_on_outlined),
+                  ),
+                  ProfileListTile(
+                    isCenter: false,
+                    enabled: false,
+                    title: Text(
+                      locale.tool_description,
+                    ),
+                    subtitle: Text(
+                      locale.languages_and_tools,
+                    ),
+                    leading: const Icon(Icons.pan_tool_alt_outlined),
+                  ),
+                ],
               ),
             ],
           ),
