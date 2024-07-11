@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/features/subscription/presentation/page/premium_page.dart';
-import 'package:wallnex/features/subscription/presentation/page/purchases_page.dart';
+import 'package:wallnex/features/subscription/presentation/page/benefits_page.dart';
 import '../../../../common/ui/epty_screen/empty_sliver_screen.dart';
 import '../../../../common/ui/loading_status/progess_indicator.dart';
 import '../../../../const/const_rive.dart';
@@ -15,25 +15,19 @@ class PurchasesAndSubscriptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final subscriptions =
-        context.select((PurchaseProvider provider) => provider.product);
-    final isLoading =
-        context.select((PurchaseProvider provider) => provider.isLoading);
-    final purchaseResult =
-        context.select((PurchaseProvider provider) => provider.purchaseResult);
-    return _showBody(
-      context,
-      subscriptions,
-      isLoading,
-      purchaseResult,
-    );
+    final purchaseProvider = context.watch<PurchaseProvider>();
+    final product = purchaseProvider.product;
+    final isLoading = purchaseProvider.isLoading;
+    final isPurchased = purchaseProvider.purchaseResult;
+
+    return _buildBody(context, product, isLoading, isPurchased);
   }
 
-  Widget _showBody(
+  Widget _buildBody(
     BuildContext context,
     Product product,
     bool isLoading,
-    bool purchaseResult,
+    bool isPurchased,
   ) {
     final locale = L.of(context);
     final emptyScreen = EmptySliverScreen(
@@ -49,14 +43,20 @@ class PurchasesAndSubscriptions extends StatelessWidget {
             ? const SliverFillRemaining(
                 child: ProgressLoader(),
               )
-            : !isLoading && product.id.isEmpty && !purchaseResult
-                ? emptyScreen
-                : !isLoading && product.id.isNotEmpty && !purchaseResult
-                    ? const PurchasesPage()
-                    : !isLoading && purchaseResult
-                        ? const PremiumUserStatus()
-                        : emptyScreen,
+            : _buildContent(product, isPurchased, emptyScreen),
       ),
     );
+  }
+
+  Widget _buildContent(Product product, bool isPurchased, Widget emptyScreen) {
+    if (product.id.isEmpty && !isPurchased) {
+      return emptyScreen;
+    } else if (product.id.isNotEmpty && !isPurchased) {
+      return const PurchasesPage();
+    } else if (isPurchased) {
+      return const PremiumUserStatus();
+    } else {
+      return emptyScreen;
+    }
   }
 }

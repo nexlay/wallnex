@@ -18,7 +18,7 @@ import '../../../features/profile/app_info/presentation/page/about.dart';
 import '../../../features/profile/app_info/presentation/page/discover_more.dart';
 import '../../../features/profile/dev_info/page/developer_info.dart';
 import '../../../features/profile/profile_page.dart';
-import '../../../features/subscription/presentation/page/purchases.dart';
+import '../../../features/subscription/presentation/page/purchase_wrapper.dart';
 
 class AppRouter {
   static Widget _homeRouteBuilder(_, state) => const Wrapper();

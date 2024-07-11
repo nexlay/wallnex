@@ -29,7 +29,7 @@ import 'features/profile/customization/presentation/page/appearance/appearance.d
 import 'features/profile/customization/presentation/page/customization/customization.dart';
 import 'features/sorting/presentation/page/sorting_images_premium_only.dart';
 import 'features/sorting/presentation/provider/sorting_provider.dart';
-import 'features/subscription/presentation/page/purchases.dart';
+import 'features/subscription/presentation/page/purchase_wrapper.dart';
 import 'features/subscription/presentation/provider/purchase_provider.dart';
 import 'features/suggestions/presentation/page/suggestions.dart';
 import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart';

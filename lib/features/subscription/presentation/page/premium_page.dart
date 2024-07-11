@@ -15,8 +15,7 @@ class PremiumUserStatus extends StatelessWidget {
     final product =
         context.select((PurchaseProvider provider) => provider.product);
     final l = L.of(context);
-    return SliverFillRemaining(
-      hasScrollBody: false,
+    return SliverToBoxAdapter(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -35,7 +34,7 @@ class PremiumUserStatus extends StatelessWidget {
             ],
           ),
           Text(
-            '${l.expirationDate}${product.expirationDate.substring(0, 10)}',
+            '${l.expirationDate} ${product.expirationDate.length >= 10 ? product.expirationDate.substring(0, 10) : product.expirationDate}',
           ),
           const AnimationWithRive(
             path: kPremiumSuccess,
