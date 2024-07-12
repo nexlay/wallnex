@@ -6,7 +6,7 @@ import 'package:wallnex/features/images/presentation/page/details/image_details_
 import 'package:wallnex/features/messaging/presentation/page/conversations.dart';
 import 'package:wallnex/features/profile/account_and_login/presentation/page/account.dart';
 import 'package:wallnex/features/profile/account_and_login/presentation/page/forgot_password.dart';
-import 'package:wallnex/features/profile/customization/presentation/page/appearance/appearance.dart';
+import 'package:wallnex/features/profile/customization/presentation/page/appearance/appearance_page.dart';
 import 'package:wallnex/features/profile/customization/presentation/page/customization/customization.dart';
 import 'package:wallnex/wrapper.dart';
 import '../../../const/route_paths.dart';
@@ -34,7 +34,7 @@ class AppRouter {
       const EmailVerification();
   static Widget _forgotPasswordRouteBuilder(_, state) =>
       ForgotPassword(email: state.extra);
-  static Widget _appearanceRouteBuilder(_, state) => const Appearance();
+  static Widget _appearanceRouteBuilder(_, state) => const AppearanceScreen();
   static Widget _customizationRouteBuilder(_, state) => const Customization();
   static Widget _appInformationRouteBuilder(_, state) => const AppInformation();
   static Widget _discoverMoreRouteBuilder(_, state) => const DiscoverMore();

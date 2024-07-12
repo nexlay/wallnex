@@ -7,6 +7,7 @@ class OnPageListTile extends StatelessWidget {
     super.key,
     required this.title,
     this.subtitle,
+    this.isThreeLine,
     this.path,
     this.leading,
     this.enabled,
@@ -14,6 +15,7 @@ class OnPageListTile extends StatelessWidget {
   });
   final Widget title;
   final Widget? subtitle;
+  final bool? isThreeLine;
   final String? path;
   final Widget? leading;
   final bool? enabled;

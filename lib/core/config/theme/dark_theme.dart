@@ -9,7 +9,7 @@ class AppDarkTheme {
         disabledColor: Colors.grey,
         brightness: Brightness.dark,
         cardTheme: CardTheme(
-          color: colorScheme.onPrimary.withOpacity(0.5),
+          color: colorScheme.onPrimary.withOpacity(0.7),
           elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),

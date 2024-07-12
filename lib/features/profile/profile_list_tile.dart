@@ -7,27 +7,34 @@ class ProfileListTile extends OnPageListTile {
     super.key,
     required super.title,
     super.subtitle,
+    super.isThreeLine,
     super.path,
     this.trailing,
     required this.isCenter,
+    this.elevation,
     super.leading,
     super.enabled,
   });
 
   final Widget? trailing;
   final bool isCenter;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      enabled: enabled == null ? true : false,
-      leading: leading,
-      trailing: trailing,
-      title: isCenter ? Center(child: title) : title,
-      subtitle: isCenter ? Center(child: subtitle) : subtitle,
-      onTap: () {
-        context.push(path!);
-      },
+    return Card(
+      elevation: elevation,
+      child: ListTile(
+        enabled: enabled ?? true,
+        isThreeLine: isThreeLine ?? false,
+        leading: leading,
+        trailing: trailing,
+        title: isCenter ? Center(child: title) : title,
+        subtitle: isCenter ? Center(child: subtitle) : subtitle,
+        onTap: () {
+          context.push(path!);
+        },
+      ),
     );
   }
 }

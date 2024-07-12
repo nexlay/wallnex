@@ -26,7 +26,6 @@ class DeveloperInfo extends StatelessWidget {
                         height: 50,
                       ),
                       Card(
-                        elevation: 0.1,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [

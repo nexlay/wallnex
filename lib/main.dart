@@ -25,7 +25,7 @@ import 'features/profile/account_and_login/domain/entities/user.dart';
 import 'features/profile/account_and_login/presentation/provider/local_user_provider.dart';
 import 'features/profile/app_info/presentation/page/about.dart';
 import 'features/profile/app_info/presentation/provider/get_app_info_notifier.dart';
-import 'features/profile/customization/presentation/page/appearance/appearance.dart';
+import 'features/profile/customization/presentation/page/appearance/appearance_page.dart';
 import 'features/profile/customization/presentation/page/customization/customization.dart';
 import 'features/sorting/presentation/page/sorting_images_premium_only.dart';
 import 'features/sorting/presentation/provider/sorting_provider.dart';
@@ -88,11 +88,11 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ThemeProvider>(
           create: (_) => di.getIt<ThemeProvider>()..getThemeValue(),
-          child: const Appearance(),
+          child: const AppearanceScreen(),
         ),
         ChangeNotifierProvider<LanguageProvider>(
           create: (_) => di.getIt<LanguageProvider>()..getLanguageValue(),
-          child: const Appearance(),
+          child: const AppearanceScreen(),
         ),
         ChangeNotifierProvider<CustomizationProvider>(
           create: (_) => di.getIt<CustomizationProvider>()

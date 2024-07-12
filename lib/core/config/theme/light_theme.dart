@@ -15,7 +15,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
           ),
-          color: colorScheme.onPrimary.withOpacity(0.5),
+          color: colorScheme.onPrimary.withOpacity(0.9),
         ),
         appBarTheme: const AppBarTheme(
           elevation: 0.0,
