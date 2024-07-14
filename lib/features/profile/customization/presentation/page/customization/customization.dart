@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/customization_provider.dart';
 import '../../../../../../common/ui/slivers/custom_scroll_view.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
@@ -17,28 +18,41 @@ class Customization extends StatelessWidget {
           child: Consumer<CustomizationProvider>(
             builder: (_, value, __) => Column(
               children: [
-                ListTile(
-                  title: Text(locale.navigation),
-                  subtitle: Text(locale.navigationDesc),
-                  trailing: Switch(
-                    value: value.customNavBar,
-                    onChanged: (bool switchTo) {
-                      value.setNavBarStyle(switchTo);
-                    },
-                  ),
+                _buildCustomizationCard(
+                  title: locale.navigation,
+                  description: locale.navigationDesc,
+                  value: value.customNavBar,
+                  onChanged: value.setNavBarStyle,
                 ),
-                ListTile(
-                  title: Text(locale.gridCount,),
-                  subtitle: Text(locale.gridCountDesc),
-                  trailing: Switch(
-                    value: value.crossAxisCount,
-                    onChanged: (bool switchTo) {
-                      value.setCrossAxisCount(switchTo);
-                    },
-                  ),
+                _buildCustomizationCard(
+                  title: locale.gridCount,
+                  description: locale.gridCountDesc,
+                  value: value.crossAxisCount,
+                  onChanged: value.setCrossAxisCount,
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCustomizationCard({
+    required String title,
+    required String description,
+    required bool value,
+    required ValueChanged<bool> onChanged,
+  }) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(kPaddingSize),
+        child: ListTile(
+          title: Text(title),
+          subtitle: Text(description),
+          trailing: Switch(
+            value: value,
+            onChanged: onChanged,
           ),
         ),
       ),

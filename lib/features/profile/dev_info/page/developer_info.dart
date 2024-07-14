@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wallnex/common/ui/on_page_list_tile.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/profile/dev_info/widgets/social_buttons_bar.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../profile_list_tile.dart';
 
 class DeveloperInfo extends StatelessWidget {
   const DeveloperInfo({super.key});
@@ -32,14 +32,18 @@ class DeveloperInfo extends StatelessWidget {
                             const SizedBox(
                               height: 60,
                             ),
-                            ProfileListTile(
-                              isCenter: true,
+                            OnPageListTile(
+                              centerContent: true,
                               enabled: false,
-                              title: Text(
-                                locale.madeBy,
+                              title: Center(
+                                child: Text(
+                                  locale.madeBy,
+                                ),
                               ),
-                              subtitle: Text(
-                                locale.developer_email,
+                              subtitle: Center(
+                                child: Text(
+                                  locale.developer_email,
+                                ),
                               ),
                             ),
                             const SocialButtonsBar(),
@@ -60,31 +64,31 @@ class DeveloperInfo extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  ProfileListTile(
-                    isCenter: false,
-                    enabled: false,
-                    title: Text(
-                      locale.location_description,
+              Card(
+                child: Column(
+                  children: [
+                    OnPageListTile(
+                      enabled: false,
+                      title: Text(
+                        locale.location_description,
+                      ),
+                      subtitle: Text(
+                        locale.location,
+                      ),
+                      leading: const Icon(Icons.location_on_outlined),
                     ),
-                    subtitle: Text(
-                      locale.location,
+                    OnPageListTile(
+                      enabled: false,
+                      title: Text(
+                        locale.tool_description,
+                      ),
+                      subtitle: Text(
+                        locale.languages_and_tools,
+                      ),
+                      leading: const Icon(Icons.pan_tool_alt_outlined),
                     ),
-                    leading: const Icon(Icons.location_on_outlined),
-                  ),
-                  ProfileListTile(
-                    isCenter: false,
-                    enabled: false,
-                    title: Text(
-                      locale.tool_description,
-                    ),
-                    subtitle: Text(
-                      locale.languages_and_tools,
-                    ),
-                    leading: const Icon(Icons.pan_tool_alt_outlined),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

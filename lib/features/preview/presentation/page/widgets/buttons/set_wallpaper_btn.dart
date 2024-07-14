@@ -6,18 +6,17 @@ import '../../../provider/set_image_as_wallpaper_notifier.dart';
 setWallpaperBtn(
     {required BuildContext context, required title, required setOn}) {
   return Center(
-    child: Expanded(
-      child: OutlinedButton(
-        onPressed: () {
-          context.read<FileManagerNotifier>().cropInBackground().then(
-                (value) => context
-                    .read<SetImageASWallpaperNotifier>()
-                    .setImageAsWallpaper(value, setOn.screen),
-              );
-        },
-        child: Text(
-          title,
-        ),
+    child: OutlinedButton(
+      onPressed: () {
+        context.read<FileManagerNotifier>().cropInBackground().then(
+              (value) => context
+                  .read<SetImageASWallpaperNotifier>()
+                  .setImageAsWallpaper(value, setOn.screen),
+            );
+      },
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 16),
       ),
     ),
   );

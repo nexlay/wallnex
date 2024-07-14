@@ -33,13 +33,16 @@ const kDevPhoto = 'assets/image/dev/developer.jpg';
 
 const kDefaultValue = 0.0;
 const kTitleScale = 1.5;
-const kAppPadding = EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0);
+const kPaddingSize = 10.0;
 const kUnselectedIconSize = 30.0;
 const kSelectedIconSize = 35.0;
 const kFontSize = 18.0;
+const kHeightForSpacer = 18.0;
 const kOpacity = 0.1;
 const kRadius = 18.0;
 const kAppSize = 5.0;
+
+const kAppPadding = EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0);
 const kAnimationDuration = Duration(milliseconds: 300);
 
 const kNavBarIcons = [

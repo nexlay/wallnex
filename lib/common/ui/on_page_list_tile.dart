@@ -7,30 +7,44 @@ class OnPageListTile extends StatelessWidget {
     super.key,
     required this.title,
     this.subtitle,
-    this.isThreeLine,
+    this.isThreeLine = false,
     this.path,
     this.leading,
-    this.enabled,
+    this.trailing,
+    this.enabled = true,
     this.wallpaper,
+    this.centerContent = false,
   });
+
   final Widget title;
   final Widget? subtitle;
-  final bool? isThreeLine;
+  final bool isThreeLine;
   final String? path;
   final Widget? leading;
-  final bool? enabled;
+  final Widget? trailing;
+  final bool enabled;
   final Wallpaper? wallpaper;
+  final bool centerContent;
 
   @override
   Widget build(BuildContext context) {
+    final titleWidget = centerContent ? Center(child: title) : title;
+    final subtitleWidget = centerContent ? Center(child: subtitle) : subtitle;
+
     return ListTile(
-      enabled: enabled == null ? true : false,
+      enabled: enabled,
       leading: leading,
-      title: title,
-      subtitle: subtitle,
-      onTap: () {
-        path != null ? context.push(path!, extra: wallpaper) : null;
-      },
+      trailing: trailing,
+      title: titleWidget,
+      subtitle: subtitleWidget,
+      isThreeLine: isThreeLine,
+      onTap: enabled
+          ? () {
+              if (path != null) {
+                context.push(path!, extra: wallpaper);
+              }
+            }
+          : null,
     );
   }
 }

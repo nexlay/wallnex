@@ -15,7 +15,6 @@ class PurchasesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = L.of(context);
 
-    // Extract benefit data creation outside the build method for better performance
     final benefits = [
       BenefitData(l.premiumBenefit_1, l.premiumBenefit_sub_1),
       BenefitData(l.premiumBenefit_2, l.premiumBenefit_sub_2),
@@ -23,29 +22,34 @@ class PurchasesPage extends StatelessWidget {
       BenefitData(l.premiumBenefit_4, l.premiumBenefit_sub_4),
     ];
 
-    return SliverFillRemaining(
+    return SliverToBoxAdapter(
       child: Consumer<PurchaseProvider>(
         builder: (_, purchasesProvider, __) {
-          // Extract the product price string for better readability
           final productPriceString =
               '${purchasesProvider.product.currencyCode} ${purchasesProvider.product.price.toString()}/${l.month}';
 
           return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               const AnimationWithRive(path: kPremiumCongratulation),
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: benefits.length,
-                itemBuilder: (_, index) => OnPageListTile(
-                  title: Text(benefits[index].title),
-                  enabled: false,
-                  subtitle: Text(benefits[index].subtitle),
-                  leading: const Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.green,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: kPaddingSize),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(kPaddingSize),
+                    child: Column(
+                      children: benefits
+                          .map((benefit) => OnPageListTile(
+                                title: Text(benefit.title),
+                                enabled: false,
+                                subtitle: Text(benefit.subtitle),
+                                leading: const Icon(
+                                  Icons.check_circle_outline,
+                                  color: Colors.green,
+                                ),
+                              ))
+                          .toList(),
+                    ),
                   ),
                 ),
               ),

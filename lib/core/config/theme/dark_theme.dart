@@ -9,7 +9,7 @@ class AppDarkTheme {
         disabledColor: Colors.grey,
         brightness: Brightness.dark,
         cardTheme: CardTheme(
-          color: colorScheme.onPrimary.withOpacity(0.7),
+          color: colorScheme.onPrimary,
           elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
@@ -115,7 +115,7 @@ class AppDarkTheme {
             borderRadius: BorderRadius.circular(16.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.transparent),
+            borderSide: const BorderSide(color: Colors.white),
             borderRadius: BorderRadius.circular(32.0),
           ),
           filled: true,
@@ -129,10 +129,10 @@ class AppDarkTheme {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width - 100,
-                MediaQuery.of(context).size.height / kFontSize),
-            backgroundColor: colorScheme.surface.withOpacity(0.7),
+                MediaQuery.of(context).size.height / kRadius),
+            backgroundColor: colorScheme.surface,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(kFontSize),
+              borderRadius: BorderRadius.circular(32),
             ),
           ),
         ),

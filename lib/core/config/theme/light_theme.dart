@@ -15,7 +15,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
           ),
-          color: colorScheme.onPrimary.withOpacity(0.9),
+          color: colorScheme.onPrimary,
         ),
         appBarTheme: const AppBarTheme(
           elevation: 0.0,
@@ -119,7 +119,7 @@ class AppTheme {
             borderRadius: BorderRadius.circular(16.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.transparent),
+            borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(32.0),
           ),
           filled: true,
@@ -134,9 +134,9 @@ class AppTheme {
           style: OutlinedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width - 100,
                 MediaQuery.of(context).size.height / kFontSize),
-            backgroundColor: colorScheme.surface.withOpacity(0.7),
+            backgroundColor: colorScheme.surface,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(kFontSize),
+              borderRadius: BorderRadius.circular(32),
             ),
           ),
         ),

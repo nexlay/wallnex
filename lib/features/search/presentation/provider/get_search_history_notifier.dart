@@ -11,21 +11,32 @@ class GetSearchHistoryNotifier extends ChangeNotifier {
       {required this.pushSearchHistoryIntoDb,
       required this.getSearchHistoryUseCase});
   List<String> searchHistory = [];
-  bool loading = false;
+  bool isLoading = false;
   String error = '';
 
   Future<void> pushSearchHistory(String query) async {
-    if (query.isEmpty) {
-      return;
-    } else {
+    if (query.isNotEmpty) {
       await pushSearchHistoryIntoDb.call(query);
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   Future<void> getSearchHistory() async {
-    final search = await getSearchHistoryUseCase.call(NoParams());
-    search.fold((l) => error = l.toString(), (r) => searchHistory = r);
+    isLoading = true;
     notifyListeners();
+    final search = await getSearchHistoryUseCase.call(NoParams());
+    search.fold(
+      (l) {
+        error = l.toString();
+        isLoading = false;
+        notifyListeners();
+      },
+      (r) {
+        searchHistory = r;
+        error = '';
+        isLoading = false;
+        notifyListeners();
+      },
+    );
   }
 }

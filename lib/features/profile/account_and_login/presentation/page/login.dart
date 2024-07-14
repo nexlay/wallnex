@@ -5,8 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
 import 'package:wallnex/features/profile/account_and_login/presentation/provider/local_user_provider.dart';
-import '../../../../../common/ui/animations/animation_with_rive.dart';
-import '../../../../../const/const_rive.dart';
 import '../../../../../const/route_paths.dart';
 import '../../../../../core/config/env/env.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
@@ -23,8 +21,7 @@ class Login extends StatelessWidget {
         childWidget: SliverFillRemaining(
           hasScrollBody: false,
           child: SignInScreen(
-            resizeToAvoidBottomInset: true,
-            breakpoint: MediaQuery.of(context).size.height,
+            resizeToAvoidBottomInset: false,
             actions: [
               ForgotPasswordAction(
                 (context, email) {

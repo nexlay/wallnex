@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../../../../../common/ui/buttons/favorite_button.dart';
-import '../../../../../../common/ui/pop_up_dialogs/pop_up_specs_menu.dart';
 import 'download_btn.dart';
 
 class PreviewBar extends StatelessWidget {
@@ -18,10 +17,6 @@ class PreviewBar extends StatelessWidget {
         ),
         DownloadBtn(
           wallpaper: wallpaper,
-        ),
-        showPopUpMenu(
-          context: context,
-          id: wallpaper.id,
         ),
       ],
     );

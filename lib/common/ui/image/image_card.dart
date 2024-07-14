@@ -37,8 +37,13 @@ class ImageCard extends StatelessWidget {
                 onTap: goTo,
                 child: NetworkImageViewer(
                   url: path,
-                  imageColor: Color(
-                      int.parse(wallpaper.colors[2].replaceFirst('#', '0xff'))),
+                  imageColor: wallpaper.colors.isNotEmpty
+                      ? Color(
+                          int.parse(
+                            wallpaper.colors[2].replaceFirst('#', '0xff'),
+                          ),
+                        )
+                      : Colors.grey,
                 ),
               ),
             ),

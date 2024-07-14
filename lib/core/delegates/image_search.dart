@@ -37,78 +37,81 @@ class ImageSearch extends SearchDelegate<List<Wallpaper>> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final list = context.select((GetImagesNotifier n) => n.imageList);
-
-    Future.delayed(Duration.zero, () async {
-      translator.translate(query, to: 'en').then((translateQuery) {
-        context.read<GetImagesNotifier>().searchByQuery(translateQuery.text);
-        context.read<GetSearchHistoryNotifier>().pushSearchHistory(query);
-      });
-      close(context, list);
-    });
+    // Initiate search through the notifier, passing both original and translated queries
+    context.read<GetImagesNotifier>().searchByQuery(query);
+    context.read<GetSearchHistoryNotifier>().pushSearchHistory(query);
+    close(context, []);
+    // Return a loading indicator
     return Container();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final list = context.select((GetImagesNotifier n) => n.imageList);
     final searchHistory =
         context.select((GetSearchHistoryNotifier s) => s.searchHistory);
+
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15.0,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Center(
         child: searchHistory.isEmpty
             ? Text(L.of(context).noSearchHistory)
-            : Card(
-                color: Colors.transparent,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) {
-                    return const Divider(
-                      thickness: 0.1,
-                      height: 2.0,
-                      color: Colors.transparent,
-                    );
-                  },
-                  itemCount: searchHistory.length,
-                  itemBuilder: (_, index) => ListTile(
-                    tileColor: Theme.of(context).secondaryHeaderColor.withOpacity(0.3),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.0),
-                    ),
-                    trailing: IconButton(
-                      icon: const Icon(
-                        Icons.north_west,
-                        size: 18.0,
-                      ),
-                      onPressed: () {
-                        query = searchHistory[index];
-                      },
-                    ),
-                    leading: const Icon(Icons.history),
-                    title: Text(searchHistory[index]),
-                    onTap: () {
-                      query = searchHistory[index];
-                      context
-                          .read<GetSearchHistoryNotifier>()
-                          .pushSearchHistory(query);
-
-                      translator
-                          .translate(query, to: 'en')
-                          .then((translateQuery) {
-                        context
-                            .read<GetImagesNotifier>()
-                            .searchByQuery(translateQuery.text);
-                      });
-                      close(context, list);
-                    },
-                  ),
-                ),
-              ),
+            : _buildSearchHistoryCard(context, searchHistory),
       ),
+    );
+  }
+
+  Widget _buildSearchHistoryCard(
+      BuildContext context, List<String> searchHistory) {
+    return Card(
+      color: Colors.transparent,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: searchHistory.length,
+        itemBuilder: (_, index) => _SearchHistoryTile(
+          query: searchHistory[index],
+          onTap: () {
+            query = searchHistory[index];
+            context.read<GetSearchHistoryNotifier>().pushSearchHistory(query);
+            context.read<GetImagesNotifier>().searchByQuery(query);
+            close(context, []); // Close after initiating search
+          },
+        ),
+      ),
+    );
+  }
+}
+
+// Extracted Search History Tile Widget
+class _SearchHistoryTile extends StatelessWidget {
+  final String query;
+  final VoidCallback onTap;
+
+  const _SearchHistoryTile({
+    required this.query,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      tileColor: Theme.of(context).secondaryHeaderColor.withOpacity(0.3),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      trailing: IconButton(
+        icon: const Icon(
+          Icons.north_west,
+          size: 18.0,
+        ),
+        onPressed: () {
+          // Update the search query without triggering a new search
+          context.read<ImageSearch>().query = query;
+        },
+      ),
+      leading: const Icon(Icons.history),
+      title: Text(query),
+      onTap: onTap,
     );
   }
 }

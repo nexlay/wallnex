@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wallnex/common/ui/premium_user_wrapper.dart';
+import 'package:wallnex/const/const.dart';
 import '../../../core/config/l10n/generated/app_localizations.dart';
 
 class SupportDev extends StatelessWidget {
@@ -47,26 +48,32 @@ class SupportDev extends StatelessWidget {
       },
     ];
 
-    return Column(
-      children: List<Widget>.generate(
-        icons.length,
-        (index) => index < icons.length - 1
-            ? ListTile(
-                title: Text(title[index]),
-                leading: Icon(
-                  icons[index],
-                ),
-                onTap: openUrl[index],
-              )
-            : PremiumUserWrapper(
-                childWidget: ListTile(
-                  title: Text(title[index]),
-                  leading: Icon(
-                    icons[index],
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(kPaddingSize),
+        child: Column(
+          children: List<Widget>.generate(
+            icons.length,
+            (index) => index < icons.length - 1
+                ? ListTile(
+                    title: Text(title[index]),
+                    leading: Icon(
+                      icons[index],
+                    ),
+                    onTap: openUrl[index],
+                  )
+                : PremiumAccessWrapper(
+                    alignment: Alignment.centerRight,
+                    childWidget: ListTile(
+                      title: Text(title[index]),
+                      leading: Icon(
+                        icons[index],
+                      ),
+                      onTap: openUrl[index],
+                    ),
                   ),
-                  onTap: openUrl[index],
-                ),
-              ),
+          ),
+        ),
       ),
     );
   }

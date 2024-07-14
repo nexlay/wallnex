@@ -25,14 +25,15 @@ class FloatingButtonsBar extends StatelessWidget {
                   page > firstPage ? Colors.grey.withOpacity(opacity) : null,
               onPressed: page == firstPage
                   ? null
-                  : () => context.read<GetImagesNotifier>().pageMinus(),
+                  : () => context.read<GetImagesNotifier>().decrementPage(),
               icon: const Icon(
                 Icons.arrow_back_ios,
               ),
             ),
             IconButton(
               isSelected: selected,
-              onPressed: () => context.read<GetImagesNotifier>().pagePlus(),
+              onPressed: () =>
+                  context.read<GetImagesNotifier>().incrementPage(),
               icon: const Icon(
                 Icons.arrow_forward_ios,
               ),

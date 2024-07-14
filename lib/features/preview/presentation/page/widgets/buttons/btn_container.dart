@@ -20,17 +20,17 @@ class SetUpBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = L.of(context);
 
-    return OutlinedButton(
+    return FloatingActionButton(
+      shape: const CircleBorder(),
       onPressed: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          actionsOverflowButtonSpacing: kAppSize,
-          actionsPadding: kAppPadding,
-          title: const Center(
-            child: Icon(
-              Icons.wallpaper,
-              size: kUnselectedIconSize,
-            ),
+          actionsOverflowButtonSpacing: kPaddingSize,
+          actionsPadding:
+              const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+          icon: const Icon(
+            Icons.wallpaper,
+            size: 40,
           ),
           actions: [
             setWallpaperBtn(
@@ -51,7 +51,7 @@ class SetUpBtn extends StatelessWidget {
           ],
         ),
       ),
-      child: Text(locale.set_wallpaper_on),
+      child: const Icon(Icons.done_outlined),
     );
   }
 }

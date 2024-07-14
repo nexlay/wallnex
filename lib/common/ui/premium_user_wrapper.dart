@@ -4,10 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:wallnex/const/route_paths.dart';
 import 'package:wallnex/features/subscription/presentation/provider/purchase_provider.dart';
 
-class PremiumUserWrapper extends StatelessWidget {
-  const PremiumUserWrapper({super.key, required this.childWidget});
+class PremiumAccessWrapper extends StatelessWidget {
+  const PremiumAccessWrapper(
+      {super.key, required this.childWidget, this.alignment});
 
   final Widget childWidget;
+  final AlignmentGeometry? alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class PremiumUserWrapper extends StatelessWidget {
               onTap: () => context.push(krPurchases),
               child: Badge(
                 largeSize: 22,
-                alignment: Alignment.topRight,
+                alignment: alignment,
                 backgroundColor: Colors.amberAccent.withOpacity(0.6),
                 label: Icon(
                   Icons.star_rate_outlined,

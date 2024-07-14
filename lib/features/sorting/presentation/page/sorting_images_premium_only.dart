@@ -31,7 +31,7 @@ class SortingImages extends StatelessWidget {
               padding: const EdgeInsets.all(4.0),
               child: Consumer<GetImagesNotifier>(
                 builder: (_, imageProvider, __) => Consumer<SortingProvider>(
-                  builder: (_, sortingProvider, __) => PremiumUserWrapper(
+                  builder: (_, sortingProvider, __) => PremiumAccessWrapper(
                     childWidget: ChoiceChip(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(kFontSize),
