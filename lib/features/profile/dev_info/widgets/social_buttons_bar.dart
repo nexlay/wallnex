@@ -18,7 +18,7 @@ class SocialButtonsBar extends StatelessWidget {
           },
           icon: const Icon(
             CustomSocial.twitter_circled,
-            size: kUnselectedIconSize,
+            size: kSelectedIconSize,
           ),
         ),
         IconButton(
@@ -27,7 +27,8 @@ class SocialButtonsBar extends StatelessWidget {
           },
           icon: const Icon(
             CustomSocial.github_circled,
-            size: kUnselectedIconSize,
+            color: Colors.green,
+            size: kSelectedIconSize,
           ),
         ),
         IconButton(
@@ -36,7 +37,8 @@ class SocialButtonsBar extends StatelessWidget {
           },
           icon: const Icon(
             CustomSocial.linkedin_circled,
-            size: kUnselectedIconSize,
+            color: Colors.blueAccent,
+            size: kSelectedIconSize,
           ),
         ),
       ],

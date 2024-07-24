@@ -284,13 +284,19 @@ class LPl extends L {
   String get madeBy => 'Mykola Pryhodskyi';
 
   @override
+  String get developer => 'Twórca aplikacji i projektant';
+
+  @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
 
   @override
-  String get subscribe => 'Subskrybuj';
+  String get subscribe => 'Obserwuj';
 
   @override
   String get subscribe_desc => 'Dowiedz się o nowościach';
+
+  @override
+  String get follow_desc => 'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji!';
 
   @override
   String get contact => 'Kontakt';

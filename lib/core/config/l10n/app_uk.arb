@@ -109,10 +109,11 @@
 "creatingAccount": "Створіть новий обліковий запис",
 "yourInfo": "Ваша інформація",
 "madeBy": "Mykola Pryhodskyi",
+  "developer": "Розробник і дизайнер",
 "developer_email": "pryhodskyimykola@gmail.com",
-  "subscribe": "Підпиcка",
+  "subscribe": "Слідкуйте за мною",
   "subscribe_desc": "Дізнайтеся про новинки",
-
+  "follow_desc": "Слідкуйте за мною, щоб бути в курсі функцій програми!",
 "contact": "Контакт",
 "location": "Місцезнаходження",
 "location_description": "Польща",

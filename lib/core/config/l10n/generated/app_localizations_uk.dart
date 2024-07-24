@@ -284,13 +284,19 @@ class LUk extends L {
   String get madeBy => 'Mykola Pryhodskyi';
 
   @override
+  String get developer => 'Розробник і дизайнер';
+
+  @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
 
   @override
-  String get subscribe => 'Підпиcка';
+  String get subscribe => 'Слідкуйте за мною';
 
   @override
   String get subscribe_desc => 'Дізнайтеся про новинки';
+
+  @override
+  String get follow_desc => 'Слідкуйте за мною, щоб бути в курсі функцій програми!';
 
   @override
   String get contact => 'Контакт';

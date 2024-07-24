@@ -23,9 +23,10 @@ class DeveloperInfo extends StatelessWidget {
                   Column(
                     children: [
                       const SizedBox(
-                        height: 50,
+                        height: 60,
                       ),
                       Card(
+                        elevation: 1,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -42,7 +43,7 @@ class DeveloperInfo extends StatelessWidget {
                               ),
                               subtitle: Center(
                                 child: Text(
-                                  locale.developer_email,
+                                  locale.developer,
                                 ),
                               ),
                             ),
@@ -63,6 +64,10 @@ class DeveloperInfo extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Text(
+                locale.follow_desc,
+                textAlign: TextAlign.justify,
               ),
               Card(
                 child: Column(

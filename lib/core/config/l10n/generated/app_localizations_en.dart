@@ -284,13 +284,19 @@ class LEn extends L {
   String get madeBy => 'Mykola Pryhodskyi';
 
   @override
+  String get developer => 'App developer & Designer';
+
+  @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
 
   @override
-  String get subscribe => 'Subscribe';
+  String get subscribe => 'Follow me';
 
   @override
   String get subscribe_desc => 'To know about new products';
+
+  @override
+  String get follow_desc => 'Follow me to stay updated on app features and more!';
 
   @override
   String get contact => 'Contact';

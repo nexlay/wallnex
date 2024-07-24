@@ -7,6 +7,7 @@ import 'common/ui/navigation_bar/provider/get_default_home_page_notifier.dart';
 import 'common/ui/slivers/custom_scroll_view.dart';
 import 'const/const.dart';
 import 'core/config/l10n/generated/app_localizations.dart';
+import 'features/images/presentation/provider/get_images_notifier.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -65,8 +66,11 @@ class Wrapper extends StatelessWidget {
     final customNavBar =
         context.select((CustomizationProvider c) => c.customNavBar);
 
+    final showFloatingButton = context
+        .select((GetImagesNotifier provider) => provider.imageList.isNotEmpty);
+
     return Scaffold(
-      floatingActionButton: pageIndex == 1 ? const FloatingButtonsBar() : null,
+      floatingActionButton: pageIndex == 1 && showFloatingButton? const FloatingButtonsBar() : null,
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       bottomNavigationBar: customNavBar

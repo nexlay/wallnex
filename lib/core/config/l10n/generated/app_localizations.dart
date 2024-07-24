@@ -653,6 +653,12 @@ abstract class L {
   /// **'Mykola Pryhodskyi'**
   String get madeBy;
 
+  /// No description provided for @developer.
+  ///
+  /// In en, this message translates to:
+  /// **'App developer & Designer'**
+  String get developer;
+
   /// No description provided for @developer_email.
   ///
   /// In en, this message translates to:
@@ -662,7 +668,7 @@ abstract class L {
   /// No description provided for @subscribe.
   ///
   /// In en, this message translates to:
-  /// **'Subscribe'**
+  /// **'Follow me'**
   String get subscribe;
 
   /// No description provided for @subscribe_desc.
@@ -670,6 +676,12 @@ abstract class L {
   /// In en, this message translates to:
   /// **'To know about new products'**
   String get subscribe_desc;
+
+  /// No description provided for @follow_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow me to stay updated on app features and more!'**
+  String get follow_desc;
 
   /// No description provided for @contact.
   ///

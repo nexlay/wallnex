@@ -13,20 +13,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final images =
-        context.select((GetImagesNotifier provider) => provider.imageList);
-    final isLoading =
-        context.select((GetImagesNotifier provider) => provider.isLoading);
-    return _showBody(
-      context,
-      images,
-      isLoading,
-    );
+    final imagesNotifier = Provider.of<GetImagesNotifier>(context);
+    final images = imagesNotifier.imageList;
+    final isLoading = imagesNotifier.isLoading;
+
+    return _buildBody(context, images, isLoading);
   }
 
-  Widget _showBody(
+  Widget _buildBody(
     BuildContext context,
-    List<Wallpaper> list,
+    List<Wallpaper> images,
     bool isLoading,
   ) {
     final locale = L.of(context);
@@ -37,14 +33,12 @@ class Home extends StatelessWidget {
       showReload: true,
     );
 
-    return isLoading
-        ? const SliverFillRemaining(
-            child: ProgressLoader(),
-          )
-        : !isLoading && list.isEmpty
-            ? emptyScreen
-            : !isLoading && list.isNotEmpty
-                ? const HomePage()
-                : emptyScreen;
+    if (isLoading) {
+      return const SliverFillRemaining(child: ProgressLoader());
+    } else if (images.isEmpty) {
+      return emptyScreen;
+    } else {
+      return const HomePage();
+    }
   }
 }

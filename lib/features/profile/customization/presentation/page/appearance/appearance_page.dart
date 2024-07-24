@@ -34,54 +34,54 @@ class AppearanceScreen extends StatelessWidget {
   // Extracted theme card widget for better organization
   Widget _buildThemeCard(BuildContext context, L locale) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(kPaddingSize),
-        child: OnPageListTile(
-          enabled: false,
-          isThreeLine: true,
-          title: Text(
-            locale.theme,
-            textAlign: TextAlign.start,
-          ),
-          subtitle: Column(
-            children: [
-              Text(
+      child: OnPageListTile(
+        enabled: false,
+        isThreeLine: true,
+        title: Text(
+          locale.theme,
+          textAlign: TextAlign.start,
+        ),
+        subtitle: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: kHeightForSpacer),
+              child: Text(
                 locale.themeDesc,
                 textAlign: TextAlign.justify,
               ),
-              Consumer<ThemeProvider>(
-                builder: (_, themeProvider, __) {
-                  return SegmentedButton<ThemeValue>(
-                    // Use ThemeValue enum directly
-                    segments: <ButtonSegment<ThemeValue>>[
-                      ButtonSegment<ThemeValue>(
-                        value: ThemeValue.auto,
-                        icon: const Icon(Icons.auto_awesome_outlined),
-                        label: Text(
-                            locale.auto), // Use locale here for consistency
-                      ),
-                      ButtonSegment<ThemeValue>(
-                        icon: const Icon(Icons.light_mode_outlined),
-                        value: ThemeValue.light,
-                        label: Text(
-                            locale.light), // Use locale here for consistency
-                      ),
-                      ButtonSegment<ThemeValue>(
-                        icon: const Icon(Icons.dark_mode_outlined),
-                        value: ThemeValue.dark,
-                        label: Text(
-                            locale.dark), // Use locale here for consistency
-                      ),
-                    ],
-                    selected: {themeProvider.value},
-                    onSelectionChanged: (Set<ThemeValue> newSelection) {
-                      themeProvider.setThemeValue(newSelection.first.index);
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
+            ),
+            Consumer<ThemeProvider>(
+              builder: (_, themeProvider, __) {
+                return SegmentedButton<ThemeValue>(
+                  // Use ThemeValue enum directly
+                  segments: <ButtonSegment<ThemeValue>>[
+                    ButtonSegment<ThemeValue>(
+                      value: ThemeValue.auto,
+                      icon: const Icon(Icons.auto_awesome_outlined),
+                      label:
+                          Text(locale.auto), // Use locale here for consistency
+                    ),
+                    ButtonSegment<ThemeValue>(
+                      icon: const Icon(Icons.light_mode_outlined),
+                      value: ThemeValue.light,
+                      label:
+                          Text(locale.light), // Use locale here for consistency
+                    ),
+                    ButtonSegment<ThemeValue>(
+                      icon: const Icon(Icons.dark_mode_outlined),
+                      value: ThemeValue.dark,
+                      label:
+                          Text(locale.dark), // Use locale here for consistency
+                    ),
+                  ],
+                  selected: {themeProvider.value},
+                  onSelectionChanged: (Set<ThemeValue> newSelection) {
+                    themeProvider.setThemeValue(newSelection.first.index);
+                  },
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -90,47 +90,47 @@ class AppearanceScreen extends StatelessWidget {
   // Extracted language card widget for better organization
   Widget _buildLanguageCard(BuildContext context, L locale) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(kPaddingSize),
-        child: OnPageListTile(
-          title: Text(
-            locale.language,
-            textAlign: TextAlign.start,
-          ),
-          enabled: false, // Consider if this should be interactive
-          subtitle: Column(
-            children: [
-              Text(
+      child: OnPageListTile(
+        title: Text(
+          locale.language,
+          textAlign: TextAlign.start,
+        ),
+        enabled: false, // Consider if this should be interactive
+        subtitle: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: kHeightForSpacer),
+              child: Text(
                 locale.languageDesc,
                 textAlign: TextAlign.justify,
               ),
-              Consumer<LanguageProvider>(
-                builder: (_, languageProvider, __) {
-                  return SegmentedButton<Locale>(
-                    segments: <ButtonSegment<Locale>>[
-                      ButtonSegment<Locale>(
-                        value: Locale(AppLanguage.english.value),
-                        label: Text(locale.en),
-                      ),
-                      ButtonSegment<Locale>(
-                        value: Locale(AppLanguage.polish.value),
-                        label: Text(locale.pl),
-                      ),
-                      ButtonSegment<Locale>(
-                        value: Locale(AppLanguage.ukraine.value),
-                        label: Text(locale.uk),
-                      ),
-                    ],
-                    selected: {languageProvider.value},
-                    onSelectionChanged: (Set<Locale> newSelection) {
-                      languageProvider
-                          .setLanguageValue(newSelection.first.languageCode);
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
+            ),
+            Consumer<LanguageProvider>(
+              builder: (_, languageProvider, __) {
+                return SegmentedButton<Locale>(
+                  segments: <ButtonSegment<Locale>>[
+                    ButtonSegment<Locale>(
+                      value: Locale(AppLanguage.english.value),
+                      label: Text(locale.en),
+                    ),
+                    ButtonSegment<Locale>(
+                      value: Locale(AppLanguage.polish.value),
+                      label: Text(locale.pl),
+                    ),
+                    ButtonSegment<Locale>(
+                      value: Locale(AppLanguage.ukraine.value),
+                      label: Text(locale.uk),
+                    ),
+                  ],
+                  selected: {languageProvider.value},
+                  onSelectionChanged: (Set<Locale> newSelection) {
+                    languageProvider
+                        .setLanguageValue(newSelection.first.languageCode);
+                  },
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

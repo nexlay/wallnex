@@ -21,7 +21,7 @@ class SupportDev extends StatelessWidget {
     final title = [
       l.rate_this_app,
       l.share_this_app,
-      l.bugs_feedback,
+      l.premiumBenefit_2,
     ];
 
     final openUrl = [

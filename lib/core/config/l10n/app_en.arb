@@ -108,9 +108,11 @@
 "creatingAccount": "Let's start creating your account",
 "yourInfo": "Your info",
 "madeBy": "Mykola Pryhodskyi",
+  "developer": "App developer & Designer",
 "developer_email": "pryhodskyimykola@gmail.com",
-  "subscribe": "Subscribe",
+  "subscribe": "Follow me",
   "subscribe_desc": "To know about new products",
+  "follow_desc": "Follow me to stay updated on app features and more!",
 
 "contact": "Contact",
 "location": "Location",
