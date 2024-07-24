@@ -19,7 +19,6 @@ class EmptySliverScreen extends EmptyScreen {
   final bool? showReload;
   @override
   Widget build(BuildContext context) {
-
     final l = L.of(context);
 
     return SliverFillRemaining(
@@ -42,7 +41,10 @@ class EmptySliverScreen extends EmptyScreen {
               ),
             ),
             subtitle: Center(
-              child: Text(subtitle, textAlign: TextAlign.center,),
+              child: Text(
+                subtitle,
+                textAlign: TextAlign.center,
+              ),
             ),
             enabled: false,
           ),

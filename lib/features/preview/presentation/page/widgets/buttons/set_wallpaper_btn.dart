@@ -8,11 +8,13 @@ setWallpaperBtn(
   return Center(
     child: OutlinedButton(
       onPressed: () {
+
         context.read<FileManagerNotifier>().cropInBackground().then(
               (value) => context
                   .read<SetImageASWallpaperNotifier>()
                   .setImageAsWallpaper(value, setOn.screen),
-            );
+            ).then((onValue) => Navigator.pop(context));
+
       },
       child: Text(
         title,

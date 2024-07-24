@@ -29,6 +29,7 @@ class ImageCard extends StatelessWidget {
     return Hero(
       tag: wallpaper.id,
       child: Card(
+        elevation: kAppSize,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(
           children: [

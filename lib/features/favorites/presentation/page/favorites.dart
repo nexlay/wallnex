@@ -7,7 +7,6 @@ import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../provider/favorites_images_notifier.dart';
 import 'favorites_page.dart';
 
-
 class Favorites extends StatelessWidget {
   const Favorites({super.key});
 
