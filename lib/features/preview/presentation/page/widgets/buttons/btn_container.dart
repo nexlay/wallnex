@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wallnex/const/const.dart';
+import '../../../../../../common/ui/buttons/favorite_button.dart';
+import '../../../../../../common/ui/pop_up_dialogs/pop_up_specs_menu.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../../../images/domain/entities/wallpaper.dart';
+import 'download_btn.dart';
 import 'set_wallpaper_btn.dart';
 
 enum Screen {
@@ -20,38 +23,81 @@ class SetUpBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = L.of(context);
 
-    return FloatingActionButton(
-      shape: const CircleBorder(),
-      onPressed: () => showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          actionsOverflowButtonSpacing: kPaddingSize,
-          actionsPadding:
-              const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-          icon: const Icon(
-            Icons.wallpaper,
-            size: 40,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        FloatingActionButton(
+          shape: const CircleBorder(),
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => Dialog(
+              child: LayoutBuilder(
+                // Use LayoutBuilder to get constraints
+                builder: (context, constraints) {
+                  return IntrinsicWidth(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Padding(
+                          padding: kAppPadding,
+                          child: Icon(
+                            Icons.wallpaper,
+                            size: 40,
+                          ),
+                        ),
+                        ConstrainedBox(
+                          // Constrain width of each button
+                          constraints: BoxConstraints(
+                            maxWidth:
+                                constraints.maxWidth, // Use Dialog's max width
+                          ),
+                          child: setWallpaperBtn(
+                            context: context,
+                            title: locale.homeScreen,
+                            setOn: Screen.home,
+                          ),
+                        ),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: constraints.maxWidth,
+                          ),
+                          child: setWallpaperBtn(
+                            context: context,
+                            title: locale.lockScreen,
+                            setOn: Screen.lock,
+                          ),
+                        ),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: constraints.maxWidth,
+                          ),
+                          child: setWallpaperBtn(
+                            context: context,
+                            title: locale.both,
+                            setOn: Screen.both,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
-          actions: [
-            setWallpaperBtn(
-              context: context,
-              title: locale.homeScreen,
-              setOn: Screen.home,
-            ),
-            setWallpaperBtn(
-              context: context,
-              title: locale.lockScreen,
-              setOn: Screen.lock,
-            ),
-            setWallpaperBtn(
-              context: context,
-              title: locale.both,
-              setOn: Screen.both,
-            ),
-          ],
+          child: const Icon(Icons.done_outlined),
         ),
-      ),
-      child: const Icon(Icons.done_outlined),
+        FavoriteButton(
+          wallpaper: wallpaper,
+        ),
+        DownloadBtn(
+          wallpaper: wallpaper,
+        ),
+        showPopUpMenu(
+          context: context,
+          id: wallpaper.id,
+        ),
+      ],
     );
   }
 }

@@ -43,9 +43,9 @@ class BodyScrollView extends StatelessWidget {
           padding: kAppPadding,
           sliver: childWidget,
         ),
-        SliverVisibility(
-          visible: show,
-          sliver: const SliverPadding(
+        const SliverVisibility(
+          visible: false,
+          sliver: SliverPadding(
             padding: kAppPadding,
             sliver: BannerAdWidget(),
           ),

@@ -74,9 +74,9 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            /*ndk {
+            ndk {
                 abiFilters 'arm64-v8a'
-            }*/
+            }
         }
     }
     namespace 'com.pryhodskyimykola.wallnex'

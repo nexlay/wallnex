@@ -40,7 +40,7 @@ class AppInformation extends StatelessWidget {
                       ),
                     ),
                     subtitle: Text(
-                      '${locale.version}: $version.$buildNumber-alpha', // Simplified string interpolation
+                      '${locale.version}: $version.$buildNumber - alpha', // Simplified string interpolation
                     ),
                   ),
                 ],

@@ -20,7 +20,6 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     final provider = context.watch<AdProvider>();
 
     if (provider.bannerAD.adUnitId != null) {
-      print(provider.bannerAD.adUnitId!);
       setState(() {
         _bannerAd = BannerAd(
             size: provider.bannerAD.size!,

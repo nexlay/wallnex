@@ -128,10 +128,9 @@ Future<void> initFlutterDownloader() async {
 
 void initAds() {
   MobileAds.instance.initialize();
-
   //TODO: Delete this on release app
   RequestConfiguration configuration = RequestConfiguration(
-    testDeviceIds: ["C7D15C553E982D22CCEEB2D458ECD420"],
+    testDeviceIds: ["880FA6F9FCFA9FF9130ACD3DC6CA204F"],
   );
   MobileAds.instance.updateRequestConfiguration(configuration);
 }

@@ -42,7 +42,7 @@ void main() async {
   await di.initHive();
   di.initFirebase();
   di.initFlutterDownloader();
-  di.initAds();
+  //di.initAds();
   di.initPlatformPurchasesState();
   di.init();
   runApp(

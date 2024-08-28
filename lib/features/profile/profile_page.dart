@@ -20,7 +20,6 @@ class Profile extends StatelessWidget {
         children: [
           Consumer<LocalUser>(
             builder: (_, localUser, __) => Card(
-
               child: Padding(
                 padding: const EdgeInsets.all(kPaddingSize),
                 child: OnPageListTile(
@@ -30,12 +29,13 @@ class Profile extends StatelessWidget {
                       ? locale.creatingAccount
                       : localUser.email),
                   path: localUser.isAnonymous ? krLogin : krAccount,
-                  trailing: localUser.isAnonymous && localUser.photoUrl.isNotEmpty
-                      ? null
-                      : const UserAvatar(
-                          size: 50.0,
-                          placeholderColor: Colors.transparent,
-                        ),
+                  trailing:
+                      localUser.isAnonymous && localUser.photoUrl.isNotEmpty
+                          ? null
+                          : const UserAvatar(
+                              size: 50.0,
+                              placeholderColor: Colors.transparent,
+                            ),
                   leading: null,
                 ),
               ),
@@ -85,7 +85,6 @@ class Profile extends StatelessWidget {
               ),
             ),
           ),
-
           const SupportDev(),
         ],
       ),
