@@ -5,7 +5,7 @@ import 'package:wallnex/features/suggestions/domain/repository/suggestions_repo.
 import '../../../../core/exceptions/exceptions.dart';
 import '../../../images/data/models/wallpaper_model.dart';
 
-class SuggestionsRepoImpl implements SuggestionsRepo{
+class SuggestionsRepoImpl implements SuggestionsRepo {
   final SuggestionsData suggestionsData;
 
   SuggestionsRepoImpl({required this.suggestionsData});
@@ -13,11 +13,21 @@ class SuggestionsRepoImpl implements SuggestionsRepo{
   Future<Either<Failure, Iterable<WallpaperModel>>> getSuggestions(
       String id) async {
     try {
-      final result = await suggestionsData.getSuggestions(id);
+      final result = await suggestionsData.getSuggestionsBySimilarTags(id);
       return Right(result);
     } on LocalExceptions {
       return Left(LocalFailure());
     }
   }
 
+  @override
+  Future<Either<Failure, Iterable<WallpaperModel>>> getSuggestionsByColor(
+      String color, String id) async {
+    try {
+      final result = await suggestionsData.getSuggestionsByColors(color, id);
+      return Right(result);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
+  }
 }

@@ -44,7 +44,6 @@ class PreviewPage extends StatelessWidget {
             color: mainColor > 0.2 ? Colors.black : Colors.white,
           ),
         ),
-
       ),
       body: Hero(
         tag: wallpaper.id,
@@ -62,7 +61,6 @@ class PreviewPage extends StatelessWidget {
                   ),
                 ),
               ),
-
               loader ? const LoadingWhenWallpaperSetUp() : const SizedBox(),
             ],
           ),

@@ -19,6 +19,7 @@ class Suggestions extends StatelessWidget {
         .select((GetSuggestionsNotifier provider) => provider.suggestions);
     final isLoading =
         context.select((GetSuggestionsNotifier provider) => provider.isLoading);
+
     return _showBody(
       context,
       suggestions,

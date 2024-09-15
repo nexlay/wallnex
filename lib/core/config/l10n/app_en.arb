@@ -61,6 +61,8 @@
 "tryToReloadSuggestions": "Try to search something else.",
 "suggestions": "Suggestions",
 "suggestionsDesc": "based on chosen image",
+  "usedColors": "Used colors",
+  "usedColorsDesc": "search wallpapers by color",
 
 "imagesNotFound": "Oops...Something went wrong!",
 "tryToReload": "Try to reload.",

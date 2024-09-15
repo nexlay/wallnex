@@ -179,6 +179,12 @@ class LUk extends L {
   String get suggestionsDesc => 'на основі обраного зображення';
 
   @override
+  String get usedColors => 'Використані кольори';
+
+  @override
+  String get usedColorsDesc => 'пошук шпалер за кольором';
+
+  @override
   String get imagesNotFound => 'Щось пішло не так!';
 
   @override

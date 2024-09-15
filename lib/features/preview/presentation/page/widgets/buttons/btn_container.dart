@@ -22,7 +22,6 @@ class SetUpBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = L.of(context);
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       mainAxisSize: MainAxisSize.max,
@@ -87,6 +86,7 @@ class SetUpBtn extends StatelessWidget {
           ),
           child: const Icon(Icons.done_outlined),
         ),
+        const SizedBox(height: kHeightForSpacer,),
         FavoriteButton(
           wallpaper: wallpaper,
         ),

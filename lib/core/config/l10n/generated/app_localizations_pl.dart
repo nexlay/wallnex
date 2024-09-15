@@ -179,6 +179,12 @@ class LPl extends L {
   String get suggestionsDesc => 'na podstawie wybranego obrazu';
 
   @override
+  String get usedColors => 'Użyte kolory';
+
+  @override
+  String get usedColorsDesc => 'wyszukaj tapety według koloru';
+
+  @override
   String get imagesNotFound => 'Coś poszło nie tak!';
 
   @override

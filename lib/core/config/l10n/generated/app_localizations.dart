@@ -443,6 +443,18 @@ abstract class L {
   /// **'based on chosen image'**
   String get suggestionsDesc;
 
+  /// No description provided for @usedColors.
+  ///
+  /// In en, this message translates to:
+  /// **'Used colors'**
+  String get usedColors;
+
+  /// No description provided for @usedColorsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'search wallpapers by color'**
+  String get usedColorsDesc;
+
   /// No description provided for @imagesNotFound.
   ///
   /// In en, this message translates to:

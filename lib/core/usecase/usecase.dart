@@ -59,8 +59,6 @@ class ParamsMultiString extends Equatable {
   List<Object?> get props => [params, params1];
 }
 
-
-
 class ParamsBool extends Equatable {
   final bool params;
 

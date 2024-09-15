@@ -61,6 +61,8 @@
 "tryToReloadSuggestions": "Спробуйте вибрати щось інше.",
 "suggestions": "Пропозиції",
 "suggestionsDesc": "на основі обраного зображення",
+  "usedColors": "Використані кольори",
+  "usedColorsDesc": "пошук шпалер за кольором",
 
 "imagesNotFound": "Щось пішло не так!",
 "tryToReload": "Спробуйте перезавантажити.",

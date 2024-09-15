@@ -179,6 +179,12 @@ class LEn extends L {
   String get suggestionsDesc => 'based on chosen image';
 
   @override
+  String get usedColors => 'Used colors';
+
+  @override
+  String get usedColorsDesc => 'search wallpapers by color';
+
+  @override
   String get imagesNotFound => 'Oops...Something went wrong!';
 
   @override

@@ -27,7 +27,6 @@ class SuggestionsPage extends StatelessWidget {
           return AspectRatio(
             aspectRatio: 2 / 3,
             child: ImageCard(
-
               goTo: () {
                 context
                     .read<GetSuggestionsNotifier>()
@@ -40,7 +39,8 @@ class SuggestionsPage extends StatelessWidget {
               path: suggestions[index].thumbsLarge,
               wallpaper: suggestions[index],
               showFavoriteBtn: false,
-              showImageSpecsBtn: false, showSendBtn: false,
+              showImageSpecsBtn: false,
+              showSendBtn: false,
             ),
           );
         },

@@ -33,6 +33,7 @@ import 'package:wallnex/features/profile/customization/domain/usecase/set_theme_
 import 'package:wallnex/features/profile/customization/presentation/provider/language_provider.dart';
 import 'package:wallnex/features/sorting/presentation/provider/sorting_provider.dart';
 import 'package:wallnex/features/suggestions/data/repository/suggestion_repo_impl.dart';
+import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_by_color_usecase.dart';
 import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_usecase.dart';
 import 'package:wallnex/features/images/domain/usecases/get_tags_uploader_use_case.dart';
 import 'package:wallnex/features/search/data/database/database.dart';
@@ -234,6 +235,7 @@ Future<void> init() async {
   getIt.registerFactory(
     () => GetSuggestionsNotifier(
       getSuggestionsUseCase: getIt(),
+      getSuggestionsByColorUseCase: getIt(),
     ),
   );
 //-----------------------------
@@ -408,6 +410,11 @@ Future<void> init() async {
 //-----------------------------
   getIt.registerLazySingleton(
     () => GetSuggestionsUseCase(
+      suggestionsRepo: getIt(),
+    ),
+  );
+  getIt.registerLazySingleton(
+        () => GetSuggestionsByColorUseCase(
       suggestionsRepo: getIt(),
     ),
   );

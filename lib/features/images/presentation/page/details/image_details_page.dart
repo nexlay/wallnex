@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wallnex/common/ui/image/image_card.dart';
+import 'package:wallnex/common/ui/image/widgets/image_colors.dart';
 import 'package:wallnex/common/ui/on_page_list_tile.dart';
 import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/images/presentation/page/details/widgets/deatails_scroll_view.dart';
@@ -26,7 +27,7 @@ class ImageDetails extends StatelessWidget {
             child: Column(
               children: [
                 AspectRatio(
-                  aspectRatio: 1 / 1.2,
+                  aspectRatio: 1,
                   child: ImageCard(
                     goTo: () {
                       context.push(krPreview, extra: wallpaper);
@@ -38,6 +39,20 @@ class ImageDetails extends StatelessWidget {
                     showSendBtn: false,
                   ),
                 ),
+                Padding(
+                  padding: kAppPadding,
+                  child: OnPageListTile(
+                    enabled: false,
+                    title: Text(
+                      locale.usedColors,
+                      style: TextStyle(fontSize: kFontSize),
+                    ),
+                    subtitle: Text(
+                      locale.usedColorsDesc,
+                    ),
+                  ),
+                ),
+                ImageColors(wallpaper: wallpaper),
                 Padding(
                   padding: kAppPadding,
                   child: OnPageListTile(

@@ -57,6 +57,8 @@
   "tryToReloadSuggestions": "Spróbuj wybrać inny obraz na głównej.",
   "suggestions": "Propozycje",
   "suggestionsDesc": "na podstawie wybranego obrazu",
+  "usedColors": "Użyte kolory",
+  "usedColorsDesc": "wyszukaj tapety według koloru",
   "imagesNotFound": "Coś poszło nie tak!",
   "tryToReload": "Spróbuj ponownie.",
   "reload": "Odśwież",
