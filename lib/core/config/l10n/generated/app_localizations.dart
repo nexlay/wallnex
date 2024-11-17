@@ -704,7 +704,7 @@ abstract class L {
   /// No description provided for @dislike.
   ///
   /// In en, this message translates to:
-  /// **'Remove'**
+  /// **'Dislike'**
   String get dislike;
 
   /// No description provided for @save.

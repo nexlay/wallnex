@@ -308,7 +308,7 @@ class LEn extends L {
   String get like => 'Like';
 
   @override
-  String get dislike => 'Remove';
+  String get dislike => 'Dislike';
 
   @override
   String get save => 'Save';
