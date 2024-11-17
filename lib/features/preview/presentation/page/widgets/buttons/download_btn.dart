@@ -47,46 +47,53 @@ class _DownloadCompleteBtnState extends State<DownloadBtn>
     final locale = L.of(context);
     return ScaleTransition(
       scale: _controller,
-      child: Card(
-        child: IconButton(
-          onPressed: () {
-            switch (permissions.value.value2) {
-              case AppPermissionsStatus.granted:
-                download
-                  ..createEnqueue(widget.wallpaper.path)
-                  ..resetDownloadStatus();
-                _animate();
-                break;
-              case AppPermissionsStatus.denied:
-                permissions.getPermissionStatus();
-                break;
-              case AppPermissionsStatus.permanentlyDenied:
-                showMyDialog(
-                  context,
-                  permissions.value.value1 == AppPermissions.notifications
-                      ? locale.notificationPermission
-                      : locale.storagePermission,
-                  locale.permissionDesc,
-                  locale.settings,
-                  locale.exit,
-                  openAppSettings(),
-                );
-                break;
-              case AppPermissionsStatus.restricted:
-                //TODO: Restricted permission action
-                break;
-              case AppPermissionsStatus.limited:
-                //TODO: Limited permission action
-                break;
-            }
-          },
-          icon: download.value == 100
+      child: IconButton(
+        onPressed: () {
+          switch (permissions.value.value2) {
+            case AppPermissionsStatus.granted:
+              download
+                ..createEnqueue(widget.wallpaper.path)
+                ..resetDownloadStatus();
+              _animate();
+              break;
+            case AppPermissionsStatus.denied:
+              permissions.getPermissionStatus();
+              break;
+            case AppPermissionsStatus.permanentlyDenied:
+              showMyDialog(
+                context,
+                permissions.value.value1 == AppPermissions.notifications
+                    ? locale.notificationPermission
+                    : locale.storagePermission,
+                locale.permissionDesc,
+                locale.settings,
+                locale.exit,
+                openAppSettings(),
+              );
+              break;
+            case AppPermissionsStatus.restricted:
+              //TODO: Restricted permission action
+              break;
+            case AppPermissionsStatus.limited:
+              //TODO: Limited permission action
+              break;
+          }
+        },
+        icon: Column(children: [
+          download.value == 100
               ? const Icon(
-                  Icons.check_circle,
+                  Icons.check,
                   color: Colors.green,
                 )
-              : const Icon(Icons.arrow_circle_down),
-        ),
+              : const Icon(
+                  Icons.arrow_downward,
+                  color: Colors.white,
+                ),
+          Text(
+            download.value == 100 ? locale.done : locale.save,
+            style: TextStyle(color: Colors.white),
+          ),
+        ]),
       ),
     );
   }

@@ -37,7 +37,7 @@ class EmptySliverScreen extends EmptyScreen {
             title: Center(
               child: Text(
                 title,
-                style: const TextStyle(fontSize: kFontSize),
+                style: const TextStyle(fontSize: kFontSizeMid),
               ),
             ),
             subtitle: Center(

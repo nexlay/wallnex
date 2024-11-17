@@ -1,7 +1,5 @@
 import 'app_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Polish (`pl`).
 class LPl extends L {
   LPl([String locale = 'pl']) : super(locale);
@@ -305,6 +303,18 @@ class LPl extends L {
 
   @override
   String get follow_desc => 'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji!';
+
+  @override
+  String get like => 'Polub';
+
+  @override
+  String get dislike => 'Usuń';
+
+  @override
+  String get save => 'Pobierz';
+
+  @override
+  String get done => 'Gotowe';
 
   @override
   String get contact => 'Kontakt';

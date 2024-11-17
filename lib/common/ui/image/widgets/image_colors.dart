@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wallnex/core/usecase/usecase.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../../const/const.dart';
 import '../../../../features/suggestions/presentation/provider/get_suggestions_notifier.dart';
@@ -17,16 +16,13 @@ class ImageColors extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: wallpaper.colors.map((dynamic colorHex) {
             if (colorHex is String && colorHex.isNotEmpty) {
-              final color = Color(int.parse(colorHex.replaceFirst('#', '0xff')));
+              final color =
+                  Color(int.parse(colorHex.replaceFirst('#', '0xff')));
               return InkWell(
                 borderRadius: BorderRadius.circular(kUnselectedIconSize / 2),
                 onTap: () async {
-                  await suggestionsNotifier.getSuggestionsByColorUseCase(
-                    ParamsMultiString(
-                      params: colorHex.replaceFirst('#', ''),
-                      params1: wallpaper.id,
-                    ),
-                  );
+                  await suggestionsNotifier.getSuggestionsByColor(
+                      colorHex.replaceFirst('#', ''), wallpaper.id);
                   // You might want to navigate to a new screen or update the UI here
                 },
                 child: Card(

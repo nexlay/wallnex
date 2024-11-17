@@ -45,7 +45,7 @@ class ImageDetails extends StatelessWidget {
                     enabled: false,
                     title: Text(
                       locale.usedColors,
-                      style: TextStyle(fontSize: kFontSize),
+                      style: TextStyle(fontSize: kFontSizeMid),
                     ),
                     subtitle: Text(
                       locale.usedColorsDesc,
@@ -59,7 +59,7 @@ class ImageDetails extends StatelessWidget {
                     enabled: false,
                     title: Text(
                       locale.suggestions,
-                      style: const TextStyle(fontSize: kFontSize),
+                      style: const TextStyle(fontSize: kFontSizeMid),
                     ),
                     subtitle: Text(
                       locale.suggestionsDesc,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/const/const.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
+import '../../../core/config/l10n/generated/app_localizations.dart';
 import '../../../features/favorites/presentation/provider/favorites_images_notifier.dart';
 
 class FavoriteButton extends StatefulWidget {
@@ -36,7 +38,9 @@ class _FavoriteButtonState extends State<FavoriteButton>
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    final locale = L.of(context);
+    return Padding(
+      padding: kAppPadding,
       child: IconButton(
         onPressed: () {
           if (widget.wallpaper.isFavorite) {
@@ -53,11 +57,19 @@ class _FavoriteButtonState extends State<FavoriteButton>
         icon: ScaleTransition(
           scale: _controller,
           child: Consumer<FavoritesNotifier>(
-            builder: (_, __, ___) => Icon(
-              widget.wallpaper.isFavorite
-                  ? Icons.favorite
-                  : Icons.favorite_border,
-              color: widget.wallpaper.isFavorite ? Colors.redAccent : null,
+            builder: (_, __, ___) => Column(
+              children: [
+                Icon(
+                  Icons.favorite,
+                  color: widget.wallpaper.isFavorite
+                      ? Colors.redAccent
+                      : Colors.white,
+                ),
+                Text(
+                  widget.wallpaper.isFavorite ? locale.dislike : locale.like,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ],
             ),
           ),
         ),

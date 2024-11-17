@@ -46,7 +46,7 @@ class CategoryCard extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: kFontSize,
+                    fontSize: kFontSizeMid,
                     shadows: [
                       Shadow(
                         blurRadius: 2.0,

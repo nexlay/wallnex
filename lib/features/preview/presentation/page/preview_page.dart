@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wallnex/common/ui/image/widgets/image_info.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/buttons/btn_container.dart';
+import 'package:wallnex/features/preview/presentation/page/widgets/buttons/download_btn.dart';
 import 'package:wallnex/features/preview/presentation/page/widgets/previewer.dart';
 import 'package:wallnex/features/preview/presentation/provider/set_image_as_wallpaper_notifier.dart';
+import '../../../../common/ui/buttons/favorite_button.dart';
 import '../../../../common/ui/loading_status/set_up_wallpaper_loader.dart';
 import '../../../../core/config/l10n/generated/app_localizations.dart';
 
@@ -23,7 +26,7 @@ class PreviewPage extends StatelessWidget {
       floatingActionButton: SetUpBtn(
         wallpaper: wallpaper,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       //floatingActionButtonAnimator: FloatingActionButtonAnimator,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -62,6 +65,25 @@ class PreviewPage extends StatelessWidget {
                 ),
               ),
               loader ? const LoadingWhenWallpaperSetUp() : const SizedBox(),
+              Positioned(
+                bottom: 100,
+                right: 0,
+                child: Column(
+                  children: [
+                    FavoriteButton(
+                      wallpaper: wallpaper,
+                    ),
+                    DownloadBtn(
+                      wallpaper: wallpaper,
+                    ),
+                  ],
+                ),
+              ),
+              const Positioned(
+                bottom: 100,
+                left: 0,
+                child: ImageInformation(),
+              ),
             ],
           ),
         ),

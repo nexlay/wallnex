@@ -42,54 +42,52 @@ showPopUpMenu({required BuildContext context, required String id}) {
     wallpaper.fileType,
   ];
 
-  return Card(
-    child: PopupMenuButton<Widget?>(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      constraints: const BoxConstraints.tightFor(),
-      icon: const Icon(Icons.info_outline),
-      itemBuilder: (BuildContext context) => [
-        PopupMenuItem<OnPopUpSpecsMenuItem>(
-          onTap: () => context.read<GetImagesNotifier>().getImageById(id),
-          child: loading
-              ? const ProgressLoader()
-              : Column(
-                  children: [
-                    Column(
-                      children: List<OnPopUpSpecsMenuItem>.generate(
-                        icons.length,
-                        (index) => OnPopUpSpecsMenuItem(
-                            title: Text(wallpaperData[index]),
-                            leading: Icon(icons[index]),
-                            text: title[index]),
+  return PopupMenuButton<Widget?>(
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    constraints: const BoxConstraints.tightFor(),
+    icon: const Icon(Icons.info),
+    itemBuilder: (BuildContext context) => [
+      PopupMenuItem<OnPopUpSpecsMenuItem>(
+        onTap: () => context.read<GetImagesNotifier>().getImageById(id),
+        child: loading
+            ? const ProgressLoader()
+            : Column(
+                children: [
+                  Column(
+                    children: List<OnPopUpSpecsMenuItem>.generate(
+                      icons.length,
+                      (index) => OnPopUpSpecsMenuItem(
+                          title: Text(wallpaperData[index]),
+                          leading: Icon(icons[index]),
+                          text: title[index]),
+                    ),
+                  ),
+                  OnPopUpSpecsMenuItem(
+                    title: Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                              style: TextStyle(
+                                color: Colors.blue.withOpacity(0.7),
+                              ),
+                              text: wallpaper.uploaderName,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () async {
+                                  if (!await launchUrl(
+                                    Uri.parse(wallpaper.shortUrl),
+                                  )) {
+                                    throw 'Could not launch ${wallpaper.shortUrl}';
+                                  }
+                                }),
+                        ],
                       ),
                     ),
-                    OnPopUpSpecsMenuItem(
-                      title: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                                style: TextStyle(
-                                  color: Colors.blue.withOpacity(0.7),
-                                ),
-                                text: wallpaper.uploaderName,
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    if (!await launchUrl(
-                                      Uri.parse(wallpaper.shortUrl),
-                                    )) {
-                                      throw 'Could not launch ${wallpaper.shortUrl}';
-                                    }
-                                  }),
-                          ],
-                        ),
-                      ),
-                      leading: const Icon(Icons.upload_file_outlined),
-                      text: locale.uploader,
-                    ),
-                  ],
-                ),
-        ),
-      ],
-    ),
+                    leading: const Icon(Icons.upload_file_outlined),
+                    text: locale.uploader,
+                  ),
+                ],
+              ),
+      ),
+    ],
   );
 }

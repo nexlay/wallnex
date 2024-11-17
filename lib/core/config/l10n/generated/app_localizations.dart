@@ -9,8 +9,6 @@ import 'app_localizations_en.dart';
 import 'app_localizations_pl.dart';
 import 'app_localizations_uk.dart';
 
-// ignore_for_file: type=lint
-
 /// Callers can lookup localized strings with an instance of L
 /// returned by `L.of(context)`.
 ///
@@ -696,6 +694,30 @@ abstract class L {
   /// In en, this message translates to:
   /// **'Follow me to stay updated on app features and more!'**
   String get follow_desc;
+
+  /// No description provided for @like.
+  ///
+  /// In en, this message translates to:
+  /// **'Like'**
+  String get like;
+
+  /// No description provided for @dislike.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get dislike;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
 
   /// No description provided for @contact.
   ///

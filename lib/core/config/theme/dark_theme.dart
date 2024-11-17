@@ -101,7 +101,7 @@ class AppDarkTheme {
           ),
         ),
         listTileTheme: ListTileThemeData(
-          titleTextStyle: const TextStyle(fontSize: kFontSize),
+          titleTextStyle: const TextStyle(fontSize: kFontSizeMid),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
@@ -123,7 +123,7 @@ class AppDarkTheme {
         popupMenuTheme: PopupMenuThemeData(
           elevation: 20,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kFontSize),
+            borderRadius: BorderRadius.circular(kFontSizeMid),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
@@ -134,6 +134,12 @@ class AppDarkTheme {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(MediaQuery.of(context).size.width - 100,
+                MediaQuery.of(context).size.height / kFontSizeMid),
           ),
         ),
       );

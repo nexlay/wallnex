@@ -25,7 +25,7 @@ class PremiumUserStatus extends StatelessWidget {
               Text(
                 l.thanksForPremium,
                 style: const TextStyle(
-                    fontSize: kFontSize, fontWeight: FontWeight.bold),
+                    fontSize: kFontSizeMid, fontWeight: FontWeight.bold),
               ),
               Text(
                 l.getting_the_best_of_Wallnex,

@@ -38,36 +38,43 @@ class PurchasesPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(kPaddingSize),
                     child: Column(
-                      children: benefits
-                          .map((benefit) => OnPageListTile(
-                                title: Text(benefit.title),
-                                enabled: false,
-                                subtitle: Text(benefit.subtitle),
-                                leading: const Icon(
-                                  Icons.check_circle_outline,
-                                  color: Colors.green,
+                      children: [
+                        Column(
+                          children: benefits
+                              .map(
+                                (benefit) => OnPageListTile(
+                                  title: Text(benefit.title),
+                                  enabled: false,
+                                  subtitle: Text(benefit.subtitle),
+                                  leading: const Icon(
+                                    Icons.check_circle_outline,
+                                    color: Colors.green,
+                                  ),
                                 ),
-                              ))
-                          .toList(),
+                              )
+                              .toList(),
+                        ),
+                        const SizedBox(
+                          height: kHeightForSpacer,
+                        ),
+                        ElevatedButton(
+                          onPressed: () => purchasesProvider
+                              .purchase(purchasesProvider.product),
+                          child: Text(
+                            productPriceString,
+                            style: const TextStyle(
+                                fontSize: kFontSizeMid,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
-              Column(
-                children: [
-                  OutlinedButton(
-                    onPressed: () =>
-                        purchasesProvider.purchase(purchasesProvider.product),
-                    child: Text(
-                      productPriceString,
-                      style: const TextStyle(fontSize: kFontSize),
-                    ),
-                  ),
-                  Text(
-                    l.billed_yearly_cancel_anytime,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                ],
+              Text(
+                l.billed_yearly_cancel_anytime,
+                style: const TextStyle(color: Colors.grey),
               ),
             ],
           );

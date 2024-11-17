@@ -105,7 +105,7 @@ class AppTheme {
         ),
         listTileTheme: ListTileThemeData(
           titleTextStyle:
-              const TextStyle(fontSize: kFontSize, color: Colors.black),
+              const TextStyle(fontSize: kFontSizeMid, color: Colors.black),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
@@ -127,17 +127,23 @@ class AppTheme {
         popupMenuTheme: PopupMenuThemeData(
           elevation: 20,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kFontSize),
+            borderRadius: BorderRadius.circular(kFontSizeMid),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width - 100,
-                MediaQuery.of(context).size.height / kFontSize),
+                MediaQuery.of(context).size.height / kFontSizeMid),
             backgroundColor: colorScheme.surface,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(MediaQuery.of(context).size.width - 100,
+                MediaQuery.of(context).size.height / kFontSizeMid),
           ),
         ),
       );

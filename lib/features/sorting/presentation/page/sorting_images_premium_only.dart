@@ -34,7 +34,7 @@ class SortingImages extends StatelessWidget {
                   builder: (_, sortingProvider, __) => PremiumAccessWrapper(
                     childWidget: ChoiceChip(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(kFontSize),
+                        borderRadius: BorderRadius.circular(kFontSizeMid),
                       ),
                       label: Text(l[index]),
                       selected: sortingProvider.value == index,

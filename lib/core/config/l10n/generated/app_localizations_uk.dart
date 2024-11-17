@@ -1,7 +1,5 @@
 import 'app_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Ukrainian (`uk`).
 class LUk extends L {
   LUk([String locale = 'uk']) : super(locale);
@@ -305,6 +303,18 @@ class LUk extends L {
 
   @override
   String get follow_desc => 'Слідкуйте за мною, щоб бути в курсі функцій програми!';
+
+  @override
+  String get like => 'Лайк';
+
+  @override
+  String get dislike => 'Дизлайк';
+
+  @override
+  String get save => 'Скачати';
+
+  @override
+  String get done => 'Готово';
 
   @override
   String get contact => 'Контакт';

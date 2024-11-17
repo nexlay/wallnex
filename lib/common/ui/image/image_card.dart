@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wallnex/common/ui/buttons/send_message_button.dart';
+import 'package:wallnex/common/ui/image/widgets/image_info.dart';
 import '../../../../features/images/domain/entities/wallpaper.dart';
 import '../../../const/const.dart';
 import '../buttons/favorite_button.dart';
-import '../pop_up_dialogs/pop_up_specs_menu.dart';
 import 'network_image_viewer.dart';
 
 class ImageCard extends StatelessWidget {
@@ -48,33 +47,20 @@ class ImageCard extends StatelessWidget {
                 ),
               ),
             ),
-            Visibility(
-              visible: showFavoriteBtn,
-              child: Positioned(
-                bottom: kAppSize,
-                left: kAppSize,
+            Positioned(
+              bottom: kAppSize,
+              right: kAppSize,
+              child: Visibility(
+                visible: showFavoriteBtn,
                 child: FavoriteButton(wallpaper: wallpaper),
               ),
             ),
-            Visibility(
-              visible: showImageSpecsBtn,
-              child: Positioned(
-                top: kAppSize,
-                left: kAppSize,
-                child: showPopUpMenu(
-                  context: context,
-                  id: wallpaper.id,
-                ),
-              ),
-            ),
-            Visibility(
-              visible: showSendBtn,
-              child: Positioned(
-                bottom: kAppSize,
-                right: kAppSize,
-                child: SendMessageBtn(
-                  wallpaper: wallpaper,
-                ),
+            Positioned(
+              bottom: kAppSize,
+              left: kAppSize,
+              child: Visibility(
+                visible: showImageSpecsBtn,
+                child: const ImageInformation(),
               ),
             ),
           ],

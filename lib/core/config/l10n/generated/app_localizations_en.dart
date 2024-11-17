@@ -1,7 +1,5 @@
 import 'app_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for English (`en`).
 class LEn extends L {
   LEn([String locale = 'en']) : super(locale);
@@ -305,6 +303,18 @@ class LEn extends L {
 
   @override
   String get follow_desc => 'Follow me to stay updated on app features and more!';
+
+  @override
+  String get like => 'Like';
+
+  @override
+  String get dislike => 'Remove';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get done => 'Done';
 
   @override
   String get contact => 'Contact';

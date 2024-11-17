@@ -115,6 +115,10 @@
   "subscribe": "Follow me",
   "subscribe_desc": "To know about new products",
   "follow_desc": "Follow me to stay updated on app features and more!",
+  "like": "Like",
+  "dislike": "Remove",
+  "save": "Save",
+  "done": "Done",
 
 "contact": "Contact",
 "location": "Location",

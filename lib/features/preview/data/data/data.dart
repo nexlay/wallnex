@@ -1,7 +1,6 @@
+import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
-
-
+import 'package:wallpaper_manager_plus/wallpaper_manager_plus.dart';
 
 abstract class SetImageAsWallpaper {
 //Set as Wallpaper
@@ -11,17 +10,15 @@ abstract class SetImageAsWallpaper {
 class SetImageAsWallpaperImpl implements SetImageAsWallpaper {
   @override
   Future<bool> setWallpaper(String path, int screen) async {
-    // WallpaperManager.HOME_SCREEN = 1;
-    // WallpaperManager.LOCK_SCREEN = 2;
-    // WallpaperManager.BOTH_SCREEN = 3;
+    // WallpaperManagerPlus.homeScreen = 1;
+    // WallpaperManagerPlus.lockScreen = 2;
+    // WallpaperManagerPlus.bothScreens = 3;
     try {
-      return await WallpaperManager.setWallpaperFromFile(path, screen);
+      await WallpaperManagerPlus().setWallpaper(File(path), screen);
+      return true;
     } on PlatformException {
       'Failed to set Wallpaper.';
       return false;
     }
   }
-
-
-
 }

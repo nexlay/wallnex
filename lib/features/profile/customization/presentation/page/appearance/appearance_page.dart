@@ -43,12 +43,12 @@ class AppearanceScreen extends StatelessWidget {
         ),
         subtitle: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: kHeightForSpacer),
-              child: Text(
-                locale.themeDesc,
-                textAlign: TextAlign.justify,
-              ),
+            Text(
+              locale.themeDesc,
+              textAlign: TextAlign.justify,
+            ),
+            const SizedBox(
+              height: kHeightForSpacer,
             ),
             Consumer<ThemeProvider>(
               builder: (_, themeProvider, __) {
@@ -98,12 +98,12 @@ class AppearanceScreen extends StatelessWidget {
         enabled: false, // Consider if this should be interactive
         subtitle: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: kHeightForSpacer),
-              child: Text(
-                locale.languageDesc,
-                textAlign: TextAlign.justify,
-              ),
+            Text(
+              locale.languageDesc,
+              textAlign: TextAlign.justify,
+            ),
+            const SizedBox(
+              height: kHeightForSpacer,
             ),
             Consumer<LanguageProvider>(
               builder: (_, languageProvider, __) {
