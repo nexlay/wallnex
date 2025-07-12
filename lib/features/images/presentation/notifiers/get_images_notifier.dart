@@ -22,6 +22,7 @@ class GetImagesNotifier extends ValueNotifier<int> {
 
   String _error = '';
   String _searchUrl = kSearchUrl + kPage;
+  Map<String, Wallpaper> _categoryImageCache = {};
 
   bool get isLoading => _isLoading;
   bool get isSelectedPage => _isSelectedPage;
@@ -49,6 +50,25 @@ class GetImagesNotifier extends ValueNotifier<int> {
     value = 1;
     notifyListeners();
     loadImages();
+  }
+
+  Future<Wallpaper> getDynamicCategory(String category) async {
+    if (_categoryImageCache.containsKey(category)) {
+      return _categoryImageCache[category]!;
+    } else {
+      final url = kSearchUrl + category + kSortingImagesUrl + kPage;
+      final result = await getWallpaperUseCase(
+        UrlAndPage(params1: url, params2: 1),
+      );
+      return result.fold(
+        (l) => Wallpaper.initialValue(),
+        (r) {
+          final wallpaper = r.first;
+          _categoryImageCache[category] = wallpaper;
+          return wallpaper;
+        },
+      );
+    }
   }
 
   Future<String> _translateQuery(String query) async {
@@ -124,16 +144,5 @@ class GetImagesNotifier extends ValueNotifier<int> {
     );
     // notify UI
     notifyListeners();
-  }
-
-  Future<List<Wallpaper>> getWallpapersForCategory(String category) async {
-    final url = kSearchUrl + category + kPage;
-    final result = await getWallpaperUseCase(
-      UrlAndPage(params1: url, params2: 1),
-    );
-    return result.fold(
-      (e) => [],
-      (r) => r.toList(),
-    );
   }
 }

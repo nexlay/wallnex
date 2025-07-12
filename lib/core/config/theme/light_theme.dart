@@ -3,9 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../const/const.dart';
 
 class AppTheme {
-  static ThemeData lightTheme(ColorScheme colorScheme, BuildContext context) =>
+  static ThemeData lightTheme(ColorScheme? colorScheme, BuildContext context) =>
       ThemeData(
-        colorScheme: colorScheme,
+        colorScheme: colorScheme ??
+            ColorScheme.fromSeed(
+              seedColor: Colors.white,
+              brightness: Brightness.light,
+            ),
         disabledColor: Colors.black,
         brightness: Brightness.light,
         buttonBarTheme:
@@ -15,7 +19,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
           ),
-          color: colorScheme.onPrimary,
+          color: colorScheme?.onPrimary,
         ),
         appBarTheme: const AppBarTheme(
           elevation: 0.0,
@@ -134,7 +138,7 @@ class AppTheme {
           style: OutlinedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width - 100,
                 MediaQuery.of(context).size.height / kFontSizeMid),
-            backgroundColor: colorScheme.surface,
+            backgroundColor: colorScheme?.surface,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),

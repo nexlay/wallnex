@@ -1,10 +1,9 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:wallnex/features/categories/domain/entities/Category.dart';
 import '../../../../../../common/ui/slivers/custom_header_delegate.dart';
 import '../../../../../../const/const.dart';
 import '../../../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../../provider/get_images_notifier.dart';
+import '../../../../../categories/presentation/widgets/category_card.dart';
 
 class CategoriesHeader extends StatelessWidget {
   const CategoriesHeader({
@@ -15,63 +14,33 @@ class CategoriesHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = L.of(context);
 
-    final list = [
-      locale.landscapes,
-      locale.cityscapes,
-      locale.abstract,
-      locale.space,
-      locale.cars,
+    final categories = [
+      Category(locale.landscapes, kCategoriesListAsset[0]),
+      Category(locale.cityscapes, kCategoriesListAsset[1]),
+      Category(locale.abstract, kCategoriesListAsset[2]),
+      Category(locale.space, kCategoriesListAsset[3]),
+      Category(locale.cars, kCategoriesListAsset[4]),
     ];
 
     return SliverPersistentHeader(
       floating: true,
       delegate: CustomHeader(
-          childWidget: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemCount: list.length,
-            itemBuilder: (_, index) {
-              return Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: GestureDetector(
-                  onTap: () {
-                    context
-                        .read<GetImagesNotifier>()
-                        .searchByCategories(kCategoriesListAsset[index]);
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image(
-                          image: AssetImage(
-                              'assets/image/categories/${kCategoriesListAsset[index]}.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Positioned.fill(
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(
-                            sigmaX: 2,
-                            sigmaY: 1,
-                          ),
-                          child: Center(
-                            child: Text(
-                              list[index],
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-          maxExtend: 80,
-          minExtend: 80),
+        childWidget: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: categories.length,
+          itemBuilder: (_, index) {
+            return SizedBox(
+              width: 200,
+              child: CategoryCard(
+                category: categories[index],
+              ),
+            );
+          },
+        ),
+        maxExtend: 200,
+        minExtend: 200,
+      ),
     );
   }
 }

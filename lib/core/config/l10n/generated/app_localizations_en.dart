@@ -336,4 +336,31 @@ class LEn extends L {
 
   @override
   String get fun_fact_description => 'I can lower the price by up to 100%. Then you pay nothing and I do nothing :)';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get areYouSure => 'Are you sure?';
+
+  @override
+  String get removeFavorite => 'This will remove the wallpaper from your favorites.';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
 }

@@ -72,9 +72,13 @@ class PreviewPage extends StatelessWidget {
                   children: [
                     FavoriteButton(
                       wallpaper: wallpaper,
+                      showCircleAvatar: false,
                     ),
-                    DownloadBtn(
-                      wallpaper: wallpaper,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: DownloadBtn(
+                        wallpaper: wallpaper,
+                      ),
                     ),
                   ],
                 ),

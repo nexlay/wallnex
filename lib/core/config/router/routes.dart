@@ -42,9 +42,9 @@ class AppRouter {
   static Widget _purchasesRouteBuilder(_, state) =>
       const PurchasesAndSubscriptions();
   static Widget _conversationListRouteBuilder(_, state) =>
-       ConversationsList(wallpaper: state.extra as Wallpaper);
+      ConversationsList(wallpaper: state.extra as Wallpaper);
   static Widget _chatScreenRouteBuilder(_, state) =>
-       ChatScreen(wallpaper: state.extra as Wallpaper);
+      ChatScreen(wallpaper: state.extra as Wallpaper);
 
   ///[MaterialApp.router]
   static final _router = GoRouter(

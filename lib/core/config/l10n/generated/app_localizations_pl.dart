@@ -14,7 +14,7 @@ class LPl extends L {
   String get categories => 'Kategorie';
 
   @override
-  String get profile => 'Konto';
+  String get profile => 'Profil';
 
   @override
   String get theme => 'Motyw';
@@ -38,13 +38,13 @@ class LPl extends L {
   String get navigation => 'Nawigacja';
 
   @override
-  String get themeDesc => 'Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.';
+  String get themeDesc => 'Ciemny motyw wykorzystuje czarne tło, aby wydłużyć żywotność baterii i znacznie zmniejszyć odblaski na ekranie, zapewniając komfortowe oglądanie.';
 
   @override
   String get language => 'Język';
 
   @override
-  String get languageDesc => 'Wybierz preferowany język i dostosuj sposób korzystania z aplikacji.';
+  String get languageDesc => 'Wybierz preferowany język i dostosuj wygląd aplikacji.';
 
   @override
   String get en => 'EN';
@@ -56,19 +56,19 @@ class LPl extends L {
   String get uk => 'UK';
 
   @override
-  String get navigationDesc => 'Niestandardowy pasek nawigacyjny z animacją';
+  String get navigationDesc => 'Zdobądź niestandardowy pasek nawigacyjny z animowanymi ikonami';
 
   @override
-  String get gridCount => 'Szerokość kolumny na głównym ekranie';
+  String get gridCount => 'Szerokość kolumny';
 
   @override
-  String get gridCountDesc => 'Umożliwia zmianę liczby kolumn oraz zmianę rozmiaru podglądu obrazków';
+  String get gridCountDesc => 'Pozwala zmienić liczbę kolumn i rozmiar podglądu';
 
   @override
   String get appearance => 'Wygląd';
 
   @override
-  String get darkTheme => 'Ciemny motyw i język aplikacji';
+  String get darkTheme => 'Ciemny motyw i język';
 
   @override
   String get appInfo => 'Informacje o aplikacji';
@@ -77,13 +77,13 @@ class LPl extends L {
   String get rate_this_app => 'Oceń aplikację';
 
   @override
-  String get share_this_app => 'Udostępnij';
+  String get share_this_app => 'Udostępnij aplikację';
 
   @override
   String get bugs_feedback => 'Błędy i opinie';
 
   @override
-  String get share_text => 'Wallnex: Twoje tapety, twój styl! Pobierz na:';
+  String get share_text => 'Wallnex: Twoje ściany, twój styl! Pobierz ją na:';
 
   @override
   String get version => 'Wersja';
@@ -92,7 +92,7 @@ class LPl extends L {
   String get customizationDesc => 'Zmień wygląd aplikacji';
 
   @override
-  String get premium => 'Odblokuj pełny potencjał';
+  String get premium => 'Popraw swoje wrażenia z użytkowania';
 
   @override
   String get prem => 'Premium';
@@ -104,76 +104,76 @@ class LPl extends L {
   String get month => 'miesiąc';
 
   @override
-  String get features => 'Cechy';
+  String get features => 'Funkcje';
 
   @override
-  String get premiumDesc => 'Uzyskaj dostęp do ekskluzywnych funkcji';
+  String get premiumDesc => 'Kup funkcje premium';
 
   @override
-  String get yourPremium => 'Twój Premium';
+  String get yourPremium => 'Twoje Premium';
 
   @override
-  String get premiumBenefit_1 => 'Korzystaj bez reklam';
+  String get premiumBenefit_1 => 'Doświadczenie bez reklam';
 
   @override
-  String get premiumBenefit_2 => 'Priorytetowa obsługa klienta';
+  String get premiumBenefit_2 => 'Priorytetowe wsparcie klienta';
 
   @override
   String get premiumBenefit_3 => 'Funkcje dostosowywania';
 
   @override
-  String get premiumBenefit_4 => 'Uporządkuj obrazki';
+  String get premiumBenefit_4 => 'Organizuj swoje obrazy';
 
   @override
   String get premiumBenefit_sub_1 => 'Bez reklam, tylko treść';
 
   @override
-  String get premiumBenefit_sub_2 => 'W sprawach krytycznych i pilnych';
+  String get premiumBenefit_sub_2 => 'W przypadku krytycznych problemów i pilnych zapytań';
 
   @override
   String get premiumBenefit_sub_3 => 'Stwórz swój własny wygląd';
 
   @override
-  String get premiumBenefit_sub_4 => 'Znajdź idealne tapety z funkcjami sortowania';
+  String get premiumBenefit_sub_4 => 'Znajdź idealne tapety dzięki funkcjom sortowania';
 
   @override
   String get thanksForPremium => 'Dziękujemy za bycie członkiem Premium';
 
   @override
-  String get expirationDate => 'Data zakonczenia subskrypcji';
+  String get expirationDate => 'Data wygaśnięcia: ';
 
   @override
   String get menageSubscription => 'Zarządzaj swoją subskrypcją';
 
   @override
-  String get special_offers_and_features => 'Specjalne oferty i funkcje';
+  String get special_offers_and_features => 'Oferty specjalne i funkcje';
 
   @override
   String get check_what_you_might_get => 'Sprawdź, co możesz zyskać';
 
   @override
-  String get start => 'Kupić';
+  String get start => 'Kup';
 
   @override
   String get billed_yearly_cancel_anytime => 'Bez zobowiązań, anuluj w dowolnym momencie';
 
   @override
-  String get getting_the_best_of_Wallnex => 'Teraz wykorzystujesz to, co najlepsze w Wallnex';
+  String get getting_the_best_of_Wallnex => 'Teraz korzystasz z najlepszych funkcji Wallnex';
 
   @override
   String get discoverMore => 'Odkryj więcej';
 
   @override
-  String get exit => 'Powrót';
+  String get exit => 'Wyjdź';
 
   @override
   String get suggestionsNotFound => 'Nie znaleziono podobnych obrazów!';
 
   @override
-  String get tryToReloadSuggestions => 'Spróbuj wybrać inny obraz na głównej.';
+  String get tryToReloadSuggestions => 'Spróbuj wyszukać coś innego.';
 
   @override
-  String get suggestions => 'Propozycje';
+  String get suggestions => 'Sugestie';
 
   @override
   String get suggestionsDesc => 'na podstawie wybranego obrazu';
@@ -185,52 +185,52 @@ class LPl extends L {
   String get usedColorsDesc => 'wyszukaj tapety według koloru';
 
   @override
-  String get imagesNotFound => 'Coś poszło nie tak!';
+  String get imagesNotFound => 'Ups... Coś poszło nie tak!';
 
   @override
-  String get tryToReload => 'Spróbuj ponownie.';
+  String get tryToReload => 'Spróbuj przeładować.';
 
   @override
-  String get reload => 'Odśwież';
+  String get reload => 'Przeładuj';
 
   @override
-  String get noFavorites => 'Brak ulubionych!';
+  String get noFavorites => 'Jeszcze brak ulubionych!';
 
   @override
-  String get noFavoritesDesc => 'Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.';
+  String get noFavoritesDesc => 'Gdy polubisz obraz, zobaczysz go tutaj.';
 
   @override
   String get searchImages => 'Szukaj';
 
   @override
-  String get landscapes => 'Pejzaże';
+  String get landscapes => 'Krajobrazy';
 
   @override
-  String get cityscapes => 'Miejskie';
+  String get cityscapes => 'Miasta';
 
   @override
-  String get abstract => 'Abstrakcji';
+  String get abstract => 'Abstrakcja';
 
   @override
   String get space => 'Kosmos';
 
   @override
-  String get cars => 'Auta';
+  String get cars => 'Samochody';
 
   @override
-  String get relevance_sorting => 'aktualności';
+  String get relevance_sorting => 'trafność';
 
   @override
-  String get random_sorting => 'losowe';
+  String get random_sorting => 'losowo';
 
   @override
   String get favorites_sorting => 'ulubione';
 
   @override
-  String get toplist_sorting => 'toplist';
+  String get toplist_sorting => 'najlepsze';
 
   @override
-  String get noSearchHistory => 'Brak historii wyszukiwania';
+  String get noSearchHistory => 'Nic do pokazania';
 
   @override
   String get category => 'kategoria';
@@ -260,10 +260,10 @@ class LPl extends L {
   String get lockScreen => 'Ekran blokady';
 
   @override
-  String get both => 'Obaj';
+  String get both => 'Oba';
 
   @override
-  String get set_wallpaper_on => 'Ustaw tapetę';
+  String get set_wallpaper_on => 'Ustaw tapetę na';
 
   @override
   String get storagePermission => 'Zezwolenie na przechowywanie';
@@ -272,16 +272,16 @@ class LPl extends L {
   String get notificationPermission => 'Zezwolenie na powiadomienia';
 
   @override
-  String get permissionDesc => 'Możesz nadać uprawnienia w ustawieniach systemu';
+  String get permissionDesc => 'Musisz udzielić tych uprawnień w ustawieniach systemowych';
 
   @override
   String get settings => 'Ustawienia';
 
   @override
-  String get welcome => 'Witamy!';
+  String get welcome => 'Witaj!';
 
   @override
-  String get creatingAccount => 'Zacznijmy od założenia konta';
+  String get creatingAccount => 'Zacznijmy tworzyć Twoje konto';
 
   @override
   String get yourInfo => 'Twoje informacje';
@@ -290,28 +290,28 @@ class LPl extends L {
   String get madeBy => 'Mykola Pryhodskyi';
 
   @override
-  String get developer => 'Twórca aplikacji i projektant';
+  String get developer => 'Deweloper i projektant aplikacji';
 
   @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
 
   @override
-  String get subscribe => 'Obserwuj';
+  String get subscribe => 'Obserwuj mnie';
 
   @override
-  String get subscribe_desc => 'Dowiedz się o nowościach';
+  String get subscribe_desc => 'Aby dowiedzieć się o nowych produktach';
 
   @override
-  String get follow_desc => 'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji!';
+  String get follow_desc => 'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji i nie tylko!';
 
   @override
-  String get like => 'Polub';
+  String get like => 'Lubię';
 
   @override
-  String get dislike => 'Usuń';
+  String get dislike => 'Nie lubię';
 
   @override
-  String get save => 'Pobierz';
+  String get save => 'Zapisz';
 
   @override
   String get done => 'Gotowe';
@@ -332,8 +332,35 @@ class LPl extends L {
   String get tool_description => 'Flutter, Dart, Firebase, Git, Rive';
 
   @override
-  String get fun_fact => 'Śmieszny fakt';
+  String get fun_fact => 'Ciekawostka';
 
   @override
   String get fun_fact_description => 'Mogę obniżyć cenę nawet o 100%. Wtedy nic nie płacisz, a ja nic nie robię :)';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Hasło';
+
+  @override
+  String get login => 'Zaloguj się';
+
+  @override
+  String get apply => 'Zastosuj';
+
+  @override
+  String get forgotPassword => 'Zapomniałeś hasła?';
+
+  @override
+  String get areYouSure => 'Jesteś pewien?';
+
+  @override
+  String get removeFavorite => 'To usunie tapetę z ulubionych.';
+
+  @override
+  String get yes => 'Tak';
+
+  @override
+  String get no => 'Nie';
 }

@@ -35,6 +35,8 @@ class FavoritesPage extends StatelessWidget {
               showImageSpecsBtn: false,
               showFavoriteBtn: true,
               showSendBtn: false,
+              showFavoriteText: false,
+              showFavoriteCircleAvatar: false,
             ),
           );
         },

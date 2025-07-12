@@ -8,7 +8,7 @@ class LUk extends L {
   String get home => 'Головна';
 
   @override
-  String get favorites => 'Обрані';
+  String get favorites => 'Улюблені';
 
   @override
   String get categories => 'Категорії';
@@ -29,22 +29,22 @@ class LUk extends L {
   String get auto => 'Авто';
 
   @override
-  String get preview => 'Перегляд';
+  String get preview => 'Попередній перегляд';
 
   @override
-  String get customization => 'Кастомізація';
+  String get customization => 'Налаштування';
 
   @override
-  String get navigation => 'Панель навігації';
+  String get navigation => 'Навігація';
 
   @override
-  String get themeDesc => 'Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.';
+  String get themeDesc => 'Темна тема використовує чорний фон, щоб продовжити час роботи від акумулятора та значно зменшити відблиски на екрані для комфортного перегляду.';
 
   @override
   String get language => 'Мова';
 
   @override
-  String get languageDesc => 'Оберіть бажану мову та налаштуйте спосіб використання програми.';
+  String get languageDesc => 'Виберіть бажану мову та налаштуйте вигляд програми.';
 
   @override
   String get en => 'EN';
@@ -56,43 +56,43 @@ class LUk extends L {
   String get uk => 'UK';
 
   @override
-  String get navigationDesc => 'Спеціальна панель навігації';
+  String get navigationDesc => 'Отримайте власну панель навігації з анімованими іконками';
 
   @override
-  String get gridCount => 'Ширина стовпця на головному екрані';
+  String get gridCount => 'Ширина стовпця';
 
   @override
-  String get gridCountDesc => 'Дозволяє змінювати кількість стовпців і розмір попереднього перегляду';
+  String get gridCountDesc => 'Дозволяє змінити кількість стовпців та розмір попереднього перегляду';
 
   @override
-  String get appearance => 'Bигляд';
+  String get appearance => 'Зовнішній вигляд';
 
   @override
-  String get darkTheme => 'Темна тема та мова додатку';
+  String get darkTheme => 'Темна тема та мова';
 
   @override
-  String get appInfo => 'Інформація';
+  String get appInfo => 'Інформація про програму';
 
   @override
-  String get rate_this_app => 'Оцініть додаток';
+  String get rate_this_app => 'Оцініть цю програму';
 
   @override
-  String get share_this_app => 'Поділіться';
+  String get share_this_app => 'Поділіться цією програмою';
 
   @override
-  String get bugs_feedback => 'Відгуки';
+  String get bugs_feedback => 'Помилки та відгуки';
 
   @override
-  String get share_text => 'Wallnex: Ваші шпалери, ваш стиль! Завантажте за адресою:';
+  String get share_text => 'Wallnex: Ваші стіни, ваш стиль! Завантажте її на:';
 
   @override
   String get version => 'Версія';
 
   @override
-  String get customizationDesc => 'Додаткові налаштування';
+  String get customizationDesc => 'Змініть вигляд програми';
 
   @override
-  String get premium => 'Підвищіть комфорт користування';
+  String get premium => 'Покращіть свій досвід користувача';
 
   @override
   String get prem => 'Преміум';
@@ -104,49 +104,49 @@ class LUk extends L {
   String get month => 'місяць';
 
   @override
-  String get features => 'Oсобливості';
+  String get features => 'Функції';
 
   @override
-  String get premiumDesc => 'Придбайте преміум';
+  String get premiumDesc => 'Придбайте преміум-функції';
 
   @override
-  String get yourPremium => 'Ваш Premium';
+  String get yourPremium => 'Ваш Преміум';
 
   @override
-  String get premiumBenefit_1 => 'Лише важливий контент';
+  String get premiumBenefit_1 => 'Досвід без реклами';
 
   @override
-  String get premiumBenefit_2 => 'Пріоритетна підтримка';
+  String get premiumBenefit_2 => 'Пріоритетна підтримка клієнтів';
 
   @override
-  String get premiumBenefit_3 => 'Створіть свій власний стиль';
+  String get premiumBenefit_3 => 'Функції налаштування';
 
   @override
-  String get premiumBenefit_4 => 'Знайдіть свої зображення швидше';
+  String get premiumBenefit_4 => 'Організуйте свої зображення';
 
   @override
-  String get premiumBenefit_sub_1 => 'Без реклами';
+  String get premiumBenefit_sub_1 => 'Без реклами, лише вміст';
 
   @override
-  String get premiumBenefit_sub_2 => 'Для критичних і термінових питань';
+  String get premiumBenefit_sub_2 => 'Для критичних проблем та термінових запитів';
 
   @override
-  String get premiumBenefit_sub_3 => 'Функції налаштування вигляду';
+  String get premiumBenefit_sub_3 => 'Створіть свій власний вигляд';
 
   @override
-  String get premiumBenefit_sub_4 => 'Функції фільтрування зображень';
+  String get premiumBenefit_sub_4 => 'Знайдіть ідеальні шпалери за допомогою функцій сортування';
 
   @override
-  String get thanksForPremium => 'Дякуємо за участь в Premium';
+  String get thanksForPremium => 'Дякуємо, що є учасником Преміум';
 
   @override
-  String get expirationDate => 'Дата закінчення підписки';
+  String get expirationDate => 'Дата закінчення: ';
 
   @override
-  String get menageSubscription => 'Управління підпискою';
+  String get menageSubscription => 'Керуйте своєю підпискою';
 
   @override
-  String get special_offers_and_features => 'Спеціальні пропозиції та особливості';
+  String get special_offers_and_features => 'Спеціальні пропозиції та функції';
 
   @override
   String get check_what_you_might_get => 'Перевірте, що ви можете отримати';
@@ -155,7 +155,7 @@ class LUk extends L {
   String get start => 'Купити';
 
   @override
-  String get billed_yearly_cancel_anytime => 'Без зобов’язань, скасуйте будь-коли';
+  String get billed_yearly_cancel_anytime => 'Без зобов\'язань, скасуйте в будь-який час';
 
   @override
   String get getting_the_best_of_Wallnex => 'Тепер ви отримуєте найкраще від Wallnex';
@@ -164,13 +164,13 @@ class LUk extends L {
   String get discoverMore => 'Дізнайтеся більше';
 
   @override
-  String get exit => 'Вихід';
+  String get exit => 'Вийти';
 
   @override
   String get suggestionsNotFound => 'Схожих зображень не знайдено!';
 
   @override
-  String get tryToReloadSuggestions => 'Спробуйте вибрати щось інше.';
+  String get tryToReloadSuggestions => 'Спробуйте знайти щось інше.';
 
   @override
   String get suggestions => 'Пропозиції';
@@ -182,10 +182,10 @@ class LUk extends L {
   String get usedColors => 'Використані кольори';
 
   @override
-  String get usedColorsDesc => 'пошук шпалер за кольором';
+  String get usedColorsDesc => 'шукайте шпалери за кольором';
 
   @override
-  String get imagesNotFound => 'Щось пішло не так!';
+  String get imagesNotFound => 'Ой... Щось пішло не так!';
 
   @override
   String get tryToReload => 'Спробуйте перезавантажити.';
@@ -194,49 +194,49 @@ class LUk extends L {
   String get reload => 'Перезавантажити';
 
   @override
-  String get noFavorites => 'Обраних ще немає!';
+  String get noFavorites => 'Ще немає улюблених!';
 
   @override
-  String get noFavoritesDesc => 'Додайте зображення до обраних і побачите його тут.';
+  String get noFavoritesDesc => 'Коли ви додасте зображення до улюблених, воно з\'явиться тут.';
 
   @override
   String get searchImages => 'Пошук';
 
   @override
-  String get landscapes => 'Пейзаж';
+  String get landscapes => 'Пейзажі';
 
   @override
-  String get cityscapes => 'Місто';
+  String get cityscapes => 'Міста';
 
   @override
-  String get abstract => 'Абстрактція';
+  String get abstract => 'Абстракція';
 
   @override
   String get space => 'Космос';
 
   @override
-  String get cars => 'Авто';
+  String get cars => 'Автомобілі';
 
   @override
-  String get relevance_sorting => 'актуальні';
+  String get relevance_sorting => 'релевантність';
 
   @override
-  String get random_sorting => 'довільні';
+  String get random_sorting => 'випадково';
 
   @override
-  String get favorites_sorting => 'обрані';
+  String get favorites_sorting => 'улюблені';
 
   @override
-  String get toplist_sorting => 'топ';
+  String get toplist_sorting => 'найкращі';
 
   @override
-  String get noSearchHistory => 'Історія пошуку відсутня';
+  String get noSearchHistory => 'Нічого не знайдено';
 
   @override
   String get category => 'категорія';
 
   @override
-  String get uploader => 'завантажив';
+  String get uploader => 'завантажувач';
 
   @override
   String get imageName => 'назва';
@@ -254,7 +254,7 @@ class LUk extends L {
   String get resolution => 'роздільна здатність';
 
   @override
-  String get homeScreen => 'Домашній екран';
+  String get homeScreen => 'Головний екран';
 
   @override
   String get lockScreen => 'Екран блокування';
@@ -263,7 +263,7 @@ class LUk extends L {
   String get both => 'Обидва';
 
   @override
-  String get set_wallpaper_on => 'Встановити на';
+  String get set_wallpaper_on => 'Встановити шпалери на';
 
   @override
   String get storagePermission => 'Дозвіл на зберігання';
@@ -281,16 +281,16 @@ class LUk extends L {
   String get welcome => 'Ласкаво просимо!';
 
   @override
-  String get creatingAccount => 'Створіть новий обліковий запис';
+  String get creatingAccount => 'Давайте почнемо створювати ваш обліковий запис';
 
   @override
   String get yourInfo => 'Ваша інформація';
 
   @override
-  String get madeBy => 'Mykola Pryhodskyi';
+  String get madeBy => 'Микола Пригодський';
 
   @override
-  String get developer => 'Розробник і дизайнер';
+  String get developer => 'Розробник та дизайнер додатків';
 
   @override
   String get developer_email => 'pryhodskyimykola@gmail.com';
@@ -299,19 +299,19 @@ class LUk extends L {
   String get subscribe => 'Слідкуйте за мною';
 
   @override
-  String get subscribe_desc => 'Дізнайтеся про новинки';
+  String get subscribe_desc => 'Щоб дізнатися про нові продукти';
 
   @override
-  String get follow_desc => 'Слідкуйте за мною, щоб бути в курсі функцій програми!';
+  String get follow_desc => 'Слідкуйте за мною, щоб бути в курсі нових функцій програми та іншого!';
 
   @override
-  String get like => 'Лайк';
+  String get like => 'Подобається';
 
   @override
-  String get dislike => 'Дизлайк';
+  String get dislike => 'Не подобається';
 
   @override
-  String get save => 'Скачати';
+  String get save => 'Зберегти';
 
   @override
   String get done => 'Готово';
@@ -332,8 +332,35 @@ class LUk extends L {
   String get tool_description => 'Flutter, Dart, Firebase, Git, Rive';
 
   @override
-  String get fun_fact => 'Кумедний факт';
+  String get fun_fact => 'Цікавий факт';
 
   @override
-  String get fun_fact_description => 'Можу знизити ціну на 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
+  String get fun_fact_description => 'Я можу знизити ціну до 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
+
+  @override
+  String get email => 'Електронна пошта';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get login => 'Увійти';
+
+  @override
+  String get apply => 'Застосувати';
+
+  @override
+  String get forgotPassword => 'Забули пароль?';
+
+  @override
+  String get areYouSure => 'Ви впевнені?';
+
+  @override
+  String get removeFavorite => 'Це видалить шпалери з улюблених.';
+
+  @override
+  String get yes => 'Так';
+
+  @override
+  String get no => 'Ні';
 }

@@ -10,51 +10,61 @@ import '../../../../core/config/l10n/generated/app_localizations.dart';
 import '../../domain/entities/product.dart';
 import '../provider/purchase_provider.dart';
 
-class PurchasesAndSubscriptions extends StatelessWidget {
+class PurchasesAndSubscriptions extends StatefulWidget {
   const PurchasesAndSubscriptions({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final purchaseProvider = context.watch<PurchaseProvider>();
-    final product = purchaseProvider.product;
-    final isLoading = purchaseProvider.isLoading;
-    final isPurchased = purchaseProvider.purchaseResult;
+  State<PurchasesAndSubscriptions> createState() =>
+      _PurchasesAndSubscriptionsState();
+}
 
-    return _buildBody(context, product, isLoading, isPurchased);
+class _PurchasesAndSubscriptionsState extends State<PurchasesAndSubscriptions> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<PurchaseProvider>().checkSubscriptionStatus();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildBody(context);
   }
 
   Widget _buildBody(
     BuildContext context,
-    Product product,
-    bool isLoading,
-    bool isPurchased,
   ) {
     final locale = L.of(context);
-    final emptyScreen = EmptySliverScreen(
-      assetPath: kEmptySuggestions,
-      title: locale.imagesNotFound,
-      subtitle: locale.tryToReload,
-    );
-
     return Scaffold(
       body: BodyScrollView(
         title: locale.yourPremium,
-        childWidget: isLoading
-            ? const SliverFillRemaining(
-                child: ProgressLoader(),
-              )
-            : _buildContent(product, isPurchased, emptyScreen),
+        childWidget: Consumer<PurchaseProvider>(
+          builder: (context, purchase, _) {
+            return purchase.isLoading
+                ? const SliverFillRemaining(
+                    child: ProgressLoader(),
+                  )
+                : _buildContent(
+                    purchase.product,
+                    purchase.purchaseResult,
+                    EmptySliverScreen(
+                      assetPath: kEmptySuggestions,
+                      title: locale.imagesNotFound,
+                      subtitle: locale.tryToReload,
+                    ),
+                  );
+          },
+        ),
       ),
     );
   }
 
   Widget _buildContent(Product product, bool isPurchased, Widget emptyScreen) {
-    if (product.id.isEmpty && !isPurchased) {
-      return emptyScreen;
-    } else if (product.id.isNotEmpty && !isPurchased) {
-      return const PurchasesPage();
-    } else if (isPurchased) {
+    if (isPurchased) {
       return const PremiumUserStatus();
+    } else if (product.id.isNotEmpty) {
+      return const PurchasesPage();
     } else {
       return emptyScreen;
     }

@@ -126,8 +126,14 @@
 "languages_and_tools": "Languages and Tools",
 "tool_description": "Flutter, Dart, Firebase, Git, Rive",
 "fun_fact": "Fun fact",
-"fun_fact_description": "I can lower the price by up to 100%. Then you pay nothing and I do nothing :)"
-
-
-
+"fun_fact_description": "I can lower the price by up to 100%. Then you pay nothing and I do nothing :)",
+"email": "Email",
+"password": "Password",
+"login": "Login",
+"apply": "Apply",
+"forgotPassword": "Forgot password?",
+"areYouSure": "Are you sure?",
+"removeFavorite": "This will remove the wallpaper from your favorites.",
+"yes": "Yes",
+"no": "No"
 }
