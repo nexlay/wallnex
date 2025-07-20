@@ -40,22 +40,20 @@ class _PreviewViewerState extends State<PreviewViewer> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<FileManagerNotifier>(
-      builder: (_, provider, __) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          provider.path = _path;
-          provider.dxOffset = _dx;
-        });
-        return PhotoView(
-          controller: _controller,
-          basePosition: Alignment.centerLeft,
-          initialScale: PhotoViewComputedScale.covered,
-          minScale: PhotoViewComputedScale.covered,
-          maxScale: PhotoViewComputedScale.covered,
-          loadingBuilder: (_, __) => const CustomPlaceholder(),
-          imageProvider: CachedNetworkImageProvider(_path),
-        );
-      }
-    );
+    return Consumer<FileManagerNotifier>(builder: (_, provider, __) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        provider.path = _path;
+        provider.dxOffset = _dx;
+      });
+      return PhotoView(
+        controller: _controller,
+        basePosition: Alignment.centerLeft,
+        initialScale: PhotoViewComputedScale.covered,
+        minScale: PhotoViewComputedScale.covered,
+        maxScale: PhotoViewComputedScale.covered,
+        loadingBuilder: (_, __) => const CustomPlaceholder(),
+        imageProvider: CachedNetworkImageProvider(_path),
+      );
+    });
   }
 }
