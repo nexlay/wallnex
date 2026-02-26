@@ -37,6 +37,7 @@ class ImageDetails extends StatelessWidget {
                     showImageSpecsBtn: true,
                     showFavoriteBtn: true,
                     showSendBtn: false,
+                    showFavoriteText: false,
                   ),
                 ),
                 Padding(

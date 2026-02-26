@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'dart:io' as io;
 import 'package:image/image.dart' as img;
+import 'package:photo_view/photo_view.dart';
 import 'package:tuple/tuple.dart';
 
 //Function for computing in the isolate
@@ -27,8 +28,8 @@ Future<img.Image> _calculateCrop(
   double c = (image.width - dxOffset.abs()) / deviceWidth;
   x = (dxOffset.abs() * c).toInt();
 
-
-  return img.copyCrop(image,x: x, y: y, width: image.width, height: image.height);
+  return img.copyCrop(image,
+      x: x, y: y, width: image.width, height: image.height);
 }
 
 class FileManagerNotifier extends ChangeNotifier {

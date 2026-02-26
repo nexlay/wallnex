@@ -3,13 +3,22 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../const/const.dart';
 
 class AppDarkTheme {
-  static ThemeData darkTheme(ColorScheme colorScheme, BuildContext context) =>
+  static ThemeData darkTheme(ColorScheme? colorScheme, BuildContext context) =>
       ThemeData(
-        colorScheme: colorScheme,
+        colorScheme: colorScheme ??
+            ColorScheme.fromSeed(
+              seedColor: Colors.black,
+              brightness: Brightness.dark,
+            ),
         disabledColor: Colors.grey,
         brightness: Brightness.dark,
+<<<<<<< HEAD
         cardTheme: CardThemeData(
           color: colorScheme.onPrimary,
+=======
+        cardTheme: CardTheme(
+          color: colorScheme?.onPrimary,
+>>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
           elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
@@ -130,7 +139,7 @@ class AppDarkTheme {
           style: OutlinedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width - 100,
                 MediaQuery.of(context).size.height / kRadius),
-            backgroundColor: colorScheme.surface,
+            backgroundColor: colorScheme?.surface,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),

@@ -3,7 +3,11 @@ description: Wallpaper app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
+<<<<<<< HEAD
 version: 1.0.0+25
+=======
+version: 1.0.0+26
+>>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 
 
 environment:

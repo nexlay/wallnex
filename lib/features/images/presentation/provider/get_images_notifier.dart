@@ -125,4 +125,15 @@ class GetImagesNotifier extends ValueNotifier<int> {
     // notify UI
     notifyListeners();
   }
+
+  Future<List<Wallpaper>> getWallpapersForCategory(String category) async {
+    final url = kSearchUrl + category + kPage;
+    final result = await getWallpaperUseCase(
+      UrlAndPage(params1: url, params2: 1),
+    );
+    return result.fold(
+      (e) => [],
+      (r) => r.toList(),
+    );
+  }
 }

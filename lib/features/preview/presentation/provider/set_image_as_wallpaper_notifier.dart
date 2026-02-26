@@ -11,10 +11,6 @@ class SetImageASWallpaperNotifier extends ValueNotifier<int> {
   String error = '';
 
   Future<void> setImageAsWallpaper(String filePath, int screen) async {
-    loading = true;
-    value = screen;
-    notifyListeners();
-
     final result = await _setImageAsWallpaperUseCase
         .call(UrlAndPage(params1: filePath, params2: screen));
 
@@ -29,5 +25,18 @@ class SetImageASWallpaperNotifier extends ValueNotifier<int> {
         }
       },
     );
+  }
+
+  void setLoading(bool isLoading, int screen) {
+    loading = isLoading;
+    value = screen;
+    notifyListeners();
+  }
+
+  void reset() {
+    error = '';
+    loading = false;
+    value = 0;
+    notifyListeners();
   }
 }

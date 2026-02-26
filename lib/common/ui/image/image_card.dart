@@ -14,6 +14,8 @@ class ImageCard extends StatelessWidget {
     required this.showSendBtn,
     required this.path,
     required this.goTo,
+    this.showFavoriteText = true,
+    this.showFavoriteCircleAvatar = false,
   });
 
   final Wallpaper wallpaper;
@@ -21,6 +23,8 @@ class ImageCard extends StatelessWidget {
   final bool showFavoriteBtn;
   final bool showImageSpecsBtn;
   final bool showSendBtn;
+  final bool showFavoriteText;
+  final bool showFavoriteCircleAvatar;
   final Function()? goTo;
 
   @override
@@ -52,7 +56,14 @@ class ImageCard extends StatelessWidget {
               right: kAppSize,
               child: Visibility(
                 visible: showFavoriteBtn,
-                child: FavoriteButton(wallpaper: wallpaper),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FavoriteButton(
+                    wallpaper: wallpaper,
+                    showText: showFavoriteText,
+                    showCircleAvatar: showFavoriteCircleAvatar,
+                  ),
+                ),
               ),
             ),
             Positioned(

@@ -2,6 +2,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
+import 'package:wallnex/features/categories/presentation/provider/category_images_notifier.dart';
 import 'package:wallnex/features/file_manager/presentation/provider/download_provider.dart';
 import 'package:wallnex/features/messaging/presentation/provider/messaging_provider.dart';
 import 'package:wallnex/features/profile/customization/presentation/provider/customization_provider.dart';
@@ -32,16 +33,26 @@ import 'features/sorting/presentation/provider/sorting_provider.dart';
 import 'features/subscription/presentation/page/purchase_wrapper.dart';
 import 'features/subscription/presentation/provider/purchase_provider.dart';
 import 'features/suggestions/presentation/page/suggestions.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:wallnex/core/config/env/env.dart';
 import 'features/suggestions/presentation/provider/get_suggestions_notifier.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+Future<void> _configurePurchases() async {
+  await Purchases.setLogLevel(LogLevel.debug);
+  await Purchases.configure(
+    PurchasesConfiguration(Env.googleApiPurchaseKey),
+  );
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.initHive();
   di.initFirebase();
   di.initFlutterDownloader();
+  await _configurePurchases();
   //di.initAds();
   di.initPlatformPurchasesState();
   di.init();
@@ -59,7 +70,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<PurchaseProvider>(
           create: (_) =>
-              di.getIt<PurchaseProvider>()..checkSubscriptionStatus(),
+              di.getIt<PurchaseProvider>(), //..checkSubscriptionStatus(),
           child: const PurchasesAndSubscriptions(),
         ),
         ChangeNotifierProvider<GetPermissionNotifier>(
@@ -129,6 +140,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<MessagingProvider>(
           create: (_) => di.getIt<MessagingProvider>(),
         ),
+        ChangeNotifierProvider<CategoryImagesNotifier>(
+          create: (_) => di.getIt<CategoryImagesNotifier>(),
+        ),
       ],
       child: const Wallnex(),
     );
@@ -169,11 +183,16 @@ class Wallnex extends StatelessWidget {
           FirebaseUILocalizations.delegate,
         ],
         supportedLocales: L.supportedLocales,
+<<<<<<< HEAD
 
         // 2. Bezpieczne przekazanie kolorów - jeśli dynamiczny jest null, użyj domyślnego
         theme: AppTheme.lightTheme(lightDynamic ?? defaultLight, context),
         darkTheme: AppDarkTheme.darkTheme(darkDynamic ?? defaultDark, context),
 
+=======
+        theme: AppTheme.lightTheme(lightDynamic, context),
+        darkTheme: AppDarkTheme.darkTheme(darkDynamic, context),
+>>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
         themeAnimationStyle: AnimationStyle(
             duration: kAnimationDuration,
             curve: Curves.easeIn,

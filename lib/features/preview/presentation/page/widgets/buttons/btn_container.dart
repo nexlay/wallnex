@@ -73,7 +73,7 @@ class SetUpBtn extends StatelessWidget {
         ),
       ),
       child: Text(
-        'Apply',
+        locale.apply,
         style: TextStyle(fontSize: kFontSizeMid, fontWeight: FontWeight.bold),
       ),
     );

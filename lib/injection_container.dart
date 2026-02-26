@@ -10,6 +10,7 @@ import 'package:wallnex/features/ads/data/repository/repo_impl.dart';
 import 'package:wallnex/features/ads/domain/repo/repository.dart';
 import 'package:wallnex/features/ads/domain/usecase/create_banner_ad_use_case.dart';
 import 'package:wallnex/features/ads/presentation/provider/ad_provider.dart';
+import 'package:wallnex/features/categories/presentation/provider/category_images_notifier.dart';
 import 'package:wallnex/features/favorites/data/data/remote_database.dart';
 import 'package:wallnex/features/favorites/data/data/sync.dart';
 import 'package:wallnex/features/favorites/domain/usecase/delete_from_firestore.dart';
@@ -162,6 +163,12 @@ Future<void> init() async {
   );
 //-----------------------------
   getIt.registerFactory(
+    () => CategoryImagesNotifier(
+      getIt(),
+    ),
+  );
+//-----------------------------
+  getIt.registerFactory(
     () => SortingProvider(),
   );
 //-----------------------------
@@ -247,7 +254,7 @@ Future<void> init() async {
   );
 //-----------------------------
   getIt.registerFactory(
-        () => LanguageProvider(
+    () => LanguageProvider(
       getIt(),
       getIt(),
     ),
@@ -414,7 +421,7 @@ Future<void> init() async {
     ),
   );
   getIt.registerLazySingleton(
-        () => GetSuggestionsByColorUseCase(
+    () => GetSuggestionsByColorUseCase(
       suggestionsRepo: getIt(),
     ),
   );
@@ -438,12 +445,12 @@ Future<void> init() async {
   );
 //-----------------------------
   getIt.registerLazySingleton(
-        () => GetLanguageUseCase(
+    () => GetLanguageUseCase(
       customizationRepo: getIt(),
     ),
   );
   getIt.registerLazySingleton(
-        () => SetLanguageUseCase(
+    () => SetLanguageUseCase(
       customizationRepo: getIt(),
     ),
   );

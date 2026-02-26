@@ -52,32 +52,30 @@ class AppearanceScreen extends StatelessWidget {
             ),
             Consumer<ThemeProvider>(
               builder: (_, themeProvider, __) {
-                return SegmentedButton<ThemeValue>(
-                  // Use ThemeValue enum directly
-                  segments: <ButtonSegment<ThemeValue>>[
-                    ButtonSegment<ThemeValue>(
-                      value: ThemeValue.auto,
-                      icon: const Icon(Icons.auto_awesome_outlined),
-                      label:
-                          Text(locale.auto), // Use locale here for consistency
+                return ToggleButtons(
+                  borderRadius: BorderRadius.circular(kAppSize),
+                  isSelected: [
+                    themeProvider.value == ThemeValue.auto,
+                    themeProvider.value == ThemeValue.light,
+                    themeProvider.value == ThemeValue.dark,
+                  ],
+                  onPressed: (index) {
+                    themeProvider.setThemeValue(index);
+                  },
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(locale.auto),
                     ),
-                    ButtonSegment<ThemeValue>(
-                      icon: const Icon(Icons.light_mode_outlined),
-                      value: ThemeValue.light,
-                      label:
-                          Text(locale.light), // Use locale here for consistency
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(locale.light),
                     ),
-                    ButtonSegment<ThemeValue>(
-                      icon: const Icon(Icons.dark_mode_outlined),
-                      value: ThemeValue.dark,
-                      label:
-                          Text(locale.dark), // Use locale here for consistency
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(locale.dark),
                     ),
                   ],
-                  selected: {themeProvider.value},
-                  onSelectionChanged: (Set<ThemeValue> newSelection) {
-                    themeProvider.setThemeValue(newSelection.first.index);
-                  },
                 );
               },
             ),
@@ -107,26 +105,35 @@ class AppearanceScreen extends StatelessWidget {
             ),
             Consumer<LanguageProvider>(
               builder: (_, languageProvider, __) {
-                return SegmentedButton<Locale>(
-                  segments: <ButtonSegment<Locale>>[
-                    ButtonSegment<Locale>(
-                      value: Locale(AppLanguage.english.value),
-                      label: Text(locale.en),
+                return ToggleButtons(
+                  borderRadius: BorderRadius.circular(kAppSize),
+                  isSelected: [
+                    languageProvider.value.languageCode ==
+                        AppLanguage.english.value,
+                    languageProvider.value.languageCode ==
+                        AppLanguage.polish.value,
+                    languageProvider.value.languageCode ==
+                        AppLanguage.ukraine.value,
+                  ],
+                  onPressed: (index) {
+                    languageProvider.setLanguageValue(
+                      AppLanguage.values[index].value,
+                    );
+                  },
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(locale.en),
                     ),
-                    ButtonSegment<Locale>(
-                      value: Locale(AppLanguage.polish.value),
-                      label: Text(locale.pl),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(locale.pl),
                     ),
-                    ButtonSegment<Locale>(
-                      value: Locale(AppLanguage.ukraine.value),
-                      label: Text(locale.uk),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(locale.uk),
                     ),
                   ],
-                  selected: {languageProvider.value},
-                  onSelectionChanged: (Set<Locale> newSelection) {
-                    languageProvider
-                        .setLanguageValue(newSelection.first.languageCode);
-                  },
                 );
               },
             ),
