@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for Ukrainian (`uk`).
 class LUk extends L {
@@ -38,13 +42,15 @@ class LUk extends L {
   String get navigation => 'Панель навігації';
 
   @override
-  String get themeDesc => 'Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.';
+  String get themeDesc =>
+      'Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.';
 
   @override
   String get language => 'Мова';
 
   @override
-  String get languageDesc => 'Оберіть бажану мову та налаштуйте спосіб використання програми.';
+  String get languageDesc =>
+      'Оберіть бажану мову та налаштуйте спосіб використання програми.';
 
   @override
   String get en => 'EN';
@@ -62,7 +68,8 @@ class LUk extends L {
   String get gridCount => 'Ширина стовпця на головному екрані';
 
   @override
-  String get gridCountDesc => 'Дозволяє змінювати кількість стовпців і розмір попереднього перегляду';
+  String get gridCountDesc =>
+      'Дозволяє змінювати кількість стовпців і розмір попереднього перегляду';
 
   @override
   String get appearance => 'Bигляд';
@@ -83,7 +90,8 @@ class LUk extends L {
   String get bugs_feedback => 'Відгуки';
 
   @override
-  String get share_text => 'Wallnex: Ваші шпалери, ваш стиль! Завантажте за адресою:';
+  String get share_text =>
+      'Wallnex: Ваші шпалери, ваш стиль! Завантажте за адресою:';
 
   @override
   String get version => 'Версія';
@@ -146,7 +154,8 @@ class LUk extends L {
   String get menageSubscription => 'Управління підпискою';
 
   @override
-  String get special_offers_and_features => 'Спеціальні пропозиції та особливості';
+  String get special_offers_and_features =>
+      'Спеціальні пропозиції та особливості';
 
   @override
   String get check_what_you_might_get => 'Перевірте, що ви можете отримати';
@@ -155,10 +164,12 @@ class LUk extends L {
   String get start => 'Купити';
 
   @override
-  String get billed_yearly_cancel_anytime => 'Без зобов’язань, скасуйте будь-коли';
+  String get billed_yearly_cancel_anytime =>
+      'Без зобов’язань, скасуйте будь-коли';
 
   @override
-  String get getting_the_best_of_Wallnex => 'Тепер ви отримуєте найкраще від Wallnex';
+  String get getting_the_best_of_Wallnex =>
+      'Тепер ви отримуєте найкраще від Wallnex';
 
   @override
   String get discoverMore => 'Дізнайтеся більше';
@@ -197,7 +208,8 @@ class LUk extends L {
   String get noFavorites => 'Обраних ще немає!';
 
   @override
-  String get noFavoritesDesc => 'Додайте зображення до обраних і побачите його тут.';
+  String get noFavoritesDesc =>
+      'Додайте зображення до обраних і побачите його тут.';
 
   @override
   String get searchImages => 'Пошук';
@@ -272,7 +284,8 @@ class LUk extends L {
   String get notificationPermission => 'Дозвіл на сповіщення';
 
   @override
-  String get permissionDesc => 'Вам потрібно надати ці дозволи в налаштуваннях системи';
+  String get permissionDesc =>
+      'Вам потрібно надати ці дозволи в налаштуваннях системи';
 
   @override
   String get settings => 'Налаштування';
@@ -302,7 +315,8 @@ class LUk extends L {
   String get subscribe_desc => 'Дізнайтеся про новинки';
 
   @override
-  String get follow_desc => 'Слідкуйте за мною, щоб бути в курсі функцій програми!';
+  String get follow_desc =>
+      'Слідкуйте за мною, щоб бути в курсі функцій програми!';
 
   @override
   String get like => 'Лайк';
@@ -335,5 +349,6 @@ class LUk extends L {
   String get fun_fact => 'Кумедний факт';
 
   @override
-  String get fun_fact_description => 'Можу знизити ціну на 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
+  String get fun_fact_description =>
+      'Можу знизити ціну на 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
 }

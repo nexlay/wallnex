@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for Polish (`pl`).
 class LPl extends L {
@@ -38,13 +42,15 @@ class LPl extends L {
   String get navigation => 'Nawigacja';
 
   @override
-  String get themeDesc => 'Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.';
+  String get themeDesc =>
+      'Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.';
 
   @override
   String get language => 'Język';
 
   @override
-  String get languageDesc => 'Wybierz preferowany język i dostosuj sposób korzystania z aplikacji.';
+  String get languageDesc =>
+      'Wybierz preferowany język i dostosuj sposób korzystania z aplikacji.';
 
   @override
   String get en => 'EN';
@@ -62,7 +68,8 @@ class LPl extends L {
   String get gridCount => 'Szerokość kolumny na głównym ekranie';
 
   @override
-  String get gridCountDesc => 'Umożliwia zmianę liczby kolumn oraz zmianę rozmiaru podglądu obrazków';
+  String get gridCountDesc =>
+      'Umożliwia zmianę liczby kolumn oraz zmianę rozmiaru podglądu obrazków';
 
   @override
   String get appearance => 'Wygląd';
@@ -134,7 +141,8 @@ class LPl extends L {
   String get premiumBenefit_sub_3 => 'Stwórz swój własny wygląd';
 
   @override
-  String get premiumBenefit_sub_4 => 'Znajdź idealne tapety z funkcjami sortowania';
+  String get premiumBenefit_sub_4 =>
+      'Znajdź idealne tapety z funkcjami sortowania';
 
   @override
   String get thanksForPremium => 'Dziękujemy za bycie członkiem Premium';
@@ -155,10 +163,12 @@ class LPl extends L {
   String get start => 'Kupić';
 
   @override
-  String get billed_yearly_cancel_anytime => 'Bez zobowiązań, anuluj w dowolnym momencie';
+  String get billed_yearly_cancel_anytime =>
+      'Bez zobowiązań, anuluj w dowolnym momencie';
 
   @override
-  String get getting_the_best_of_Wallnex => 'Teraz wykorzystujesz to, co najlepsze w Wallnex';
+  String get getting_the_best_of_Wallnex =>
+      'Teraz wykorzystujesz to, co najlepsze w Wallnex';
 
   @override
   String get discoverMore => 'Odkryj więcej';
@@ -197,7 +207,8 @@ class LPl extends L {
   String get noFavorites => 'Brak ulubionych!';
 
   @override
-  String get noFavoritesDesc => 'Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.';
+  String get noFavoritesDesc =>
+      'Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.';
 
   @override
   String get searchImages => 'Szukaj';
@@ -272,7 +283,8 @@ class LPl extends L {
   String get notificationPermission => 'Zezwolenie na powiadomienia';
 
   @override
-  String get permissionDesc => 'Możesz nadać uprawnienia w ustawieniach systemu';
+  String get permissionDesc =>
+      'Możesz nadać uprawnienia w ustawieniach systemu';
 
   @override
   String get settings => 'Ustawienia';
@@ -302,7 +314,8 @@ class LPl extends L {
   String get subscribe_desc => 'Dowiedz się o nowościach';
 
   @override
-  String get follow_desc => 'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji!';
+  String get follow_desc =>
+      'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji!';
 
   @override
   String get like => 'Polub';
@@ -335,5 +348,6 @@ class LPl extends L {
   String get fun_fact => 'Śmieszny fakt';
 
   @override
-  String get fun_fact_description => 'Mogę obniżyć cenę nawet o 100%. Wtedy nic nie płacisz, a ja nic nie robię :)';
+  String get fun_fact_description =>
+      'Mogę obniżyć cenę nawet o 100%. Wtedy nic nie płacisz, a ja nic nie robię :)';
 }

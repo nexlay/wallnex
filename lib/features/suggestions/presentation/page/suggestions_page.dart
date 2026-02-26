@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../../../common/ui/image/image_card.dart';
-
 import '../../../../const/route_paths.dart';
 import '../../../images/presentation/provider/get_images_notifier.dart';
 import '../provider/get_suggestions_notifier.dart';
@@ -16,7 +15,7 @@ class SuggestionsPage extends StatelessWidget {
     return Selector<GetSuggestionsNotifier, List<Wallpaper>>(
       selector: (_, value) => value.suggestions,
       builder: (_, suggestions, __) => ListView.separated(
-        padding: const EdgeInsets.only(bottom: 10.0),
+        padding: const EdgeInsets.only(bottom: 70.0),
         separatorBuilder: (BuildContext context, int index) => const SizedBox(
           width: 1.0,
         ),

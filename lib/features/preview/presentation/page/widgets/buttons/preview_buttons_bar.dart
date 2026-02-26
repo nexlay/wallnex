@@ -12,11 +12,11 @@ class PreviewBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:kAppPadding,
+      padding: kAppPadding,
       child: Card(
         color: Colors.white.withOpacity(0.4),
-        child: ButtonBar(
-          mainAxisSize: MainAxisSize.max,
+        child: OverflowBar(
+          alignment: MainAxisAlignment.center,
           children: [
             FavoriteButton(
               wallpaper: wallpaper,

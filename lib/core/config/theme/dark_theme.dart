@@ -8,7 +8,7 @@ class AppDarkTheme {
         colorScheme: colorScheme,
         disabledColor: Colors.grey,
         brightness: Brightness.dark,
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: colorScheme.onPrimary,
           elevation: 0.0,
           shape: RoundedRectangleBorder(

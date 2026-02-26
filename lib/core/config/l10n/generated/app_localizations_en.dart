@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for English (`en`).
 class LEn extends L {
@@ -38,13 +42,15 @@ class LEn extends L {
   String get navigation => 'Navigation';
 
   @override
-  String get themeDesc => 'Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.';
+  String get themeDesc =>
+      'Dark theme uses a black background to help keep your battery alive longer and cut the glare from your screen significantly for comfortable viewing.';
 
   @override
   String get language => 'Language';
 
   @override
-  String get languageDesc => 'Select your preferred language and customize your app experience.';
+  String get languageDesc =>
+      'Select your preferred language and customize your app experience.';
 
   @override
   String get en => 'EN';
@@ -62,7 +68,8 @@ class LEn extends L {
   String get gridCount => 'Column width';
 
   @override
-  String get gridCountDesc => 'Allows you to change the number columns and change the size of preview';
+  String get gridCountDesc =>
+      'Allows you to change the number columns and change the size of preview';
 
   @override
   String get appearance => 'Appearance';
@@ -134,7 +141,8 @@ class LEn extends L {
   String get premiumBenefit_sub_3 => 'Create your own look';
 
   @override
-  String get premiumBenefit_sub_4 => 'Find perfect wallpapers with sorting features';
+  String get premiumBenefit_sub_4 =>
+      'Find perfect wallpapers with sorting features';
 
   @override
   String get thanksForPremium => 'Thanks for being a Premium member';
@@ -158,7 +166,8 @@ class LEn extends L {
   String get billed_yearly_cancel_anytime => 'No commitment, cancel anytime';
 
   @override
-  String get getting_the_best_of_Wallnex => 'You\'re now getting the best of Wallnex';
+  String get getting_the_best_of_Wallnex =>
+      'You\'re now getting the best of Wallnex';
 
   @override
   String get discoverMore => 'Discover more';
@@ -197,7 +206,8 @@ class LEn extends L {
   String get noFavorites => 'No favorites yet!';
 
   @override
-  String get noFavoritesDesc => 'Once you favorite an image, you\'ll see it here.';
+  String get noFavoritesDesc =>
+      'Once you favorite an image, you\'ll see it here.';
 
   @override
   String get searchImages => 'Search';
@@ -272,7 +282,8 @@ class LEn extends L {
   String get notificationPermission => 'Notifications permission';
 
   @override
-  String get permissionDesc => 'You need to give this permissions from the system settings';
+  String get permissionDesc =>
+      'You need to give this permissions from the system settings';
 
   @override
   String get settings => 'Settings';
@@ -302,7 +313,8 @@ class LEn extends L {
   String get subscribe_desc => 'To know about new products';
 
   @override
-  String get follow_desc => 'Follow me to stay updated on app features and more!';
+  String get follow_desc =>
+      'Follow me to stay updated on app features and more!';
 
   @override
   String get like => 'Like';
@@ -335,5 +347,6 @@ class LEn extends L {
   String get fun_fact => 'Fun fact';
 
   @override
-  String get fun_fact_description => 'I can lower the price by up to 100%. Then you pay nothing and I do nothing :)';
+  String get fun_fact_description =>
+      'I can lower the price by up to 100%. Then you pay nothing and I do nothing :)';
 }

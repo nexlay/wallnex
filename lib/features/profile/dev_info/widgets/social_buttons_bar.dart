@@ -9,8 +9,8 @@ class SocialButtonsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonBar(
-      mainAxisSize: MainAxisSize.min,
+    return OverflowBar(
+      alignment: MainAxisAlignment.center,
       children: [
         IconButton(
           onPressed: () {

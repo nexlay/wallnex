@@ -10,7 +10,7 @@ class AppTheme {
         brightness: Brightness.light,
         buttonBarTheme:
             const ButtonBarThemeData(alignment: MainAxisAlignment.spaceAround),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),

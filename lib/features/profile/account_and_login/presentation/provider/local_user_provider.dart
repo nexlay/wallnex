@@ -31,8 +31,7 @@ class LocalUserProvider extends ChangeNotifier {
     await _writeUserDataUseCase.call(NoParams());
   }
 
-  //TODO: Try to delete all user data
-  /* Future<void> deleteFromFireStorage () async {
+  Future<void> deleteFromFireStorage() async {
     await _deleteAllUserDataUseCase.call(NoParams());
-  }*/
+  }
 }

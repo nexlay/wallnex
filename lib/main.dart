@@ -142,8 +142,20 @@ class Wallnex extends StatelessWidget {
   Widget build(BuildContext context) {
     final value = context.select((ThemeProvider themeMode) => themeMode.value);
     final language = context.select((LanguageProvider locale) => locale.value);
+
     return DynamicColorBuilder(
         builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+      // 1. Definiujemy kolory zastępcze dla urządzeń, które nie obsługują Material You
+      final ColorScheme defaultLight = ColorScheme.fromSeed(
+        seedColor: Colors.white,
+        brightness: Brightness.light,
+      );
+
+      final ColorScheme defaultDark = ColorScheme.fromSeed(
+        seedColor: Colors.black,
+        brightness: Brightness.dark,
+      );
+
       return MaterialApp.router(
         routeInformationProvider: AppRouter().router.routeInformationProvider,
         routeInformationParser: AppRouter().router.routeInformationParser,
@@ -157,8 +169,11 @@ class Wallnex extends StatelessWidget {
           FirebaseUILocalizations.delegate,
         ],
         supportedLocales: L.supportedLocales,
-        theme: AppTheme.lightTheme(lightDynamic!, context),
-        darkTheme: AppDarkTheme.darkTheme(darkDynamic!, context),
+
+        // 2. Bezpieczne przekazanie kolorów - jeśli dynamiczny jest null, użyj domyślnego
+        theme: AppTheme.lightTheme(lightDynamic ?? defaultLight, context),
+        darkTheme: AppDarkTheme.darkTheme(darkDynamic ?? defaultDark, context),
+
         themeAnimationStyle: AnimationStyle(
             duration: kAnimationDuration,
             curve: Curves.easeIn,

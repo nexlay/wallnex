@@ -3,7 +3,7 @@ description: Wallpaper app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+24
+version: 1.0.0+25
 
 
 environment:
@@ -17,7 +17,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # Provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
-  intl: ^0.19.0
+  intl: ^0.20.2
   # For implementing Rive animations
   rive: ^0.13.15
   # A Flutter package to use fonts from https://fonts.google.com.
