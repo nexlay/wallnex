@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
 import '../../../images/presentation/provider/get_images_notifier.dart';
 
 class CategoryImagesNotifier extends ChangeNotifier {

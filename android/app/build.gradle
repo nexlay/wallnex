@@ -21,8 +21,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-
-
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
@@ -30,13 +28,13 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 36 // Zaktualizowano z 34 na 36 (Android 16)
     ndkVersion "27.0.12077973"
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-
 
     kotlinOptions {
         jvmTarget = '17'
@@ -46,13 +44,10 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-
     defaultConfig {
         applicationId "com.pryhodskyimykola.wallnex"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion flutter.minSdkVersion
-        targetSdkVersion 35
+        targetSdkVersion 36 // Zaktualizowano z 35 na 36 (Android 16)
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled = true
@@ -69,6 +64,7 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
+    
     buildTypes {
         debug {
             ndk {
@@ -82,8 +78,8 @@ android {
             }
         }
     }
+    
     namespace 'com.pryhodskyimykola.wallnex'
-
 }
 
 flutter {
@@ -93,5 +89,4 @@ flutter {
 dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
     implementation "androidx.activity:activity:1.9.3"
-    implementation "com.android.billingclient:billing:6.0.1"
 }

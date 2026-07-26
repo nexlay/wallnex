@@ -347,11 +347,8 @@ class LEn extends L {
   String get fun_fact => 'Fun fact';
 
   @override
-<<<<<<< HEAD
   String get fun_fact_description =>
       'I can lower the price by up to 100%. Then you pay nothing and I do nothing :)';
-=======
-  String get fun_fact_description => 'I can lower the price by up to 100%. Then you pay nothing and I do nothing :)';
 
   @override
   String get email => 'Email';
@@ -372,12 +369,12 @@ class LEn extends L {
   String get areYouSure => 'Are you sure?';
 
   @override
-  String get removeFavorite => 'This will remove the wallpaper from your favorites.';
+  String get removeFavorite =>
+      'This will remove the wallpaper from your favorites.';
 
   @override
   String get yes => 'Yes';
 
   @override
   String get no => 'No';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 }

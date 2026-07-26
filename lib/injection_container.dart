@@ -212,7 +212,7 @@ Future<void> init() async {
     () => FileManagerNotifier(),
   );
 //-----------------------------
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => DownloadProvider(),
   );
 //-----------------------------

@@ -26,6 +26,7 @@ class SuggestionsPage extends StatelessWidget {
           return AspectRatio(
             aspectRatio: 2 / 3,
             child: ImageCard(
+              heroTagPrefix: 'suggestion_',
               goTo: () {
                 context
                     .read<GetSuggestionsNotifier>()

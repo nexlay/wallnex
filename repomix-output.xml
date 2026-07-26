@@ -1,0 +1,385 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: lib/features/suggestions
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+lib/
+  features/
+    suggestions/
+      data/
+        data/
+          suggestions_data.dart
+        repository/
+          suggestion_repo_impl.dart
+      domain/
+        repository/
+          suggestions_repo.dart
+        usecase/
+          get_suggestions_by_color_usecase.dart
+          get_suggestions_usecase.dart
+      presentation/
+        page/
+          suggestions_page.dart
+          suggestions.dart
+        provider/
+          get_suggestions_notifier.dart
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="lib/features/suggestions/domain/usecase/get_suggestions_by_color_usecase.dart">
+import 'package:dartz/dartz.dart';
+import 'package:wallnex/core/errors/failure.dart';
+import 'package:wallnex/core/usecase/usecase.dart';
+import '../../../images/domain/entities/wallpaper.dart';
+import '../repository/suggestions_repo.dart';
+
+class GetSuggestionsByColorUseCase
+    implements UseCase<Iterable<Wallpaper>, ParamsMultiString> {
+  final SuggestionsRepo suggestionsRepo;
+
+  GetSuggestionsByColorUseCase({required this.suggestionsRepo});
+
+  @override
+  Future<Either<Failure, Iterable<Wallpaper>>> call(
+      ParamsMultiString params) async {
+    return await suggestionsRepo.getSuggestionsByColor(
+        params.params, params.params1);
+  }
+}
+</file>
+
+<file path="lib/features/suggestions/data/repository/suggestion_repo_impl.dart">
+import 'package:dartz/dartz.dart';
+import 'package:wallnex/core/errors/failure.dart';
+import 'package:wallnex/features/suggestions/data/data/suggestions_data.dart';
+import 'package:wallnex/features/suggestions/domain/repository/suggestions_repo.dart';
+import '../../../../core/exceptions/exceptions.dart';
+import '../../../images/data/models/wallpaper_model.dart';
+
+class SuggestionsRepoImpl implements SuggestionsRepo {
+  final SuggestionsData suggestionsData;
+
+  SuggestionsRepoImpl({required this.suggestionsData});
+  @override
+  Future<Either<Failure, Iterable<WallpaperModel>>> getSuggestions(
+      String id) async {
+    try {
+      final result = await suggestionsData.getSuggestionsBySimilarTags(id);
+      return Right(result);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Iterable<WallpaperModel>>> getSuggestionsByColor(
+      String color, String id) async {
+    try {
+      final result = await suggestionsData.getSuggestionsByColors(color, id);
+      return Right(result);
+    } on LocalExceptions {
+      return Left(LocalFailure());
+    }
+  }
+}
+</file>
+
+<file path="lib/features/suggestions/domain/repository/suggestions_repo.dart">
+import 'package:dartz/dartz.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../images/domain/entities/wallpaper.dart';
+
+abstract class SuggestionsRepo {
+  ///Get suggestion
+  Future<Either<Failure, Iterable<Wallpaper>>> getSuggestions(String id);
+  ///Get suggestion
+  Future<Either<Failure, Iterable<Wallpaper>>> getSuggestionsByColor(String color, String id);
+}
+</file>
+
+<file path="lib/features/suggestions/domain/usecase/get_suggestions_usecase.dart">
+import 'package:dartz/dartz.dart';
+import 'package:wallnex/core/errors/failure.dart';
+import 'package:wallnex/core/usecase/usecase.dart';
+import '../../../images/domain/entities/wallpaper.dart';
+import '../repository/suggestions_repo.dart';
+
+class GetSuggestionsUseCase implements UseCase<Iterable<Wallpaper>, ParamsString> {
+  final SuggestionsRepo suggestionsRepo;
+
+  GetSuggestionsUseCase({required this.suggestionsRepo});
+
+  @override
+  Future<Either<Failure, Iterable<Wallpaper>>> call(ParamsString params) async {
+   return await suggestionsRepo.getSuggestions(params.params);
+  }
+
+}
+</file>
+
+<file path="lib/features/suggestions/data/data/suggestions_data.dart">
+import 'dart:convert';
+import '../../../../const/const_api_url.dart';
+import '../../../images/data/models/wallpaper_model.dart';
+import 'package:http/http.dart' as http;
+
+abstract class SuggestionsData {
+  //Suggestions by tags
+  Future<Iterable<WallpaperModel>> getSuggestionsBySimilarTags(String id);
+  Future<Iterable<WallpaperModel>> getSuggestionsByColors(
+      String color, String id);
+}
+
+class SuggestionsDataImpl implements SuggestionsData {
+  @override
+  Future<Iterable<WallpaperModel>> getSuggestionsBySimilarTags(
+      String id) async {
+    final response = await http.get(
+      Uri.parse('$kSearchLikeIdUrl$id'),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+
+      List items = data['data'];
+
+      for (var e in items) {
+        if (e.toString().contains(id)) {
+          items.remove(e);
+          break;
+        }
+      }
+
+      return Future.value(items.map((e) => WallpaperModel.fromJson(e)));
+    } else {
+      throw Exception(
+          'Failed to load images. Status code: ${response.statusCode}');
+    }
+  }
+
+  @override
+  Future<Iterable<WallpaperModel>> getSuggestionsByColors(
+      String color, String id) async {
+    final response = await http.get(
+      Uri.parse('$kSearchByColor$color'),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+
+      List items = data['data'];
+
+      for (var e in items) {
+        if (e.toString().contains(id)) {
+          items.remove(e);
+          break;
+        }
+      }
+
+      return Future.value(items.map((e) => WallpaperModel.fromJson(e)));
+    } else {
+      throw Exception(
+          'Failed to load images. Status code: ${response.statusCode}');
+    }
+  }
+}
+</file>
+
+<file path="lib/features/suggestions/presentation/provider/get_suggestions_notifier.dart">
+import 'package:flutter/cupertino.dart';
+import 'package:wallnex/features/suggestions/domain/usecase/get_suggestions_by_color_usecase.dart';
+import '../../../../../core/usecase/usecase.dart';
+import '../../../images/domain/entities/wallpaper.dart';
+import '../../domain/usecase/get_suggestions_usecase.dart';
+
+class GetSuggestionsNotifier extends ChangeNotifier {
+  final GetSuggestionsUseCase getSuggestionsUseCase;
+  final GetSuggestionsByColorUseCase getSuggestionsByColorUseCase;
+
+  GetSuggestionsNotifier(
+      {required this.getSuggestionsUseCase,
+      required this.getSuggestionsByColorUseCase});
+
+  List<Wallpaper> suggestions = [];
+  bool isLoading = true;
+  String error = '';
+
+  Future<void> getSuggestions(String id) async {
+    final result = await getSuggestionsUseCase.call(
+      ParamsString(params: id),
+    );
+
+    result.fold((l) {
+      error = 'Fail';
+      isLoading = false;
+    }, (iterable) {
+      suggestions = iterable.toList();
+      isLoading = false;
+    });
+    notifyListeners();
+  }
+
+  Future<void> getSuggestionsByColor(String color, String id) async {
+    final result = await getSuggestionsByColorUseCase.call(
+      ParamsMultiString(params: color, params1: id),
+    );
+
+    result.fold((l) {
+      error = 'Fail';
+      isLoading = false;
+    }, (iterable) {
+      suggestions = iterable.toList();
+      isLoading = false;
+    });
+    notifyListeners();
+  }
+}
+</file>
+
+<file path="lib/features/suggestions/presentation/page/suggestions_page.dart">
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:wallnex/features/images/domain/entities/wallpaper.dart';
+import '../../../../../common/ui/image/image_card.dart';
+import '../../../../const/route_paths.dart';
+import '../../../images/presentation/provider/get_images_notifier.dart';
+import '../provider/get_suggestions_notifier.dart';
+
+class SuggestionsPage extends StatelessWidget {
+  const SuggestionsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Selector<GetSuggestionsNotifier, List<Wallpaper>>(
+      selector: (_, value) => value.suggestions,
+      builder: (_, suggestions, __) => ListView.separated(
+        padding: const EdgeInsets.only(bottom: 70.0),
+        separatorBuilder: (BuildContext context, int index) => const SizedBox(
+          width: 1.0,
+        ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: suggestions.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (_, index) {
+          return AspectRatio(
+            aspectRatio: 2 / 3,
+            child: ImageCard(
+              heroTagPrefix: 'suggestion_',
+              goTo: () {
+                context
+                    .read<GetSuggestionsNotifier>()
+                    .getSuggestions(suggestions[index].id);
+                context
+                    .read<GetImagesNotifier>()
+                    .getImageById(suggestions[index].id);
+                context.push(krDetails, extra: suggestions[index]);
+              },
+              path: suggestions[index].thumbsLarge,
+              wallpaper: suggestions[index],
+              showFavoriteBtn: false,
+              showImageSpecsBtn: false,
+              showSendBtn: false,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+</file>
+
+<file path="lib/features/suggestions/presentation/page/suggestions.dart">
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wallnex/features/suggestions/presentation/page/suggestions_page.dart';
+import '../../../../common/ui/epty_screen/empty_screen.dart';
+import '../../../../common/ui/loading_status/progess_indicator.dart';
+import '../../../../const/const_rive.dart';
+import '../../../../core/config/l10n/generated/app_localizations.dart';
+import '../../../images/domain/entities/wallpaper.dart';
+import '../provider/get_suggestions_notifier.dart';
+
+class Suggestions extends StatelessWidget {
+  const Suggestions({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final suggestions = context
+        .select((GetSuggestionsNotifier provider) => provider.suggestions);
+    final isLoading =
+        context.select((GetSuggestionsNotifier provider) => provider.isLoading);
+
+    return _showBody(
+      context,
+      suggestions,
+      isLoading,
+    );
+  }
+
+  Widget _showBody(
+    BuildContext context,
+    List<Wallpaper> suggestions,
+    bool isLoading,
+  ) {
+    final locale = L.of(context);
+    final emptyScreen = EmptyScreen(
+      assetPath: kEmptySuggestions,
+      title: locale.suggestionsNotFound,
+      subtitle: locale.tryToReloadSuggestions,
+    );
+
+    return isLoading
+        ? const ProgressLoader()
+        : !isLoading && suggestions.isEmpty
+            ? emptyScreen
+            : !isLoading && suggestions.isNotEmpty
+                ? const SuggestionsPage()
+                : emptyScreen;
+  }
+}
+</file>
+
+</files>

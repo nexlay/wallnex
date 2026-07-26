@@ -183,17 +183,10 @@ class Wallnex extends StatelessWidget {
           FirebaseUILocalizations.delegate,
         ],
         supportedLocales: L.supportedLocales,
-<<<<<<< HEAD
-
         // 2. Bezpieczne przekazanie kolorów - jeśli dynamiczny jest null, użyj domyślnego
-        theme: AppTheme.lightTheme(lightDynamic ?? defaultLight, context),
+        theme: AppLightTheme.lightTheme(lightDynamic ?? defaultLight, context),
         darkTheme: AppDarkTheme.darkTheme(darkDynamic ?? defaultDark, context),
-
-=======
-        theme: AppTheme.lightTheme(lightDynamic, context),
-        darkTheme: AppDarkTheme.darkTheme(darkDynamic, context),
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
-        themeAnimationStyle: AnimationStyle(
+        themeAnimationStyle: const AnimationStyle(
             duration: kAnimationDuration,
             curve: Curves.easeIn,
             reverseCurve: Curves.bounceOut),

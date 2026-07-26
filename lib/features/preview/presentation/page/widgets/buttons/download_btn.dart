@@ -43,7 +43,7 @@ class _DownloadCompleteBtnState extends State<DownloadBtn>
   @override
   Widget build(BuildContext context) {
     final permissions = context.watch<GetPermissionNotifier>();
-    final download = context.watch<DownloadProvider>();
+    final download = context.read<DownloadProvider>();
     final locale = L.of(context);
     return ScaleTransition(
       scale: _controller,
@@ -51,9 +51,7 @@ class _DownloadCompleteBtnState extends State<DownloadBtn>
         onPressed: () {
           switch (permissions.value.value2) {
             case AppPermissionsStatus.granted:
-              download
-                ..createEnqueue(widget.wallpaper.path)
-                ..resetDownloadStatus();
+              download.createEnqueue(widget.wallpaper.path);
               _animate();
               break;
             case AppPermissionsStatus.denied:
@@ -79,21 +77,28 @@ class _DownloadCompleteBtnState extends State<DownloadBtn>
               break;
           }
         },
-        icon: Column(children: [
-          download.value == 100
-              ? const Icon(
-                  Icons.check,
-                  color: Colors.green,
-                )
-              : const Icon(
-                  Icons.arrow_downward,
-                  color: Colors.white,
+        icon: ValueListenableBuilder<int>(
+          valueListenable: download,
+          builder: (context, value, child) {
+            return Column(
+              children: [
+                value == 100
+                    ? const Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      )
+                    : const Icon(
+                        Icons.arrow_downward,
+                        color: Colors.white,
+                      ),
+                Text(
+                  value == 100 ? locale.done : locale.save,
+                  style: const TextStyle(color: Colors.white),
                 ),
-          Text(
-            download.value == 100 ? locale.done : locale.save,
-            style: TextStyle(color: Colors.white),
-          ),
-        ]),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

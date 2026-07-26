@@ -10,7 +10,8 @@ import '../../../../../common/ui/image/network_image_viewer.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
 
 class UserSearch extends SearchDelegate<SearchUser> {
-  set searchFieldLabel(String? field) => super.searchFieldLabel;
+  @override
+  String? get searchFieldLabel => '';
 
   final Wallpaper wallpaper;
 
@@ -18,7 +19,6 @@ class UserSearch extends SearchDelegate<SearchUser> {
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    searchFieldLabel = L.of(context).searchImages;
     return [
       IconButton(
         onPressed: () {

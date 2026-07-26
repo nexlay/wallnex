@@ -18,16 +18,19 @@ class PremiumAccessWrapper extends StatelessWidget {
           ? childWidget
           : GestureDetector(
               onTap: () => context.push(krPurchases),
-              child: Badge(
-                largeSize: 22,
-                alignment: alignment,
-                backgroundColor: Colors.amberAccent.withOpacity(0.6),
-                label: Icon(
-                  Icons.star_rate_outlined,
-                  color: Colors.white.withOpacity(0.6),
-                  size: 16.0,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Badge(
+                  largeSize: 22,
+                  alignment: alignment,
+                  backgroundColor: Colors.amberAccent.withOpacity(0.6),
+                  label: Icon(
+                    Icons.star_rate_outlined,
+                    color: Colors.white.withOpacity(0.6),
+                    size: 16.0,
+                  ),
+                  child: AbsorbPointer(child: childWidget),
                 ),
-                child: AbsorbPointer(child: childWidget),
               ),
             ),
     );

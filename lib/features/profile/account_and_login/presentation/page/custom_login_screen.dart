@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:wallnex/common/ui/slivers/custom_scroll_view.dart';
-import 'package:wallnex/features/profile/account_and_login/presentation/provider/local_user_provider.dart';
 import '../../../../../const/route_paths.dart';
 import '../../../../../core/config/env/env.dart';
 import '../../../../../core/config/l10n/generated/app_localizations.dart';
-import '../../../../favorites/presentation/provider/favorites_images_notifier.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 
 class CustomLoginScreen extends StatelessWidget {

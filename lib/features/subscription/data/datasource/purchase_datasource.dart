@@ -37,8 +37,12 @@ class PurchaseDataSourceImpl implements PurchaseDataSource {
   @override
   Future<PurchaseResultModel> purchaseProduct(Product product) async {
     try {
-      final purchaserInfo = await Purchases.purchaseProduct(product.id);
-      if (purchaserInfo.entitlements.all[Env.entitlementsId]!.isActive) {
+      // 1. Zapisujemy wynik zakupu do zmiennej purchaseResult
+      final purchaseResult = await Purchases.purchaseProduct(product.id);
+
+      // 2. Odwołujemy się najpierw do customerInfo, a dopiero potem sprawdzamy entitlements
+      if (purchaseResult
+          .customerInfo.entitlements.all[Env.entitlementsId]!.isActive) {
         return const PurchaseResultModel(success: true);
       } else {
         return const PurchaseResultModel(success: false);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../const/const.dart';
 
-class AppTheme {
+class AppLightTheme {
   static ThemeData lightTheme(ColorScheme? colorScheme, BuildContext context) =>
       ThemeData(
         colorScheme: colorScheme ??
@@ -25,7 +25,7 @@ class AppTheme {
           elevation: 0.0,
         ),
         navigationBarTheme: NavigationBarThemeData(
-          labelTextStyle: WidgetStateProperty.resolveWith(
+          labelTextStyle: MaterialStateProperty.resolveWith(
             (states) => const TextStyle(fontSize: 14),
           ),
           height: 80,
@@ -60,7 +60,7 @@ class AppTheme {
           headlineMedium: GoogleFonts.notoSans(
             fontSize: 34,
             fontWeight: FontWeight.w300,
-            letterSpacing: 0.25, /*color: mainLightThemeColor*/
+            letterSpacing: 0.25
           ),
           headlineSmall: GoogleFonts.notoSans(
             fontSize: 24,
@@ -74,7 +74,7 @@ class AppTheme {
           titleMedium: GoogleFonts.notoSans(
             fontSize: 16,
             fontWeight: FontWeight.w300,
-            letterSpacing: 0.15, /* color: mainLightThemeColor*/
+            letterSpacing: 0.15
           ),
           titleSmall: GoogleFonts.notoSans(
             fontSize: 14,

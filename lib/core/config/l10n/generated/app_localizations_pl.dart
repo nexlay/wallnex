@@ -42,23 +42,15 @@ class LPl extends L {
   String get navigation => 'Nawigacja';
 
   @override
-<<<<<<< HEAD
   String get themeDesc =>
-      'Ciemny motyw wykorzystuje czarne tło, by wydłużyć czas pracy na baterii i znacznie zmniejszyć świecenie na ekranie, zapewniając wygodę oglądania.';
-=======
-  String get themeDesc => 'Ciemny motyw wykorzystuje czarne tło, aby wydłużyć żywotność baterii i znacznie zmniejszyć odblaski na ekranie, zapewniając komfortowe oglądanie.';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Ciemny motyw wykorzystuje czarne tło, aby wydłużyć żywotność baterii i znacznie zmniejszyć odblaski na ekranie, zapewniając komfortowe oglądanie.';
 
   @override
   String get language => 'Język';
 
   @override
-<<<<<<< HEAD
   String get languageDesc =>
-      'Wybierz preferowany język i dostosuj sposób korzystania z aplikacji.';
-=======
-  String get languageDesc => 'Wybierz preferowany język i dostosuj wygląd aplikacji.';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Wybierz preferowany język i dostosuj wygląd aplikacji.';
 
   @override
   String get en => 'EN';
@@ -70,18 +62,15 @@ class LPl extends L {
   String get uk => 'UK';
 
   @override
-  String get navigationDesc => 'Zdobądź niestandardowy pasek nawigacyjny z animowanymi ikonami';
+  String get navigationDesc =>
+      'Zdobądź niestandardowy pasek nawigacyjny z animowanymi ikonami';
 
   @override
   String get gridCount => 'Szerokość kolumny';
 
   @override
-<<<<<<< HEAD
   String get gridCountDesc =>
-      'Umożliwia zmianę liczby kolumn oraz zmianę rozmiaru podglądu obrazków';
-=======
-  String get gridCountDesc => 'Pozwala zmienić liczbę kolumn i rozmiar podglądu';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Pozwala zmienić liczbę kolumn i rozmiar podglądu';
 
   @override
   String get appearance => 'Wygląd';
@@ -147,18 +136,15 @@ class LPl extends L {
   String get premiumBenefit_sub_1 => 'Bez reklam, tylko treść';
 
   @override
-  String get premiumBenefit_sub_2 => 'W przypadku krytycznych problemów i pilnych zapytań';
+  String get premiumBenefit_sub_2 =>
+      'W przypadku krytycznych problemów i pilnych zapytań';
 
   @override
   String get premiumBenefit_sub_3 => 'Stwórz swój własny wygląd';
 
   @override
-<<<<<<< HEAD
   String get premiumBenefit_sub_4 =>
-      'Znajdź idealne tapety z funkcjami sortowania';
-=======
-  String get premiumBenefit_sub_4 => 'Znajdź idealne tapety dzięki funkcjom sortowania';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Znajdź idealne tapety dzięki funkcjom sortowania';
 
   @override
   String get thanksForPremium => 'Dziękujemy za bycie członkiem Premium';
@@ -183,12 +169,8 @@ class LPl extends L {
       'Bez zobowiązań, anuluj w dowolnym momencie';
 
   @override
-<<<<<<< HEAD
   String get getting_the_best_of_Wallnex =>
-      'Teraz wykorzystujesz to, co najlepsze w Wallnex';
-=======
-  String get getting_the_best_of_Wallnex => 'Teraz korzystasz z najlepszych funkcji Wallnex';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Teraz korzystasz z najlepszych funkcji Wallnex';
 
   @override
   String get discoverMore => 'Odkryj więcej';
@@ -227,12 +209,7 @@ class LPl extends L {
   String get noFavorites => 'Jeszcze brak ulubionych!';
 
   @override
-<<<<<<< HEAD
-  String get noFavoritesDesc =>
-      'Gdy dodasz obraz do ulubionych, zobaczysz go tutaj.';
-=======
   String get noFavoritesDesc => 'Gdy polubisz obraz, zobaczysz go tutaj.';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 
   @override
   String get searchImages => 'Szukaj';
@@ -307,12 +284,8 @@ class LPl extends L {
   String get notificationPermission => 'Zezwolenie na powiadomienia';
 
   @override
-<<<<<<< HEAD
   String get permissionDesc =>
-      'Możesz nadać uprawnienia w ustawieniach systemu';
-=======
-  String get permissionDesc => 'Musisz udzielić tych uprawnień w ustawieniach systemowych';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Musisz udzielić tych uprawnień w ustawieniach systemowych';
 
   @override
   String get settings => 'Ustawienia';
@@ -342,12 +315,8 @@ class LPl extends L {
   String get subscribe_desc => 'Aby dowiedzieć się o nowych produktach';
 
   @override
-<<<<<<< HEAD
   String get follow_desc =>
-      'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji!';
-=======
-  String get follow_desc => 'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji i nie tylko!';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Obserwuj mnie, aby być na bieżąco z funkcjami aplikacji i nie tylko!';
 
   @override
   String get like => 'Lubię';
@@ -380,11 +349,8 @@ class LPl extends L {
   String get fun_fact => 'Ciekawostka';
 
   @override
-<<<<<<< HEAD
   String get fun_fact_description =>
       'Mogę obniżyć cenę nawet o 100%. Wtedy nic nie płacisz, a ja nic nie robię :)';
-=======
-  String get fun_fact_description => 'Mogę obniżyć cenę nawet o 100%. Wtedy nic nie płacisz, a ja nic nie robię :)';
 
   @override
   String get email => 'Email';
@@ -412,5 +378,4 @@ class LPl extends L {
 
   @override
   String get no => 'Nie';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 }

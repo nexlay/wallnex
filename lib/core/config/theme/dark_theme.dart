@@ -12,20 +12,12 @@ class AppDarkTheme {
             ),
         disabledColor: Colors.grey,
         brightness: Brightness.dark,
-<<<<<<< HEAD
         cardTheme: CardThemeData(
-          color: colorScheme.onPrimary,
-=======
-        cardTheme: CardTheme(
           color: colorScheme?.onPrimary,
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
           elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22.0),
           ),
-        ),
-        buttonBarTheme: const ButtonBarThemeData(
-          alignment: MainAxisAlignment.spaceAround,
         ),
         appBarTheme: const AppBarTheme(
           elevation: 0.0,
@@ -138,7 +130,7 @@ class AppDarkTheme {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width - 100,
-                MediaQuery.of(context).size.height / kRadius),
+                MediaQuery.of(context).size.height / kFontSizeMid),
             backgroundColor: colorScheme?.surface,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),

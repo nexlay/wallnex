@@ -42,23 +42,15 @@ class LUk extends L {
   String get navigation => 'Навігація';
 
   @override
-<<<<<<< HEAD
   String get themeDesc =>
-      'Темна тема використовує чорний фон, щоб довше підтримувати заряд батареї та значно зменшувати відблиски на екрані для комфортного перегляду.';
-=======
-  String get themeDesc => 'Темна тема використовує чорний фон, щоб продовжити час роботи від акумулятора та значно зменшити відблиски на екрані для комфортного перегляду.';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Темна тема використовує чорний фон, щоб продовжити час роботи від акумулятора та значно зменшити відблиски на екрані для комфортного перегляду.';
 
   @override
   String get language => 'Мова';
 
   @override
-<<<<<<< HEAD
   String get languageDesc =>
-      'Оберіть бажану мову та налаштуйте спосіб використання програми.';
-=======
-  String get languageDesc => 'Виберіть бажану мову та налаштуйте вигляд програми.';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Виберіть бажану мову та налаштуйте вигляд програми.';
 
   @override
   String get en => 'EN';
@@ -70,18 +62,15 @@ class LUk extends L {
   String get uk => 'UK';
 
   @override
-  String get navigationDesc => 'Отримайте власну панель навігації з анімованими іконками';
+  String get navigationDesc =>
+      'Отримайте власну панель навігації з анімованими іконками';
 
   @override
   String get gridCount => 'Ширина стовпця';
 
   @override
-<<<<<<< HEAD
   String get gridCountDesc =>
-      'Дозволяє змінювати кількість стовпців і розмір попереднього перегляду';
-=======
-  String get gridCountDesc => 'Дозволяє змінити кількість стовпців та розмір попереднього перегляду';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Дозволяє змінити кількість стовпців та розмір попереднього перегляду';
 
   @override
   String get appearance => 'Зовнішній вигляд';
@@ -102,12 +91,7 @@ class LUk extends L {
   String get bugs_feedback => 'Помилки та відгуки';
 
   @override
-<<<<<<< HEAD
-  String get share_text =>
-      'Wallnex: Ваші шпалери, ваш стиль! Завантажте за адресою:';
-=======
   String get share_text => 'Wallnex: Ваші стіни, ваш стиль! Завантажте її на:';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 
   @override
   String get version => 'Версія';
@@ -152,13 +136,15 @@ class LUk extends L {
   String get premiumBenefit_sub_1 => 'Без реклами, лише вміст';
 
   @override
-  String get premiumBenefit_sub_2 => 'Для критичних проблем та термінових запитів';
+  String get premiumBenefit_sub_2 =>
+      'Для критичних проблем та термінових запитів';
 
   @override
   String get premiumBenefit_sub_3 => 'Створіть свій власний вигляд';
 
   @override
-  String get premiumBenefit_sub_4 => 'Знайдіть ідеальні шпалери за допомогою функцій сортування';
+  String get premiumBenefit_sub_4 =>
+      'Знайдіть ідеальні шпалери за допомогою функцій сортування';
 
   @override
   String get thanksForPremium => 'Дякуємо, що є учасником Преміум';
@@ -170,12 +156,7 @@ class LUk extends L {
   String get menageSubscription => 'Керуйте своєю підпискою';
 
   @override
-<<<<<<< HEAD
-  String get special_offers_and_features =>
-      'Спеціальні пропозиції та особливості';
-=======
   String get special_offers_and_features => 'Спеціальні пропозиції та функції';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 
   @override
   String get check_what_you_might_get => 'Перевірте, що ви можете отримати';
@@ -184,12 +165,8 @@ class LUk extends L {
   String get start => 'Купити';
 
   @override
-<<<<<<< HEAD
   String get billed_yearly_cancel_anytime =>
-      'Без зобов’язань, скасуйте будь-коли';
-=======
-  String get billed_yearly_cancel_anytime => 'Без зобов\'язань, скасуйте в будь-який час';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Без зобов\'язань, скасуйте в будь-який час';
 
   @override
   String get getting_the_best_of_Wallnex =>
@@ -232,12 +209,8 @@ class LUk extends L {
   String get noFavorites => 'Ще немає улюблених!';
 
   @override
-<<<<<<< HEAD
   String get noFavoritesDesc =>
-      'Додайте зображення до обраних і побачите його тут.';
-=======
-  String get noFavoritesDesc => 'Коли ви додасте зображення до улюблених, воно з\'явиться тут.';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Коли ви додасте зображення до улюблених, воно з\'явиться тут.';
 
   @override
   String get searchImages => 'Пошук';
@@ -322,7 +295,8 @@ class LUk extends L {
   String get welcome => 'Ласкаво просимо!';
 
   @override
-  String get creatingAccount => 'Давайте почнемо створювати ваш обліковий запис';
+  String get creatingAccount =>
+      'Давайте почнемо створювати ваш обліковий запис';
 
   @override
   String get yourInfo => 'Ваша інформація';
@@ -343,12 +317,8 @@ class LUk extends L {
   String get subscribe_desc => 'Щоб дізнатися про нові продукти';
 
   @override
-<<<<<<< HEAD
   String get follow_desc =>
-      'Слідкуйте за мною, щоб бути в курсі функцій програми!';
-=======
-  String get follow_desc => 'Слідкуйте за мною, щоб бути в курсі нових функцій програми та іншого!';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
+      'Слідкуйте за мною, щоб бути в курсі нових функцій програми та іншого!';
 
   @override
   String get like => 'Подобається';
@@ -381,11 +351,8 @@ class LUk extends L {
   String get fun_fact => 'Цікавий факт';
 
   @override
-<<<<<<< HEAD
   String get fun_fact_description =>
-      'Можу знизити ціну на 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
-=======
-  String get fun_fact_description => 'Я можу знизити ціну до 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
+      'Я можу знизити ціну до 100%. Тоді ви нічого не платите, а я нічого не роблю :)';
 
   @override
   String get email => 'Електронна пошта';
@@ -413,5 +380,4 @@ class LUk extends L {
 
   @override
   String get no => 'Ні';
->>>>>>> 4e64ff98540b8da7e7571dc7e5862117ca6d5304
 }

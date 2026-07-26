@@ -23,6 +23,7 @@ class SortingImages extends StatelessWidget {
     return SliverPersistentHeader(
       delegate: CustomHeader(
         childWidget: ListView.builder(
+          clipBehavior: Clip.none,
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: kSortingListAsset.length,

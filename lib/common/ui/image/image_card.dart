@@ -16,6 +16,7 @@ class ImageCard extends StatelessWidget {
     required this.goTo,
     this.showFavoriteText = true,
     this.showFavoriteCircleAvatar = false,
+    this.heroTagPrefix = '',
   });
 
   final Wallpaper wallpaper;
@@ -26,11 +27,12 @@ class ImageCard extends StatelessWidget {
   final bool showFavoriteText;
   final bool showFavoriteCircleAvatar;
   final Function()? goTo;
+  final String heroTagPrefix;
 
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: wallpaper.id,
+      tag: '$heroTagPrefix${wallpaper.id}',
       child: Card(
         elevation: kAppSize,
         clipBehavior: Clip.antiAliasWithSaveLayer,
